@@ -5,7 +5,7 @@ import 'package:triya_app/ui/auth/candidate_login/candidate_choose_login_type.da
 
 import 'package:triya_app/ui/auth/deshboard/home/resume/academic_history_screen.dart';
 import 'package:triya_app/ui/auth/deshboard/home/resume/contact_information_screen.dart';
-import 'package:triya_app/ui/auth/deshboard/home/resume/froffessional_screen.dart';
+import 'package:triya_app/ui/auth/deshboard/home/resume/proffessional_screen.dart';
 import 'package:triya_app/ui/auth/deshboard/home/resume/key_skills_screen.dart';
 import 'package:triya_app/ui/auth/deshboard/home/resume/normal_resume.dart';
 import 'package:triya_app/ui/auth/deshboard/home/resume/personal_statement_screen.dart';
