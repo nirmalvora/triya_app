@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
                 BotToastNavigatorObserver(),
               ],
               theme: ThemeData(
-                fontFamily: 'Unica',
+                fontFamily: 'OpenSans-Regular',
               ),
               getPages: NavigationRoute.pages,
               initialRoute: NavigationName.splash,

@@ -9,4 +9,7 @@ class NavigationName {
   static const govJobPage = '/govJobPage';
   static const govJobDescPage = '/govJobDescPage';
   static const resumePage = '/resumePage';
+  static const loginTypePage = '/loginTypePage';
+
+  static const candidateLoginType = "/candidateLoginType";
 }

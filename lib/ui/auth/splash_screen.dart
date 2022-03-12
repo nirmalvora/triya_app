@@ -28,44 +28,53 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void navigationMethod() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offNamed(NavigationName.login);
+      Get.offNamed(NavigationName.loginTypePage);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConstant.splashColor,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 286.h,
-              width: 286.h,
-              decoration: BoxDecoration(
-                color: ColorConstant.backgroundColor,
-                borderRadius: BorderRadius.circular(65.h),
-              ),
-              child: Center(
-                child: Image.asset(
-                  AppUtils.getPNGAsset(ImageConstant.appLogoIcon),
+      body: Stack(
+        children: [
+          SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: Image.asset(AppUtils.getPNGAsset("splash_background"),
+                fit: BoxFit.cover),
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 286.h,
+                  width: 286.h,
+                  decoration: BoxDecoration(
+                    color: ColorConstant.backgroundColor,
+                    borderRadius: BorderRadius.circular(65.h),
+                  ),
+                  child: Center(
+                    child: Image.asset(
+                      AppUtils.getPNGAsset(ImageConstant.appLogoIcon),
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Triya',
+                  style: TextStyle(
+                    color: ColorConstant.backgroundColor,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 72.sp,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Triya',
-              style: TextStyle(
-                color: ColorConstant.backgroundColor,
-                fontWeight: FontWeight.w700,
-                fontSize: 72.sp,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
