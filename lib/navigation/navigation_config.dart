@@ -4,6 +4,7 @@ import 'package:triya_app/ui/auth/deshboard/home/books.dart';
 import 'package:triya_app/ui/auth/deshboard/home/gov/gov.dart';
 import 'package:triya_app/ui/auth/deshboard/home/gov/gov_description.dart';
 import 'package:triya_app/ui/auth/deshboard/home/home.dart';
+import 'package:triya_app/ui/auth/deshboard/home/resume.dart';
 import 'package:triya_app/ui/auth/deshboard/home/video_category.dart';
 import 'package:triya_app/ui/auth/deshboard/home/videos.dart';
 import 'package:triya_app/ui/auth/login/login_screen.dart';
@@ -51,6 +52,10 @@ class NavigationRoute {
     GetPage(
       name: NavigationName.govJobDescPage,
       page: () => const GovDescription(),
+    ),
+    GetPage(
+      name: NavigationName.resumePage,
+      page: () => const ResumeScreen(),
     ),
   ];
 }

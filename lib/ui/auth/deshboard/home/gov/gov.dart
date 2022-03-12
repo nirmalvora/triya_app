@@ -241,7 +241,14 @@ class _GovJobScreenState extends State<GovJobScreen> {
                               height: 120.h,
                               width: 130.h,
                               decoration: BoxDecoration(
-                                color: ColorConstant.splashColor,
+                                gradient: LinearGradient(
+                                  colors: const [
+                                    Color(0xff3782F3),
+                                    Color(0xff276ED8)
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
                                 borderRadius: BorderRadius.circular(27.h),
                               ),
                               child: Icon(

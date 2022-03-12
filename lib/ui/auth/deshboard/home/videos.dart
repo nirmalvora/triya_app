@@ -122,7 +122,7 @@ class _VideoScreenState extends State<VideoScreen> {
                     child: Column(
                       children: [
                         Image.asset(
-                          AppUtils.getPNGAsset(ImageConstant.bookImage),
+                          AppUtils.getPNGAsset(ImageConstant.videoImage),
                           height: 255.h,
                         ),
                         Text(

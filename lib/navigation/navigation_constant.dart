@@ -8,4 +8,5 @@ class NavigationName {
   static const videoCategoryPage = '/videoCategoryPage';
   static const govJobPage = '/govJobPage';
   static const govJobDescPage = '/govJobDescPage';
+  static const resumePage = '/resumePage';
 }

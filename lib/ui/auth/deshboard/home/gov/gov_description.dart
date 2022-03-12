@@ -50,96 +50,352 @@ class _GovDescriptionState extends State<GovDescription> {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-            decoration: BoxDecoration(
-              color: ColorConstant.backgroundColor,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(15),
-                bottomRight: Radius.circular(15),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              decoration: BoxDecoration(
+                color: ColorConstant.backgroundColor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                ),
               ),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      fillColor: Color(0xffF5F5F5),
-                      filled: true,
-                      hintText: "Search for book category here",
-                      hintStyle: TextStyle(
-                        fontSize: 26.h,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        fillColor: Color(0xffF5F5F5),
+                        filled: true,
+                        hintText: "Search for book category here",
+                        hintStyle: TextStyle(
+                          fontSize: 26.h,
+                        ),
+                        prefixIcon: Icon(Icons.search),
                       ),
-                      prefixIcon: Icon(Icons.search),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 48,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.h),
-                    color: ColorConstant.droverButtonColor,
+                  SizedBox(
+                    width: 10,
                   ),
-                  child: Center(
-                    child: SvgPicture.asset(
-                      AppUtils.getSVGAsset(ImageConstant.filterIcon),
-                      width: 52.h,
-                      height: 47.h,
+                  Container(
+                    height: 48,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16.h),
+                      color: ColorConstant.droverButtonColor,
                     ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-            child: Text(
-              'Staff Car Driver(Ordinary Grade de)',
-              style: TextStyle(
-                color: ColorConstant.textColor,
-                fontWeight: FontWeight.w600,
-                fontFamily: TextFontFamily.openSansBold,
-                fontSize: 52.sp,
+                    child: Center(
+                      child: SvgPicture.asset(
+                        AppUtils.getSVGAsset(ImageConstant.filterIcon),
+                        width: 52.h,
+                        height: 47.h,
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Row(
-              children: [
-                Container(
-                  height: 140.h,
-                  width: 350.h,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.backgroundColor,
-                    borderRadius: BorderRadius.circular(30.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              child: Text(
+                'Staff Car Driver(Ordinary Grade de)',
+                style: TextStyle(
+                  color: ColorConstant.textColor,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: TextFontFamily.openSansBold,
+                  fontSize: 52.sp,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                children: [
+                  Container(
+                    height: 125.h,
+                    width: 350.h,
+                    decoration: BoxDecoration(
+                      color: ColorConstant.backgroundColor,
+                      borderRadius: BorderRadius.circular(30.h),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 7),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Post Date:',
+                            style: TextStyle(
+                              color: ColorConstant.hintTextColor,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: TextFontFamily.openSansBold,
+                              fontSize: 25.sp,
+                            ),
+                          ),
+                          Spacer(),
+                          Text(
+                            '24th Dec, 2020',
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: TextFontFamily.openSansBold,
+                              fontSize: 35.sp,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 125.h,
+                    width: 350.h,
+                    decoration: BoxDecoration(
+                      color: ColorConstant.backgroundColor,
+                      borderRadius: BorderRadius.circular(30.h),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 7),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Last Date:',
+                            style: TextStyle(
+                              color: ColorConstant.hintTextColor,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: TextFontFamily.openSansBold,
+                              fontSize: 25.sp,
+                            ),
+                          ),
+                          Spacer(),
+                          Text(
+                            '01st Jan, 2021',
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: TextFontFamily.openSansBold,
+                              fontSize: 35.sp,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              child: Container(
+                height: 135.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: ColorConstant.backgroundColor,
+                  borderRadius: BorderRadius.circular(30.h),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '',
+                        'Qualification:',
+                        style: TextStyle(
+                          color: ColorConstant.hintTextColor,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: TextFontFamily.openSansBold,
+                          fontSize: 25.sp,
+                        ),
+                      ),
+                      Spacer(),
+                      Text(
+                        'Matriculation with valid driving liscence',
                         style: TextStyle(
                           color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w400,
                           fontFamily: TextFontFamily.openSansBold,
-                          fontSize: 20.sp,
+                          fontSize: 35.sp,
                         ),
                       ),
                     ],
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                height: 135.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: ColorConstant.backgroundColor,
+                  borderRadius: BorderRadius.circular(30.h),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Board:',
+                        style: TextStyle(
+                          color: ColorConstant.hintTextColor,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: TextFontFamily.openSansBold,
+                          fontSize: 25.sp,
+                        ),
+                      ),
+                      Spacer(),
+                      Text(
+                        'Central Ground Water Board',
+                        style: TextStyle(
+                          color: ColorConstant.textColor,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: TextFontFamily.openSansBold,
+                          fontSize: 35.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              child: Container(
+                height: 135.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: ColorConstant.backgroundColor,
+                  borderRadius: BorderRadius.circular(30.h),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Job Link:',
+                        style: TextStyle(
+                          color: ColorConstant.hintTextColor,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: TextFontFamily.openSansBold,
+                          fontSize: 25.sp,
+                        ),
+                      ),
+                      Spacer(),
+                      Text(
+                        'https://www.naukri.com/job-listings-graphic-designe',
+                        style: TextStyle(
+                          color: ColorConstant.textColor,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: TextFontFamily.openSansBold,
+                          fontSize: 35.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: ColorConstant.backgroundColor,
+                  borderRadius: BorderRadius.circular(30.h),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Job Details:',
+                        style: TextStyle(
+                          color: ColorConstant.hintTextColor,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: TextFontFamily.openSansBold,
+                          fontSize: 25.sp,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Text(
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet condimentum ullamcorper amet tristique et enim mauris. Laoreet curabitur maecenas elit enim sed. ',
+                        style: TextStyle(
+                          color: ColorConstant.textColor,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: TextFontFamily.openSansBold,
+                          fontSize: 35.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              child: Container(
+                height: 130.h,
+                width: 555.h,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: const [Color(0xff3782F3), Color(0xff276ED8)],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: MaterialButton(
+                  height: 130.h,
+                  minWidth: 545.h,
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Download Pdf',
+                        style: TextStyle(
+                          color: ColorConstant.backgroundColor,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: TextFontFamily.openSansBold,
+                          fontSize: 40.sp,
+                          letterSpacing: 2,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.file_download,
+                        color: ColorConstant.backgroundColor,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

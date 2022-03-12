@@ -173,25 +173,30 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 96.h,
                   ),
-                  Row(
-                    children: [
-                      Image.asset(
-                        AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                        height: 45.h,
-                        width: 51.h,
-                      ),
-                      SizedBox(
-                        width: 25.h,
-                      ),
-                      Text(
-                        'My Resume',
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 45.sp,
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(NavigationName.resumePage);
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                          height: 45.h,
+                          width: 51.h,
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          width: 25.h,
+                        ),
+                        Text(
+                          'My Resume',
+                          style: TextStyle(
+                            color: ColorConstant.textColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 45.sp,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
