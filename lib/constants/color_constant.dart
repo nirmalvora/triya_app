@@ -15,4 +15,5 @@ class ColorConstant {
   static const Color jobBackgroundColor = Color(0xffEEF5FF);
   static const Color hintTextColor = Color(0xff767676);
   static const Color buttonColor = Color(0xffCDDFFA);
+  static const Color blueColor = Color(0xff3782F3);
 }

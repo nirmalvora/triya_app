@@ -16,4 +16,7 @@ class ImageConstant {
   static String videoImage = "video";
   static String backResumeImage = "resume_back";
   static String resumeProfileImage = "resume_profile";
+  static String otp_login = "otp_login";
+  static String google_Icon = "google_icon";
+  static String facebook_Icon = "facebook_icon";
 }
