@@ -12,4 +12,10 @@ class NavigationName {
   static const loginTypePage = '/loginTypePage';
 
   static const candidateLoginType = "/candidateLoginType";
+  static const normalResumePage = '/normalResumePage';
+  static const personalPage = '/personalPage';
+  static const contactPage = '/contactPage';
+  static const professionalPage = '/professionalPage';
+  static const academicPage = '/academicPage';
+  static const keySkillsPage = '/keySkillsPage';
 }

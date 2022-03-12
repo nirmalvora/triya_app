@@ -14,4 +14,6 @@ class ImageConstant {
   static String bookIcon = "book_icon";
   static String bookImage = "books";
   static String videoImage = "video";
+  static String backResumeImage = "resume_back";
+  static String resumeProfileImage = "resume_profile";
 }

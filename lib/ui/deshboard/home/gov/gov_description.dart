@@ -358,37 +358,50 @@ class _GovDescriptionState extends State<GovDescription> {
                 height: 130.h,
                 width: 555.h,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: const [Color(0xff3782F3), Color(0xff276ED8)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(10),
+                  color: ColorConstant.splashColor,
                 ),
-                child: MaterialButton(
-                  height: 130.h,
-                  minWidth: 545.h,
-                  onPressed: () {},
-                  child: Row(
+                child: Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    gradient: LinearGradient(
+                      colors: const [Color(0xff3782F3), Color(0xff276ED8)],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        'Download Pdf',
-                        style: TextStyle(
-                          color: ColorConstant.backgroundColor,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: TextFontFamily.openSansBold,
-                          fontSize: 40.sp,
-                          letterSpacing: 2,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Download Pdf',
+                              style: TextStyle(
+                                color: ColorConstant.backgroundColor,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: TextFontFamily.openSansBold,
+                                fontSize: 40.sp,
+                                letterSpacing: 2,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.file_download,
+                              color: ColorConstant.backgroundColor,
+                              size: 20,
+                            )
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Icon(
-                        Icons.file_download,
-                        color: ColorConstant.backgroundColor,
-                      )
                     ],
                   ),
                 ),
