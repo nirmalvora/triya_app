@@ -4,7 +4,6 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
-import 'package:triya_app/utils/common_text_field.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
 class ContactInformationScreen extends StatelessWidget {
