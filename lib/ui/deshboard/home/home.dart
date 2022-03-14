@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              height: 350.h,
+              height: 390.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -1107,20 +1107,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 left: 15,
                                 right: 15,
                                 top: -30,
-                                child: Container(
-                                  height: 300.h,
-                                  width: 370.h,
-                                  decoration: BoxDecoration(
-                                    color: ColorConstant.red,
-                                    borderRadius: BorderRadius.circular(30.h),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        AppUtils.getPNGAsset(
-                                            ImageConstant.bookImage),
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(30.h),
+                                  child: Image.asset(
+                                      AppUtils.getPNGAsset(
+                                          ImageConstant.bannerIcon),
+                                      height: 300.h,
+                                      width: 370.h,
+                                      fit: BoxFit.cover),
                                 ),
                               )
                             ],
@@ -1129,6 +1123,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                   ),
+                ),
+                SizedBox(
+                  height: 15,
                 ),
                 Row(
                   children: [
@@ -1175,7 +1172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 30.h,
                 ),
-                SizedBox(
+                Container(
                   height: 400.h,
                   child: ListView.builder(
                     physics: BouncingScrollPhysics(),
@@ -1185,66 +1182,57 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: 5,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 30),
-                        child: SizedBox(
-                          width: 432.h,
-                          child: Stack(
-                            overflow: Overflow.visible,
-                            children: [
-                              Container(
-                                height: 317.h,
-                                width: 432.h,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30.h),
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Color(0xffEFEFEF).withOpacity(0),
-                                      Color(0xffEFEFEF),
-                                    ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                  ),
+                        padding: const EdgeInsets.only(right: 10, top: 50),
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          alignment: Alignment.topCenter,
+                          children: [
+                            Container(
+                              height: 317.h,
+                              width: 432.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30.h),
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color(0xffEFEFEF).withOpacity(0),
+                                    Color(0xffEFEFEF),
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
                                 ),
-                                child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    child: Text(
-                                      'Autos & Vehicles',
-                                      style: TextStyle(
-                                        color: ColorConstant.textColor,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: TextFontFamily.openSansBold,
-                                        fontSize: 30.sp,
-                                      ),
+                              ),
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  child: Text(
+                                    'Autos & Vehicles',
+                                    style: TextStyle(
+                                      color: ColorConstant.textColor,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: TextFontFamily.openSansBold,
+                                      fontSize: 30.sp,
                                     ),
                                   ),
                                 ),
                               ),
-                              Positioned(
-                                left: 15,
-                                right: 15,
-                                top: -30,
-                                child: Container(
-                                  height: 300.h,
-                                  width: 370.h,
-                                  decoration: BoxDecoration(
-                                    color: ColorConstant.red,
-                                    borderRadius: BorderRadius.circular(30.h),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        AppUtils.getPNGAsset(
-                                          ImageConstant.videoImage,
-                                        ),
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                            ),
+                            Positioned(
+                              left: 15,
+                              right: 15,
+                              top: -50,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(30.h),
+                                child: Image.asset(
+                                    AppUtils.getPNGAsset(
+                                        ImageConstant.bannerIcon),
+                                    height: 300.h,
+                                    width: 370.h,
+                                    fit: BoxFit.cover),
+                              ),
+                            ),
+                          ],
                         ),
                       );
                     },
