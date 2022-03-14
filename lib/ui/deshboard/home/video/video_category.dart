@@ -118,10 +118,12 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
                               color: ColorConstant.backgroundColor,
                               borderRadius: BorderRadius.circular(7),
                             ),
-                            child: Image.asset(
-                              AppUtils.getPNGAsset(ImageConstant.bookIcon),
-                              width: 76.h,
-                              height: 76.h,
+                            child: Center(
+                              child: Image.asset(
+                                AppUtils.getPNGAsset(ImageConstant.bookIcon),
+                                width: 76.h,
+                                height: 76.h,
+                              ),
                             ),
                           ),
                           SizedBox(

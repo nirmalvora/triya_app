@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/ui/deshboard/home/resume/personal_statement_screen.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
 class ContactInformationScreen extends StatelessWidget {
@@ -16,48 +18,7 @@ class ContactInformationScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 200.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: ColorConstant.splashColor,
-              image: DecorationImage(
-                image: AssetImage(
-                  AppUtils.getPNGAsset(ImageConstant.backgroundImage),
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xff2C72DB),
-                      radius: 20,
-                      child: Icon(Icons.arrow_back),
-                    ),
-                  ),
-                  Text(
-                    'PERSONAL STATEMENT',
-                    style: TextStyle(
-                      color: ColorConstant.backgroundColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 35.sp,
-                    ),
-                  ),
-                  CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                  )
-                ],
-              ),
-            ),
-          ),
+          CommanTopBar(title: "CONTACT INFORMATION"),
           SizedBox(
             height: 20,
           ),
@@ -170,37 +131,9 @@ class ContactInformationScreen extends StatelessWidget {
           Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-            child: Container(
-              height: 120.h,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: ColorConstant.splashColor,
-              ),
-              child: Container(
-                width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 5),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  gradient: LinearGradient(
-                    colors: const [Color(0xff3782F3), Color(0xff276ED8)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    "SAVE",
-                    style: TextStyle(
-                      color: ColorConstant.backgroundColor,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: TextFontFamily.openSansBold,
-                      fontSize: 35.sp,
-                      letterSpacing: 2,
-                    ),
-                  ),
-                ),
-              ),
+            child: BottomCommonButton(
+              name: "SAVE",
+              onTap: () {},
             ),
           ),
         ],

@@ -4,7 +4,14 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
+
+
 import 'package:triya_app/widgets/bottom_common_button.dart';
+import 'package:triya_app/widgets/resume_container.dart';
+
+
+import 'package:triya_app/widgets/bottom_common_button.dart';
+
 
 class PersonalStatementScreen extends StatelessWidget {
   const PersonalStatementScreen({Key? key}) : super(key: key);

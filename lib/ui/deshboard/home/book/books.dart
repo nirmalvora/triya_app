@@ -109,7 +109,7 @@ class _BooksScreenState extends State<BooksScreen> {
             Expanded(
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3, crossAxisSpacing: 5, mainAxisSpacing: 5),
+                    crossAxisCount: 3, mainAxisSpacing: 10),
                 shrinkWrap: true,
                 physics: BouncingScrollPhysics(),
                 padding: EdgeInsets.zero,
@@ -123,7 +123,7 @@ class _BooksScreenState extends State<BooksScreen> {
                       children: [
                         Image.asset(
                           AppUtils.getPNGAsset(ImageConstant.bookImage),
-                          height: 255.h,
+                          height: 250.h,
                         ),
                         Text(
                           'Book Category',
