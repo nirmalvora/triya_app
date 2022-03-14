@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/constants/image_constant.dart';
-import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/date_formate_utils.dart';
 
 class AddNewJobScreen extends StatefulWidget {
@@ -24,15 +23,25 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: ColorConstant.splashColor,
-        leading: Center(
-            child: Padding(
+        leading: Padding(
           padding: EdgeInsets.only(left: 30.w),
-          child: SvgPicture.asset(
-            AppUtils.getSVGAsset(ImageConstant.appbar_icon),
-            height: 115.h,
-            width: 115.h,
+          child: Center(
+            child: GestureDetector(
+              onTap: () {
+                Get.back();
+              },
+              child: Container(
+                  height: 115.h,
+                  width: 115.h,
+                  decoration: BoxDecoration(
+                      color: Color(0xff2A70DA), shape: BoxShape.circle),
+                  child: Icon(
+                    Icons.arrow_back_ios_outlined,
+                    size: 50.r,
+                  )),
+            ),
           ),
-        )),
+        ),
         title: Text(
           'Add New Job',
           style: TextStyle(

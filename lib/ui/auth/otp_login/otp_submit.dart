@@ -64,22 +64,23 @@ class OTPSubmitScreen extends StatelessWidget {
                           child: TextFormField(
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
-                                suffixIcon: TextButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      'RESEND',
-                                      style: TextStyle(
-                                          letterSpacing: 1.5,
-                                          color: Color(0xffB4F3FF),
-                                          fontFamily: "OpenSans-Regular",
-                                          fontSize: 32.sp,
-                                          fontWeight: FontWeight.w600),
-                                    )),
                                 border: InputBorder.none,
                                 hintText: 'Enter otp'.toUpperCase(),
                                 contentPadding: EdgeInsets.zero,
                                 hintStyle: TextStyle(
                                     color: Colors.white, fontSize: 25.sp)),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'RESEND',
+                            style: TextStyle(
+                                letterSpacing: 1.5,
+                                color: Color(0xffB4F3FF),
+                                fontFamily: "OpenSans-Regular",
+                                fontSize: 32.sp,
+                                fontWeight: FontWeight.w600),
                           ),
                         )
                       ],

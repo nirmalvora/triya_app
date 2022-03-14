@@ -37,7 +37,7 @@ class EmployerHomeScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 30.w),
-            child: ClipOval(
+            child: Center(
               child: Container(
                 height: 115.h,
                 width: 115.h,

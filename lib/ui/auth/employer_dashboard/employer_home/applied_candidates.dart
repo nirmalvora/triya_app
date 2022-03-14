@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employer_home_screen.dart';
-import 'package:triya_app/utils/app_utils.dart';
 
 class AppliedCandidateScreen extends StatelessWidget {
   const AppliedCandidateScreen({Key? key}) : super(key: key);
@@ -16,15 +15,25 @@ class AppliedCandidateScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: ColorConstant.splashColor,
-        leading: Center(
-            child: Padding(
+        leading: Padding(
           padding: EdgeInsets.only(left: 30.w),
-          child: SvgPicture.asset(
-            AppUtils.getSVGAsset(ImageConstant.appbar_icon),
-            height: 115.h,
-            width: 115.h,
+          child: Center(
+            child: GestureDetector(
+              onTap: () {
+                Get.back();
+              },
+              child: Container(
+                  height: 115.h,
+                  width: 115.h,
+                  decoration: BoxDecoration(
+                      color: Color(0xff2A70DA), shape: BoxShape.circle),
+                  child: Icon(
+                    Icons.arrow_back_ios_outlined,
+                    size: 50.r,
+                  )),
+            ),
           ),
-        )),
+        ),
         title: Text(
           'My Jobs',
           style: TextStyle(
@@ -36,7 +45,7 @@ class AppliedCandidateScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 30.w),
-            child: ClipOval(
+            child: Center(
               child: Container(
                 height: 115.h,
                 width: 115.h,
