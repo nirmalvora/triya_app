@@ -8,19 +8,19 @@ import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
-class GovJobScreen extends StatefulWidget {
-  const GovJobScreen({Key? key}) : super(key: key);
+class ScholarshipJobScreen extends StatefulWidget {
+  const ScholarshipJobScreen({Key? key}) : super(key: key);
 
   @override
-  _GovJobScreenState createState() => _GovJobScreenState();
+  _ScholarshipJobScreenState createState() => _ScholarshipJobScreenState();
 }
 
-class _GovJobScreenState extends State<GovJobScreen> {
+class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
   int? selected = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConstant.jobBackgroundColor,
+      backgroundColor: ColorConstant.scholarshipJobBgColor,
       appBar: AppBar(
         backgroundColor: ColorConstant.backgroundColor,
         elevation: 0,
@@ -38,7 +38,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
           ),
         ),
         title: Text(
-          "GOVT.JOBS",
+          "Scholarship Job",
           style: TextStyle(color: ColorConstant.splashColor),
         ),
         actions: [
@@ -189,7 +189,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Get.toNamed(NavigationName.govJobDescPage);
+                    Get.toNamed(NavigationName.scholarshipJobDescPage);
                   },
                   child: Padding(
                     padding:
@@ -199,7 +199,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         gradient: LinearGradient(
-                          colors: const [Color(0xffffffff), Color(0xffDFECFE)],
+                          colors: const [Color(0xffffffff), Color(0xffFEF2DF)],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                         ),

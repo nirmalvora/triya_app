@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
+
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/resume_container.dart';
 
-class ResumeScreen extends StatelessWidget {
-  const ResumeScreen({Key? key}) : super(key: key);
+class PrivateJobResumeScreen extends StatelessWidget {
+  const PrivateJobResumeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConstant.jobBackgroundColor,
+      backgroundColor: ColorConstant.privateJobBgColor,
       appBar: AppBar(
         backgroundColor: ColorConstant.backgroundColor,
         elevation: 0,
         leading: InkWell(
           onTap: () {
-            Get.back();
+            Navigator.pop(context);
           },
           child: Padding(
             padding: const EdgeInsets.only(left: 10),
@@ -30,7 +31,7 @@ class ResumeScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Create Your Resume",
+          "Private Job",
           style: TextStyle(color: ColorConstant.splashColor),
         ),
         actions: [
@@ -42,34 +43,24 @@ class ResumeScreen extends StatelessWidget {
                 AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
               ),
             ),
-          )
+          ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: GestureDetector(
-                onTap: () {},
-                child: ResumeContainer(name: "NORMAL RESUME"),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: ResumeContainer(name: "STANDARD RESUME"),
-            ),
+            ResumeContainer(name: "CREATE RESUME"),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(NavigationName.professionalResumePage);
+                  Get.toNamed(NavigationName.privateResumeApplyPage);
                 },
-                child: ResumeContainer(name: "PROFESSIONAL RESUME"),
+                child: ResumeContainer(name: "APPLY WITH EXISTING RESUME"),
               ),
             ),
+            ResumeContainer(name: "UPLOAD RESUME"),
           ],
         ),
       ),

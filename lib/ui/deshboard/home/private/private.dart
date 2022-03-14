@@ -20,7 +20,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConstant.jobBackgroundColor,
+      backgroundColor: ColorConstant.privateJobBgColor,
       appBar: AppBar(
         backgroundColor: ColorConstant.backgroundColor,
         elevation: 0,
@@ -38,7 +38,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
           ),
         ),
         title: Text(
-          "GOVT.JOBS",
+          "Private Job",
           style: TextStyle(color: ColorConstant.splashColor),
         ),
         actions: [
@@ -130,7 +130,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
                         color: selected == index
-                            ? ColorConstant.splashColor
+                            ? ColorConstant.blueColor
                             : ColorConstant.backgroundColor,
                       ),
                       child: Center(
@@ -189,7 +189,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Get.toNamed(NavigationName.govJobDescPage);
+                    Get.toNamed(NavigationName.privateJobDescPage);
                   },
                   child: Padding(
                     padding:
@@ -199,7 +199,10 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         gradient: LinearGradient(
-                          colors: const [Color(0xffffffff), Color(0xffDFECFE)],
+                          colors: const [
+                            Color(0xffffffff),
+                            ColorConstant.privateJobBgColor
+                          ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                         ),

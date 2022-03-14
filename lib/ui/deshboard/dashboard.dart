@@ -11,42 +11,31 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "Application",
+      body: IndexedStack(
+        index: controller.currentIndex.value,
+        children: [
+          HomeScreen(),
+        ],
       ),
       bottomNavigationBar: Obx(
-        () => Column(
-          children: [
-            Expanded(
-              child: IndexedStack(
-                index: controller.currentIndex.value,
-                children: [
-                  HomeScreen(),
-                ],
-              ),
-            ),
-            BottomNavigationBar(
-              onTap: (index) {
-                controller.currentIndex.value = index;
-              },
-              backgroundColor: Color(0xff1F63C9),
-              showSelectedLabels: true,
-              showUnselectedLabels: true,
-              currentIndex: controller.currentIndex.value,
-              items: [
-                _buildBottomNavigationItem(icon: "home_icon", tabName: "Home"),
-                _buildBottomNavigationItem(
-                    icon: "favourite_icon", tabName: "Favourite"),
-                _buildBottomNavigationItem(
-                    icon: "account_icon", tabName: "Account")
-              ],
-              selectedFontSize: 12,
-              unselectedFontSize: 12,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.grey,
-            ),
+        () => BottomNavigationBar(
+          onTap: (index) {
+            controller.currentIndex.value = index;
+          },
+          backgroundColor: Color(0xff1F63C9),
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          currentIndex: controller.currentIndex.value,
+          items: [
+            _buildBottomNavigationItem(icon: "home_icon", tabName: "Home"),
+            _buildBottomNavigationItem(
+                icon: "favourite_icon", tabName: "Favourite"),
+            _buildBottomNavigationItem(icon: "account_icon", tabName: "Account")
           ],
+          selectedFontSize: 12,
+          unselectedFontSize: 12,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
         ),
       ),
     );

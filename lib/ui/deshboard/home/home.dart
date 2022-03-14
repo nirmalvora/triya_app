@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              height: 350.h,
+              height: 390.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -351,9 +352,41 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  AppUtils.getPNGAsset(ImageConstant.bannerIcon),
-                  height: 341.h,
+                CarouselSlider(
+                  items: [
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
+                              ),
+                              fit: BoxFit.cover)),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  'http://photo.16pic.com/00/38/88/16pic_3888084_b.jpg'),
+                              fit: BoxFit.cover)),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
+                              ),
+                              fit: BoxFit.cover)),
+                    ),
+                  ],
+                  options: CarouselOptions(
+                    height: 341.h,
+                    initialPage: 1,
+                    autoPlay: true,
+                    autoPlayAnimationDuration: Duration(seconds: 1),
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -416,11 +449,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ],
                                     ),
-                                    child: Image.asset(
-                                      AppUtils.getPNGAsset(
-                                          ImageConstant.govIcon),
-                                      height: 74.h,
-                                      width: 74.h,
+                                    child: Center(
+                                      child: Image.asset(
+                                        AppUtils.getPNGAsset(
+                                            ImageConstant.govIcon),
+                                        height: 74.h,
+                                        width: 74.h,
+                                      ),
                                     ),
                                   ),
                                   SizedBox(
@@ -444,63 +479,70 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(right: 20),
-                        child: Container(
-                          height: 350.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(60.h),
-                            gradient: LinearGradient(
-                              colors: const [
-                                Color(0xffDFF8FE),
-                                Color(0xffffffff)
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(NavigationName.privateJobPage);
+                          },
+                          child: Container(
+                            height: 350.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(60.h),
+                              gradient: LinearGradient(
+                                colors: const [
+                                  Color(0xffDFF8FE),
+                                  Color(0xffffffff)
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Column(
-                              children: [
-                                Spacer(),
-                                Container(
-                                  height: 166.h,
-                                  width: 166.h,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(43.h),
-                                    gradient: LinearGradient(
-                                      colors: const [
-                                        Color(0xffDFF8FE),
-                                        Color(0xffFFFFFF)
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                    ),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color:
-                                            Color.fromRGBO(39, 110, 216, 0.08),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Column(
+                                children: [
+                                  Spacer(),
+                                  Container(
+                                    height: 166.h,
+                                    width: 166.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(43.h),
+                                      gradient: LinearGradient(
+                                        colors: const [
+                                          Color(0xffDFF8FE),
+                                          Color(0xffFFFFFF)
+                                        ],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
                                       ),
-                                    ],
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Color.fromRGBO(
+                                              39, 110, 216, 0.08),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Center(
+                                      child: Image.asset(
+                                        AppUtils.getPNGAsset(
+                                            ImageConstant.privateIcon),
+                                        height: 74.h,
+                                        width: 74.h,
+                                      ),
+                                    ),
                                   ),
-                                  child: Image.asset(
-                                    AppUtils.getPNGAsset(
-                                        ImageConstant.privateIcon),
-                                    height: 74.h,
-                                    width: 74.h,
+                                  SizedBox(
+                                    height: 66.h,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 66.h,
-                                ),
-                                Text(
-                                  'Private Jobs',
-                                  style: TextStyle(
-                                    color: ColorConstant.textColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 25.sp,
+                                  Text(
+                                    'Private Jobs',
+                                    style: TextStyle(
+                                      color: ColorConstant.textColor,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 25.sp,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -509,63 +551,70 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
-                        child: Container(
-                          height: 350.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(60.h),
-                            gradient: LinearGradient(
-                              colors: const [
-                                Color(0xffFEF2DF),
-                                Color(0xffFFFFFF)
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(NavigationName.scholarshipJobPage);
+                          },
+                          child: Container(
+                            height: 350.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(60.h),
+                              gradient: LinearGradient(
+                                colors: const [
+                                  Color(0xffFEF2DF),
+                                  Color(0xffFFFFFF)
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Column(
-                              children: [
-                                Spacer(),
-                                Container(
-                                  height: 166.h,
-                                  width: 166.h,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(43.h),
-                                    gradient: LinearGradient(
-                                      colors: const [
-                                        Color(0xffFEF2DF),
-                                        Color(0xffFFFFFF)
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                    ),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color:
-                                            Color.fromRGBO(39, 110, 216, 0.08),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Column(
+                                children: [
+                                  Spacer(),
+                                  Container(
+                                    height: 166.h,
+                                    width: 166.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(43.h),
+                                      gradient: LinearGradient(
+                                        colors: const [
+                                          Color(0xffFEF2DF),
+                                          Color(0xffFFFFFF)
+                                        ],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
                                       ),
-                                    ],
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Color.fromRGBO(
+                                              39, 110, 216, 0.08),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Center(
+                                      child: Image.asset(
+                                        AppUtils.getPNGAsset(
+                                            ImageConstant.scholarshipIcon),
+                                        height: 74.h,
+                                        width: 74.h,
+                                      ),
+                                    ),
                                   ),
-                                  child: Image.asset(
-                                    AppUtils.getPNGAsset(
-                                        ImageConstant.scholarshipIcon),
-                                    height: 74.h,
-                                    width: 74.h,
+                                  SizedBox(
+                                    height: 66.h,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 66.h,
-                                ),
-                                Text(
-                                  'Scholarship Jobs',
-                                  style: TextStyle(
-                                    color: ColorConstant.textColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 25.sp,
+                                  Text(
+                                    'Scholarship Jobs',
+                                    style: TextStyle(
+                                      color: ColorConstant.textColor,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 25.sp,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -576,42 +625,47 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  height: 120.h,
-                  width: 615.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: ColorConstant.splashColor,
-                  ),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(NavigationName.resumePage);
+                  },
                   child: Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    height: 120.h,
+                    width: 615.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                        colors: const [Color(0xff3782F3), Color(0xff276ED8)],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
+                      color: ColorConstant.splashColor,
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: Text(
-                            'Create Your Resume',
-                            style: TextStyle(
-                              color: ColorConstant.backgroundColor,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: TextFontFamily.openSansBold,
-                              fontSize: 40.sp,
-                              letterSpacing: 2,
+                    child: Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: LinearGradient(
+                          colors: const [Color(0xff3782F3), Color(0xff276ED8)],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Text(
+                              'Create Your Resume',
+                              style: TextStyle(
+                                color: ColorConstant.backgroundColor,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: TextFontFamily.openSansBold,
+                                fontSize: 40.sp,
+                                letterSpacing: 2,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -918,9 +972,41 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 122.h,
                 ),
-                Image.asset(
-                  AppUtils.getPNGAsset(ImageConstant.bannerIcon),
-                  height: 341.h,
+                CarouselSlider(
+                  items: [
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
+                              ),
+                              fit: BoxFit.cover)),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  'http://photo.16pic.com/00/38/88/16pic_3888084_b.jpg'),
+                              fit: BoxFit.cover)),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
+                              ),
+                              fit: BoxFit.cover)),
+                    ),
+                  ],
+                  options: CarouselOptions(
+                    height: 341.h,
+                    initialPage: 1,
+                    autoPlay: true,
+                    autoPlayAnimationDuration: Duration(seconds: 1),
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -1021,20 +1107,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 left: 15,
                                 right: 15,
                                 top: -30,
-                                child: Container(
-                                  height: 300.h,
-                                  width: 370.h,
-                                  decoration: BoxDecoration(
-                                    color: ColorConstant.red,
-                                    borderRadius: BorderRadius.circular(30.h),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        AppUtils.getPNGAsset(
-                                            ImageConstant.bookImage),
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(30.h),
+                                  child: Image.asset(
+                                      AppUtils.getPNGAsset(
+                                          ImageConstant.bannerIcon),
+                                      height: 300.h,
+                                      width: 370.h,
+                                      fit: BoxFit.cover),
                                 ),
                               )
                             ],
@@ -1043,6 +1123,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                   ),
+                ),
+                SizedBox(
+                  height: 15,
                 ),
                 Row(
                   children: [
@@ -1089,7 +1172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 30.h,
                 ),
-                SizedBox(
+                Container(
                   height: 400.h,
                   child: ListView.builder(
                     physics: BouncingScrollPhysics(),
@@ -1099,65 +1182,57 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: 5,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 30),
-                        child: SizedBox(
-                          width: 432.h,
-                          child: Stack(
-                            overflow: Overflow.visible,
-                            children: [
-                              Container(
-                                height: 317.h,
-                                width: 432.h,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30.h),
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Color(0xffEFEFEF).withOpacity(0),
-                                      Color(0xffEFEFEF),
-                                    ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                  ),
+                        padding: const EdgeInsets.only(right: 10, top: 50),
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          alignment: Alignment.topCenter,
+                          children: [
+                            Container(
+                              height: 317.h,
+                              width: 432.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30.h),
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color(0xffEFEFEF).withOpacity(0),
+                                    Color(0xffEFEFEF),
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
                                 ),
-                                child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    child: Text(
-                                      'Autos & Vehicles',
-                                      style: TextStyle(
-                                        color: ColorConstant.textColor,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: TextFontFamily.openSansBold,
-                                        fontSize: 30.sp,
-                                      ),
+                              ),
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  child: Text(
+                                    'Autos & Vehicles',
+                                    style: TextStyle(
+                                      color: ColorConstant.textColor,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: TextFontFamily.openSansBold,
+                                      fontSize: 30.sp,
                                     ),
                                   ),
                                 ),
                               ),
-                              Positioned(
-                                left: 15,
-                                right: 15,
-                                top: -30,
-                                child: Container(
-                                  height: 300.h,
-                                  width: 370.h,
-                                  decoration: BoxDecoration(
-                                    color: ColorConstant.red,
-                                    borderRadius: BorderRadius.circular(30.h),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        AppUtils.getPNGAsset(
-                                            ImageConstant.videoImage),
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                            ),
+                            Positioned(
+                              left: 15,
+                              right: 15,
+                              top: -50,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(30.h),
+                                child: Image.asset(
+                                    AppUtils.getPNGAsset(
+                                        ImageConstant.bannerIcon),
+                                    height: 300.h,
+                                    width: 370.h,
+                                    fit: BoxFit.cover),
+                              ),
+                            ),
+                          ],
                         ),
                       );
                     },

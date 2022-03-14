@@ -6,18 +6,18 @@ import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
-class GovDescription extends StatefulWidget {
-  const GovDescription({Key? key}) : super(key: key);
+class ScholarshipDescription extends StatefulWidget {
+  const ScholarshipDescription({Key? key}) : super(key: key);
 
   @override
-  _GovDescriptionState createState() => _GovDescriptionState();
+  _ScholarshipDescriptionState createState() => _ScholarshipDescriptionState();
 }
 
-class _GovDescriptionState extends State<GovDescription> {
+class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConstant.jobBackgroundColor,
+      backgroundColor: ColorConstant.scholarshipJobBgColor,
       appBar: AppBar(
         backgroundColor: ColorConstant.backgroundColor,
         elevation: 0,
@@ -404,6 +404,35 @@ class _GovDescriptionState extends State<GovDescription> {
                   ),
                 ),
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                height: 110.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(19.r),
+                  border: Border.all(
+                    color: ColorConstant.splashColor,
+                    width: 2,
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    'Apply Job',
+                    style: TextStyle(
+                      color: ColorConstant.splashColor,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: TextFontFamily.openSansBold,
+                      fontSize: 32.sp,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).padding.bottom + 20,
             )
           ],
         ),
