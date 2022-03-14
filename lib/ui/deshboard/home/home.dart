@@ -1170,7 +1170,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     image: DecorationImage(
                                       image: AssetImage(
                                         AppUtils.getPNGAsset(
-                                            ImageConstant.videoImage),
+                                          ImageConstant.videoImage,
+                                        ),
                                       ),
                                       fit: BoxFit.cover,
                                     ),

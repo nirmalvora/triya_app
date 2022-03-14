@@ -51,7 +51,7 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -92,7 +92,7 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
               ],
             ),
             SizedBox(
-              height: 56.h,
+              height: 20,
             ),
             Expanded(
               child: ListView.builder(
@@ -102,44 +102,50 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                     child: Container(
                       height: 163.h,
                       decoration: BoxDecoration(
                         color: Color(0xffF6F6F6),
                         borderRadius: BorderRadius.circular(30.h),
                       ),
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.symmetric(horizontal: 10),
-                            height: 120.h,
-                            width: 130.h,
-                            decoration: BoxDecoration(
-                              color: ColorConstant.backgroundColor,
-                              borderRadius: BorderRadius.circular(7),
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              height: 120.h,
+                              width: 130.h,
+                              decoration: BoxDecoration(
+                                color: ColorConstant.backgroundColor,
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                              child: Center(
+                                child: Image.asset(
+                                  AppUtils.getPNGAsset(ImageConstant.bookIcon),
+                                  width: 76.h,
+                                  height: 76.h,
+                                ),
+                              ),
                             ),
-                            child: Image.asset(
-                              AppUtils.getPNGAsset(ImageConstant.bookIcon),
-                              width: 76.h,
-                              height: 76.h,
+                            SizedBox(
+                              width: 20.h,
                             ),
-                          ),
-                          SizedBox(
-                            width: 20.h,
-                          ),
-                          Text(
-                            'Lorem ipsum dolor sit amet, consectetur\nadipiscing elit....',
-                            maxLines: 2,
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 30.sp,
+                            Text(
+                              'Lorem ipsum dolor sit amet, consectetur\nadipiscing elit....',
+                              maxLines: 2,
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 30.sp,
+                              ),
                             ),
-                          ),
-                          Spacer(),
-                          Icon(Icons.favorite_border_sharp)
-                        ],
+                            Spacer(),
+                            Icon(Icons.favorite_border_sharp)
+                          ],
+                        ),
                       ),
                     ),
                   );
