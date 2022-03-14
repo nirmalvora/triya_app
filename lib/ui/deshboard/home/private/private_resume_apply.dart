@@ -4,7 +4,6 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
-import 'package:triya_app/widgets/resume_container.dart';
 
 class PrivateResumeApply extends StatelessWidget {
   const PrivateResumeApply({Key? key}) : super(key: key);
@@ -45,22 +44,338 @@ class PrivateResumeApply extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 80.h,
-          ),
           Expanded(
             child: Container(
-              color: ColorConstant.privateJobBgColor,
               width: double.infinity,
               child: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Stack(
                   overflow: Overflow.visible,
                   children: [
+                    Container(
+                      color: ColorConstant.privateJobBgColor,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 460.h,
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        height: 150.h,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                          StackWidget(name: "PERSONAL STATEMENT"),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet condimentum ullamcorper amet tristique et enim mauris. Laoreet curabitur maecenas elit enim sed. Consequat porta tellus bibendum mattis est. Imperdiet pretium, bibendum sagittis, vitae tortor nibh.',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: TextFontFamily.openSensRegular,
+                                fontSize: 30.sp,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 50.h,
+                          ),
+                          StackWidget(name: "CONTACT INFORMATION"),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'COMPANY NAME',
+                                  style: TextStyle(
+                                    color: ColorConstant.splashColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 30.sp,
+                                  ),
+                                ),
+                                Text(
+                                  'Tech Mahindra Pvt. Ltd',
+                                  style: TextStyle(
+                                    color: ColorConstant.textColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 35.sp,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 40.h,
+                                ),
+                                Text(
+                                  'ROLE',
+                                  style: TextStyle(
+                                    color: ColorConstant.splashColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 30.sp,
+                                  ),
+                                ),
+                                Text(
+                                  'UIUX Designer',
+                                  style: TextStyle(
+                                    color: ColorConstant.textColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 35.sp,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 40.h,
+                                ),
+                                Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'FROM DATE',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          '01st Jan, 2020',
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Spacer(),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'To DATE',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          '12th Dec, 2021',
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Spacer(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 50.h,
+                          ),
+                          StackWidget(name: "ACADEMIC HISTORY"),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'COMPANY NAME',
+                                  style: TextStyle(
+                                    color: ColorConstant.splashColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 30.sp,
+                                  ),
+                                ),
+                                Text(
+                                  'Tech Mahindra Pvt. Ltd',
+                                  style: TextStyle(
+                                    color: ColorConstant.textColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 35.sp,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 40.h,
+                                ),
+                                Text(
+                                  'ROLE',
+                                  style: TextStyle(
+                                    color: ColorConstant.splashColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 30.sp,
+                                  ),
+                                ),
+                                Text(
+                                  'UIUX Designer',
+                                  style: TextStyle(
+                                    color: ColorConstant.textColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 35.sp,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 40.h,
+                                ),
+                                Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'FROM DATE',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          '01st Jan, 2020',
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Spacer(),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'To DATE',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          '12th Dec, 2021',
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Spacer(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 100.h,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Container(
+                              height: 120.h,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: ColorConstant.splashColor,
+                              ),
+                              child: Container(
+                                width: double.infinity,
+                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(
+                                    colors: const [
+                                      Color(0xff3782F3),
+                                      Color(0xff276ED8)
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "APPLY NOW",
+                                    style: TextStyle(
+                                      color: ColorConstant.backgroundColor,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: TextFontFamily.openSansBold,
+                                      fontSize: 35.sp,
+                                      letterSpacing: 2,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 10),
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                height: 110.h,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(19.r),
+                                  border: Border.all(
+                                    color: ColorConstant.splashColor,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Apply Job',
+                                    style: TextStyle(
+                                      color: ColorConstant.splashColor,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: TextFontFamily.openSansBold,
+                                      fontSize: 32.sp,
+                                      letterSpacing: 2,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
+                    ),
                     Positioned(
                       right: 0,
                       left: 0,
-                      top: -70,
                       child: Column(
                         children: [
                           Center(
@@ -102,310 +417,6 @@ class PrivateResumeApply extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 250.h,
-                        ),
-                        StackWidget(name: "PERSONAL STATEMENT"),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15),
-                          child: Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet condimentum ullamcorper amet tristique et enim mauris. Laoreet curabitur maecenas elit enim sed. Consequat porta tellus bibendum mattis est. Imperdiet pretium, bibendum sagittis, vitae tortor nibh.',
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: TextFontFamily.openSensRegular,
-                              fontSize: 30.sp,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 50.h,
-                        ),
-                        StackWidget(name: "CONTACT INFORMATION"),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'COMPANY NAME',
-                                style: TextStyle(
-                                  color: ColorConstant.splashColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 30.sp,
-                                ),
-                              ),
-                              Text(
-                                'Tech Mahindra Pvt. Ltd',
-                                style: TextStyle(
-                                  color: ColorConstant.textColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 35.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 40.h,
-                              ),
-                              Text(
-                                'ROLE',
-                                style: TextStyle(
-                                  color: ColorConstant.splashColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 30.sp,
-                                ),
-                              ),
-                              Text(
-                                'UIUX Designer',
-                                style: TextStyle(
-                                  color: ColorConstant.textColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 35.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 40.h,
-                              ),
-                              Row(
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'FROM DATE',
-                                        style: TextStyle(
-                                          color: ColorConstant.splashColor,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 30.sp,
-                                        ),
-                                      ),
-                                      Text(
-                                        '01st Jan, 2020',
-                                        style: TextStyle(
-                                          color: ColorConstant.textColor,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 35.sp,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Spacer(),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'To DATE',
-                                        style: TextStyle(
-                                          color: ColorConstant.splashColor,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 30.sp,
-                                        ),
-                                      ),
-                                      Text(
-                                        '12th Dec, 2021',
-                                        style: TextStyle(
-                                          color: ColorConstant.textColor,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 35.sp,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Spacer(),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 50.h,
-                        ),
-                        StackWidget(name: "ACADEMIC HISTORY"),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'COMPANY NAME',
-                                style: TextStyle(
-                                  color: ColorConstant.splashColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 30.sp,
-                                ),
-                              ),
-                              Text(
-                                'Tech Mahindra Pvt. Ltd',
-                                style: TextStyle(
-                                  color: ColorConstant.textColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 35.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 40.h,
-                              ),
-                              Text(
-                                'ROLE',
-                                style: TextStyle(
-                                  color: ColorConstant.splashColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 30.sp,
-                                ),
-                              ),
-                              Text(
-                                'UIUX Designer',
-                                style: TextStyle(
-                                  color: ColorConstant.textColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 35.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 40.h,
-                              ),
-                              Row(
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'FROM DATE',
-                                        style: TextStyle(
-                                          color: ColorConstant.splashColor,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 30.sp,
-                                        ),
-                                      ),
-                                      Text(
-                                        '01st Jan, 2020',
-                                        style: TextStyle(
-                                          color: ColorConstant.textColor,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 35.sp,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Spacer(),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'To DATE',
-                                        style: TextStyle(
-                                          color: ColorConstant.splashColor,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 30.sp,
-                                        ),
-                                      ),
-                                      Text(
-                                        '12th Dec, 2021',
-                                        style: TextStyle(
-                                          color: ColorConstant.textColor,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 35.sp,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Spacer(),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 100.h,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Container(
-                            height: 120.h,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: ColorConstant.splashColor,
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              margin: EdgeInsets.symmetric(horizontal: 5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: LinearGradient(
-                                  colors: const [
-                                    Color(0xff3782F3),
-                                    Color(0xff276ED8)
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "APPLY NOW",
-                                  style: TextStyle(
-                                    color: ColorConstant.backgroundColor,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: TextFontFamily.openSansBold,
-                                    fontSize: 35.sp,
-                                    letterSpacing: 2,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 10),
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 110.h,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(19.r),
-                                border: Border.all(
-                                  color: ColorConstant.splashColor,
-                                  width: 2,
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Apply Job',
-                                  style: TextStyle(
-                                    color: ColorConstant.splashColor,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: TextFontFamily.openSansBold,
-                                    fontSize: 32.sp,
-                                    letterSpacing: 2,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                      ],
                     ),
                   ],
                 ),

@@ -431,6 +431,9 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                 ),
               ),
             ),
+            SizedBox(
+              height: MediaQuery.of(context).padding.bottom + 20,
+            )
           ],
         ),
       ),

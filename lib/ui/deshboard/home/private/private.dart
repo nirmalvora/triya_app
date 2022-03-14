@@ -130,7 +130,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
                         color: selected == index
-                            ? ColorConstant.splashColor
+                            ? ColorConstant.blueColor
                             : ColorConstant.backgroundColor,
                       ),
                       child: Center(

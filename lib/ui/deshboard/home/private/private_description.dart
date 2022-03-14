@@ -438,6 +438,9 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                 ),
               ),
             ),
+            SizedBox(
+              height: MediaQuery.of(context).padding.bottom + 20,
+            )
           ],
         ),
       ),

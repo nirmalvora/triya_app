@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              height: 350.h,
+              height: 390.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(

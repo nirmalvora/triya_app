@@ -130,7 +130,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
                         color: selected == index
-                            ? ColorConstant.splashColor
+                            ? ColorConstant.blueColor
                             : ColorConstant.backgroundColor,
                       ),
                       child: Center(
