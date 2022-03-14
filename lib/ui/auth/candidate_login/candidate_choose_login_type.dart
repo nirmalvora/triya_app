@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/navigation/navigation_constant.dart';
 
 import '../../../utils/app_utils.dart';
 
@@ -26,6 +29,14 @@ class CandidateChooseLoginType extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: MediaQuery.of(context).padding.top + 20.h),
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: SvgPicture.asset(AppUtils.getSVGAsset("back_icon"),
+                      height: 115.r),
+                ),
+                SizedBox(height: 69.0.h),
                 Text(
                   "Find The Right Job",
                   style: TextStyle(
@@ -45,7 +56,9 @@ class CandidateChooseLoginType extends StatelessWidget {
                 ),
                 SizedBox(height: 178.h),
                 CommanLogInButton(
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(NavigationName.otpLogin);
+                    },
                     title: 'LOGIN WITH OTP',
                     image: ImageConstant.otp_login),
                 SizedBox(height: 36.h),
@@ -62,40 +75,50 @@ class CandidateChooseLoginType extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(19.r),
-                            border: Border.all(color: ColorConstant.white)),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 37.h),
-                          child: Center(
-                              child: Text(
-                            'SIGN IN',
-                            style: TextStyle(
-                                color: ColorConstant.white,
-                                fontFamily: "OpenSans-Regular",
-                                fontSize: 32.sp),
-                          )),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(NavigationName.login);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(19.r),
+                              border: Border.all(color: ColorConstant.white)),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 37.h),
+                            child: Center(
+                                child: Text(
+                              'SIGN IN',
+                              style: TextStyle(
+                                  color: ColorConstant.white,
+                                  fontFamily: "OpenSans-Regular",
+                                  fontSize: 32.sp),
+                            )),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(width: 33.w),
                     Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(19.r),
-                            border: Border.all(color: ColorConstant.white)),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 37.h),
-                          child: Center(
-                              child: Text(
-                            'SIGN UP',
-                            style: TextStyle(
-                                color: ColorConstant.white,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: "OpenSans-Regular",
-                                fontSize: 32.sp),
-                          )),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(NavigationName.signup);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(19.r),
+                              border: Border.all(color: ColorConstant.white)),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 37.h),
+                            child: Center(
+                                child: Text(
+                              'SIGN UP',
+                              style: TextStyle(
+                                  color: ColorConstant.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: "OpenSans-Regular",
+                                  fontSize: 32.sp),
+                            )),
+                          ),
                         ),
                       ),
                     )
