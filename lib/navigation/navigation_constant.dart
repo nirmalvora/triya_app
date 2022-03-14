@@ -18,4 +18,9 @@ class NavigationName {
   static const professionalPage = '/professionalPage';
   static const academicPage = '/academicPage';
   static const keySkillsPage = '/keySkillsPage';
+
+  static const employerLoginType = "/employerLoginType";
+  static const employerLogin = "/employerLogin";
+  static const employerSignUp = "/employerSignUp";
+  static const employerDashboard = "/employerDashboard";
 }
