@@ -8,14 +8,14 @@ import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
-class GovJobScreen extends StatefulWidget {
-  const GovJobScreen({Key? key}) : super(key: key);
+class PrivateJobScreen extends StatefulWidget {
+  const PrivateJobScreen({Key? key}) : super(key: key);
 
   @override
-  _GovJobScreenState createState() => _GovJobScreenState();
+  _PrivateJobScreenState createState() => _PrivateJobScreenState();
 }
 
-class _GovJobScreenState extends State<GovJobScreen> {
+class _PrivateJobScreenState extends State<PrivateJobScreen> {
   int? selected = 0;
   @override
   Widget build(BuildContext context) {

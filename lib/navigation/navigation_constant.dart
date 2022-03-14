@@ -4,6 +4,7 @@ class NavigationName {
   static const signup = '/signup';
   static const otpLogin = '/otpLogin';
   static const otpSubmit = '/otpSubmit';
+  static const dashboard = '/dashboard';
   static const homePage = '/homePage';
   static const bookPage = '/bookPage';
   static const bookCategoryPage = '/bookCategoryPage';
