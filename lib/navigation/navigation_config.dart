@@ -24,7 +24,12 @@ import 'package:triya_app/ui/deshboard/home/private/private.dart';
 import 'package:triya_app/ui/deshboard/home/private/private_description.dart';
 import 'package:triya_app/ui/deshboard/home/private/private_job_resume_screen.dart';
 import 'package:triya_app/ui/deshboard/home/private/private_resume_apply.dart';
+import 'package:triya_app/ui/deshboard/home/resume/ConferenceAttended.dart';
+import 'package:triya_app/ui/deshboard/home/resume/additional_training.dart';
 import 'package:triya_app/ui/deshboard/home/resume/industry_awards.dart';
+import 'package:triya_app/ui/deshboard/home/resume/professiocal_affiliation.dart';
+import 'package:triya_app/ui/deshboard/home/resume/professional_certifications.dart';
+import 'package:triya_app/ui/deshboard/home/resume/publication.dart';
 import 'package:triya_app/ui/deshboard/home/resume/resume.dart';
 import 'package:triya_app/ui/deshboard/home/scholarship/scholarship.dart';
 import 'package:triya_app/ui/deshboard/home/scholarship/scholarship_description.dart';
@@ -187,6 +192,26 @@ class NavigationRoute {
     GetPage(
       name: NavigationName.industryAwards,
       page: () => IndustryAwardScreen(),
+    ),
+    GetPage(
+      name: NavigationName.professionalCertifications,
+      page: () => ProfessionalCertificationScreen(),
+    ),
+    GetPage(
+      name: NavigationName.publication,
+      page: () => PublicationScreen(),
+    ),
+    GetPage(
+      name: NavigationName.professiocal_Affiliation,
+      page: () => ProfessiocalAffiliationScreen(),
+    ),
+    GetPage(
+      name: NavigationName.conference_Attended,
+      page: () => ConferenceAttendedScreen(),
+    ),
+    GetPage(
+      name: NavigationName.additional_Training,
+      page: () => AdditionalTrainingScreen(),
     ),
   ];
 }

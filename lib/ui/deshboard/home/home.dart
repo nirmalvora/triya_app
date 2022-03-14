@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -351,9 +352,41 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  AppUtils.getPNGAsset(ImageConstant.bannerIcon),
-                  height: 341.h,
+                CarouselSlider(
+                  items: [
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
+                              ),
+                              fit: BoxFit.cover)),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  'http://photo.16pic.com/00/38/88/16pic_3888084_b.jpg'),
+                              fit: BoxFit.cover)),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
+                              ),
+                              fit: BoxFit.cover)),
+                    ),
+                  ],
+                  options: CarouselOptions(
+                    height: 341.h,
+                    initialPage: 1,
+                    autoPlay: true,
+                    autoPlayAnimationDuration: Duration(seconds: 1),
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -939,9 +972,41 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 122.h,
                 ),
-                Image.asset(
-                  AppUtils.getPNGAsset(ImageConstant.bannerIcon),
-                  height: 341.h,
+                CarouselSlider(
+                  items: [
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
+                              ),
+                              fit: BoxFit.cover)),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  'http://photo.16pic.com/00/38/88/16pic_3888084_b.jpg'),
+                              fit: BoxFit.cover)),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
+                              ),
+                              fit: BoxFit.cover)),
+                    ),
+                  ],
+                  options: CarouselOptions(
+                    height: 341.h,
+                    initialPage: 1,
+                    autoPlay: true,
+                    autoPlayAnimationDuration: Duration(seconds: 1),
+                  ),
                 ),
                 SizedBox(
                   height: 20,

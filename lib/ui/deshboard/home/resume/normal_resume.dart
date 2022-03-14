@@ -153,7 +153,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(NavigationName.keySkillsPage);
+                Get.toNamed(NavigationName.professionalCertifications);
               },
               child: CommonContainer(
                 name: "PROFESSIONAL CERTIFICATES",
@@ -161,7 +161,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(NavigationName.keySkillsPage);
+                Get.toNamed(NavigationName.publication);
               },
               child: CommonContainer(
                 name: "PUBLICATION",
@@ -169,7 +169,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(NavigationName.keySkillsPage);
+                Get.toNamed(NavigationName.professiocal_Affiliation);
               },
               child: CommonContainer(
                 name: "PROFESSIONAL AFFILIATIONS",
@@ -177,7 +177,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(NavigationName.keySkillsPage);
+                Get.toNamed(NavigationName.conference_Attended);
               },
               child: CommonContainer(
                 name: "CONFERENCE ATTENDED",
@@ -185,7 +185,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(NavigationName.keySkillsPage);
+                Get.toNamed(NavigationName.additional_Training);
               },
               child: CommonContainer(
                 name: "ADDITIONAL TRAINS",

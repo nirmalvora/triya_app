@@ -37,4 +37,9 @@ class NavigationName {
   static const viewAppliead = "/viewAppliead";
   static const appliedCandidates = "/appliedCandidates";
   static const industryAwards = "/industryAwards";
+  static const professionalCertifications = "/professionalCertifications";
+  static const publication = "/publication";
+  static const professiocal_Affiliation = "/professiocal_Affiliation";
+  static const conference_Attended = "/conference_Attended";
+  static const additional_Training = "/additional_Training";
 }

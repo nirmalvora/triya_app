@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/ui/deshboard/home/resume/key_skills_screen.dart';
+import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
 import 'personal_statement_screen.dart';
@@ -44,8 +45,9 @@ class IndustryAwardScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 45.h),
                 Text(
-                  'Award & Description',
+                  'Award & Description'.toUpperCase(),
                   style: TextStyle(
+                      fontSize: 30.sp,
                       color: ColorConstant.blueColor,
                       fontWeight: FontWeight.w600,
                       fontFamily: "OpenSans-Regular"),
@@ -59,6 +61,12 @@ class IndustryAwardScreen extends StatelessWidget {
               ],
             ),
           ),
+          Spacer(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: BottomCommonButton(onTap: () {}, name: "SAVE"),
+          ),
+          SizedBox(height: MediaQuery.of(context).padding.bottom + 20.h)
         ],
       ),
     );
