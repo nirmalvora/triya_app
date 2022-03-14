@@ -33,4 +33,7 @@ class NavigationName {
   static const employerLogin = "/employerLogin";
   static const employerSignUp = "/employerSignUp";
   static const employerDashboard = "/employerDashboard";
+  static const addNewJob = "/addNewJob";
+  static const viewAppliead = "/viewAppliead";
+  static const appliedCandidates = "/appliedCandidates";
 }
