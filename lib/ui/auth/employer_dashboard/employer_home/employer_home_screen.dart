@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class EmployerHomeScreen extends StatelessWidget {
@@ -58,44 +60,7 @@ class EmployerHomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-                color: ColorConstant.splashColor,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(34.r),
-                    bottomRight: Radius.circular(34.r))),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
-              child: TextFormField(
-                decoration: InputDecoration(
-                    contentPadding: EdgeInsets.zero,
-                    fillColor: Color(0xff397ADB),
-                    filled: true,
-                    hintText: 'Search for jobs here...',
-                    hintStyle: TextStyle(
-                        color: ColorConstant.white,
-                        fontSize: 12,
-                        fontFamily: "OpenSans-Regular"),
-                    prefixIcon: Container(
-                      height: 40.h,
-                      width: 40.w,
-                      child: Center(
-                        child: SvgPicture.asset(
-                          AppUtils.getSVGAsset(ImageConstant.search_icon),
-                          height: 40.h,
-                          width: 40.w,
-                        ),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16.r),
-                        borderSide: BorderSide(color: Color(0xff397ADB))),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16.r),
-                        borderSide: BorderSide(color: Color(0xff397ADB)))),
-              ),
-            ),
-          ),
+          CommanTopBarField(),
           SizedBox(height: 49.h),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -109,34 +74,44 @@ class EmployerHomeScreen extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       fontFamily: "OpenSans-Regular"),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: const [Color(0xff3782F3), Color(0xff276ED8)],
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight),
-                      borderRadius: BorderRadius.circular(84.r)),
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        right: 17.w, left: 29.w, top: 17.h, bottom: 17.h),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Add a new job',
-                          style: TextStyle(
-                              color: ColorConstant.white, fontSize: 12),
-                        ),
-                        SizedBox(width: 20.w),
-                        CircleAvatar(
-                          minRadius: 40.r,
-                          backgroundColor: ColorConstant.white,
-                          child: Icon(
-                            Icons.add,
-                            size: 25,
-                            color: Color(0xff3782F3),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(NavigationName.addNewJob);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: const [
+                              Color(0xff3782F3),
+                              Color(0xff276ED8)
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight),
+                        borderRadius: BorderRadius.circular(84.r)),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          right: 17.w, left: 29.w, top: 17.h, bottom: 17.h),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Add a new job',
+                            style: TextStyle(
+                                fontFamily: "OpenSans-Regular",
+                                color: ColorConstant.white,
+                                fontSize: 12),
                           ),
-                        )
-                      ],
+                          SizedBox(width: 20.w),
+                          CircleAvatar(
+                            minRadius: 40.r,
+                            backgroundColor: ColorConstant.white,
+                            child: Icon(
+                              Icons.add,
+                              size: 25,
+                              color: Color(0xff3782F3),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 )
@@ -154,55 +129,60 @@ class EmployerHomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: EdgeInsets.only(bottom: 30.h),
-                    child: Container(
-                      height: 140.h,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Color(0xffF1F1F1)),
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: 34.w, top: 26.h, bottom: 26.h),
-                        child: Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Staff Car Driver(Ordinary Grade de) - 24 post',
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    color: ColorConstant.textColor,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 30.sp,
+                    child: InkWell(
+                      onTap: () {
+                        Get.toNamed(NavigationName.viewAppliead);
+                      },
+                      child: Container(
+                        height: 140.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Color(0xffF1F1F1)),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: 34.w, top: 26.h, bottom: 26.h),
+                          child: Row(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Staff Car Driver(Ordinary Grade de) - 24 post',
+                                    maxLines: 2,
+                                    style: TextStyle(
+                                      color: ColorConstant.textColor,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 30.sp,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 10.h),
-                                Text(
-                                  '24 People Applied',
-                                  style: TextStyle(
-                                    color: ColorConstant.black,
-                                    fontSize: 25.sp,
+                                  SizedBox(height: 10.h),
+                                  Text(
+                                    '24 People Applied',
+                                    style: TextStyle(
+                                      color: ColorConstant.black,
+                                      fontSize: 25.sp,
+                                    ),
                                   ),
+                                ],
+                              ),
+                              Spacer(),
+                              Container(
+                                margin: EdgeInsets.symmetric(horizontal: 24.w),
+                                height: 100.h,
+                                width: 100.h,
+                                decoration: BoxDecoration(
+                                  color: Color(0xffE6E6E6),
+                                  borderRadius: BorderRadius.circular(15.r),
                                 ),
-                              ],
-                            ),
-                            Spacer(),
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 24.w),
-                              height: 100.h,
-                              width: 100.h,
-                              decoration: BoxDecoration(
-                                color: Color(0xffE6E6E6),
-                                borderRadius: BorderRadius.circular(15.r),
+                                child: Icon(
+                                  Icons.keyboard_arrow_right_outlined,
+                                  color: Color(0xff9F9F9F),
+                                  size: 30,
+                                ),
                               ),
-                              child: Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                color: Color(0xff9F9F9F),
-                                size: 30,
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -212,6 +192,54 @@ class EmployerHomeScreen extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class CommanTopBarField extends StatelessWidget {
+  const CommanTopBarField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: ColorConstant.splashColor,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(34.r),
+              bottomRight: Radius.circular(34.r))),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
+        child: TextFormField(
+          decoration: InputDecoration(
+              contentPadding: EdgeInsets.zero,
+              fillColor: Color(0xff397ADB),
+              filled: true,
+              hintText: 'Search for jobs here...',
+              hintStyle: TextStyle(
+                  color: ColorConstant.white,
+                  fontSize: 12,
+                  fontFamily: "OpenSans-Regular"),
+              prefixIcon: Container(
+                height: 40.h,
+                width: 40.w,
+                child: Center(
+                  child: SvgPicture.asset(
+                    AppUtils.getSVGAsset(ImageConstant.search_icon),
+                    height: 40.h,
+                    width: 40.w,
+                  ),
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16.r),
+                  borderSide: BorderSide(color: Color(0xff397ADB))),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16.r),
+                  borderSide: BorderSide(color: Color(0xff397ADB)))),
+        ),
       ),
     );
   }
