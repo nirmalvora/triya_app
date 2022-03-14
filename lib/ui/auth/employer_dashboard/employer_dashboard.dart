@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_dashboard_controller.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employer_home_screen.dart';
-import 'package:triya_app/ui/deshboard/home/home.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class EmployerDashboard extends StatelessWidget {
@@ -12,42 +11,31 @@ class EmployerDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "Application",
+      body: IndexedStack(
+        index: controller.currentIndex.value,
+        children: [
+          EmployerHomeScreen(),
+        ],
       ),
       bottomNavigationBar: Obx(
-        () => Column(
-          children: [
-            Expanded(
-              child: IndexedStack(
-                index: controller.currentIndex.value,
-                children: [
-                  EmployerHomeScreen(),
-                ],
-              ),
-            ),
-            BottomNavigationBar(
-              onTap: (index) {
-                controller.currentIndex.value = index;
-              },
-              backgroundColor: Color(0xff1F63C9),
-              showSelectedLabels: true,
-              showUnselectedLabels: true,
-              currentIndex: controller.currentIndex.value,
-              items: [
-                _buildBottomNavigationItem(icon: "home_icon", tabName: "Home"),
-                _buildBottomNavigationItem(
-                    icon: "favourite_icon", tabName: "Favourite"),
-                _buildBottomNavigationItem(
-                    icon: "account_icon", tabName: "Account")
-              ],
-              selectedFontSize: 12,
-              unselectedFontSize: 12,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.grey,
-            ),
+        () => BottomNavigationBar(
+          onTap: (index) {
+            controller.currentIndex.value = index;
+          },
+          backgroundColor: Color(0xff1F63C9),
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          currentIndex: controller.currentIndex.value,
+          items: [
+            _buildBottomNavigationItem(icon: "home_icon", tabName: "Home"),
+            _buildBottomNavigationItem(
+                icon: "favourite_icon", tabName: "Favourite"),
+            _buildBottomNavigationItem(icon: "account_icon", tabName: "Account")
           ],
+          selectedFontSize: 12,
+          unselectedFontSize: 12,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
         ),
       ),
     );

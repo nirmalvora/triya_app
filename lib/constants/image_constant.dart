@@ -22,4 +22,6 @@ class ImageConstant {
   static String google_Icon = "google_icon";
   static String facebook_Icon = "facebook_icon";
   static String facebook_Outline = "facebook_outline";
+  static String appbar_icon = "appbar_icon";
+  static String search_icon = "search_icon";
 }
