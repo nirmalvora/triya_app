@@ -4,7 +4,6 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
-import 'package:triya_app/widgets/resume_container.dart';
 
 class PersonalStatementScreen extends StatelessWidget {
   const PersonalStatementScreen({Key? key}) : super(key: key);
@@ -16,48 +15,7 @@ class PersonalStatementScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 200.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: ColorConstant.splashColor,
-              image: DecorationImage(
-                image: AssetImage(
-                  AppUtils.getPNGAsset(ImageConstant.backgroundImage),
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xff2C72DB),
-                      radius: 20,
-                      child: Icon(Icons.arrow_back),
-                    ),
-                  ),
-                  Text(
-                    'PERSONAL STATEMENT',
-                    style: TextStyle(
-                      color: ColorConstant.backgroundColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 35.sp,
-                    ),
-                  ),
-                  CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                  )
-                ],
-              ),
-            ),
-          ),
+          CommanAppbar(title: "PERSONAL STATEMENT"),
           SizedBox(
             height: 20,
           ),
@@ -138,6 +96,57 @@ class PersonalStatementScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CommanAppbar extends StatelessWidget {
+  String title;
+  CommanAppbar({Key? key, required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200.h,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: ColorConstant.splashColor,
+        image: DecorationImage(
+          image: AssetImage(
+            AppUtils.getPNGAsset(ImageConstant.backgroundImage),
+          ),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: CircleAvatar(
+                backgroundColor: Color(0xff2C72DB),
+                radius: 20,
+                child: Icon(Icons.arrow_back),
+              ),
+            ),
+            Text(
+              title,
+              style: TextStyle(
+                color: ColorConstant.backgroundColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 35.sp,
+              ),
+            ),
+            CircleAvatar(
+              backgroundColor: Colors.transparent,
+            )
+          ],
+        ),
       ),
     );
   }

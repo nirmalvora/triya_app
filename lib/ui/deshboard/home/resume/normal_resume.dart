@@ -145,7 +145,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(NavigationName.keySkillsPage);
+                Get.toNamed(NavigationName.industryAwards);
               },
               child: CommonContainer(
                 name: "INDUSTRY AWARDS",
