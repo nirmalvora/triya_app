@@ -18,6 +18,7 @@ class ImageConstant {
   static String resumeProfileImage = "resume_profile";
   static String selectedIcon = "selected";
   static String drawerImage = "drawer_image";
+  static String backgroundImage = "background_image";
 
   static String otp_login = "otp_login";
   static String google_Icon = "google_icon";

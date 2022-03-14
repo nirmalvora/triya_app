@@ -15,6 +15,7 @@ class ColorConstant {
   static const Color text1Color = Color(0xffAEAEAE);
   static const Color jobBackgroundColor = Color(0xffEEF5FF);
   static const Color privateJobBgColor = Color(0xffDFF8FE);
+  static const Color circleColor = Color(0xffBBD6FF);
   static const Color scholarshipJobBgColor = Color(0xffFEF2DF);
   static const Color hintTextColor = Color(0xff767676);
   static const Color buttonColor = Color(0xffCDDFFA);

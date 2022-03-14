@@ -23,6 +23,7 @@ import 'package:triya_app/ui/deshboard/home/home.dart';
 import 'package:triya_app/ui/deshboard/home/private/private.dart';
 import 'package:triya_app/ui/deshboard/home/private/private_description.dart';
 import 'package:triya_app/ui/deshboard/home/private/private_job_resume_screen.dart';
+import 'package:triya_app/ui/deshboard/home/private/private_resume_apply.dart';
 import 'package:triya_app/ui/deshboard/home/resume/resume.dart';
 import 'package:triya_app/ui/deshboard/home/scholarship/scholarship.dart';
 import 'package:triya_app/ui/deshboard/home/scholarship/scholarship_description.dart';
@@ -107,6 +108,10 @@ class NavigationRoute {
       page: () => const PrivateJobResumeScreen(),
     ),
     GetPage(
+      name: NavigationName.privateResumeApplyPage,
+      page: () => const PrivateResumeApply(),
+    ),
+    GetPage(
       name: NavigationName.scholarshipJobPage,
       page: () => const ScholarshipJobScreen(),
     ),
@@ -127,8 +132,8 @@ class NavigationRoute {
       page: () => const CandidateChooseLoginType(),
     ),
     GetPage(
-      name: NavigationName.normalResumePage,
-      page: () => const NormalResumeScreen(),
+      name: NavigationName.professionalResumePage,
+      page: () => const ProfessionalResumeScreen(),
     ),
     GetPage(
       name: NavigationName.personalPage,

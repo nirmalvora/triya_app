@@ -38,7 +38,7 @@ class ResumeContainer extends StatelessWidget {
                   color: ColorConstant.backgroundColor,
                   fontWeight: FontWeight.w600,
                   fontFamily: TextFontFamily.openSansBold,
-                  fontSize: 40.sp,
+                  fontSize: 35.sp,
                   letterSpacing: 2,
                 ),
               ),

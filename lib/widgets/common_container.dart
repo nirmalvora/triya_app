@@ -28,7 +28,7 @@ class CommonContainer extends StatelessWidget {
                   color: ColorConstant.textColor,
                   fontWeight: FontWeight.w600,
                   fontFamily: TextFontFamily.openSansBold,
-                  fontSize: 40.sp,
+                  fontSize: 35.sp,
                   letterSpacing: 2,
                 ),
               ),

@@ -8,8 +8,8 @@ import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/common_container.dart';
 
-class NormalResumeScreen extends StatelessWidget {
-  const NormalResumeScreen({Key? key}) : super(key: key);
+class ProfessionalResumeScreen extends StatelessWidget {
+  const ProfessionalResumeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class NormalResumeScreen extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 20),
+                        horizontal: 12, vertical: 30),
                     child: Align(
                       alignment: Alignment.topCenter,
                       child: Row(
@@ -55,7 +55,7 @@ class NormalResumeScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Normal Resume',
+                            'PROFESSIONAL RESUME',
                             style: TextStyle(
                               color: ColorConstant.backgroundColor,
                               fontWeight: FontWeight.w600,
@@ -108,7 +108,7 @@ class NormalResumeScreen extends StatelessWidget {
                 Get.toNamed(NavigationName.personalPage);
               },
               child: CommonContainer(
-                name: "Personal Statement",
+                name: "PERSONAL STATEMENT",
               ),
             ),
             GestureDetector(
@@ -116,7 +116,7 @@ class NormalResumeScreen extends StatelessWidget {
                 Get.toNamed(NavigationName.contactPage);
               },
               child: CommonContainer(
-                name: "Contact Information",
+                name: "CONTACT INFORMATION",
               ),
             ),
             GestureDetector(
@@ -124,7 +124,7 @@ class NormalResumeScreen extends StatelessWidget {
                 Get.toNamed(NavigationName.professionalPage);
               },
               child: CommonContainer(
-                name: "Professional Experience",
+                name: "PROFESSIONAL EXPERIENCE",
               ),
             ),
             GestureDetector(
@@ -132,7 +132,7 @@ class NormalResumeScreen extends StatelessWidget {
                 Get.toNamed(NavigationName.academicPage);
               },
               child: CommonContainer(
-                name: "Academic History",
+                name: "ACADEMIC HISTORY",
               ),
             ),
             GestureDetector(
@@ -140,14 +140,64 @@ class NormalResumeScreen extends StatelessWidget {
                 Get.toNamed(NavigationName.keySkillsPage);
               },
               child: CommonContainer(
-                name: "Key Skills",
+                name: "KEY SKILLS",
               ),
             ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(NavigationName.keySkillsPage);
+              },
+              child: CommonContainer(
+                name: "INDUSTRY AWARDS",
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(NavigationName.keySkillsPage);
+              },
+              child: CommonContainer(
+                name: "PROFESSIONAL CERTIFICATES",
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(NavigationName.keySkillsPage);
+              },
+              child: CommonContainer(
+                name: "PUBLICATION",
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(NavigationName.keySkillsPage);
+              },
+              child: CommonContainer(
+                name: "PROFESSIONAL AFFILIATIONS",
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(NavigationName.keySkillsPage);
+              },
+              child: CommonContainer(
+                name: "CONFERENCE ATTENDED",
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(NavigationName.keySkillsPage);
+              },
+              child: CommonContainer(
+                name: "ADDITIONAL TRAINS",
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
-              padding: const EdgeInsets.only(
-                  right: 12, left: 12, top: 20, bottom: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                height: 140.h,
+                height: 120.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -164,34 +214,26 @@ class NormalResumeScreen extends StatelessWidget {
                       end: Alignment.bottomCenter,
                     ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Center(
-                          child: Text(
-                            'SAVE',
-                            style: TextStyle(
-                              color: ColorConstant.backgroundColor,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: TextFontFamily.openSansBold,
-                              fontSize: 40.sp,
-                              letterSpacing: 2,
-                            ),
-                          ),
-                        ),
+                  child: Center(
+                    child: Text(
+                      "SAVE",
+                      style: TextStyle(
+                        color: ColorConstant.backgroundColor,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: TextFontFamily.openSansBold,
+                        fontSize: 35.sp,
+                        letterSpacing: 2,
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 12, left: 12, bottom: 15),
+              padding: const EdgeInsets.only(
+                  right: 15, left: 15, bottom: 30, top: 10),
               child: Container(
-                height: 140.h,
+                height: 120.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/constants/fontfamily_constant.dart';
+
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/resume_container.dart';
 
@@ -49,7 +50,17 @@ class PrivateJobResumeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: Column(
           children: [
-            ResumeContainer(name: "Create Resume"),
+            ResumeContainer(name: "CREATE RESUME"),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(NavigationName.privateResumeApplyPage);
+                },
+                child: ResumeContainer(name: "APPLY WITH EXISTING RESUME"),
+              ),
+            ),
+            ResumeContainer(name: "UPLOAD RESUME"),
           ],
         ),
       ),
