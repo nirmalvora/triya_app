@@ -4,6 +4,8 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/utils/common_text_field.dart';
+import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
 class ContactInformationScreen extends StatelessWidget {
   const ContactInformationScreen({Key? key}) : super(key: key);
@@ -77,25 +79,91 @@ class ContactInformationScreen extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.backgroundColor,
-                    borderRadius: BorderRadius.circular(10),
+                ResumeCommonTextField(
+                  hintText: "",
+                ),
+                SizedBox(
+                  height: 40.h,
+                ),
+                Text(
+                  'EMAIL ID *',
+                  style: TextStyle(
+                    color: ColorConstant.splashColor,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: TextFontFamily.openSansBold,
+                    fontSize: 25.sp,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 12),
-                    child: Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet condimentum ullamcorper amet tristique et enim mauris. Laoreet curabitur maecenas elit enim sed. Consequat porta tellus bibendum mattis est. Imperdiet pretium, bibendum sagittis, vitae tortor nibh.',
-                      style: TextStyle(
-                        color: ColorConstant.splashColor,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: TextFontFamily.openSansBold,
-                        fontSize: 30.sp,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ResumeCommonTextField(
+                  hintText: "",
+                ),
+                SizedBox(
+                  height: 40.h,
+                ),
+                Text(
+                  'ADDRESS *',
+                  style: TextStyle(
+                    color: ColorConstant.splashColor,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: TextFontFamily.openSansBold,
+                    fontSize: 25.sp,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ResumeCommonTextField(
+                        hintText: "House No.",
                       ),
                     ),
-                  ),
+                    SizedBox(
+                      width: 24.w,
+                    ),
+                    Expanded(
+                      child: ResumeCommonTextField(
+                        hintText: "Area",
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ResumeCommonTextField(
+                        hintText: "City",
+                      ),
+                    ),
+                    SizedBox(
+                      width: 24.w,
+                    ),
+                    Expanded(
+                      child: ResumeCommonTextField(
+                        hintText: "State",
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ResumeCommonTextField(
+                        hintText: "Pincode",
+                      ),
+                    ),
+                    Spacer(),
+                  ],
                 ),
               ],
             ),
