@@ -416,11 +416,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ],
                                     ),
-                                    child: Image.asset(
-                                      AppUtils.getPNGAsset(
-                                          ImageConstant.govIcon),
-                                      height: 74.h,
-                                      width: 74.h,
+                                    child: Center(
+                                      child: Image.asset(
+                                        AppUtils.getPNGAsset(
+                                            ImageConstant.govIcon),
+                                        height: 74.h,
+                                        width: 74.h,
+                                      ),
                                     ),
                                   ),
                                   SizedBox(
@@ -444,63 +446,70 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(right: 20),
-                        child: Container(
-                          height: 350.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(60.h),
-                            gradient: LinearGradient(
-                              colors: const [
-                                Color(0xffDFF8FE),
-                                Color(0xffffffff)
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(NavigationName.privateJobPage);
+                          },
+                          child: Container(
+                            height: 350.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(60.h),
+                              gradient: LinearGradient(
+                                colors: const [
+                                  Color(0xffDFF8FE),
+                                  Color(0xffffffff)
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Column(
-                              children: [
-                                Spacer(),
-                                Container(
-                                  height: 166.h,
-                                  width: 166.h,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(43.h),
-                                    gradient: LinearGradient(
-                                      colors: const [
-                                        Color(0xffDFF8FE),
-                                        Color(0xffFFFFFF)
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                    ),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color:
-                                            Color.fromRGBO(39, 110, 216, 0.08),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Column(
+                                children: [
+                                  Spacer(),
+                                  Container(
+                                    height: 166.h,
+                                    width: 166.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(43.h),
+                                      gradient: LinearGradient(
+                                        colors: const [
+                                          Color(0xffDFF8FE),
+                                          Color(0xffFFFFFF)
+                                        ],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
                                       ),
-                                    ],
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Color.fromRGBO(
+                                              39, 110, 216, 0.08),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Center(
+                                      child: Image.asset(
+                                        AppUtils.getPNGAsset(
+                                            ImageConstant.privateIcon),
+                                        height: 74.h,
+                                        width: 74.h,
+                                      ),
+                                    ),
                                   ),
-                                  child: Image.asset(
-                                    AppUtils.getPNGAsset(
-                                        ImageConstant.privateIcon),
-                                    height: 74.h,
-                                    width: 74.h,
+                                  SizedBox(
+                                    height: 66.h,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 66.h,
-                                ),
-                                Text(
-                                  'Private Jobs',
-                                  style: TextStyle(
-                                    color: ColorConstant.textColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 25.sp,
+                                  Text(
+                                    'Private Jobs',
+                                    style: TextStyle(
+                                      color: ColorConstant.textColor,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 25.sp,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -509,63 +518,70 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
-                        child: Container(
-                          height: 350.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(60.h),
-                            gradient: LinearGradient(
-                              colors: const [
-                                Color(0xffFEF2DF),
-                                Color(0xffFFFFFF)
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(NavigationName.scholarshipJobPage);
+                          },
+                          child: Container(
+                            height: 350.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(60.h),
+                              gradient: LinearGradient(
+                                colors: const [
+                                  Color(0xffFEF2DF),
+                                  Color(0xffFFFFFF)
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Column(
-                              children: [
-                                Spacer(),
-                                Container(
-                                  height: 166.h,
-                                  width: 166.h,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(43.h),
-                                    gradient: LinearGradient(
-                                      colors: const [
-                                        Color(0xffFEF2DF),
-                                        Color(0xffFFFFFF)
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                    ),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color:
-                                            Color.fromRGBO(39, 110, 216, 0.08),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Column(
+                                children: [
+                                  Spacer(),
+                                  Container(
+                                    height: 166.h,
+                                    width: 166.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(43.h),
+                                      gradient: LinearGradient(
+                                        colors: const [
+                                          Color(0xffFEF2DF),
+                                          Color(0xffFFFFFF)
+                                        ],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
                                       ),
-                                    ],
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Color.fromRGBO(
+                                              39, 110, 216, 0.08),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Center(
+                                      child: Image.asset(
+                                        AppUtils.getPNGAsset(
+                                            ImageConstant.scholarshipIcon),
+                                        height: 74.h,
+                                        width: 74.h,
+                                      ),
+                                    ),
                                   ),
-                                  child: Image.asset(
-                                    AppUtils.getPNGAsset(
-                                        ImageConstant.scholarshipIcon),
-                                    height: 74.h,
-                                    width: 74.h,
+                                  SizedBox(
+                                    height: 66.h,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 66.h,
-                                ),
-                                Text(
-                                  'Scholarship Jobs',
-                                  style: TextStyle(
-                                    color: ColorConstant.textColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 25.sp,
+                                  Text(
+                                    'Scholarship Jobs',
+                                    style: TextStyle(
+                                      color: ColorConstant.textColor,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 25.sp,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),

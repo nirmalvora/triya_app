@@ -12,6 +12,11 @@ class NavigationName {
   static const videoCategoryPage = '/videoCategoryPage';
   static const govJobPage = '/govJobPage';
   static const govJobDescPage = '/govJobDescPage';
+  static const privateJobPage = '/privateJobPage';
+  static const privateJobDescPage = '/privateJobDescPage';
+  static const privateJobResumePage = '/privateJobResumePage';
+  static const scholarshipJobPage = '/scholarshipJobPage';
+  static const scholarshipJobDescPage = '/scholarshipJobDescPage';
   static const resumePage = '/resumePage';
   static const loginTypePage = '/loginTypePage';
 

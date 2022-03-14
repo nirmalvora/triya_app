@@ -20,7 +20,12 @@ import 'package:triya_app/ui/deshboard/home/book/books.dart';
 import 'package:triya_app/ui/deshboard/home/gov/gov.dart';
 import 'package:triya_app/ui/deshboard/home/gov/gov_description.dart';
 import 'package:triya_app/ui/deshboard/home/home.dart';
+import 'package:triya_app/ui/deshboard/home/private/private.dart';
+import 'package:triya_app/ui/deshboard/home/private/private_description.dart';
+import 'package:triya_app/ui/deshboard/home/private/private_job_resume_screen.dart';
 import 'package:triya_app/ui/deshboard/home/resume/resume.dart';
+import 'package:triya_app/ui/deshboard/home/scholarship/scholarship.dart';
+import 'package:triya_app/ui/deshboard/home/scholarship/scholarship_description.dart';
 import 'package:triya_app/ui/deshboard/home/video/video_category.dart';
 import 'package:triya_app/ui/deshboard/home/video/videos.dart';
 
@@ -88,6 +93,26 @@ class NavigationRoute {
     GetPage(
       name: NavigationName.govJobDescPage,
       page: () => const GovDescription(),
+    ),
+    GetPage(
+      name: NavigationName.privateJobPage,
+      page: () => const PrivateJobScreen(),
+    ),
+    GetPage(
+      name: NavigationName.privateJobDescPage,
+      page: () => const PrivateDescription(),
+    ),
+    GetPage(
+      name: NavigationName.privateJobResumePage,
+      page: () => const PrivateJobResumeScreen(),
+    ),
+    GetPage(
+      name: NavigationName.scholarshipJobPage,
+      page: () => const ScholarshipJobScreen(),
+    ),
+    GetPage(
+      name: NavigationName.scholarshipJobDescPage,
+      page: () => const ScholarshipDescription(),
     ),
     GetPage(
       name: NavigationName.resumePage,
