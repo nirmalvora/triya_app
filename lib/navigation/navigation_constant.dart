@@ -36,4 +36,5 @@ class NavigationName {
   static const addNewJob = "/addNewJob";
   static const viewAppliead = "/viewAppliead";
   static const appliedCandidates = "/appliedCandidates";
+  static const industryAwards = "/industryAwards";
 }

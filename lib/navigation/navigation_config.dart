@@ -24,6 +24,7 @@ import 'package:triya_app/ui/deshboard/home/private/private.dart';
 import 'package:triya_app/ui/deshboard/home/private/private_description.dart';
 import 'package:triya_app/ui/deshboard/home/private/private_job_resume_screen.dart';
 import 'package:triya_app/ui/deshboard/home/private/private_resume_apply.dart';
+import 'package:triya_app/ui/deshboard/home/resume/industry_awards.dart';
 import 'package:triya_app/ui/deshboard/home/resume/resume.dart';
 import 'package:triya_app/ui/deshboard/home/scholarship/scholarship.dart';
 import 'package:triya_app/ui/deshboard/home/scholarship/scholarship_description.dart';
@@ -182,6 +183,10 @@ class NavigationRoute {
     GetPage(
       name: NavigationName.appliedCandidates,
       page: () => AppliedCandidateScreen(),
+    ),
+    GetPage(
+      name: NavigationName.industryAwards,
+      page: () => IndustryAwardScreen(),
     ),
   ];
 }
