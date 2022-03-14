@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 39.h),
                 GestureDetector(
                   onTap: () {
-                    // Get.offNamed(NavigationName.employerDashboard);
+                    Get.offNamed(NavigationName.dashboard);
                   },
                   child: Container(
                     padding:

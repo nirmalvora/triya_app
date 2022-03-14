@@ -11,6 +11,7 @@ import 'package:triya_app/ui/auth/otp_login/otp_login.dart';
 import 'package:triya_app/ui/auth/otp_login/otp_submit.dart';
 import 'package:triya_app/ui/auth/signup/signup.dart';
 import 'package:triya_app/ui/auth/splash_screen.dart';
+import 'package:triya_app/ui/deshboard/dashboard.dart';
 import 'package:triya_app/ui/deshboard/home/book/book_category.dart';
 import 'package:triya_app/ui/deshboard/home/book/books.dart';
 import 'package:triya_app/ui/deshboard/home/gov/gov.dart';
@@ -48,6 +49,10 @@ class NavigationRoute {
     GetPage(
       name: NavigationName.otpSubmit,
       page: () => const OTPSubmitScreen(),
+    ),
+    GetPage(
+      name: NavigationName.dashboard,
+      page: () => Dashboard(),
     ),
     GetPage(
       name: NavigationName.homePage,

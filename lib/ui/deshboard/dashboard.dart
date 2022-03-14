@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_dashboard_controller.dart';
-import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employer_home_screen.dart';
+import 'package:triya_app/ui/deshboard/home/home.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
-class EmployerDashboard extends StatelessWidget {
-  EmployerDashboard({Key? key}) : super(key: key);
+class Dashboard extends StatelessWidget {
+  Dashboard({Key? key}) : super(key: key);
   final controller = Get.put(EmployerDashboardController());
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class EmployerDashboard extends StatelessWidget {
               child: IndexedStack(
                 index: controller.currentIndex.value,
                 children: [
-                  EmployerHomeScreen(),
+                  HomeScreen(),
                 ],
               ),
             ),
