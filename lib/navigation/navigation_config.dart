@@ -7,6 +7,9 @@ import 'package:triya_app/ui/auth/employer_login/employer_sign_in.dart';
 import 'package:triya_app/ui/auth/employer_login/employer_sign_up.dart';
 import 'package:triya_app/ui/auth/login/login_screen.dart';
 import 'package:triya_app/ui/auth/login_type_screen.dart';
+import 'package:triya_app/ui/auth/otp_login/otp_login.dart';
+import 'package:triya_app/ui/auth/otp_login/otp_submit.dart';
+import 'package:triya_app/ui/auth/signup/signup.dart';
 import 'package:triya_app/ui/auth/splash_screen.dart';
 import 'package:triya_app/ui/deshboard/home/book/book_category.dart';
 import 'package:triya_app/ui/deshboard/home/book/books.dart';
@@ -33,6 +36,18 @@ class NavigationRoute {
     GetPage(
       name: NavigationName.login,
       page: () => const LoginScreen(),
+    ),
+    GetPage(
+      name: NavigationName.signup,
+      page: () => const SignUpScreen(),
+    ),
+    GetPage(
+      name: NavigationName.otpLogin,
+      page: () => const OTPLoginScreen(),
+    ),
+    GetPage(
+      name: NavigationName.otpSubmit,
+      page: () => const OTPSubmitScreen(),
     ),
     GetPage(
       name: NavigationName.homePage,
