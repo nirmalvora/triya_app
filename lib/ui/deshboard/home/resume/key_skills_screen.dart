@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
 import 'personal_statement_screen.dart';
@@ -15,7 +16,7 @@ class KeySkillsScreen extends StatelessWidget {
       backgroundColor: ColorConstant.droverButtonColor,
       body: Column(
         children: [
-          CommanAppbar(title: "KEY SKILLS"),
+          CommanTopBar(title: "KEY SKILLS"),
           SizedBox(height: 45.h),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -55,11 +56,16 @@ class KeySkillsScreen extends StatelessWidget {
                   hintText: '',
                 ),
                 SizedBox(height: 42.h),
-                CommanAddButton(onTap: () {}, title: 'Add Award')
+                CommanAddButton(onTap: () {}, title: 'ADD SKILL')
               ],
             ),
           ),
           Spacer(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: BottomCommonButton(onTap: () {}, name: "SAVE"),
+          ),
+          SizedBox(height: MediaQuery.of(context).padding.bottom + 20.h)
         ],
       ),
     );
@@ -85,7 +91,7 @@ class CommanAddButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 37.h),
           child: Center(
               child: Text(
-            title,
+            title.toUpperCase(),
             style: TextStyle(
                 fontFamily: "OpenSans-Regular",
                 color: ColorConstant.white,

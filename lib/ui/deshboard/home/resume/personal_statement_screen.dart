@@ -5,8 +5,12 @@ import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
+
 import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_container.dart';
+
+
+import 'package:triya_app/widgets/bottom_common_button.dart';
 
 
 class PersonalStatementScreen extends StatelessWidget {
@@ -19,7 +23,7 @@ class PersonalStatementScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CommanAppbar(title: "PERSONAL STATEMENT"),
+          CommanTopBar(title: "PERSONAL STATEMENT"),
           SizedBox(
             height: 20,
           ),
@@ -66,7 +70,10 @@ class PersonalStatementScreen extends StatelessWidget {
           Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-            child: BottomCommonButton(name: "SAVE"),
+            child: BottomCommonButton(
+              name: "SAVE",
+              onTap: () {},
+            ),
           ),
         ],
       ),
@@ -74,16 +81,17 @@ class PersonalStatementScreen extends StatelessWidget {
   }
 }
 
-class CommanAppbar extends StatelessWidget {
+class CommanTopBar extends StatelessWidget {
   String title;
-  CommanAppbar({Key? key, required this.title}) : super(key: key);
+  CommanTopBar({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.h,
       width: double.infinity,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(19), bottomRight: Radius.circular(19)),
         color: ColorConstant.splashColor,
         image: DecorationImage(
           image: AssetImage(
@@ -93,7 +101,7 @@ class CommanAppbar extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.only(right: 10, left: 10, top: 35, bottom: 35.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -108,7 +116,7 @@ class CommanAppbar extends StatelessWidget {
               ),
             ),
             Text(
-              title,
+              title.toUpperCase(),
               style: TextStyle(
                 color: ColorConstant.backgroundColor,
                 fontWeight: FontWeight.w700,
@@ -116,6 +124,7 @@ class CommanAppbar extends StatelessWidget {
               ),
             ),
             CircleAvatar(
+              radius: 20,
               backgroundColor: Colors.transparent,
             )
           ],
