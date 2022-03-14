@@ -1,6 +1,9 @@
 class NavigationName {
   static const splash = '/splash';
   static const login = '/login';
+  static const signup = '/signup';
+  static const otpLogin = '/otpLogin';
+  static const otpSubmit = '/otpSubmit';
   static const homePage = '/homePage';
   static const bookPage = '/bookPage';
   static const bookCategoryPage = '/bookCategoryPage';
