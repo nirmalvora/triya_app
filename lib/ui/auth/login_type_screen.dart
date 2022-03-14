@@ -123,7 +123,7 @@ class LoginTypeScreen extends StatelessWidget {
             right: 0,
             child: GestureDetector(
               onTap: () {
-                print("Dataaaa");
+                Get.toNamed(NavigationName.employerLoginType);
               },
               child: Container(
                 height: 430.r,
