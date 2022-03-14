@@ -592,42 +592,47 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  height: 120.h,
-                  width: 615.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: ColorConstant.splashColor,
-                  ),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(NavigationName.resumePage);
+                  },
                   child: Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    height: 120.h,
+                    width: 615.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                        colors: const [Color(0xff3782F3), Color(0xff276ED8)],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
+                      color: ColorConstant.splashColor,
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: Text(
-                            'Create Your Resume',
-                            style: TextStyle(
-                              color: ColorConstant.backgroundColor,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: TextFontFamily.openSansBold,
-                              fontSize: 40.sp,
-                              letterSpacing: 2,
+                    child: Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: LinearGradient(
+                          colors: const [Color(0xff3782F3), Color(0xff276ED8)],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Text(
+                              'Create Your Resume',
+                              style: TextStyle(
+                                color: ColorConstant.backgroundColor,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: TextFontFamily.openSansBold,
+                                fontSize: 40.sp,
+                                letterSpacing: 2,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

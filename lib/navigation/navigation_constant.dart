@@ -15,13 +15,14 @@ class NavigationName {
   static const privateJobPage = '/privateJobPage';
   static const privateJobDescPage = '/privateJobDescPage';
   static const privateJobResumePage = '/privateJobResumePage';
+  static const privateResumeApplyPage = '/privateResumeApplyPage';
   static const scholarshipJobPage = '/scholarshipJobPage';
   static const scholarshipJobDescPage = '/scholarshipJobDescPage';
   static const resumePage = '/resumePage';
   static const loginTypePage = '/loginTypePage';
 
   static const candidateLoginType = "/candidateLoginType";
-  static const normalResumePage = '/normalResumePage';
+  static const professionalResumePage = '/professionalResumePage';
   static const personalPage = '/personalPage';
   static const contactPage = '/contactPage';
   static const professionalPage = '/professionalPage';
