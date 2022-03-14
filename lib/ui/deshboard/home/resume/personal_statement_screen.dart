@@ -4,6 +4,7 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_container.dart';
 
 class PersonalStatementScreen extends StatelessWidget {
@@ -104,38 +105,7 @@ class PersonalStatementScreen extends StatelessWidget {
           Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-            child: Container(
-              height: 120.h,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: ColorConstant.splashColor,
-              ),
-              child: Container(
-                width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 5),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  gradient: LinearGradient(
-                    colors: const [Color(0xff3782F3), Color(0xff276ED8)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    "SAVE",
-                    style: TextStyle(
-                      color: ColorConstant.backgroundColor,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: TextFontFamily.openSansBold,
-                      fontSize: 35.sp,
-                      letterSpacing: 2,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            child: BottomCommonButton(name: "SAVE"),
           ),
         ],
       ),
