@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/ui/deshboard/home/resume/key_skills_screen.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
@@ -45,7 +47,7 @@ class ProfessionalScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'PERSONAL STATEMENT',
+                    'PROFESSIONAL EXPERIENCE',
                     style: TextStyle(
                       color: ColorConstant.backgroundColor,
                       fontWeight: FontWeight.w700,
@@ -77,7 +79,10 @@ class ProfessionalScreen extends StatelessWidget {
                         fontSize: 52.sp,
                       ),
                     ),
-                    Image.asset(
+                    SizedBox(
+                      width: 15.w,
+                    ),
+                    SvgPicture.asset(
                       AppUtils.getSVGAsset(ImageConstant.closeIcon),
                       height: 54.h,
                       width: 54.w,
@@ -122,9 +127,6 @@ class ProfessionalScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 40.h,
-                ),
-                SizedBox(
-                  height: 10,
                 ),
                 Row(
                   children: [
@@ -177,6 +179,10 @@ class ProfessionalScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 40.h,
+                ),
+                CommanAddButton(title: "ADD EXPERIENCE", onTap: () {})
               ],
             ),
           ),
