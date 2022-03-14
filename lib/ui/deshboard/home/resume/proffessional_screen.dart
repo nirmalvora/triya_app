@@ -183,7 +183,7 @@ class ProfessionalScreen extends StatelessWidget {
           Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-            child: BottomCommonButton(name: "SAVE"),
+            child: BottomCommonButton(onTap: () {}, name: "SAVE"),
           ),
         ],
       ),
