@@ -16,5 +16,3 @@ class CandidateLoginController extends GetxController {
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }
-
-class CandidateLoginController extends GetxController {}
