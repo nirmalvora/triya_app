@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/ui/deshboard/home/resume/key_skills_screen.dart';
-import 'package:triya_app/ui/deshboard/home/resume/personal_statement_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/key_skills_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/personal_statement_screen.dart';
 import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
-class ProfessiocalAffiliationScreen extends StatelessWidget {
-  const ProfessiocalAffiliationScreen({Key? key}) : super(key: key);
+class AdditionalTrainingScreen extends StatelessWidget {
+  const AdditionalTrainingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ProfessiocalAffiliationScreen extends StatelessWidget {
       backgroundColor: ColorConstant.droverButtonColor,
       body: Column(
         children: [
-          CommanTopBar(title: "Professiocal Affiliation"),
+          CommanTopBar(title: "Additional Training"),
           SizedBox(height: 45.h),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -25,7 +25,7 @@ class ProfessiocalAffiliationScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Affiliation 1',
+                      'Training 1',
                       style: TextStyle(
                           fontSize: 52.sp,
                           fontWeight: FontWeight.w700,
@@ -44,7 +44,7 @@ class ProfessiocalAffiliationScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 45.h),
                 Text(
-                  'Affiliation Title'.toUpperCase(),
+                  'Company Name/ Training Center'.toUpperCase(),
                   style: TextStyle(
                       color: ColorConstant.blueColor,
                       fontWeight: FontWeight.w600,
@@ -57,7 +57,20 @@ class ProfessiocalAffiliationScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 45.h),
                 Text(
-                  'Affiliation Description'.toUpperCase(),
+                  'Secialization Field'.toUpperCase(),
+                  style: TextStyle(
+                      color: ColorConstant.blueColor,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 30.sp,
+                      fontFamily: "OpenSans-Regular"),
+                ),
+                SizedBox(height: 23.h),
+                ResumeCommonTextField(
+                  hintText: '',
+                ),
+                SizedBox(height: 45.h),
+                Text(
+                  'Description'.toUpperCase(),
                   style: TextStyle(
                       color: ColorConstant.blueColor,
                       fontWeight: FontWeight.w600,
@@ -69,7 +82,7 @@ class ProfessiocalAffiliationScreen extends StatelessWidget {
                   hintText: '',
                 ),
                 SizedBox(height: 42.h),
-                CommanAddButton(onTap: () {}, title: 'Add Affiliation')
+                CommanAddButton(onTap: () {}, title: 'Add Training')
               ],
             ),
           ),

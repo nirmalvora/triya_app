@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_dashboard_controller.dart';
-import 'package:triya_app/ui/deshboard/home/home.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/home.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class Dashboard extends StatelessWidget {

@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
-import 'package:triya_app/constants/image_constant.dart';
-import 'package:triya_app/ui/deshboard/home/resume/key_skills_screen.dart';
-import 'package:triya_app/ui/deshboard/home/resume/personal_statement_screen.dart';
-import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/personal_statement_screen.dart';
 import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 

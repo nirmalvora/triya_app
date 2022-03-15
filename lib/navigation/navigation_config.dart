@@ -14,34 +14,33 @@ import 'package:triya_app/ui/auth/employer_login/employer_sign_in.dart';
 import 'package:triya_app/ui/auth/employer_login/employer_sign_up.dart';
 import 'package:triya_app/ui/auth/login_type_screen.dart';
 import 'package:triya_app/ui/auth/splash_screen.dart';
-import 'package:triya_app/ui/deshboard/dashboard.dart';
-import 'package:triya_app/ui/deshboard/home/book/book_category.dart';
-import 'package:triya_app/ui/deshboard/home/book/books.dart';
-import 'package:triya_app/ui/deshboard/home/gov/gov.dart';
-import 'package:triya_app/ui/deshboard/home/gov/gov_description.dart';
-import 'package:triya_app/ui/deshboard/home/home.dart';
-import 'package:triya_app/ui/deshboard/home/private/private.dart';
-import 'package:triya_app/ui/deshboard/home/private/private_description.dart';
-import 'package:triya_app/ui/deshboard/home/private/private_job_resume_screen.dart';
-import 'package:triya_app/ui/deshboard/home/private/private_resume_apply.dart';
-import 'package:triya_app/ui/deshboard/home/resume/ConferenceAttended.dart';
-import 'package:triya_app/ui/deshboard/home/resume/additional_training.dart';
-import 'package:triya_app/ui/deshboard/home/resume/industry_awards.dart';
-import 'package:triya_app/ui/deshboard/home/resume/professiocal_affiliation.dart';
-import 'package:triya_app/ui/deshboard/home/resume/professional_certifications.dart';
-import 'package:triya_app/ui/deshboard/home/resume/publication.dart';
-import 'package:triya_app/ui/deshboard/home/resume/resume.dart';
-import 'package:triya_app/ui/deshboard/home/scholarship/scholarship.dart';
-import 'package:triya_app/ui/deshboard/home/scholarship/scholarship_description.dart';
-import 'package:triya_app/ui/deshboard/home/video/video_category.dart';
-import 'package:triya_app/ui/deshboard/home/video/videos.dart';
-
-import '../ui/deshboard/home/resume/academic_history_screen.dart';
-import '../ui/deshboard/home/resume/contact_information_screen.dart';
-import '../ui/deshboard/home/resume/key_skills_screen.dart';
-import '../ui/deshboard/home/resume/normal_resume.dart';
-import '../ui/deshboard/home/resume/personal_statement_screen.dart';
-import '../ui/deshboard/home/resume/proffessional_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/candidate_dashboard.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/book/book_category.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/book/books.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/gov/gov.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_description.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/home.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/private/private.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/private/private_description.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/private/private_job_resume_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/private/private_resume_apply.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/ConferenceAttended.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/academic_history_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/additional_training.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/contact_information_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/industry_awards.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/key_skills_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/normal_resume.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/personal_statement_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/professiocal_affiliation.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/professional_certifications.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/proffessional_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/publication.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/resume.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/scholarship/scholarship.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/scholarship/scholarship_description.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/video/video_category.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/video/videos.dart';
 
 class NavigationRoute {
   static final List<GetPage> pages = [
@@ -84,10 +83,6 @@ class NavigationRoute {
     GetPage(
       name: NavigationName.videoPage,
       page: () => const VideoScreen(),
-    ),
-    GetPage(
-      name: NavigationName.bookCategoryPage,
-      page: () => const VideoCategoryScreen(),
     ),
     GetPage(
       name: NavigationName.videoCategoryPage,
@@ -135,7 +130,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.candidateLoginType,
-      page: () => const CandidateChooseLoginType(),
+      page: () => CandidateChooseLoginType(),
     ),
     GetPage(
       name: NavigationName.professionalResumePage,

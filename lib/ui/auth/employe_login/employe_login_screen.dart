@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/auth/candidate_login/candidate_login_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/common_text_field.dart';
 
@@ -18,9 +19,9 @@ class EmployeLoginScreen extends StatefulWidget {
   _EmployeLoginScreenState createState() => _EmployeLoginScreenState();
 }
 
-class _EmployeLoginScreenState extends State<EmployeLoginScreen> {
-  final controller = Get.put(EmployeLoginScreenController());
-
+class _LoginScreenState extends State<LoginScreen> {
+  final controller = Get.put(LoginScreenController());
+  final googleController = Get.put(CandidateLoginController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,7 +175,9 @@ class _EmployeLoginScreenState extends State<EmployeLoginScreen> {
                         ),
                         SizedBox(width: 36.h),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            googleController.signInWithGoogle();
+                          },
                           child: Container(
                             height: 164.h,
                             width: 164.w,

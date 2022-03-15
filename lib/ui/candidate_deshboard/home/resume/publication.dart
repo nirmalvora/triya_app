@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/ui/deshboard/home/resume/key_skills_screen.dart';
-import 'package:triya_app/ui/deshboard/home/resume/personal_statement_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/key_skills_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/personal_statement_screen.dart';
 import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
-class ConferenceAttendedScreen extends StatelessWidget {
-  const ConferenceAttendedScreen({Key? key}) : super(key: key);
+class PublicationScreen extends StatelessWidget {
+  const PublicationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ConferenceAttendedScreen extends StatelessWidget {
       backgroundColor: ColorConstant.droverButtonColor,
       body: Column(
         children: [
-          CommanTopBar(title: "Conference Attended"),
+          CommanTopBar(title: "Publication"),
           SizedBox(height: 45.h),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -25,7 +25,7 @@ class ConferenceAttendedScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Conference 1',
+                      'Publication 1',
                       style: TextStyle(
                           fontSize: 52.sp,
                           fontWeight: FontWeight.w700,
@@ -44,7 +44,20 @@ class ConferenceAttendedScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 45.h),
                 Text(
-                  'Conerence Description'.toUpperCase(),
+                  'Certificate Title'.toUpperCase(),
+                  style: TextStyle(
+                      fontSize: 30.sp,
+                      color: ColorConstant.blueColor,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "OpenSans-Regular"),
+                ),
+                SizedBox(height: 23.h),
+                ResumeCommonTextField(
+                  hintText: '',
+                ),
+                SizedBox(height: 45.h),
+                Text(
+                  'Certificate Description'.toUpperCase(),
                   style: TextStyle(
                       fontSize: 30.sp,
                       color: ColorConstant.blueColor,
@@ -56,7 +69,7 @@ class ConferenceAttendedScreen extends StatelessWidget {
                   hintText: '',
                 ),
                 SizedBox(height: 42.h),
-                CommanAddButton(onTap: () {}, title: 'Add Conference')
+                CommanAddButton(onTap: () {}, title: 'Add Publication')
               ],
             ),
           ),
