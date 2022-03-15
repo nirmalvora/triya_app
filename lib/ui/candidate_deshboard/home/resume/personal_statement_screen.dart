@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/personal__statement_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
-
-
 import 'package:triya_app/widgets/bottom_common_button.dart';
-import 'package:triya_app/widgets/resume_container.dart';
-
-
-import 'package:triya_app/widgets/bottom_common_button.dart';
-
+import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
 class PersonalStatementScreen extends StatelessWidget {
-  const PersonalStatementScreen({Key? key}) : super(key: key);
+  PersonalStatementScreen({Key? key}) : super(key: key);
+  final controller = Get.put(PersonalStatementController());
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +48,10 @@ class PersonalStatementScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 12),
-                    child: Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet condimentum ullamcorper amet tristique et enim mauris. Laoreet curabitur maecenas elit enim sed. Consequat porta tellus bibendum mattis est. Imperdiet pretium, bibendum sagittis, vitae tortor nibh.',
-                      style: TextStyle(
-                        color: ColorConstant.splashColor,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: TextFontFamily.openSansBold,
-                        fontSize: 30.sp,
-                      ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: ResumeCommonTextField(
+                      hintText: "",
+                      controller: controller.enterText,
                     ),
                   ),
                 ),
@@ -72,7 +63,9 @@ class PersonalStatementScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
             child: BottomCommonButton(
               name: "SAVE",
-              onTap: () {},
+              onTap: () {
+                controller.personalStatement();
+              },
             ),
           ),
         ],

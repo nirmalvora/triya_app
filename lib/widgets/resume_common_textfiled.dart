@@ -4,8 +4,10 @@ import 'package:triya_app/constants/color_constant.dart';
 
 class ResumeCommonTextField extends StatelessWidget {
   final String hintText;
+  final TextEditingController? controller;
 
-  const ResumeCommonTextField({Key? key, required this.hintText})
+  const ResumeCommonTextField(
+      {Key? key, required this.hintText, this.controller})
       : super(key: key);
 
   @override
@@ -19,13 +21,15 @@ class ResumeCommonTextField extends StatelessWidget {
         children: [
           Expanded(
             child: TextFormField(
-              style: TextStyle(color: Colors.white),
+              controller: controller,
+              style: TextStyle(color: ColorConstant.textColor),
               decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: hintText,
-                  contentPadding: EdgeInsets.zero,
-                  hintStyle: TextStyle(
-                      color: ColorConstant.hintTextColor, fontSize: 35.sp)),
+                border: InputBorder.none,
+                hintText: hintText,
+                contentPadding: EdgeInsets.zero,
+                hintStyle: TextStyle(
+                    color: ColorConstant.hintTextColor, fontSize: 35.sp),
+              ),
             ),
           )
         ],

@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/key_skills_controller.dart';
 import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
 import 'personal_statement_screen.dart';
 
 class KeySkillsScreen extends StatelessWidget {
-  const KeySkillsScreen({Key? key}) : super(key: key);
+  KeySkillsScreen({Key? key}) : super(key: key);
+  final controller = Get.put(KeySkillsController());
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +58,7 @@ class KeySkillsScreen extends StatelessWidget {
                 SizedBox(height: 23.h),
                 ResumeCommonTextField(
                   hintText: '',
+                  controller: controller.keySkills,
                 ),
                 SizedBox(height: 42.h),
                 CommanAddButton(onTap: () {}, title: 'ADD SKILL')
@@ -64,7 +68,11 @@ class KeySkillsScreen extends StatelessWidget {
           Spacer(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
-            child: BottomCommonButton(onTap: () {}, name: "SAVE"),
+            child: BottomCommonButton(
+                onTap: () {
+                  controller.keySkill();
+                },
+                name: "SAVE"),
           ),
           SizedBox(height: MediaQuery.of(context).padding.bottom + 20.h)
         ],

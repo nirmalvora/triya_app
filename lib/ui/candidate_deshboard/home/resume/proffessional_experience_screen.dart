@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/model/professional_experience_response.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/key_skills_screen.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/personal_statement_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/professional_experience_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
 class ProfessionalScreen extends StatelessWidget {
-  const ProfessionalScreen({Key? key}) : super(key: key);
+  ProfessionalScreen({Key? key}) : super(key: key);
+  final controller = Get.put(ProfessionalExperienceController());
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +70,7 @@ class ProfessionalScreen extends StatelessWidget {
                 ),
                 ResumeCommonTextField(
                   hintText: "",
+                  controller: controller.companyName,
                 ),
                 SizedBox(
                   height: 40.h,
@@ -84,6 +89,7 @@ class ProfessionalScreen extends StatelessWidget {
                 ),
                 ResumeCommonTextField(
                   hintText: "",
+                  controller: controller.role,
                 ),
                 SizedBox(
                   height: 40.h,
@@ -95,7 +101,7 @@ class ProfessionalScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'ADDRESS *',
+                            'FROM MM/YY *',
                             style: TextStyle(
                               color: ColorConstant.splashColor,
                               fontWeight: FontWeight.w600,
@@ -108,6 +114,7 @@ class ProfessionalScreen extends StatelessWidget {
                           ),
                           ResumeCommonTextField(
                             hintText: "House No.",
+                            controller: controller.formDate,
                           ),
                         ],
                       ),
@@ -120,7 +127,7 @@ class ProfessionalScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'ADDRESS *',
+                            'TO MM/YY *',
                             style: TextStyle(
                               color: ColorConstant.splashColor,
                               fontWeight: FontWeight.w600,
@@ -133,6 +140,7 @@ class ProfessionalScreen extends StatelessWidget {
                           ),
                           ResumeCommonTextField(
                             hintText: "Area",
+                            controller: controller.endDate,
                           ),
                         ],
                       ),
@@ -149,7 +157,11 @@ class ProfessionalScreen extends StatelessWidget {
           Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-            child: BottomCommonButton(onTap: () {}, name: "SAVE"),
+            child: BottomCommonButton(
+                onTap: () {
+                  controller.professionalExperience();
+                },
+                name: "SAVE"),
           ),
         ],
       ),

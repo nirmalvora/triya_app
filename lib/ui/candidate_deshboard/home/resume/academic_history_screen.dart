@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/academic_history_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/personal_statement_screen.dart';
 import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
 class AcademicScreen extends StatelessWidget {
-  const AcademicScreen({Key? key}) : super(key: key);
+  AcademicScreen({Key? key}) : super(key: key);
+  final controller = Get.put(ProfessionalExperienceController());
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +44,7 @@ class AcademicScreen extends StatelessWidget {
                     ),
                     ResumeCommonTextField(
                       hintText: "",
+                      controller: controller.schoolName,
                     ),
                     SizedBox(
                       height: 40.h,
@@ -58,8 +62,7 @@ class AcademicScreen extends StatelessWidget {
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "",
-                    ),
+                        hintText: "", controller: controller.yearOfPassing),
                     SizedBox(
                       height: 40.h,
                     ),
@@ -76,8 +79,7 @@ class AcademicScreen extends StatelessWidget {
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "",
-                    ),
+                        hintText: "", controller: controller.sslScore),
                     SizedBox(
                       height: 40.h,
                     ),
@@ -94,8 +96,7 @@ class AcademicScreen extends StatelessWidget {
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "",
-                    ),
+                        hintText: "", controller: controller.secondaryDiploma),
                     SizedBox(
                       height: 40.h,
                     ),
@@ -112,8 +113,8 @@ class AcademicScreen extends StatelessWidget {
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "",
-                    ),
+                        hintText: "",
+                        controller: controller.yearOfPassingDiploma),
                     SizedBox(
                       height: 40.h,
                     ),
@@ -130,8 +131,7 @@ class AcademicScreen extends StatelessWidget {
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "",
-                    ),
+                        hintText: "", controller: controller.score),
                     SizedBox(
                       height: 40.h,
                     ),
@@ -149,6 +149,7 @@ class AcademicScreen extends StatelessWidget {
                     ),
                     ResumeCommonTextField(
                       hintText: "Institute Name",
+                      controller: controller.instituteName,
                     ),
                     SizedBox(
                       height: 10,
@@ -157,16 +158,16 @@ class AcademicScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: ResumeCommonTextField(
-                            hintText: "From Date*",
-                          ),
+                              hintText: "From Date*",
+                              controller: controller.fromDate),
                         ),
                         SizedBox(
                           width: 10,
                         ),
                         Expanded(
                           child: ResumeCommonTextField(
-                            hintText: "To date*",
-                          ),
+                              hintText: "To date*",
+                              controller: controller.toDate),
                         ),
                       ],
                     ),
@@ -174,26 +175,26 @@ class AcademicScreen extends StatelessWidget {
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "No Of Backlog",
-                    ),
+                        hintText: "No Of Backlog",
+                        controller: controller.backing),
                     SizedBox(
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "Agregated Score (Percentage)*",
-                    ),
+                        hintText: "Agregated Score (Percentage)*",
+                        controller: controller.agregatedScore),
                     SizedBox(
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "Gap Between Education (Year)*",
-                    ),
+                        hintText: "Gap Between Education (Year)*",
+                        controller: controller.gapEducation),
                     SizedBox(
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "Reason Of Gap Between Education*",
-                    ),
+                        hintText: "Reason Of Gap Between Education*",
+                        controller: controller.reasonGap),
                     SizedBox(
                       height: 40.h,
                     ),
@@ -210,19 +211,21 @@ class AcademicScreen extends StatelessWidget {
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "Institute/Collage Name*",
-                    ),
+                        hintText: "Institute/Collage Name*",
+                        controller: controller.clgName),
                     SizedBox(
                       height: 10,
                     ),
                     ResumeCommonTextField(
                       hintText: "Sepcialization*",
+                      controller: controller.specialization,
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     ResumeCommonTextField(
                       hintText: "Years Of completion*",
+                      controller: controller.yearOfCompleted,
                     ),
                     SizedBox(
                       height: 20,
@@ -236,7 +239,9 @@ class AcademicScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
             child: BottomCommonButton(
               name: "SAVE",
-              onTap: () {},
+              onTap: () {
+                controller.academicHistory();
+              },
             ),
           ),
         ],
