@@ -131,10 +131,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       SvgPicture.asset(
                         AppUtils.getSVGAsset(ImageConstant.homeIcon),
                         height: 45.h,
-                        width: 51.h,
+                        width: 51.w,
                       ),
                       SizedBox(
-                        width: 25.h,
+                        width: 25.w,
                       ),
                       Text(
                         'Home',
@@ -154,10 +154,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       SvgPicture.asset(
                         AppUtils.getSVGAsset(ImageConstant.profileIcon),
                         height: 45.h,
-                        width: 51.h,
+                        width: 51.w,
                       ),
                       SizedBox(
-                        width: 25.h,
+                        width: 25.w,
                       ),
                       Text(
                         'My Account',
@@ -177,10 +177,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       SvgPicture.asset(
                         AppUtils.getSVGAsset(ImageConstant.lobsIcon),
                         height: 45.h,
-                        width: 51.h,
+                        width: 51.w,
                       ),
                       SizedBox(
-                        width: 25.h,
+                        width: 25.w,
                       ),
                       Text(
                         'Applied Lobs',
@@ -199,11 +199,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Image.asset(
                         AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                        height: 45.h,
-                        width: 51.h,
+                        height: 62.h,
+                        width: 62.w,
                       ),
                       SizedBox(
-                        width: 25.h,
+                        width: 25.w,
                       ),
                       Text(
                         'My Favorites',
@@ -222,11 +222,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Image.asset(
                         AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                        height: 45.h,
-                        width: 51.h,
+                        height: 62.h,
+                        width: 62.w,
                       ),
                       SizedBox(
-                        width: 25.h,
+                        width: 25.w,
                       ),
                       Text(
                         'Favorites Books',
@@ -245,11 +245,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Image.asset(
                         AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                        height: 45.h,
-                        width: 51.h,
+                        height: 62.h,
+                        width: 62.w,
                       ),
                       SizedBox(
-                        width: 25.h,
+                        width: 25.w,
                       ),
                       Text(
                         'Favorites Video',
@@ -272,11 +272,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Image.asset(
                           AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                          height: 45.h,
-                          width: 51.h,
+                          height: 62.h,
+                          width: 62.w,
                         ),
                         SizedBox(
-                          width: 25.h,
+                          width: 25.w,
                         ),
                         Text(
                           'My Resume',
