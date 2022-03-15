@@ -1,10 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/auth/login/login_screen.dart';
 
 import '../../../utils/app_utils.dart';
 
@@ -17,7 +21,7 @@ class CandidateChooseLoginType extends StatefulWidget {
 }
 
 class _CandidateChooseLoginTypeState extends State<CandidateChooseLoginType> {
-/*  var loading = false;
+  var loading = false;
 
   void _loginwithFacebook() async {
     setState(() {
@@ -31,11 +35,11 @@ class _CandidateChooseLoginTypeState extends State<CandidateChooseLoginType> {
       final facebookAuthCredential = FacebookAuthProvider.credential(
           facebookLoginresult.accessToken!.token);
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-      // await FirebaseFirestore.instance.collection('user').add({
-      //   'email': userData['email'],
-      //   'imageurl': userData['picture']['data']['url'],
-      //   'name': userData['name'],
-      // });
+      await FirebaseFirestore.instance.collection('user').add({
+        'email': userData['email'],
+        'imageurl': userData['picture']['data']['url'],
+        'name': userData['name'],
+      });
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (context) => const LoginScreen(),
@@ -80,7 +84,7 @@ class _CandidateChooseLoginTypeState extends State<CandidateChooseLoginType> {
         loading = false;
       });
     }
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +138,7 @@ class _CandidateChooseLoginTypeState extends State<CandidateChooseLoginType> {
                 SizedBox(height: 36.h),
                 CommanLogInButton(
                     onTap: () {
-                      // _loginwithFacebook();
+                      _loginwithFacebook();
                     },
                     title: 'LOGIN WITH FACEBOOK',
                     image: ImageConstant.facebook_Icon),
