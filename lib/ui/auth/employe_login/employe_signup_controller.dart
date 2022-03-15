@@ -5,7 +5,7 @@ import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/sign_up_response.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
-class SignUpController extends GetxController {
+class EmployeSignUpControllernScreen extends GetxController {
   final formKey = GlobalKey<FormState>();
   final firstName = TextEditingController();
   final lastName = TextEditingController();
@@ -26,9 +26,7 @@ class SignUpController extends GetxController {
           .post(ServiceConstant.signUp, data: data)
           .then((value) {
         SignUpResponse response = SignUpResponse.fromJson(value!.data);
-        Get.showSnackbar(GetSnackBar(
-          title: response.message,
-        ));
+        Get.snackbar(response.message!, "");
       });
     }
   }

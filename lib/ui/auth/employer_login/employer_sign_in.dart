@@ -62,7 +62,7 @@ class EmployerSignInScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Please enter email id and password to login.",
+                      "Please enter email id and password to employe_login.",
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: "OpenSans-Regular",

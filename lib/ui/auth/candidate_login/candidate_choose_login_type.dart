@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
-import 'package:triya_app/ui/auth/login/login_screen.dart';
+import 'package:triya_app/ui/deshboard/dashboard.dart';
 
 import '../../../utils/app_utils.dart';
 
@@ -42,7 +42,7 @@ class _CandidateChooseLoginTypeState extends State<CandidateChooseLoginType> {
       });
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => const LoginScreen(),
+            builder: (context) => Dashboard(),
           ),
           (route) => false);
     } on FirebaseAuthException catch (e) {

@@ -6,13 +6,13 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
-import 'package:triya_app/ui/auth/signup/signup_controller.dart';
+import 'package:triya_app/ui/auth/employe_login/employe_signup_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/common_text_field.dart';
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
-  final controller = Get.put(SignUpController());
+class EmployeSignUpScreen extends StatelessWidget {
+  EmployeSignUpScreen({Key? key}) : super(key: key);
+  final controller = Get.put(EmployeSignUpControllernScreen());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

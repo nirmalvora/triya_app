@@ -26,6 +26,7 @@ class CommonTextField extends StatelessWidget {
               controller: controller,
               style: TextStyle(color: Colors.white),
               validator: validation,
+              textInputAction: TextInputAction.next,
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: hintText.toUpperCase(),

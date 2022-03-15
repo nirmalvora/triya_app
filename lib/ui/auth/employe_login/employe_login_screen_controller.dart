@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/login_response.dart';
@@ -8,7 +9,7 @@ import 'package:triya_app/preference/prerences.dart';
 
 import '../../../services/api_service_methods.dart';
 
-class LoginScreenController extends GetxController {
+class EmployeLoginScreenController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   final formKey = GlobalKey<FormState>();
