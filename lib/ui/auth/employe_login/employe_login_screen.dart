@@ -19,8 +19,8 @@ class EmployeLoginScreen extends StatefulWidget {
   _EmployeLoginScreenState createState() => _EmployeLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final controller = Get.put(LoginScreenController());
+class _EmployeLoginScreenState extends State<EmployeLoginScreen> {
+  final controller = Get.put(EmployeLoginScreenController());
   final googleController = Get.put(CandidateLoginController());
   @override
   Widget build(BuildContext context) {

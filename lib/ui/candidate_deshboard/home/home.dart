@@ -7,6 +7,7 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   int selected = 0;
+  final controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -353,7 +355,8 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CarouselSlider.builder(
-                  itemCount: 15,
+                  itemCount:
+                      controller.topBannerResponse.value?.data?.length ?? 0,
                   itemBuilder: (BuildContext context, int itemIndex,
                           int pageViewIndex) =>
                       Container(
@@ -361,8 +364,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(31.r),
                         image: DecorationImage(
-                            image: NetworkImage(
-                                'http://photo.16pic.com/00/38/88/16pic_3888084_b.jpg'),
+                            image: NetworkImage(controller.topBannerResponse
+                                    .value?.data?[itemIndex].image ??
+                                ""),
                             fit: BoxFit.cover)),
                   ),
                   options: CarouselOptions(

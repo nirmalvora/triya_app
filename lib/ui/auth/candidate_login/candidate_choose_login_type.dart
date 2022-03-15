@@ -9,7 +9,6 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/candidate_login/candidate_login_controller.dart';
-import 'package:triya_app/ui/auth/login/login_screen.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class CandidateChooseLoginType extends StatefulWidget {
@@ -41,11 +40,11 @@ class _CandidateChooseLoginTypeState extends State<CandidateChooseLoginType> {
         'imageurl': userData['picture']['data']['url'],
         'name': userData['name'],
       });
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(
-            builder: (context) => Dashboard(),
-          ),
-          (route) => false);
+      // Navigator.of(context).pushAndRemoveUntil(
+      //     MaterialPageRoute(
+      //       builder: (context) => Dashboard(),
+      //     ),
+      //     (route) => false);
     } on FirebaseAuthException catch (e) {
       var content = '';
       switch (e.code) {

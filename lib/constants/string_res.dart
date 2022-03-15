@@ -51,8 +51,3 @@ class StringRes {
   static const noName = 'No name defined';
   static const tokenIsExpired = 'Token is expired.';
 }
-
-class SharedPrefConst {
-  static const loggedSso = 'logged';
-  static const token = 'token';
-}

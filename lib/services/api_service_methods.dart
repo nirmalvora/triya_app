@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:get/get_connect/http/src/status/http_status.dart';
 import 'package:triya_app/constants/api_constants.dart';
 import 'package:triya_app/constants/string_res.dart';
+import 'package:triya_app/preference/preference_keys.dart';
+import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/services/error_handling.dart';
 import 'package:triya_app/utils/internet_connectivity.dart';
 import 'package:triya_app/utils/toast_utils.dart';
@@ -32,8 +34,8 @@ class BaseApiService {
     mDio.options = baseOption;
     final mInterceptorsWrapper = InterceptorsWrapper(
       onRequest: (options, handler) async {
-        var accessToken = await appState.encryptedSharedPreferences
-            .getString(SharedPrefConst.token);
+        var accessToken =
+            await Preferences.getString(PreferenceKeys.accessToken, "");
         print(accessToken);
         options.headers = {
           'Authorization': 'Bearer $accessToken',

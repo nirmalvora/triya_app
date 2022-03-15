@@ -54,7 +54,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.signup,
-      page: () => EmployeSignUpScreen(),
+      page: () => EmployeeSignUpScreen(),
     ),
     GetPage(
       name: NavigationName.otpLogin,
