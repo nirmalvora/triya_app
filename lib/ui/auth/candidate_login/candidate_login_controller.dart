@@ -12,7 +12,7 @@ class CandidateLoginController extends GetxController {
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
-    Get.toNamed(NavigationName.dashboard);
+    Get.offNamed(NavigationName.dashboard);
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }

@@ -10,18 +10,10 @@ import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/candidate_login/candidate_login_controller.dart';
 import 'package:triya_app/ui/auth/login/login_screen.dart';
-
-import '../../../utils/app_utils.dart';
-
-
-class CandidateChooseLoginType extends StatelessWidget {
-  CandidateChooseLoginType({Key? key}) : super(key: key);
-
-  final controller = Get.put(CandidateLoginController());
+import 'package:triya_app/utils/app_utils.dart';
 
 class CandidateChooseLoginType extends StatefulWidget {
   const CandidateChooseLoginType({Key? key}) : super(key: key);
-
 
   @override
   State<CandidateChooseLoginType> createState() =>
@@ -29,6 +21,7 @@ class CandidateChooseLoginType extends StatefulWidget {
 }
 
 class _CandidateChooseLoginTypeState extends State<CandidateChooseLoginType> {
+  final controller = Get.put(CandidateLoginController());
   var loading = false;
 
   void _loginwithFacebook() async {
@@ -172,14 +165,15 @@ class _CandidateChooseLoginTypeState extends State<CandidateChooseLoginType> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 37.h),
                             child: Center(
-                                child: Text(
-                              'SIGN IN',
-                              style: TextStyle(
-                                  color: ColorConstant.white,
-                                  fontFamily: "OpenSans-Regular",
-                                  letterSpacing: 2,
-                                  fontSize: 32.sp),
-                            )),
+                              child: Text(
+                                'SIGN IN',
+                                style: TextStyle(
+                                    color: ColorConstant.white,
+                                    fontFamily: "OpenSans-Regular",
+                                    letterSpacing: 2,
+                                    fontSize: 32.sp),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -197,15 +191,16 @@ class _CandidateChooseLoginTypeState extends State<CandidateChooseLoginType> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 37.h),
                             child: Center(
-                                child: Text(
-                              'SIGN UP',
-                              style: TextStyle(
-                                  letterSpacing: 2,
-                                  color: ColorConstant.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: "OpenSans-Regular",
-                                  fontSize: 32.sp),
-                            )),
+                              child: Text(
+                                'SIGN UP',
+                                style: TextStyle(
+                                    letterSpacing: 2,
+                                    color: ColorConstant.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: "OpenSans-Regular",
+                                    fontSize: 32.sp),
+                              ),
+                            ),
                           ),
                         ),
                       ),
