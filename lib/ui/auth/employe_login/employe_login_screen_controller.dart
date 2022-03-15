@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/login_response.dart';
@@ -26,9 +29,54 @@ class EmployeLoginScreenController extends GetxController {
         LoginResponse response = LoginResponse.fromJson(value!.data);
         Get.snackbar(response.message!, "");
         Preferences.setBool(PreferenceKeys.isLogin, true);
+        Preferences.setInt(
+            PreferenceKeys.userRole, response.data!.user!.roleId!);
         Preferences.setString(PreferenceKeys.accessToken, response.data!.token);
         Get.offNamed(NavigationName.dashboard);
       });
+    }
+  }
+
+  final loading = false.obs;
+
+  void loginwithFacebook() async {
+    loading.value = true;
+
+    try {
+      final facebookLoginresult = await FacebookAuth.instance.login();
+      final userData = await FacebookAuth.instance.getUserData();
+      print(userData);
+      final facebookAuthCredential = FacebookAuthProvider.credential(
+          facebookLoginresult.accessToken!.token);
+      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+      await FirebaseFirestore.instance.collection('user').add({
+        'email': userData['email'],
+        'imageurl': userData['picture']['data']['url'],
+        'name': userData['name'],
+      });
+      Get.offNamed(NavigationName.dashboard);
+    } on FirebaseAuthException catch (e) {
+      var content = '';
+      switch (e.code) {
+        case 'account-exists-with-different-credential':
+          content = 'This account exists with a different sign in provider';
+          break;
+        case 'invalid-credential':
+          content = 'Unknown error has occurred';
+          break;
+        case 'operation-not-allowed':
+          content = 'This operation is not allowed';
+          break;
+        case 'user-disabled':
+          content = 'The user you tried to log into is disabled';
+          break;
+        case 'user-not-found':
+          content = 'The user you tried to log into was not found';
+          break;
+      }
+      Get.snackbar(content, "");
+    } finally {
+      loading.value = false;
     }
   }
 }

@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/candidate_login/candidate_choose_login_type.dart';
 import 'package:triya_app/ui/auth/employe_login/employe_login_screen.dart';
+import 'package:triya_app/ui/auth/employe_login/employe_otp_login/employe_otp_login.dart';
+import 'package:triya_app/ui/auth/employe_login/employe_otp_login/employe_otp_submit.dart';
 import 'package:triya_app/ui/auth/employe_login/employe_signup.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_dashboard.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_new_job.dart';
@@ -11,8 +13,6 @@ import 'package:triya_app/ui/auth/employer_login/employer_login_screen.dart';
 import 'package:triya_app/ui/auth/employer_login/employer_sign_in.dart';
 import 'package:triya_app/ui/auth/employer_login/employer_sign_up.dart';
 import 'package:triya_app/ui/auth/login_type_screen.dart';
-import 'package:triya_app/ui/auth/otp_login/otp_login.dart';
-import 'package:triya_app/ui/auth/otp_login/otp_submit.dart';
 import 'package:triya_app/ui/auth/splash_screen.dart';
 import 'package:triya_app/ui/deshboard/dashboard.dart';
 import 'package:triya_app/ui/deshboard/home/book/book_category.dart';
@@ -59,11 +59,11 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.otpLogin,
-      page: () => OTPLoginScreen(),
+      page: () => EmployeOTPLoginScreen(),
     ),
     GetPage(
       name: NavigationName.otpSubmit,
-      page: () => const OTPSubmitScreen(),
+      page: () => const EmployeOTPSubmitScreen(),
     ),
     GetPage(
       name: NavigationName.dashboard,

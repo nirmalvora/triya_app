@@ -1,15 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
-import 'package:triya_app/ui/deshboard/dashboard.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/common_text_field.dart';
 
@@ -24,71 +20,6 @@ class EmployeLoginScreen extends StatefulWidget {
 
 class _EmployeLoginScreenState extends State<EmployeLoginScreen> {
   final controller = Get.put(EmployeLoginScreenController());
-
-  var loading = false;
-
-  void _loginwithFacebook() async {
-    setState(() {
-      loading = true;
-    });
-
-    try {
-      final facebookLoginresult = await FacebookAuth.instance.login();
-      final userData = await FacebookAuth.instance.getUserData();
-      print(userData);
-      final facebookAuthCredential = FacebookAuthProvider.credential(
-          facebookLoginresult.accessToken!.token);
-      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-      await FirebaseFirestore.instance.collection('user').add({
-        'email': userData['email'],
-        'imageurl': userData['picture']['data']['url'],
-        'name': userData['name'],
-      });
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(
-            builder: (context) => Dashboard(),
-          ),
-          (route) => false);
-    } on FirebaseAuthException catch (e) {
-      var content = '';
-      switch (e.code) {
-        case 'account-exists-with-different-credential':
-          content = 'This account exists with a different sign in provider';
-          break;
-        case 'invalid-credential':
-          content = 'Unknown error has occurred';
-          break;
-        case 'operation-not-allowed':
-          content = 'This operation is not allowed';
-          break;
-        case 'user-disabled':
-          content = 'The user you tried to log into is disabled';
-          break;
-        case 'user-not-found':
-          content = 'The user you tried to log into was not found';
-          break;
-      }
-
-      showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                title: const Text('Log in with facebook failed'),
-                content: Text(content),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text('ok'),
-                  )
-                ],
-              ));
-    } finally {
-      setState(() {
-        loading = false;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +154,7 @@ class _EmployeLoginScreenState extends State<EmployeLoginScreen> {
                       children: [
                         InkWell(
                           onTap: () {
-                            _loginwithFacebook();
+                            controller.loginwithFacebook();
                           },
                           child: Container(
                             height: 164.h,

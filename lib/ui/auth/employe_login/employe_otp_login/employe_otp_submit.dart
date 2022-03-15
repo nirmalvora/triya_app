@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/navigation/navigation_constant.dart';
-import 'package:triya_app/ui/auth/otp_login/otp_login_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
-import 'package:triya_app/utils/common_text_field.dart';
 
-class OTPLoginScreen extends StatelessWidget {
-  OTPLoginScreen({Key? key}) : super(key: key);
-  final controller = Get.put(OTPLoginController());
+class EmployeOTPSubmitScreen extends StatelessWidget {
+  const EmployeOTPSubmitScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +45,7 @@ class OTPLoginScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 16.h),
                   Text(
-                    'Please enter your mobile no.',
+                    'We have sent an otp to your mobile no 7890******',
                     style: TextStyle(
                       color: ColorConstant.white,
                       fontSize: 30.sp,
@@ -56,14 +53,43 @@ class OTPLoginScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 124.h),
-                  CommonTextField(
-                    hintText: "MOBILE NO *",
-                    controller: controller.mobileNO,
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30.w),
+                    decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(19.r)),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Enter otp'.toUpperCase(),
+                                contentPadding: EdgeInsets.zero,
+                                hintStyle: TextStyle(
+                                    color: Colors.white, fontSize: 25.sp)),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'RESEND',
+                            style: TextStyle(
+                                letterSpacing: 1.5,
+                                color: Color(0xffB4F3FF),
+                                fontFamily: "OpenSans-Regular",
+                                fontSize: 32.sp,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   SizedBox(height: 70.h),
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed(NavigationName.otpSubmit);
+                      // Get.toNamed(NavigationName.otpLogin);
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(
@@ -73,7 +99,7 @@ class OTPLoginScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(19.r)),
                       child: Center(
                         child: Text(
-                          "Send otp".toUpperCase(),
+                          "Submit".toUpperCase(),
                           style: TextStyle(
                               letterSpacing: 1.5,
                               color: Color(0xff3782F3),

@@ -34,6 +34,7 @@ class BaseApiService {
       onRequest: (options, handler) async {
         var accessToken = await appState.encryptedSharedPreferences
             .getString(SharedPrefConst.token);
+        print(accessToken);
         options.headers = {
           'Authorization': 'Bearer $accessToken',
         };

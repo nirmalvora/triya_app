@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/auth/employe_login/employe_otp_login/employe_otp_login_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/utils/common_text_field.dart';
 
-class OTPSubmitScreen extends StatelessWidget {
-  const OTPSubmitScreen({Key? key}) : super(key: key);
-
+class EmployeOTPLoginScreen extends StatelessWidget {
+  EmployeOTPLoginScreen({Key? key}) : super(key: key);
+  final controller = Get.put(EmployeOTPLoginController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +47,7 @@ class OTPSubmitScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 16.h),
                   Text(
-                    'We have sent an otp to your mobile no 7890******',
+                    'Please enter your mobile no.',
                     style: TextStyle(
                       color: ColorConstant.white,
                       fontSize: 30.sp,
@@ -53,43 +55,14 @@ class OTPSubmitScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 124.h),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30.w),
-                    decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(19.r)),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: TextFormField(
-                            style: TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Enter otp'.toUpperCase(),
-                                contentPadding: EdgeInsets.zero,
-                                hintStyle: TextStyle(
-                                    color: Colors.white, fontSize: 25.sp)),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'RESEND',
-                            style: TextStyle(
-                                letterSpacing: 1.5,
-                                color: Color(0xffB4F3FF),
-                                fontFamily: "OpenSans-Regular",
-                                fontSize: 32.sp,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        )
-                      ],
-                    ),
+                  CommonTextField(
+                    hintText: "MOBILE NO *",
+                    controller: controller.mobileNO,
                   ),
                   SizedBox(height: 70.h),
                   GestureDetector(
                     onTap: () {
-                      // Get.toNamed(NavigationName.otpLogin);
+                      Get.toNamed(NavigationName.otpSubmit);
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(
@@ -99,7 +72,7 @@ class OTPSubmitScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(19.r)),
                       child: Center(
                         child: Text(
-                          "Submit".toUpperCase(),
+                          "Send otp".toUpperCase(),
                           style: TextStyle(
                               letterSpacing: 1.5,
                               color: Color(0xff3782F3),

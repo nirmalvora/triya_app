@@ -21,7 +21,7 @@ class ImageConstant {
   static String backgroundImage = "background_image";
   static String closeIcon = "close_icon";
 
-  static String otp_login = "otp_login";
+  static String otp_login = "employe_otp_login";
   static String google_Icon = "google_icon";
   static String facebook_Icon = "facebook_icon";
   static String facebook_Outline = "facebook_outline";
