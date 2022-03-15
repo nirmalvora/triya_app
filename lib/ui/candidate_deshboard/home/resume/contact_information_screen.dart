@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/contact_information_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/personal_statement_screen.dart';
 import 'package:triya_app/widgets/bottom_common_button.dart';
 import 'package:triya_app/widgets/resume_common_textfiled.dart';
 
 class ContactInformationScreen extends StatelessWidget {
-  const ContactInformationScreen({Key? key}) : super(key: key);
+  ContactInformationScreen({Key? key}) : super(key: key);
+  final controller = Get.put(ContactInformationController());
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,7 @@ class ContactInformationScreen extends StatelessWidget {
                 ),
                 ResumeCommonTextField(
                   hintText: "",
+                  controller: controller.mobileNumber,
                 ),
                 SizedBox(
                   height: 40.h,
@@ -57,6 +61,7 @@ class ContactInformationScreen extends StatelessWidget {
                 ),
                 ResumeCommonTextField(
                   hintText: "",
+                  controller: controller.emailId,
                 ),
                 SizedBox(
                   height: 40.h,
@@ -78,6 +83,7 @@ class ContactInformationScreen extends StatelessWidget {
                     Expanded(
                       child: ResumeCommonTextField(
                         hintText: "House No.",
+                        controller: controller.houseNo,
                       ),
                     ),
                     SizedBox(
@@ -86,6 +92,7 @@ class ContactInformationScreen extends StatelessWidget {
                     Expanded(
                       child: ResumeCommonTextField(
                         hintText: "Area",
+                        controller: controller.area,
                       ),
                     ),
                   ],
@@ -98,6 +105,7 @@ class ContactInformationScreen extends StatelessWidget {
                     Expanded(
                       child: ResumeCommonTextField(
                         hintText: "City",
+                        controller: controller.city,
                       ),
                     ),
                     SizedBox(
@@ -106,6 +114,7 @@ class ContactInformationScreen extends StatelessWidget {
                     Expanded(
                       child: ResumeCommonTextField(
                         hintText: "State",
+                        controller: controller.state,
                       ),
                     ),
                   ],
@@ -118,6 +127,7 @@ class ContactInformationScreen extends StatelessWidget {
                     Expanded(
                       child: ResumeCommonTextField(
                         hintText: "Pincode",
+                        controller: controller.pinCode,
                       ),
                     ),
                     Spacer(),
@@ -131,7 +141,9 @@ class ContactInformationScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
             child: BottomCommonButton(
               name: "SAVE",
-              onTap: () {},
+              onTap: () {
+                controller.contactInformation();
+              },
             ),
           ),
         ],

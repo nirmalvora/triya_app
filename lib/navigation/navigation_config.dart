@@ -34,7 +34,7 @@ import 'package:triya_app/ui/candidate_deshboard/home/resume/normal_resume.dart'
 import 'package:triya_app/ui/candidate_deshboard/home/resume/personal_statement_screen.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/professiocal_affiliation.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/professional_certifications.dart';
-import 'package:triya_app/ui/candidate_deshboard/home/resume/proffessional_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/proffessional_experience_screen.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/publication.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/resume.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/scholarship/scholarship.dart';
@@ -138,27 +138,27 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.personalPage,
-      page: () => const PersonalStatementScreen(),
+      page: () => PersonalStatementScreen(),
     ),
     GetPage(
       name: NavigationName.contactPage,
-      page: () => const ContactInformationScreen(),
+      page: () => ContactInformationScreen(),
     ),
     GetPage(
       name: NavigationName.professionalPage,
-      page: () => const ProfessionalScreen(),
+      page: () => ProfessionalScreen(),
     ),
     GetPage(
       name: NavigationName.academicPage,
-      page: () => const AcademicScreen(),
+      page: () => AcademicScreen(),
     ),
     GetPage(
       name: NavigationName.keySkillsPage,
-      page: () => const KeySkillsScreen(),
+      page: () => KeySkillsScreen(),
     ),
     GetPage(
       name: NavigationName.employerLoginType,
-      page: () => const EmployerLogin(),
+      page: () => EmployerLogin(),
     ),
     GetPage(
       name: NavigationName.employerLogin,
