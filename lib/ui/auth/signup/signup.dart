@@ -83,15 +83,11 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 30.h),
                       CommonTextField(
-                        hintText: "EMAIL ID *",
-                        controller: controller.email,
-                        validation: (value) {
-                          if (value == null || value == "") {
-                            return "Please enter email";
-                          }
-                          return null;
-                        },
-                      ),
+                          hintText: "EMAIL ID *",
+                          controller: controller.email,
+                          validation: (value) {
+                            return validateEmail(value);
+                          }),
                       SizedBox(height: 30.h),
                       CommonTextField(
                         hintText: "PASSWORD *",
@@ -242,5 +238,16 @@ class SignUpScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String? validateEmail(String? value) {
+    String pattern =
+        r"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$";
+    RegExp regex = RegExp(pattern);
+    if (value == null || value.isEmpty || !regex.hasMatch(value)) {
+      return 'Please enter a valid email address';
+    } else {
+      return null;
+    }
   }
 }

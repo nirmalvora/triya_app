@@ -71,11 +71,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     CommonTextField(
                       hintText: "EMAIL ID *",
                       controller: controller.email,
+                      validation: (value) {
+                        return validateEmail(value);
+                      },
                     ),
                     SizedBox(height: 30.h),
                     CommonTextField(
-                        hintText: "PASSWORD *",
-                        controller: controller.password),
+                      hintText: "PASSWORD *",
+                      controller: controller.password,
+                      validation: (value) {
+                        if (value == null || value == "") {
+                          return "Please enter password";
+                        }
+                        return null;
+                      },
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -213,5 +223,16 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
+  }
+
+  String? validateEmail(String? value) {
+    String pattern =
+        r"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$";
+    RegExp regex = RegExp(pattern);
+    if (value == null || value.isEmpty || !regex.hasMatch(value)) {
+      return 'Please enter a valid email address';
+    } else {
+      return null;
+    }
   }
 }
