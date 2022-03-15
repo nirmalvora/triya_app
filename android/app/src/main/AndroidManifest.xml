@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.getxbaseproject">
+    package="com.npnsolutions.triya">
    <application
-        android:label="getxbaseproject"
+        android:label="triya"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

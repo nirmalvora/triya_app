@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "26544276884",
+    "project_id": "triyaapp-a6e73",
+    "storage_bucket": "triyaapp-a6e73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26544276884:android:c305fcbea4605eb557fb81",
+        "android_client_info": {
+          "package_name": "com.npnsolutions.triya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "26544276884-5b0ojjf6ssc8rps45bsdctibfsfid1a7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrwYC1nENCoeCrTCAvYcDt3uU282pp5u4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "26544276884-5b0ojjf6ssc8rps45bsdctibfsfid1a7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "26544276884-ko99vfs4a0gleglf5mtp0k0ckjradvn8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.npnsolutions.triya"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
