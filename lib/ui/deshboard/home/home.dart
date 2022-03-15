@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               radius: 18,
                               child: Icon(Icons.arrow_back,
                                   color: ColorConstant.backgroundColor),
-                            )
+                            ),
                           ],
                         ),
                       ),

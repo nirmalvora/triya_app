@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/auth/candidate_login/candidate_login_controller.dart';
 import 'package:triya_app/ui/auth/signup/signup_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/common_text_field.dart';
@@ -13,6 +14,7 @@ import 'package:triya_app/utils/common_text_field.dart';
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
   final controller = Get.put(SignUpController());
+  final googleController = Get.put(CandidateLoginController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -184,7 +186,9 @@ class SignUpScreen extends StatelessWidget {
                           ),
                           SizedBox(width: 36.h),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              googleController.signInWithGoogle();
+                            },
                             child: Container(
                               height: 164.h,
                               width: 164.w,
