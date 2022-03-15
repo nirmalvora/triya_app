@@ -135,7 +135,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.candidateLoginType,
-      page: () => const CandidateChooseLoginType(),
+      page: () => CandidateChooseLoginType(),
     ),
     GetPage(
       name: NavigationName.professionalResumePage,

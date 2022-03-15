@@ -6,11 +6,14 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/auth/candidate_login/candidate_login_controller.dart';
 
 import '../../../utils/app_utils.dart';
 
 class CandidateChooseLoginType extends StatelessWidget {
-  const CandidateChooseLoginType({Key? key}) : super(key: key);
+  CandidateChooseLoginType({Key? key}) : super(key: key);
+
+  final controller = Get.put(CandidateLoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +71,9 @@ class CandidateChooseLoginType extends StatelessWidget {
                     image: ImageConstant.facebook_Icon),
                 SizedBox(height: 36.h),
                 CommanLogInButton(
-                    onTap: () {},
+                    onTap: () {
+                      controller.signInWithGoogle();
+                    },
                     title: 'LOGIN WITH GOOGLE',
                     image: ImageConstant.google_Icon),
                 SizedBox(height: 36.h),
