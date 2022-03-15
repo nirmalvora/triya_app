@@ -172,7 +172,7 @@ class BaseApiService {
       if (value.statusCode == HttpStatus.ok ||
           value.statusCode == HttpStatus.created) {
         if (onSuccess != null) {
-          onSuccess(value.data);
+          onSuccess(value.statusMessage);
         }
       } else {
         if (onError != null) {

@@ -4,4 +4,6 @@ class PreferenceKeys {
   static const String selectedLanguage = "selected_language";
   static const String loginId = "login_id";
   static const String loginPassword = "login_password";
+
+  static String accessToken = "access-token";
 }

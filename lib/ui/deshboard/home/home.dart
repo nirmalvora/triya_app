@@ -352,38 +352,23 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CarouselSlider(
-                  items: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(31.r),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
-                              ),
-                              fit: BoxFit.cover)),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(31.r),
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  'http://photo.16pic.com/00/38/88/16pic_3888084_b.jpg'),
-                              fit: BoxFit.cover)),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(31.r),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
-                              ),
-                              fit: BoxFit.cover)),
-                    ),
-                  ],
+                CarouselSlider.builder(
+                  itemCount: 15,
+                  itemBuilder: (BuildContext context, int itemIndex,
+                          int pageViewIndex) =>
+                      Container(
+                    margin: EdgeInsets.symmetric(horizontal: 8.w),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(31.r),
+                        image: DecorationImage(
+                            image: NetworkImage(
+                                'http://photo.16pic.com/00/38/88/16pic_3888084_b.jpg'),
+                            fit: BoxFit.cover)),
+                  ),
                   options: CarouselOptions(
                     height: 341.h,
                     initialPage: 1,
+                    viewportFraction: 0.9,
                     autoPlay: true,
                     autoPlayAnimationDuration: Duration(seconds: 1),
                   ),
@@ -404,222 +389,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 20),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(NavigationName.govJobPage);
-                          },
-                          child: Container(
-                            height: 350.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(60.h),
-                              gradient: LinearGradient(
-                                colors: const [
-                                  Color(0xffDFECFE),
-                                  Color(0xffFFFFFF)
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Column(
-                                children: [
-                                  Spacer(),
-                                  Container(
-                                    height: 166.h,
-                                    width: 166.h,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(43.h),
-                                      gradient: LinearGradient(
-                                        colors: const [
-                                          Color(0xffDFECFE),
-                                          Color(0xffFFFFFF)
-                                        ],
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                      ),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          color: Color.fromRGBO(
-                                              39, 110, 216, 0.08),
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Image.asset(
-                                        AppUtils.getPNGAsset(
-                                            ImageConstant.govIcon),
-                                        height: 74.h,
-                                        width: 74.h,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 66.h,
-                                  ),
-                                  Text(
-                                    'Government Jobs',
-                                    style: TextStyle(
-                                      color: ColorConstant.textColor,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 25.sp,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 20),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(NavigationName.privateJobPage);
-                          },
-                          child: Container(
-                            height: 350.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(60.h),
-                              gradient: LinearGradient(
-                                colors: const [
-                                  Color(0xffDFF8FE),
-                                  Color(0xffffffff)
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Column(
-                                children: [
-                                  Spacer(),
-                                  Container(
-                                    height: 166.h,
-                                    width: 166.h,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(43.h),
-                                      gradient: LinearGradient(
-                                        colors: const [
-                                          Color(0xffDFF8FE),
-                                          Color(0xffFFFFFF)
-                                        ],
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                      ),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          color: Color.fromRGBO(
-                                              39, 110, 216, 0.08),
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Image.asset(
-                                        AppUtils.getPNGAsset(
-                                            ImageConstant.privateIcon),
-                                        height: 74.h,
-                                        width: 74.h,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 66.h,
-                                  ),
-                                  Text(
-                                    'Private Jobs',
-                                    style: TextStyle(
-                                      color: ColorConstant.textColor,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 25.sp,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(NavigationName.scholarshipJobPage);
-                          },
-                          child: Container(
-                            height: 350.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(60.h),
-                              gradient: LinearGradient(
-                                colors: const [
-                                  Color(0xffFEF2DF),
-                                  Color(0xffFFFFFF)
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Column(
-                                children: [
-                                  Spacer(),
-                                  Container(
-                                    height: 166.h,
-                                    width: 166.h,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(43.h),
-                                      gradient: LinearGradient(
-                                        colors: const [
-                                          Color(0xffFEF2DF),
-                                          Color(0xffFFFFFF)
-                                        ],
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                      ),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          color: Color.fromRGBO(
-                                              39, 110, 216, 0.08),
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Image.asset(
-                                        AppUtils.getPNGAsset(
-                                            ImageConstant.scholarshipIcon),
-                                        height: 74.h,
-                                        width: 74.h,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 66.h,
-                                  ),
-                                  Text(
-                                    'Scholarship Jobs',
-                                    style: TextStyle(
-                                      color: ColorConstant.textColor,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 25.sp,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    _buildOption(
+                        'Government Jobs',
+                        ImageConstant.govIcon,
+                        [Color(0xffDFECFE), Color(0xffFFFFFF)],
+                        [Color(0xffDFECFE), Color(0xffFFFFFF)],
+                        Color(0xff276ED8), () {
+                      Get.toNamed(NavigationName.govJobPage);
+                    }),
+                    _buildOption(
+                        'Private Jobs',
+                        ImageConstant.privateIcon,
+                        [Color(0xffDFF8FE), Color(0xffffffff)],
+                        [Color(0xffDFF8FE), Color(0xffFFFFFF)],
+                        Color(0xff04B25F), () {
+                      Get.toNamed(NavigationName.privateJobPage);
+                    }),
+                    _buildOption(
+                        'Scholarship Jobs',
+                        ImageConstant.scholarshipIcon,
+                        [Color(0xffFEF2DF), Color(0xffFFFFFF)],
+                        [Color(0xffFEF2DF), Color(0xffFFFFFF)],
+                        Color(0xffCE8517), () {
+                      Get.toNamed(NavigationName.scholarshipJobPage);
+                    }),
                   ],
                 ),
                 SizedBox(
@@ -972,38 +765,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 122.h,
                 ),
-                CarouselSlider(
-                  items: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(31.r),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
-                              ),
-                              fit: BoxFit.cover)),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(31.r),
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  'http://photo.16pic.com/00/38/88/16pic_3888084_b.jpg'),
-                              fit: BoxFit.cover)),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(31.r),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                AppUtils.getPNGAsset(ImageConstant.bannerIcon),
-                              ),
-                              fit: BoxFit.cover)),
-                    ),
-                  ],
+                CarouselSlider.builder(
+                  itemCount: 15,
+                  itemBuilder: (BuildContext context, int itemIndex,
+                          int pageViewIndex) =>
+                      Container(
+                    margin: EdgeInsets.symmetric(horizontal: 8.w),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(31.r),
+                        image: DecorationImage(
+                            image: NetworkImage(
+                                'http://photo.16pic.com/00/38/88/16pic_3888084_b.jpg'),
+                            fit: BoxFit.cover)),
+                  ),
                   options: CarouselOptions(
                     height: 341.h,
                     initialPage: 1,
+                    viewportFraction: 0.9,
                     autoPlay: true,
                     autoPlayAnimationDuration: Duration(seconds: 1),
                   ),
@@ -1239,6 +1017,74 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildOption(
+      String text, String image, mainGradient, insideGradient, shadow, onTap) {
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.only(right: 18),
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            height: 350.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(60.h),
+              gradient: LinearGradient(
+                colors: mainGradient,
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Column(
+                children: [
+                  Spacer(),
+                  Container(
+                    height: 166.h,
+                    width: 166.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(43.h),
+                      gradient: LinearGradient(
+                        colors: insideGradient,
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 18.h),
+                          blurRadius: 10,
+                          color: shadow.withOpacity(0.08),
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        AppUtils.getPNGAsset(image),
+                        height: 74.h,
+                        width: 74.h,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 66.h,
+                  ),
+                  Text(
+                    text,
+                    style: TextStyle(
+                      color: ColorConstant.textColor,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25.sp,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

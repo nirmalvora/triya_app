@@ -55,11 +55,11 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.signup,
-      page: () => const SignUpScreen(),
+      page: () => SignUpScreen(),
     ),
     GetPage(
       name: NavigationName.otpLogin,
-      page: () => const OTPLoginScreen(),
+      page: () => OTPLoginScreen(),
     ),
     GetPage(
       name: NavigationName.otpSubmit,
@@ -167,11 +167,11 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.employerLogin,
-      page: () => const EmployerSignInScreen(),
+      page: () => EmployerSignInScreen(),
     ),
     GetPage(
       name: NavigationName.employerSignUp,
-      page: () => const EmployerSignUp(),
+      page: () => EmployerSignUp(),
     ),
     GetPage(
       name: NavigationName.employerDashboard,

@@ -4,13 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/auth/employer_login/employer_signin_controller.dart';
 
 import '../../../utils/app_utils.dart';
 import '../../../utils/common_text_field.dart';
 
 class EmployerSignInScreen extends StatelessWidget {
-  const EmployerSignInScreen({Key? key}) : super(key: key);
-
+  EmployerSignInScreen({Key? key}) : super(key: key);
+  final controller = Get.put(EmployerSignInController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,11 +74,13 @@ class EmployerSignInScreen extends StatelessWidget {
                 SizedBox(
                   height: 58.0.h,
                 ),
-                CommonTextField(hintText: "Email Id *"),
+                CommonTextField(
+                    hintText: "Email Id *", controller: controller.email),
                 SizedBox(
                   height: 30.0.h,
                 ),
-                CommonTextField(hintText: "Password *"),
+                CommonTextField(
+                    hintText: "Password *", controller: controller.password),
                 SizedBox(
                   height: 115.0.h,
                 ),

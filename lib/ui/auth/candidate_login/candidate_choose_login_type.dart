@@ -91,6 +91,7 @@ class CandidateChooseLoginType extends StatelessWidget {
                               style: TextStyle(
                                   color: ColorConstant.white,
                                   fontFamily: "OpenSans-Regular",
+                                  letterSpacing: 2,
                                   fontSize: 32.sp),
                             )),
                           ),
@@ -113,6 +114,7 @@ class CandidateChooseLoginType extends StatelessWidget {
                                 child: Text(
                               'SIGN UP',
                               style: TextStyle(
+                                  letterSpacing: 2,
                                   color: ColorConstant.white,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: "OpenSans-Regular",
@@ -161,6 +163,7 @@ class CommanLogInButton extends StatelessWidget {
                     color: ColorConstant.blue,
                     fontFamily: "OpenSans-Regular",
                     fontWeight: FontWeight.w600,
+                    letterSpacing: 2.0,
                     fontSize: 32.sp),
               ),
               SvgPicture.asset(

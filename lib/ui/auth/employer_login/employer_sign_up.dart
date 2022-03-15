@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:triya_app/ui/auth/employer_login/employer_signup_controller.dart';
 
 import '../../../utils/app_utils.dart';
 import '../../../utils/common_text_field.dart';
 
 class EmployerSignUp extends StatelessWidget {
-  const EmployerSignUp({Key? key}) : super(key: key);
-
+  EmployerSignUp({Key? key}) : super(key: key);
+  final controller = Get.put(EmployerSignUpController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,34 +77,48 @@ class EmployerSignUp extends StatelessWidget {
                           SizedBox(
                             height: 58.0.h,
                           ),
-                          CommonTextField(hintText: "First Name *"),
+                          CommonTextField(
+                              hintText: "First Name *",
+                              controller: controller.firstName),
                           SizedBox(
                             height: 30.0.h,
                           ),
-                          CommonTextField(hintText: "last Name *"),
+                          CommonTextField(
+                              hintText: "last Name *",
+                              controller: controller.lastName),
                           SizedBox(
                             height: 30.0.h,
                           ),
-                          CommonTextField(hintText: "Company Name*"),
+                          CommonTextField(
+                              hintText: "Company Name*",
+                              controller: controller.companyName),
                           SizedBox(
                             height: 30.0.h,
                           ),
-                          CommonTextField(hintText: "Email Id *"),
+                          CommonTextField(
+                              hintText: "Email Id *",
+                              controller: controller.email),
                           SizedBox(
                             height: 30.0.h,
                           ),
-                          CommonTextField(hintText: "mobile No*"),
+                          CommonTextField(
+                              hintText: "mobile No*",
+                              controller: controller.mobileNo),
                           SizedBox(
                             height: 30.0.h,
                           ),
                           Row(
                             children: [
                               Expanded(
-                                child: CommonTextField(hintText: "Office No*"),
+                                child: CommonTextField(
+                                    hintText: "Office No*",
+                                    controller: controller.officeNo),
                               ),
                               SizedBox(width: 30.w),
                               Expanded(
-                                child: CommonTextField(hintText: "Area*"),
+                                child: CommonTextField(
+                                    hintText: "Area*",
+                                    controller: controller.area),
                               ),
                             ],
                           ),
@@ -209,11 +224,15 @@ class EmployerSignUp extends StatelessWidget {
                           SizedBox(
                             height: 30.0.h,
                           ),
-                          CommonTextField(hintText: "Password *"),
+                          CommonTextField(
+                              hintText: "Password *",
+                              controller: controller.password),
                           SizedBox(
                             height: 30.0.h,
                           ),
-                          CommonTextField(hintText: "Confirm password *"),
+                          CommonTextField(
+                              hintText: "Confirm password *",
+                              controller: controller.confirmPassword),
                           SizedBox(
                             height: 30.0.h,
                           ),

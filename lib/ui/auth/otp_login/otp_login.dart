@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/auth/otp_login/otp_login_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/common_text_field.dart';
 
 class OTPLoginScreen extends StatelessWidget {
-  const OTPLoginScreen({Key? key}) : super(key: key);
-
+  OTPLoginScreen({Key? key}) : super(key: key);
+  final controller = Get.put(OTPLoginController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +56,10 @@ class OTPLoginScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 124.h),
-                  CommonTextField(hintText: "MOBILE NO *"),
+                  CommonTextField(
+                    hintText: "MOBILE NO *",
+                    controller: controller.mobileNO,
+                  ),
                   SizedBox(height: 70.h),
                   GestureDetector(
                     onTap: () {

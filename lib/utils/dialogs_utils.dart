@@ -2,10 +2,10 @@
 
 import 'dart:io';
 
-import 'package:triya_app/constants/string_res.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:triya_app/constants/string_res.dart';
 
 void showOkCancelAlertDialog({
   required BuildContext context,
@@ -44,9 +44,10 @@ void showOkCancelAlertDialog({
 }
 
 void showAlertDialog(String message) {
-  Get.dialog((Platform.isIOS)
-      ? _showCupertinoAlertDialog(message)
-      : _showMaterialAlertDialog(message));
+  Get.snackbar(
+    message,
+    "",
+  );
 }
 
 CupertinoAlertDialog _showCupertinoAlertDialog(String message) {

@@ -3,8 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommonTextField extends StatelessWidget {
   final String hintText;
-
-  const CommonTextField({Key? key, required this.hintText}) : super(key: key);
+  final TextEditingController controller;
+  final FormFieldValidator? validation;
+  const CommonTextField({
+    Key? key,
+    required this.hintText,
+    required this.controller,
+    this.validation,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,9 @@ class CommonTextField extends StatelessWidget {
         children: [
           Expanded(
             child: TextFormField(
+              controller: controller,
               style: TextStyle(color: Colors.white),
+              validator: validation,
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: hintText.toUpperCase(),
