@@ -1,13 +1,25 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/auth/employe_login/employe_otp_login/employe_otp_login_controller.dart';
+import 'package:triya_app/ui/auth/employe_login/employe_otp_login/employe_otp_submit_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
-class EmployeOTPSubmitScreen extends StatelessWidget {
-  const EmployeOTPSubmitScreen({Key? key}) : super(key: key);
+class EmployeOTPSubmitScreen extends StatefulWidget {
+  EmployeOTPSubmitScreen({Key? key}) : super(key: key);
+
+  @override
+  State<EmployeOTPSubmitScreen> createState() => _EmployeOTPSubmitScreenState();
+}
+
+class _EmployeOTPSubmitScreenState extends State<EmployeOTPSubmitScreen> {
+  final controller = Get.put(OtpSubmitController());
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +56,14 @@ class EmployeOTPSubmitScreen extends StatelessWidget {
                         fontWeight: FontWeight.w700),
                   ),
                   SizedBox(height: 16.h),
-                  Text(
-                    'We have sent an otp to your mobile no 7890******',
-                    style: TextStyle(
-                      color: ColorConstant.white,
-                      fontSize: 30.sp,
-                      fontFamily: "OpenSans-Regular",
+                  Obx(
+                    () => Text(
+                      'We have sent an otp to your mobile no +91 ${controller.mobileNO}',
+                      style: TextStyle(
+                        color: ColorConstant.white,
+                        fontSize: 30.sp,
+                        fontFamily: "OpenSans-Regular",
+                      ),
                     ),
                   ),
                   SizedBox(height: 124.h),
@@ -62,6 +76,7 @@ class EmployeOTPSubmitScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: TextFormField(
+                            controller: controller.otpController,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 border: InputBorder.none,
@@ -72,7 +87,9 @@ class EmployeOTPSubmitScreen extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.verifyPhone();
+                          },
                           child: Text(
                             'RESEND',
                             style: TextStyle(
@@ -89,7 +106,7 @@ class EmployeOTPSubmitScreen extends StatelessWidget {
                   SizedBox(height: 70.h),
                   GestureDetector(
                     onTap: () {
-                      // Get.toNamed(NavigationName.otpLogin);
+                      controller.verifyNumber();
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(

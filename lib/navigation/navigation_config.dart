@@ -62,7 +62,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.otpSubmit,
-      page: () => const EmployeOTPSubmitScreen(),
+      page: () => EmployeOTPSubmitScreen(),
     ),
     GetPage(
       name: NavigationName.dashboard,

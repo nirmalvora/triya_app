@@ -1,5 +1,6 @@
 class PreferenceKeys {
   static const String isLogin = "is_login";
+  static const String userProfile = "userProfile";
   static const String userID = "user_name";
   static const String userRole = "user_role";
   static const String selectedLanguage = "selected_language";

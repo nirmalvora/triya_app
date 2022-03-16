@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/local_data/app_state.dart';
+import 'package:triya_app/model/login_response.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/preference/preference_keys.dart';
 import 'package:triya_app/preference/prerences.dart';
@@ -30,6 +34,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void navigationMethod() {
     Future.delayed(const Duration(seconds: 3), () {
       if (Preferences.getBool(PreferenceKeys.isLogin, false)) {
+        AppState.loginData = LoginResponse.fromJson(jsonDecode(
+                Preferences.getString(PreferenceKeys.userProfile, "")))
+            .data;
+        print(
+            jsonDecode(Preferences.getString(PreferenceKeys.userProfile, "")));
         if (Preferences.getInt(PreferenceKeys.userRole, -1) == 2) {
           Get.offAllNamed(NavigationName.dashboard);
         } else {

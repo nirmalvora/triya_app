@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/employe_login/employe_otp_login/employe_otp_login_controller.dart';
@@ -62,7 +63,9 @@ class EmployeOTPLoginScreen extends StatelessWidget {
                   SizedBox(height: 70.h),
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed(NavigationName.otpSubmit);
+                      Get.toNamed(NavigationName.otpSubmit, arguments: {
+                        AppConstants.mobileNo: controller.mobileNO.text
+                      });
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(
