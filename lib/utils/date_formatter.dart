@@ -35,11 +35,9 @@ class DateFormatter {
     return formattedDate;
   }
 
-  static DateTime convertDateFromString(String strDate, {String? format}) {
-    DateTime todayDate = DateFormat(format ?? 'yyyy-MM-ddThh:mm:ss')
-        .parse(strDate, true)
-        .toLocal();
-    return todayDate;
+  static String convertDateFromString(String strDate, {String? format}) {
+    return DateFormat(format)
+        .format(DateFormat("dd-MM-yyyy").parse(strDate, true).toLocal());
   }
 
   static String formatFromDate(DateTime dateTime) {

@@ -8,6 +8,7 @@ class HomeController extends GetxController {
   final topBannerResponse = Rx<TopBannerResponse?>(null);
   final bottomBannerResponse = Rx<TopBannerResponse?>(null);
   final bookCategoryResponse = Rx<BookCategoryResponse?>(null);
+  final videoCategoryResponse = Rx<BookCategoryResponse?>(null);
 
   @override
   void onReady() {
@@ -19,6 +20,7 @@ class HomeController extends GetxController {
     getTopBannerData();
     getBottomBannerData();
     getBookCategoryData();
+    getVideoCategoryData();
   }
 
   void getTopBannerData() {
@@ -42,6 +44,14 @@ class HomeController extends GetxController {
       BookCategoryResponse response =
           BookCategoryResponse.fromJson(value!.data);
       bookCategoryResponse.value = response;
+    });
+  }
+
+  void getVideoCategoryData() {
+    BaseApiService.instance.get(ServiceConstant.getVideoCategory).then((value) {
+      BookCategoryResponse response =
+          BookCategoryResponse.fromJson(value!.data);
+      videoCategoryResponse.value = response;
     });
   }
 }

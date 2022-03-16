@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/private/private_job_detail_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class PrivateDescription extends StatefulWidget {
@@ -16,6 +16,7 @@ class PrivateDescription extends StatefulWidget {
 }
 
 class _PrivateDescriptionState extends State<PrivateDescription> {
+  final controller = Get.put(PrivateJobDetailController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +58,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            /*  Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               decoration: BoxDecoration(
                 color: ColorConstant.backgroundColor,
@@ -102,11 +103,11 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                   )
                 ],
               ),
-            ),
+            ),*/
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Text(
-                'Staff Car Driver(Ordinary Grade de)',
+                controller.govJob.value?.title ?? "",
                 style: TextStyle(
                   color: ColorConstant.textColor,
                   fontWeight: FontWeight.w600,
@@ -223,7 +224,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                       ),
                       Spacer(),
                       Text(
-                        'Matriculation with valid driving liscence',
+                        controller.govJob.value?.qualification ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -262,7 +263,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                       ),
                       Spacer(),
                       Text(
-                        'Central Ground Water Board',
+                        controller.govJob.value?.board ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -301,7 +302,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                       ),
                       Spacer(),
                       Text(
-                        'https://www.naukri.com/job-listings-graphic-designe',
+                        controller.govJob.value?.jobLink ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -341,7 +342,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                         height: 7,
                       ),
                       Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet condimentum ullamcorper amet tristique et enim mauris. Laoreet curabitur maecenas elit enim sed. ',
+                        controller.govJob.value?.jobDescription ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,

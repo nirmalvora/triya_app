@@ -120,30 +120,33 @@ class _BooksScreenState extends State<BooksScreen> {
                 physics: BouncingScrollPhysics(),
                 padding: EdgeInsets.zero,
                 itemCount:
-                    controller.bookCategoryResponse.value?.data?.data?.length ??
-                        0,
+                    controller.bookCategoryResponse.value?.data?.length ?? 0,
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                     onTap: () {
                       Get.toNamed(NavigationName.bookCategoryPage, arguments: {
                         AppConstants.bookCategoryId: controller
-                            .bookCategoryResponse.value?.data?.data![index].id
+                            .bookCategoryResponse.value?.data![index].id
                       });
                     },
                     child: Column(
                       children: [
-                        Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.r)),child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16.r),
-                          child: Image.network(
-                              controller.bookCategoryResponse.value?.data
-                                  ?.data![index].image ??
-                                  'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-                              height: 230.h,
-                              fit: BoxFit.cover),
-                        ),),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16.r)),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16.r),
+                            child: Image.network(
+                                controller.bookCategoryResponse.value
+                                        ?.data![index].image ??
+                                    'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
+                                height: 230.h,
+                                fit: BoxFit.cover),
+                          ),
+                        ),
                         Text(
-                          controller.bookCategoryResponse.value?.data
-                                  ?.data![index].name ??
+                          controller.bookCategoryResponse.value?.data![index]
+                                  .name ??
                               '',
                           style: TextStyle(
                             color: ColorConstant.textColor,
