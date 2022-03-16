@@ -8,6 +8,7 @@ import 'package:triya_app/services/api_service_methods.dart';
 class BookController extends GetxController {
   final bookDataResponse = Rx<BookDataResponse?>(null);
   final loading = false.obs;
+  final searchText = "".obs;
   @override
   void onReady() {
     super.onReady();

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/scholarship/scholarship_job_deatil_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/utils/date_formatter.dart';
 
 class ScholarshipDescription extends StatefulWidget {
   const ScholarshipDescription({Key? key}) : super(key: key);
@@ -14,6 +16,7 @@ class ScholarshipDescription extends StatefulWidget {
 }
 
 class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
+  final controller = Get.put(ScholarshipJobDetailController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +58,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            /* Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               decoration: BoxDecoration(
                 color: ColorConstant.backgroundColor,
@@ -100,11 +103,11 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                   )
                 ],
               ),
-            ),
+            ),*/
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Text(
-                'Staff Car Driver(Ordinary Grade de)',
+                controller.govJob.value?.title ?? "",
                 style: TextStyle(
                   color: ColorConstant.textColor,
                   fontWeight: FontWeight.w600,
@@ -141,7 +144,9 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                           ),
                           Spacer(),
                           Text(
-                            '24th Dec, 2020',
+                            DateFormatter.convertDateFromString(
+                                controller.govJob.value?.postDate ?? "",
+                                format: "dd-MMM-yyyy"),
                             style: TextStyle(
                               color: ColorConstant.textColor,
                               fontWeight: FontWeight.w400,
@@ -180,7 +185,9 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                           ),
                           Spacer(),
                           Text(
-                            '01st Jan, 2021',
+                            DateFormatter.convertDateFromString(
+                                controller.govJob.value?.lastDate ?? "",
+                                format: "dd-MMM-yyyy"),
                             style: TextStyle(
                               color: ColorConstant.textColor,
                               fontWeight: FontWeight.w400,
@@ -221,7 +228,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                       ),
                       Spacer(),
                       Text(
-                        'Matriculation with valid driving liscence',
+                        controller.govJob.value?.qualification ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -260,7 +267,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                       ),
                       Spacer(),
                       Text(
-                        'Central Ground Water Board',
+                        controller.govJob.value?.board ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -299,7 +306,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                       ),
                       Spacer(),
                       Text(
-                        'https://www.naukri.com/job-listings-graphic-designe',
+                        controller.govJob.value?.jobLink ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -339,7 +346,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                         height: 7,
                       ),
                       Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet condimentum ullamcorper amet tristique et enim mauris. Laoreet curabitur maecenas elit enim sed. ',
+                        controller.govJob.value?.jobDescription ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,

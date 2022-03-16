@@ -72,6 +72,10 @@ class _GovJobScreenState extends State<GovJobScreen> {
                 children: [
                   Expanded(
                     child: TextField(
+                      onChanged: (value) {
+                        controller.searchText.value = value;
+                        controller.searchText.refresh();
+                      },
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         fillColor: Color(0xffF5F5F5),
@@ -183,7 +187,14 @@ class _GovJobScreenState extends State<GovJobScreen> {
           ),*/
           Expanded(
             child: Obx(
-              () => controller.govJobResponse.value == null &&
+              () => ((controller.govJobResponse.value?.data
+                                      ?.where(((element) => element.title!
+                                          .contains(
+                                              controller.searchText.value)))
+                                      .length ??
+                                  0) ==
+                              0) ==
+                          null &&
                       controller.loading.value
                   ? Center(
                       child: CircularProgressIndicator(),
@@ -194,9 +205,11 @@ class _GovJobScreenState extends State<GovJobScreen> {
                         )
                       : ListView.builder(
                           physics: BouncingScrollPhysics(),
-                          itemCount:
-                              controller.govJobResponse.value?.data?.length ??
-                                  0,
+                          itemCount: controller.govJobResponse.value?.data
+                                  ?.where(((element) => element.title!
+                                      .contains(controller.searchText.value)))
+                                  .length ??
+                              0,
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {

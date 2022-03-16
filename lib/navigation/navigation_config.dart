@@ -82,7 +82,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.videoPage,
-      page: () => const VideoScreen(),
+      page: () => VideoScreen(),
     ),
     GetPage(
       name: NavigationName.videoCategoryPage,
@@ -114,7 +114,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.scholarshipJobPage,
-      page: () => const ScholarshipJobScreen(),
+      page: () => ScholarshipJobScreen(),
     ),
     GetPage(
       name: NavigationName.scholarshipJobDescPage,

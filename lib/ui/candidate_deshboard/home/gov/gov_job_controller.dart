@@ -6,6 +6,7 @@ import 'package:triya_app/services/api_service_methods.dart';
 class GovJobController extends GetxController {
   final govJobResponse = Rx<GovJobResponse?>(null);
   final loading = false.obs;
+  final searchText = "".obs;
   @override
   void onReady() {
     super.onReady();

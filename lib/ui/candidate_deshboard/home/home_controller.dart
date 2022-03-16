@@ -9,7 +9,7 @@ class HomeController extends GetxController {
   final bottomBannerResponse = Rx<TopBannerResponse?>(null);
   final bookCategoryResponse = Rx<BookCategoryResponse?>(null);
   final videoCategoryResponse = Rx<BookCategoryResponse?>(null);
-
+  final searchText = "".obs;
   @override
   void onReady() {
     super.onReady();

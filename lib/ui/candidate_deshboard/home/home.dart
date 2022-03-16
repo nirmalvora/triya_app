@@ -892,8 +892,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       shrinkWrap: true,
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.horizontal,
-                      itemCount:
-                          controller.bookCategoryResponse.value?.data?.length ??
+                      itemCount: (controller.bookCategoryResponse.value?.data
+                                      ?.length ??
+                                  0) >
+                              5
+                          ? 5
+                          : controller
+                                  .bookCategoryResponse.value?.data?.length ??
                               0,
                       itemBuilder: (context, index) {
                         return Padding(

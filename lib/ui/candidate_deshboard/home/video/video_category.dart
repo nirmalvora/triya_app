@@ -62,6 +62,10 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
               children: [
                 Expanded(
                   child: TextField(
+                    onChanged: (value) {
+                      controller.searchText.value = value;
+                      controller.searchText.refresh();
+                    },
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       fillColor: Color(0xffF5F5F5),
@@ -99,7 +103,14 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
             ),
             Expanded(
               child: Obx(
-                () => controller.videoDataResponse.value == null &&
+                () => ((controller.videoDataResponse.value?.data
+                                        ?.where(((element) => element.title!
+                                            .contains(
+                                                controller.searchText.value)))
+                                        .length ??
+                                    0) ==
+                                0) ==
+                            null &&
                         controller.loading.value
                     ? Center(
                         child: CircularProgressIndicator(),
@@ -111,8 +122,10 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
                             child: Text("No Data Found"),
                           )
                         : ListView.builder(
-                            itemCount: controller
-                                    .videoDataResponse.value?.data?.length ??
+                            itemCount: controller.videoDataResponse.value?.data
+                                    ?.where(((element) => element.title!
+                                        .contains(controller.searchText.value)))
+                                    .length ??
                                 0,
                             padding: EdgeInsets.zero,
                             physics: BouncingScrollPhysics(),

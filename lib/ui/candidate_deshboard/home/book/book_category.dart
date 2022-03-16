@@ -63,6 +63,10 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
               children: [
                 Expanded(
                   child: TextField(
+                    onChanged: (value) {
+                      controller.searchText.value = value;
+                      controller.searchText.refresh();
+                    },
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       fillColor: Color(0xffF5F5F5),
@@ -100,7 +104,14 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
             ),
             Expanded(
               child: Obx(
-                () => controller.bookDataResponse.value == null &&
+                () => ((controller.bookDataResponse.value?.data
+                                        ?.where(((element) => element.title!
+                                            .contains(
+                                                controller.searchText.value)))
+                                        .length ??
+                                    0) ==
+                                0) ==
+                            null &&
                         controller.loading.value
                     ? Center(
                         child: CircularProgressIndicator(),
@@ -111,8 +122,10 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
                             child: Text("No Data Found"),
                           )
                         : ListView.builder(
-                            itemCount: controller
-                                    .bookDataResponse.value?.data?.length ??
+                            itemCount: controller.bookDataResponse.value?.data
+                                    ?.where(((element) => element.title!
+                                        .contains(controller.searchText.value)))
+                                    .length ??
                                 0,
                             padding: EdgeInsets.zero,
                             physics: BouncingScrollPhysics(),

@@ -22,8 +22,8 @@ class ServiceConstant {
   static const String professionalAffiliations =
       "api/create-professional-affiliations";
   static const String conferenceAttended = "api/create-conference-attendeds";
+  static String additionalTraining = "api/create-additional-trains";
 
   static String getGovJob = "api/get-gov";
   static String getPrivateJob = "api/get-job-post";
-  static String additionalTraining = "api/create-additional-trains";
 }

@@ -3,19 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/scholarship/scholarship_job_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class ScholarshipJobScreen extends StatefulWidget {
-  const ScholarshipJobScreen({Key? key}) : super(key: key);
+  ScholarshipJobScreen({Key? key}) : super(key: key);
 
   @override
   _ScholarshipJobScreenState createState() => _ScholarshipJobScreenState();
 }
 
 class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
+  final controller = Get.put(ScholarshipJobController());
   int? selected = 0;
   @override
   Widget build(BuildContext context) {
@@ -71,6 +72,10 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                 children: [
                   Expanded(
                     child: TextField(
+                      onChanged: (value) {
+                        controller.searchText.value = value;
+                        controller.searchText.refresh();
+                      },
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         fillColor: Color(0xffF5F5F5),
@@ -108,7 +113,7 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
           SizedBox(
             height: 15,
           ),
-          SizedBox(
+          /*SizedBox(
             height: 100.h,
             child: ListView.builder(
               shrinkWrap: true,
@@ -179,91 +184,125 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
           ),
           SizedBox(
             height: 20,
-          ),
+          ),*/
           Expanded(
-            child: ListView.builder(
-              physics: BouncingScrollPhysics(),
-              itemCount: 8,
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Get.toNamed(NavigationName.scholarshipJobDescPage);
-                  },
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
-                    child: Container(
-                      height: 140.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        gradient: LinearGradient(
-                          colors: const [Color(0xffffffff), Color(0xffFEF2DF)],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Staff Car Driver(Ordinary Grade de) - 24 post',
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    color: ColorConstant.textColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 30.sp,
+            child: Obx(
+              () => ((controller.govJobResponse.value?.data
+                                      ?.where(((element) => element.title!
+                                          .contains(
+                                              controller.searchText.value)))
+                                      .length ??
+                                  0) ==
+                              0) ==
+                          null &&
+                      controller.loading.value
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ((controller.govJobResponse.value?.data?.length ?? 0) == 0)
+                      ? Center(
+                          child: Text("No Data Found"),
+                        )
+                      : ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          itemCount: controller.govJobResponse.value?.data
+                                  ?.where(((element) => element.title!
+                                      .contains(controller.searchText.value)))
+                                  .length ??
+                              0,
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Get.toNamed(
+                                    NavigationName.scholarshipJobDescPage);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 7),
+                                child: Container(
+                                  height: 140.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    gradient: LinearGradient(
+                                      colors: const [
+                                        Color(0xffffffff),
+                                        Color(0xffFEF2DF)
+                                      ],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              controller.govJobResponse.value
+                                                      ?.data?[index].title ??
+                                                  "",
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                color: ColorConstant.textColor,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 30.sp,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              'Post Date: ${controller.govJobResponse.value?.data?[index].postDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.data?[index].lastDate ?? ""}',
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                color:
+                                                    ColorConstant.hintTextColor,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 25.sp,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 5),
+                                          height: 100.h,
+                                          width: 100.h,
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: const [
+                                                Color(0xff3782F3),
+                                                Color(0xff276ED8)
+                                              ],
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(27.h),
+                                          ),
+                                          child: Icon(
+                                            Icons.keyboard_arrow_right_outlined,
+                                            color:
+                                                ColorConstant.backgroundColor,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'Post Date: 24.12.2020     |     Last Date: 01.01.2021',
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    color: ColorConstant.hintTextColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 25.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer(),
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 5),
-                              height: 100.h,
-                              width: 100.h,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: const [
-                                    Color(0xff3782F3),
-                                    Color(0xff276ED8)
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                ),
-                                borderRadius: BorderRadius.circular(27.h),
                               ),
-                              child: Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                color: ColorConstant.backgroundColor,
-                                size: 30,
-                              ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
-                      ),
-                    ),
-                  ),
-                );
-              },
             ),
           )
         ],
