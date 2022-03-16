@@ -36,266 +36,301 @@ class _HomeScreenState extends State<HomeScreen> {
             topRight: Radius.circular(46.h),
           ),
         ),
-        child: Column(
-          children: [
-            Container(
-              height: 390.h,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(46.h),
-                ),
-                image: DecorationImage(
-                  image: AssetImage(
-                    AppUtils.getPNGAsset(ImageConstant.drawerImage),
+        child: Expanded(
+          child: Column(
+            children: [
+              Container(
+                height: 390.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(46.h),
                   ),
-                  fit: BoxFit.cover,
+                  image: DecorationImage(
+                    image: AssetImage(
+                      AppUtils.getPNGAsset(ImageConstant.drawerImage),
+                    ),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 30, right: 15, left: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Stack(
-                          overflow: Overflow.visible,
-                          alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 30, right: 15, left: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Stack(
+                            overflow: Overflow.visible,
+                            alignment: Alignment.center,
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: ColorConstant.backgroundColor
+                                    .withOpacity(0.1),
+                                radius: 24,
+                              ),
+                              CircleAvatar(
+                                backgroundColor: ColorConstant.backgroundColor
+                                    .withOpacity(0.1),
+                                radius: 18,
+                                child: Icon(Icons.arrow_back,
+                                    color: ColorConstant.backgroundColor),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10, left: 10),
+                        child: Row(
                           children: [
                             CircleAvatar(
-                              backgroundColor: ColorConstant.backgroundColor
-                                  .withOpacity(0.1),
-                              radius: 24,
+                              radius: 26,
+                              backgroundImage: AssetImage(
+                                AppUtils.getPNGAsset(
+                                    ImageConstant.myProfileIcon),
+                              ),
                             ),
-                            CircleAvatar(
-                              backgroundColor: ColorConstant.backgroundColor
-                                  .withOpacity(0.1),
-                              radius: 18,
-                              child: Icon(Icons.arrow_back,
-                                  color: ColorConstant.backgroundColor),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Danny Joseph',
+                                  style: TextStyle(
+                                    color: ColorConstant.backgroundColor,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: TextFontFamily.openSansBold,
+                                    fontSize: 40.sp,
+                                  ),
+                                ),
+                                Text(
+                                  'Danny Joseph',
+                                  style: TextStyle(
+                                    color: ColorConstant.backgroundColor,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 30.sp,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10, left: 10),
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 26,
-                            backgroundImage: AssetImage(
-                              AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 20),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              AppUtils.getSVGAsset(ImageConstant.homeIcon),
+                              height: 45.h,
+                              width: 51.w,
                             ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'Home',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 96.h,
+                        ),
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              AppUtils.getSVGAsset(ImageConstant.profileIcon),
+                              height: 45.h,
+                              width: 51.w,
+                            ),
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'My Account',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 96.h,
+                        ),
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              AppUtils.getSVGAsset(ImageConstant.lobsIcon),
+                              height: 45.h,
+                              width: 51.w,
+                            ),
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'Applied Lobs',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 96.h,
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(
+                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                              height: 62.h,
+                              width: 62.w,
+                            ),
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'My Favorites',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 96.h,
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(
+                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                              height: 62.h,
+                              width: 62.w,
+                            ),
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'Favorites Books',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 96.h,
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(
+                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                              height: 62.h,
+                              width: 62.w,
+                            ),
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'Favorites Video',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 96.h,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(NavigationName.resumePage);
+                          },
+                          child: Row(
                             children: [
-                              Text(
-                                'Danny Joseph',
-                                style: TextStyle(
-                                  color: ColorConstant.backgroundColor,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: TextFontFamily.openSansBold,
-                                  fontSize: 40.sp,
-                                ),
+                              Image.asset(
+                                AppUtils.getPNGAsset(
+                                    ImageConstant.favoritesIcon),
+                                height: 62.h,
+                                width: 62.w,
+                              ),
+                              SizedBox(
+                                width: 25.w,
                               ),
                               Text(
-                                'Danny Joseph',
+                                'My Resume',
                                 style: TextStyle(
-                                  color: ColorConstant.backgroundColor,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 30.sp,
+                                  color: ColorConstant.textColor,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 45.sp,
                                 ),
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppUtils.getSVGAsset(ImageConstant.homeIcon),
-                        height: 45.h,
-                        width: 51.w,
-                      ),
-                      SizedBox(
-                        width: 25.w,
-                      ),
-                      Text(
-                        'Home',
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 45.sp,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 96.h,
-                  ),
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppUtils.getSVGAsset(ImageConstant.profileIcon),
-                        height: 45.h,
-                        width: 51.w,
-                      ),
-                      SizedBox(
-                        width: 25.w,
-                      ),
-                      Text(
-                        'My Account',
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 45.sp,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 96.h,
-                  ),
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppUtils.getSVGAsset(ImageConstant.lobsIcon),
-                        height: 45.h,
-                        width: 51.w,
-                      ),
-                      SizedBox(
-                        width: 25.w,
-                      ),
-                      Text(
-                        'Applied Lobs',
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 45.sp,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 96.h,
-                  ),
-                  Row(
-                    children: [
-                      Image.asset(
-                        AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                        height: 62.h,
-                        width: 62.w,
-                      ),
-                      SizedBox(
-                        width: 25.w,
-                      ),
-                      Text(
-                        'My Favorites',
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 45.sp,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 96.h,
-                  ),
-                  Row(
-                    children: [
-                      Image.asset(
-                        AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                        height: 62.h,
-                        width: 62.w,
-                      ),
-                      SizedBox(
-                        width: 25.w,
-                      ),
-                      Text(
-                        'Favorites Books',
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 45.sp,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 96.h,
-                  ),
-                  Row(
-                    children: [
-                      Image.asset(
-                        AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                        height: 62.h,
-                        width: 62.w,
-                      ),
-                      SizedBox(
-                        width: 25.w,
-                      ),
-                      Text(
-                        'Favorites Video',
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 45.sp,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 96.h,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(NavigationName.resumePage);
-                    },
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                          height: 62.h,
-                          width: 62.w,
                         ),
                         SizedBox(
-                          width: 25.w,
+                          height: 86.h,
                         ),
-                        Text(
-                          'My Resume',
-                          style: TextStyle(
-                            color: ColorConstant.textColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 45.sp,
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.logout,
+                                size: 62.w,
+                                color: ColorConstant.grey.withOpacity(0.4),
+                              ),
+                              SizedBox(
+                                width: 25.w,
+                              ),
+                              Text(
+                                'Logout',
+                                style: TextStyle(
+                                  color: ColorConstant.textColor,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 45.sp,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       appBar: AppBar(
