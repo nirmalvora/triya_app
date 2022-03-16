@@ -25,4 +25,5 @@ class ServiceConstant {
 
   static String getGovJob = "api/get-gov";
   static String getPrivateJob = "api/get-job-post";
+  static String additionalTraining = "api/create-additional-trains";
 }
