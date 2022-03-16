@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_job_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class GovJobScreen extends StatefulWidget {
@@ -16,6 +16,7 @@ class GovJobScreen extends StatefulWidget {
 }
 
 class _GovJobScreenState extends State<GovJobScreen> {
+  final controller = Get.put(GovJobController());
   int? selected = 0;
   @override
   Widget build(BuildContext context) {
@@ -75,7 +76,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
                         border: InputBorder.none,
                         fillColor: Color(0xffF5F5F5),
                         filled: true,
-                        hintText: "Search for book category here",
+                        hintText: "Search for job here",
                         hintStyle: TextStyle(
                           fontSize: 26.h,
                         ),
@@ -108,7 +109,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
           SizedBox(
             height: 15,
           ),
-          SizedBox(
+          /*   SizedBox(
             height: 100.h,
             child: ListView.builder(
               shrinkWrap: true,
@@ -152,8 +153,8 @@ class _GovJobScreenState extends State<GovJobScreen> {
           ),
           SizedBox(
             height: 100.h,
-          ),
-          Padding(
+          ),*/
+          /* Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Text(
               'Category A Jobs',
@@ -164,8 +165,8 @@ class _GovJobScreenState extends State<GovJobScreen> {
                 fontSize: 52.sp,
               ),
             ),
-          ),
-          Padding(
+          ),*/
+          /* Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Text(
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vitae pulvinar sagittis.',
@@ -176,94 +177,122 @@ class _GovJobScreenState extends State<GovJobScreen> {
                 fontSize: 22.sp,
               ),
             ),
-          ),
-          SizedBox(
+          ),*/
+          /*  SizedBox(
             height: 20,
-          ),
+          ),*/
           Expanded(
-            child: ListView.builder(
-              physics: BouncingScrollPhysics(),
-              itemCount: 8,
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Get.toNamed(NavigationName.govJobDescPage);
-                  },
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
-                    child: Container(
-                      height: 140.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        gradient: LinearGradient(
-                          colors: const [Color(0xffffffff), Color(0xffDFECFE)],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Staff Car Driver(Ordinary Grade de) - 24 post',
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    color: ColorConstant.textColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 30.sp,
+            child: Obx(
+              () => controller.govJobResponse.value == null &&
+                      controller.loading.value
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ((controller.govJobResponse.value?.data?.length ?? 0) == 0)
+                      ? Center(
+                          child: Text("No Data Found"),
+                        )
+                      : ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          itemCount:
+                              controller.govJobResponse.value?.data?.length ??
+                                  0,
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Get.toNamed(NavigationName.govJobDescPage,
+                                    arguments: {
+                                      "gov_job_data": controller
+                                          .govJobResponse.value?.data?[index]
+                                    });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 7),
+                                child: Container(
+                                  height: 140.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    gradient: LinearGradient(
+                                      colors: const [
+                                        Color(0xffffffff),
+                                        Color(0xffDFECFE)
+                                      ],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              controller.govJobResponse.value
+                                                      ?.data?[index].title ??
+                                                  "",
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                color: ColorConstant.textColor,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 30.sp,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              'Post Date: ${controller.govJobResponse.value?.data?[index].postDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.data?[index].lastDate ?? ""}',
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                color:
+                                                    ColorConstant.hintTextColor,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 25.sp,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 5),
+                                          height: 100.h,
+                                          width: 100.h,
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: const [
+                                                Color(0xff3782F3),
+                                                Color(0xff276ED8)
+                                              ],
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(27.h),
+                                          ),
+                                          child: Icon(
+                                            Icons.keyboard_arrow_right_outlined,
+                                            color:
+                                                ColorConstant.backgroundColor,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'Post Date: 24.12.2020     |     Last Date: 01.01.2021',
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    color: ColorConstant.hintTextColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 25.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer(),
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 5),
-                              height: 100.h,
-                              width: 100.h,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: const [
-                                    Color(0xff3782F3),
-                                    Color(0xff276ED8)
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                ),
-                                borderRadius: BorderRadius.circular(27.h),
                               ),
-                              child: Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                color: ColorConstant.backgroundColor,
-                                size: 30,
-                              ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
-                      ),
-                    ),
-                  ),
-                );
-              },
             ),
           )
         ],

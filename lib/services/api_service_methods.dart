@@ -36,7 +36,6 @@ class BaseApiService {
       onRequest: (options, handler) async {
         var accessToken =
             await Preferences.getString(PreferenceKeys.accessToken, "");
-        print(accessToken);
         options.headers = {
           'Authorization': 'Bearer $accessToken',
         };

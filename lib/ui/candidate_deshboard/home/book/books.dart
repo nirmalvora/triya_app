@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class BooksScreen extends StatefulWidget {
@@ -15,6 +17,8 @@ class BooksScreen extends StatefulWidget {
 }
 
 class _BooksScreenState extends State<BooksScreen> {
+  final controller = Get.put(HomeController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,24 +113,41 @@ class _BooksScreenState extends State<BooksScreen> {
             Expanded(
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3, mainAxisSpacing: 10),
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10),
                 shrinkWrap: true,
                 physics: BouncingScrollPhysics(),
                 padding: EdgeInsets.zero,
-                itemCount: 12,
+                itemCount:
+                    controller.bookCategoryResponse.value?.data?.length ?? 0,
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                     onTap: () {
-                      Get.offNamed(NavigationName.bookCategoryPage);
+                      Get.toNamed(NavigationName.bookCategoryPage, arguments: {
+                        AppConstants.bookCategoryId: controller
+                            .bookCategoryResponse.value?.data![index].id
+                      });
                     },
                     child: Column(
                       children: [
-                        Image.asset(
-                          AppUtils.getPNGAsset(ImageConstant.bookImage),
-                          height: 250.h,
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16.r)),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16.r),
+                            child: Image.network(
+                                controller.bookCategoryResponse.value
+                                        ?.data![index].image ??
+                                    'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
+                                height: 230.h,
+                                fit: BoxFit.cover),
+                          ),
                         ),
                         Text(
-                          'Book Category',
+                          controller.bookCategoryResponse.value?.data![index]
+                                  .name ??
+                              '',
                           style: TextStyle(
                             color: ColorConstant.textColor,
                             fontWeight: FontWeight.w700,

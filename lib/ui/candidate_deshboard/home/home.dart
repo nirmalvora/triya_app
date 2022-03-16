@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
@@ -354,27 +355,29 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CarouselSlider.builder(
-                  itemCount:
-                      controller.topBannerResponse.value?.data?.length ?? 0,
-                  itemBuilder: (BuildContext context, int itemIndex,
-                          int pageViewIndex) =>
-                      Container(
-                    margin: EdgeInsets.symmetric(horizontal: 8.w),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(31.r),
-                        image: DecorationImage(
-                            image: NetworkImage(controller.topBannerResponse
-                                    .value?.data?[itemIndex].image ??
-                                ""),
-                            fit: BoxFit.cover)),
-                  ),
-                  options: CarouselOptions(
-                    height: 341.h,
-                    initialPage: 1,
-                    viewportFraction: 0.9,
-                    autoPlay: true,
-                    autoPlayAnimationDuration: Duration(seconds: 1),
+                Obx(
+                  () => CarouselSlider.builder(
+                    itemCount:
+                        controller.topBannerResponse.value?.data?.length ?? 0,
+                    itemBuilder: (BuildContext context, int itemIndex,
+                            int pageViewIndex) =>
+                        Container(
+                      margin: EdgeInsets.symmetric(horizontal: 8.w),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: NetworkImage(controller.topBannerResponse
+                                      .value?.data?[itemIndex].image ??
+                                  ""),
+                              fit: BoxFit.cover)),
+                    ),
+                    options: CarouselOptions(
+                      height: 341.h,
+                      initialPage: 1,
+                      viewportFraction: 0.9,
+                      autoPlay: true,
+                      autoPlayAnimationDuration: Duration(seconds: 1),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -769,25 +772,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 122.h,
                 ),
-                CarouselSlider.builder(
-                  itemCount: 15,
-                  itemBuilder: (BuildContext context, int itemIndex,
-                          int pageViewIndex) =>
-                      Container(
-                    margin: EdgeInsets.symmetric(horizontal: 8.w),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(31.r),
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                'http://photo.16pic.com/00/38/88/16pic_3888084_b.jpg'),
-                            fit: BoxFit.cover)),
-                  ),
-                  options: CarouselOptions(
-                    height: 341.h,
-                    initialPage: 1,
-                    viewportFraction: 0.9,
-                    autoPlay: true,
-                    autoPlayAnimationDuration: Duration(seconds: 1),
+                Obx(
+                  () => CarouselSlider.builder(
+                    itemCount:
+                        controller.bottomBannerResponse.value?.data?.length ??
+                            0,
+                    itemBuilder: (BuildContext context, int itemIndex,
+                            int pageViewIndex) =>
+                        Container(
+                      margin: EdgeInsets.symmetric(horizontal: 8.w),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: NetworkImage(controller
+                                      .bottomBannerResponse
+                                      .value
+                                      ?.data?[itemIndex]
+                                      .image ??
+                                  ''),
+                              fit: BoxFit.cover)),
+                    ),
+                    options: CarouselOptions(
+                      height: 341.h,
+                      initialPage: 1,
+                      viewportFraction: 0.9,
+                      autoPlay: true,
+                      autoPlayAnimationDuration: Duration(seconds: 1),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -838,72 +849,92 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 30.h,
                 ),
-                SizedBox(
-                  height: 400.h,
-                  child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 30),
-                        child: SizedBox(
-                          width: 432.h,
-                          child: Stack(
-                            overflow: Overflow.visible,
-                            children: [
-                              Container(
-                                height: 317.h,
-                                width: 432.h,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30.h),
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Color(0xffEFEFEF).withOpacity(0),
-                                      Color(0xffEFEFEF),
-                                    ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                  ),
-                                ),
-                                child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    child: Text(
-                                      'Environmental Science',
-                                      style: TextStyle(
-                                        color: ColorConstant.textColor,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: TextFontFamily.openSansBold,
-                                        fontSize: 30.sp,
+                Obx(
+                  () => SizedBox(
+                    height: 400.h,
+                    child: ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.horizontal,
+                      itemCount:
+                          controller.bookCategoryResponse.value?.data?.length ??
+                              0,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 30),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(NavigationName.bookCategoryPage,
+                                  arguments: {
+                                    AppConstants.bookCategoryId: controller
+                                        .bookCategoryResponse
+                                        .value
+                                        ?.data![index]
+                                        .id
+                                  });
+                            },
+                            child: SizedBox(
+                              width: 432.h,
+                              child: Stack(
+                                overflow: Overflow.visible,
+                                children: [
+                                  Container(
+                                    height: 317.h,
+                                    width: 432.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30.h),
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color(0xffEFEFEF).withOpacity(0),
+                                          Color(0xffEFEFEF),
+                                        ],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 10),
+                                        child: Text(
+                                          controller.bookCategoryResponse.value
+                                                  ?.data![index].name ??
+                                              '',
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily:
+                                                TextFontFamily.openSansBold,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                  Positioned(
+                                    left: 15,
+                                    right: 15,
+                                    top: -30,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(30.h),
+                                      child: Image.network(
+                                          controller.bookCategoryResponse.value
+                                                  ?.data![index].image ??
+                                              'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
+                                          height: 300.h,
+                                          width: 370.h,
+                                          fit: BoxFit.cover),
+                                    ),
+                                  )
+                                ],
                               ),
-                              Positioned(
-                                left: 15,
-                                right: 15,
-                                top: -30,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(30.h),
-                                  child: Image.asset(
-                                      AppUtils.getPNGAsset(
-                                          ImageConstant.bannerIcon),
-                                      height: 300.h,
-                                      width: 370.h,
-                                      fit: BoxFit.cover),
-                                ),
-                              )
-                            ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -954,70 +985,97 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 30.h,
                 ),
-                Container(
-                  height: 400.h,
-                  child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 50),
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          alignment: Alignment.topCenter,
-                          children: [
-                            Container(
-                              height: 317.h,
+                Obx(
+                  () => SizedBox(
+                    height: 400.h,
+                    child: ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: (controller.videoCategoryResponse.value?.data
+                                      ?.length ??
+                                  0) >
+                              5
+                          ? 5
+                          : controller
+                                  .videoCategoryResponse.value?.data?.length ??
+                              0,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 30),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(NavigationName.videoCategoryPage,
+                                  arguments: {
+                                    AppConstants.bookCategoryId: controller
+                                        .videoCategoryResponse
+                                        .value
+                                        ?.data![index]
+                                        .id
+                                  });
+                            },
+                            child: SizedBox(
                               width: 432.h,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30.h),
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Color(0xffEFEFEF).withOpacity(0),
-                                    Color(0xffEFEFEF),
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                ),
-                              ),
-                              child: Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 10),
-                                  child: Text(
-                                    'Autos & Vehicles',
-                                    style: TextStyle(
-                                      color: ColorConstant.textColor,
-                                      fontWeight: FontWeight.w700,
-                                      fontFamily: TextFontFamily.openSansBold,
-                                      fontSize: 30.sp,
+                              child: Stack(
+                                overflow: Overflow.visible,
+                                children: [
+                                  Container(
+                                    height: 317.h,
+                                    width: 432.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30.h),
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color(0xffEFEFEF).withOpacity(0),
+                                          Color(0xffEFEFEF),
+                                        ],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 10),
+                                        child: Text(
+                                          controller.videoCategoryResponse.value
+                                                  ?.data![index].name ??
+                                              '',
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily:
+                                                TextFontFamily.openSansBold,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
+                                  Positioned(
+                                    left: 15,
+                                    right: 15,
+                                    top: -30,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(30.h),
+                                      child: Image.network(
+                                          controller.videoCategoryResponse.value
+                                                  ?.data![index].image ??
+                                              'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
+                                          height: 300.h,
+                                          width: 370.h,
+                                          fit: BoxFit.cover),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
-                            Positioned(
-                              left: 15,
-                              right: 15,
-                              top: -50,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(30.h),
-                                child: Image.asset(
-                                    AppUtils.getPNGAsset(
-                                        ImageConstant.bannerIcon),
-                                    height: 300.h,
-                                    width: 370.h,
-                                    fit: BoxFit.cover),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],

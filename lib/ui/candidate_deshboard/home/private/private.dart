@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/private/private_job_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class PrivateJobScreen extends StatefulWidget {
@@ -17,6 +17,7 @@ class PrivateJobScreen extends StatefulWidget {
 
 class _PrivateJobScreenState extends State<PrivateJobScreen> {
   int? selected = 0;
+  final controller = Get.put(PrivateJobController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +109,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
           SizedBox(
             height: 15,
           ),
-          SizedBox(
+          /* SizedBox(
             height: 100.h,
             child: ListView.builder(
               shrinkWrap: true,
@@ -179,94 +180,119 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
           ),
           SizedBox(
             height: 20,
-          ),
+          ),*/
           Expanded(
-            child: ListView.builder(
-              physics: BouncingScrollPhysics(),
-              itemCount: 8,
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Get.toNamed(NavigationName.privateJobDescPage);
-                  },
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
-                    child: Container(
-                      height: 140.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        gradient: LinearGradient(
-                          colors: const [
-                            Color(0xffffffff),
-                            ColorConstant.privateJobBgColor
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Staff Car Driver(Ordinary Grade de) - 24 post',
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    color: ColorConstant.textColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 30.sp,
+            child: Obx(
+              () => controller.govJobResponse.value == null &&
+                      controller.loading.value
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ((controller.govJobResponse.value?.data?.length ?? 0) == 0)
+                      ? Center(
+                          child: Text("No Data Found"),
+                        )
+                      : ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          itemCount:
+                              controller.govJobResponse.value?.data?.length ??
+                                  0,
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Get.toNamed(NavigationName.privateJobDescPage,
+                                    arguments: {
+                                      "private_job_data": controller
+                                          .govJobResponse.value?.data?[index]
+                                    });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 7),
+                                child: Container(
+                                  height: 140.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    gradient: LinearGradient(
+                                      colors: const [
+                                        Color(0xffffffff),
+                                        ColorConstant.privateJobBgColor
+                                      ],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              controller.govJobResponse.value
+                                                      ?.data?[index].title ??
+                                                  "",
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                color: ColorConstant.textColor,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 30.sp,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              'Post Date: ${controller.govJobResponse.value?.data?[index].postDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.data?[index].lastDate ?? ""}',
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                color:
+                                                    ColorConstant.hintTextColor,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 25.sp,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 5),
+                                          height: 100.h,
+                                          width: 100.h,
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: const [
+                                                Color(0xff3782F3),
+                                                Color(0xff276ED8)
+                                              ],
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(27.h),
+                                          ),
+                                          child: Icon(
+                                            Icons.keyboard_arrow_right_outlined,
+                                            color:
+                                                ColorConstant.backgroundColor,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'Post Date: 24.12.2020     |     Last Date: 01.01.2021',
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    color: ColorConstant.hintTextColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 25.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer(),
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 5),
-                              height: 100.h,
-                              width: 100.h,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: const [
-                                    Color(0xff3782F3),
-                                    Color(0xff276ED8)
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                ),
-                                borderRadius: BorderRadius.circular(27.h),
                               ),
-                              child: Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                color: ColorConstant.backgroundColor,
-                                size: 30,
-                              ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
-                      ),
-                    ),
-                  ),
-                );
-              },
             ),
           )
         ],
