@@ -56,10 +56,8 @@ class OtpSubmitController extends GetxController {
         BaseApiService.instance.post(
           ServiceConstant.signUp,
           data: {
-            "type": "google",
+            "type": "otp_login",
             "uid": value.user!.uid,
-            "profile_picture": value.user!.photoURL,
-            "display_name": value.user!.displayName,
           },
         ).then((value) {
           AppUtils.LoginEmployeeSuccess(value!.data);
