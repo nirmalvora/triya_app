@@ -152,8 +152,8 @@ class _VideoScreenState extends State<VideoScreen> {
                                     AppConstants.bookCategoryId: controller
                                         .bookCategoryResponse
                                         .value
-                                        ?.data![index]
-                                        .id
+                                        ?.data?[index]
+                                        .id??0
                                   });
                             },
                             child: Container(

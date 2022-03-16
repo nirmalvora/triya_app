@@ -48,7 +48,6 @@ class OtpSubmitController extends GetxController {
   }
 
   verifyNumber() async {
-    print("Data");
     var phoneAuthCredential = PhoneAuthProvider.credential(
         verificationId: _verificationCode!, smsCode: otpController.text);
     await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential).then(
@@ -57,7 +56,7 @@ class OtpSubmitController extends GetxController {
           ServiceConstant.signUp,
           data: {
             "type": "otp_login",
-            "uid": value.user!.uid,
+            "mobile": mobileNO.value,
           },
         ).then((value) {
           AppUtils.LoginEmployeeSuccess(value!.data);
