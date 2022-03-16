@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -168,8 +169,8 @@ class _VideoScreenState extends State<VideoScreen> {
                                       borderRadius: BorderRadius.circular(16.r),
                                       child: Stack(
                                         children: [
-                                          Image.network(
-                                              data.image ??
+                                          CachedNetworkImage(
+                                              imageUrl: data.image ??
                                                   'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
                                               height: 220.h,
                                               fit: BoxFit.cover),

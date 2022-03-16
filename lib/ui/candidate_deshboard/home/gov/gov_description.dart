@@ -17,6 +17,7 @@ class GovDescription extends StatefulWidget {
 
 class _GovDescriptionState extends State<GovDescription> {
   final controller = Get.put(GovJobDetailController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

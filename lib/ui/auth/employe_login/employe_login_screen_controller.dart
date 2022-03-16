@@ -32,7 +32,7 @@ class EmployeLoginScreenController extends GetxController {
         Preferences.setInt(
             PreferenceKeys.userRole, response.data!.user!.roleId!);
         Preferences.setString(PreferenceKeys.accessToken, response.data!.token);
-        Get.offNamed(NavigationName.dashboard);
+        Get.offAllNamed(NavigationName.dashboard);
       });
     }
   }
@@ -54,7 +54,7 @@ class EmployeLoginScreenController extends GetxController {
         'imageurl': userData['picture']['data']['url'],
         'name': userData['name'],
       });
-      Get.offNamed(NavigationName.dashboard);
+      Get.offAllNamed(NavigationName.dashboard);
     } on FirebaseAuthException catch (e) {
       var content = '';
       switch (e.code) {

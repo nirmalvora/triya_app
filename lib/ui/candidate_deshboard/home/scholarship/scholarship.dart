@@ -216,7 +216,11 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                             return GestureDetector(
                               onTap: () {
                                 Get.toNamed(
-                                    NavigationName.scholarshipJobDescPage);
+                                    NavigationName.scholarshipJobDescPage,
+                                    arguments: {
+                                      "gov_job_data": controller
+                                          .govJobResponse.value?.data?[index]
+                                    });
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(

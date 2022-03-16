@@ -30,7 +30,7 @@ import 'package:triya_app/ui/candidate_deshboard/home/resume/additional_training
 import 'package:triya_app/ui/candidate_deshboard/home/resume/contact_information_screen.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/industry_awards.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/key_skills_screen.dart';
-import 'package:triya_app/ui/candidate_deshboard/home/resume/normal_resume.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/resume/professional_resume.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/personal_statement_screen.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/professiocal_affiliation.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/professional_certifications.dart';

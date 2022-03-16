@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class EmployerHomeScreen extends StatelessWidget {
@@ -17,15 +19,21 @@ class EmployerHomeScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: ColorConstant.splashColor,
-        leading: Center(
-            child: Padding(
-          padding: EdgeInsets.only(left: 30.w),
-          child: SvgPicture.asset(
-            AppUtils.getSVGAsset(ImageConstant.appbar_icon),
-            height: 115.h,
-            width: 115.h,
-          ),
-        )),
+        leading: GestureDetector(
+          onTap: () {
+            Get.offAllNamed(NavigationName.loginTypePage);
+            Preferences.clear();
+          },
+          child: Center(
+              child: Padding(
+            padding: EdgeInsets.only(left: 30.w),
+            child: SvgPicture.asset(
+              AppUtils.getSVGAsset(ImageConstant.appbar_icon),
+              height: 115.h,
+              width: 115.h,
+            ),
+          )),
+        ),
         title: Text(
           'My Jobs',
           style: TextStyle(
@@ -46,8 +54,9 @@ class EmployerHomeScreen extends StatelessWidget {
                     shape: BoxShape.circle,
                     border: Border.all(color: Color(0xffE9E9E9), width: 3)),
                 child: ClipOval(
-                  child: Image.network(
-                    'https://s3-alpha-sig.figma.com/img/5387/ddcd/21388124e311307deee7a85f44bd1b8a?Expires=1648425600&Signature=PyYl48Eck5h8SBcMaDRIyCz-X9rzWs7zsRnfGTyb~zRq2SlR04gvUFTRLdOh48UBqO3j~gV2l55wZ-ZPjfQmLSi8eoh6Wq7D7JatJRFLeOSFfybCrZi~H8GljKEvJVeb-~oQ9FN3zOOPNzlCITqnLSyL8iRio8Ef7ULzfQUAHaDR-TqdbKhQU3HbCRVbQO1PDsvsodqF3WmQnhHGtq7oQxTFK1bgWbQX8-yJ901xP3rs2kKXbDKtL-LfBFepB~-l2zJ7W-KBmotXvAxKo5-AmrO5oNXD6PvymKsSGBcPdid9Y3FewHGVLj0z6IP5-28UBevK796~kI8EGqKNf-uZbw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        'https://s3-alpha-sig.figma.com/img/5387/ddcd/21388124e311307deee7a85f44bd1b8a?Expires=1648425600&Signature=PyYl48Eck5h8SBcMaDRIyCz-X9rzWs7zsRnfGTyb~zRq2SlR04gvUFTRLdOh48UBqO3j~gV2l55wZ-ZPjfQmLSi8eoh6Wq7D7JatJRFLeOSFfybCrZi~H8GljKEvJVeb-~oQ9FN3zOOPNzlCITqnLSyL8iRio8Ef7ULzfQUAHaDR-TqdbKhQU3HbCRVbQO1PDsvsodqF3WmQnhHGtq7oQxTFK1bgWbQX8-yJ901xP3rs2kKXbDKtL-LfBFepB~-l2zJ7W-KBmotXvAxKo5-AmrO5oNXD6PvymKsSGBcPdid9Y3FewHGVLj0z6IP5-28UBevK796~kI8EGqKNf-uZbw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
                     height: 77.h,
                     width: 77.w,
                     fit: BoxFit.cover,

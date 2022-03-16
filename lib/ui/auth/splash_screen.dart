@@ -31,10 +31,12 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3), () {
       if (Preferences.getBool(PreferenceKeys.isLogin, false)) {
         if (Preferences.getInt(PreferenceKeys.userRole, -1) == 2) {
-          Get.offNamed(NavigationName.dashboard);
-        } else {}
+          Get.offAllNamed(NavigationName.dashboard);
+        } else {
+          Get.offAllNamed(NavigationName.employerDashboard);
+        }
       } else {
-        Get.offNamed(NavigationName.loginTypePage);
+        Get.offAllNamed(NavigationName.loginTypePage);
       }
     });
   }

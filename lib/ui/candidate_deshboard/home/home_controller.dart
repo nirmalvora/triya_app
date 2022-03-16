@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/book_category_response.dart';
 import 'package:triya_app/model/top_banner_response_model.dart';
+import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
 class HomeController extends GetxController {
@@ -10,6 +12,7 @@ class HomeController extends GetxController {
   final bookCategoryResponse = Rx<BookCategoryResponse?>(null);
   final videoCategoryResponse = Rx<BookCategoryResponse?>(null);
   final searchText = "".obs;
+  int selected = 0;
   @override
   void onReady() {
     super.onReady();
@@ -53,5 +56,10 @@ class HomeController extends GetxController {
           BookCategoryResponse.fromJson(value!.data);
       videoCategoryResponse.value = response;
     });
+  }
+
+  void removeUser() {
+    Get.offAllNamed(NavigationName.loginTypePage);
+    Preferences.clear();
   }
 }

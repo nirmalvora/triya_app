@@ -42,6 +42,7 @@ class BookCategoryData {
     name = json['name'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    image = json['image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -50,6 +51,7 @@ class BookCategoryData {
     data['name'] = this.name;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
+    data['image'] = this.image;
     return data;
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-  int selected = 0;
+
   final controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
@@ -302,7 +303,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 86.h,
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            controller.removeUser();
+
+                            /*.then((value) {
+                              Preferences.remove(PreferenceKeys.isLogin);
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginScreen()));
+                            });*/
+                          },
                           child: Row(
                             children: [
                               Icon(
@@ -523,14 +534,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          selected = 0;
+                          controller.selected = 0;
                         },
                         child: Container(
                           height: 113.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(34.h),
                             border: Border.all(
-                              color: selected == 0
+                              color: controller.selected == 0
                                   ? ColorConstant.borderColor
                                   : Color(0xffDADADA),
                             ),
@@ -555,14 +566,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          selected = 1;
+                          controller.selected = 1;
                         },
                         child: Container(
                           height: 113.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(34.h),
                             border: Border.all(
-                              color: selected == 1
+                              color: controller.selected == 1
                                   ? ColorConstant.borderColor
                                   : Color(0xffDADADA),
                             ),
@@ -587,14 +598,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          selected = 2;
+                          controller.selected = 2;
                         },
                         child: Container(
                           height: 113.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(34.h),
                             border: Border.all(
-                              color: selected == 2
+                              color: controller.selected == 2
                                   ? ColorConstant.borderColor
                                   : Color(0xffDADADA),
                             ),
@@ -959,9 +970,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                     top: -30,
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(30.h),
-                                      child: Image.network(
-                                          controller.bookCategoryResponse.value
-                                                  ?.data![index].image ??
+                                      child: CachedNetworkImage(
+                                          imageUrl: controller
+                                                  .bookCategoryResponse
+                                                  .value
+                                                  ?.data![index]
+                                                  .image ??
                                               'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
                                           height: 300.h,
                                           width: 370.h,
@@ -1100,9 +1114,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                     top: -30,
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(30.h),
-                                      child: Image.network(
-                                          controller.videoCategoryResponse.value
-                                                  ?.data![index].image ??
+                                      child: CachedNetworkImage(
+                                          imageUrl: controller
+                                                  .videoCategoryResponse
+                                                  .value
+                                                  ?.data![index]
+                                                  .image ??
                                               'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
                                           height: 300.h,
                                           width: 370.h,

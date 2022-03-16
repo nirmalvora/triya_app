@@ -40,11 +40,6 @@ class _CandidateChooseLoginTypeState extends State<CandidateChooseLoginType> {
         'imageurl': userData['picture']['data']['url'],
         'name': userData['name'],
       });
-      // Navigator.of(context).pushAndRemoveUntil(
-      //     MaterialPageRoute(
-      //       builder: (context) => Dashboard(),
-      //     ),
-      //     (route) => false);
     } on FirebaseAuthException catch (e) {
       var content = '';
       switch (e.code) {
