@@ -75,12 +75,25 @@ class EmployerSignInScreen extends StatelessWidget {
                   height: 58.0.h,
                 ),
                 CommonTextField(
-                    hintText: "Email Id *", controller: controller.email),
+                  hintText: "Email Id *",
+                  controller: controller.email,
+                  validation: (value) {
+                    return validateEmail(value);
+                  },
+                ),
                 SizedBox(
                   height: 30.0.h,
                 ),
                 CommonTextField(
-                    hintText: "Password *", controller: controller.password),
+                  hintText: "Password *",
+                  controller: controller.password,
+                  validation: (value) {
+                    if (value == null || value == "") {
+                      return "Please enter password";
+                    }
+                    return null;
+                  },
+                ),
                 SizedBox(
                   height: 115.0.h,
                 ),
@@ -135,5 +148,16 @@ class EmployerSignInScreen extends StatelessWidget {
         )
       ]),
     );
+  }
+
+  String? validateEmail(String? value) {
+    String pattern =
+        r"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$";
+    RegExp regex = RegExp(pattern);
+    if (value == null || value.isEmpty || !regex.hasMatch(value)) {
+      return 'Please enter a valid email address';
+    } else {
+      return null;
+    }
   }
 }
