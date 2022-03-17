@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_noe_job_controller.dart';
 import 'package:triya_app/utils/date_formate_utils.dart';
 
 class AddNewJobScreen extends StatefulWidget {
@@ -14,8 +14,7 @@ class AddNewJobScreen extends StatefulWidget {
 }
 
 class _AddNewJobScreenState extends State<AddNewJobScreen> {
-  DateTime selectedDate = DateTime.now();
-  DateTime select = DateTime.now();
+  final controller = Get.put(AddNewJobController());
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +52,7 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
         ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 30.w),
+            padding: EdgeInsets.only(right: 30.w, bottom: 10.h),
             child: Center(
               child: Container(
                 height: 115.h,
@@ -91,27 +90,43 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                     },
                     title: 'Post Date',
                     selectDate:
-                        '${DateFormatUtils.ddMMMFromDate(selectedDate)} ${selectedDate.year}',
+                        '${DateFormatUtils.ddMMMFromDate(controller.selectedDate)} ${controller.selectedDate.year}',
                   ),
                   SizedBox(width: 30.w),
                   CommanDatePicker(
                     onTap: () {
                       _selectLastDate(context);
                     },
-                    title: 'Post Date',
+                    title: 'Last Date',
                     selectDate:
-                        '${DateFormatUtils.ddMMMFromDate(select)} ${select.year}',
+                        '${DateFormatUtils.ddMMMFromDate(controller.select)} ${controller.select.year}',
                   ),
                 ],
               ),
               SizedBox(height: 30.h),
-              NewJobCommanField(title: 'Job Title'),
+              CommanTitle(title: 'Job Title'),
+              TextFormField(
+                controller: controller.jobTitle,
+                decoration: customInputDecoration(''),
+              ),
               SizedBox(height: 30.h),
-              NewJobCommanField(title: 'Job Link'),
+              CommanTitle(title: 'Job Link'),
+              TextFormField(
+                controller: controller.jobLink,
+                decoration: customInputDecoration(''),
+              ),
               SizedBox(height: 30.h),
-              NewJobCommanField(title: 'Qualification'),
+              CommanTitle(title: 'Qualification'),
+              TextFormField(
+                controller: controller.qualification,
+                decoration: customInputDecoration(''),
+              ),
               SizedBox(height: 30.h),
-              NewJobCommanField(title: 'job Details'),
+              CommanTitle(title: 'job Details'),
+              TextFormField(
+                controller: controller.jobDetails,
+                decoration: customInputDecoration(''),
+              ),
               SizedBox(height: 50.h),
               InkWell(
                 onTap: () {},
@@ -133,7 +148,18 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                 ]),
               ),
               SizedBox(height: 180.h),
-              CommanButton(onTap: () {}, text: 'Create Job'),
+              CommanButton(
+                  onTap: () {
+                    print(
+                        'Post Date ${DateFormatUtils.ddMMMFromDate(controller.selectedDate)} ${controller.selectedDate.year}');
+                    print(
+                        'Last Date ${DateFormatUtils.ddMMMFromDate(controller.select)} ${controller.select.year}');
+                    print(controller.jobTitle.text);
+                    print(controller.jobLink.text);
+                    print(controller.qualification.text);
+                    print(controller.jobDetails.text);
+                  },
+                  text: 'Create Job'),
               SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
             ],
           ),
@@ -145,7 +171,7 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
   _selectPostDate(BuildContext context) async {
     final DateTime? selected = await showDatePicker(
       context: context,
-      initialDate: selectedDate,
+      initialDate: controller.selectedDate,
       firstDate: DateTime(2010),
       lastDate: DateTime(2025),
       builder: (BuildContext context, Widget? child) {
@@ -155,9 +181,9 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
         );
       },
     );
-    if (selected != null && selected != selectedDate) {
+    if (selected != null && selected != controller.selectedDate) {
       setState(() {
-        selectedDate = selected;
+        controller.selectedDate = selected;
       });
     }
   }
@@ -165,7 +191,7 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
   _selectLastDate(BuildContext context) async {
     final DateTime? selected = await showDatePicker(
       context: context,
-      initialDate: select,
+      initialDate: controller.select,
       firstDate: DateTime(2010),
       lastDate: DateTime(2025),
       builder: (BuildContext context, Widget? child) {
@@ -175,9 +201,9 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
         );
       },
     );
-    if (selected != null && selected != select) {
+    if (selected != null && selected != controller.select) {
       setState(() {
-        select = selected;
+        controller.select = selected;
       });
     }
   }
@@ -265,38 +291,63 @@ class CommanButton extends StatelessWidget {
   }
 }
 
-class NewJobCommanField extends StatelessWidget {
+class CommanTitle extends StatelessWidget {
   String title;
-
-  NewJobCommanField({Key? key, required this.title}) : super(key: key);
+  CommanTitle({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title.toUpperCase(),
-          style: TextStyle(
-              fontFamily: "OpenSans-Regular",
-              fontSize: 12,
-              color: ColorConstant.black,
-              fontWeight: FontWeight.w600),
-        ),
-        SizedBox(height: 23.h),
-        TextFormField(
-          decoration: InputDecoration(
-            fillColor: Color(0xffF6F6F6),
-            filled: true,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(19.r),
-                borderSide: BorderSide(color: Color(0xffF6F6F6))),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(19.r),
-                borderSide: BorderSide(color: Color(0xffF6F6F6))),
-          ),
-        )
-      ],
+    return Padding(
+      padding: EdgeInsets.only(bottom: 23.h),
+      child: Text(
+        title.toUpperCase(),
+        style: TextStyle(
+            fontFamily: "OpenSans-Regular",
+            fontSize: 12,
+            color: ColorConstant.black,
+            fontWeight: FontWeight.w600),
+      ),
     );
   }
 }
+
+customInputDecoration(hintText, {Widget? suffixIcon, String? icon}) =>
+    InputDecoration(
+      hintText: hintText,
+      fillColor: Color(0xffF6F6F6),
+      filled: true,
+      suffixIcon: suffixIcon,
+      prefixIcon: icon != null
+          ? IntrinsicHeight(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: 40,
+                    child: Center(
+                      child: Image.asset(
+                        "assets/images/$icon.png",
+                        color: Colors.grey,
+                        height: 22,
+                        width: 22,
+                      ),
+                    ),
+                  ),
+                  VerticalDivider(
+                    width: 4,
+                    indent: 12,
+                    endIndent: 12,
+                    color: Colors.grey,
+                  ),
+                ],
+              ),
+            )
+          : null,
+      isDense: true,
+      enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(19.r),
+          borderSide: BorderSide(color: Color(0xffF6F6F6))),
+      focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(19.r),
+          borderSide: BorderSide(color: Color(0xffF6F6F6))),
+    );

@@ -1,6 +1,8 @@
 class ServiceConstant {
   static const String signUp = "api/sign_up";
+  static const String employersignUp = "api/employer-registration";
   static const String signIn = "api/login";
+  static const String empSignIn = "api/empLogin";
   static const String getTopBanner = "api/get-banner";
   static const String getBottomBanner = "api/get-bottom-banner";
   static const String getBookCategory = "api/book-category-show";
@@ -29,4 +31,5 @@ class ServiceConstant {
 
   static String getResume = "api/get-resume";
   static String uploadProfile = "api/upload";
+  static String AddNewJob = "api/create-emp-job-post";
 }

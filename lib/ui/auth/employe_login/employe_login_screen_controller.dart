@@ -5,11 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/service_constant.dart';
-import 'package:triya_app/local_data/app_state.dart';
-import 'package:triya_app/model/login_response.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
-import 'package:triya_app/preference/preference_keys.dart';
-import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 import '../../../services/api_service_methods.dart';
