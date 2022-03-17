@@ -76,7 +76,7 @@ class EmployerLogin extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 55.0.h,
+              height: 58.0.h,
             ),
             Row(
               children: [
