@@ -12,7 +12,7 @@ class HomeController extends GetxController {
   final bookCategoryResponse = Rx<BookCategoryResponse?>(null);
   final videoCategoryResponse = Rx<BookCategoryResponse?>(null);
   final searchText = "".obs;
-  int selected = 0;
+  final selected = 0.obs;
   @override
   void onReady() {
     super.onReady();

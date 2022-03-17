@@ -24,6 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   final controller = Get.put(HomeController());
+  var percentValue = 0.6;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -443,7 +445,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     _buildOption(
                         'Government Jobs',
-                        ImageConstant.govIcon,
+                        ImageConstant.indiaEmblemIcon,
                         [Color(0xffDFECFE), Color(0xffFFFFFF)],
                         [Color(0xffDFECFE), Color(0xffFFFFFF)],
                         Color(0xff276ED8), () {
@@ -476,7 +478,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   child: Container(
                     height: 120.h,
-                    width: 615.h,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: ColorConstant.splashColor,
@@ -492,24 +494,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           end: Alignment.bottomCenter,
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12),
-                            child: Text(
-                              'Create Your Resume',
-                              style: TextStyle(
-                                color: ColorConstant.backgroundColor,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: TextFontFamily.openSansBold,
-                                fontSize: 40.sp,
-                                letterSpacing: 2,
-                              ),
-                            ),
+                      child: Center(
+                        child: Text(
+                          'Create Your Resume',
+                          style: TextStyle(
+                            color: ColorConstant.backgroundColor,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: TextFontFamily.openSansBold,
+                            fontSize: 40.sp,
+                            letterSpacing: 2,
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
@@ -531,28 +526,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   children: [
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          controller.selected = 0;
-                        },
-                        child: Container(
-                          height: 113.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(34.h),
-                            border: Border.all(
-                              color: controller.selected == 0
-                                  ? ColorConstant.borderColor
-                                  : Color(0xffDADADA),
+                      child: Obx(
+                        () => GestureDetector(
+                          onTap: () {
+                            controller.selected.value = 0;
+                          },
+                          child: Container(
+                            height: 113.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(34.h),
+                              border: Border.all(
+                                color: controller.selected.value == 0
+                                    ? ColorConstant.borderColor
+                                    : Color(0xffDADADA),
+                              ),
                             ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'C++',
-                              style: TextStyle(
-                                color: ColorConstant.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: TextFontFamily.openSensRegular,
-                                fontSize: 30.sp,
+                            child: Center(
+                              child: Text(
+                                'C++',
+                                style: TextStyle(
+                                  color: ColorConstant.textColor,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: TextFontFamily.openSensRegular,
+                                  fontSize: 30.sp,
+                                ),
                               ),
                             ),
                           ),
@@ -563,28 +560,30 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 35.h,
                     ),
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          controller.selected = 1;
-                        },
-                        child: Container(
-                          height: 113.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(34.h),
-                            border: Border.all(
-                              color: controller.selected == 1
-                                  ? ColorConstant.borderColor
-                                  : Color(0xffDADADA),
+                      child: Obx(
+                        () => GestureDetector(
+                          onTap: () {
+                            controller.selected.value = 1;
+                          },
+                          child: Container(
+                            height: 113.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(34.h),
+                              border: Border.all(
+                                color: controller.selected.value == 1
+                                    ? ColorConstant.borderColor
+                                    : Color(0xffDADADA),
+                              ),
                             ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'JAVA',
-                              style: TextStyle(
-                                color: ColorConstant.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: TextFontFamily.openSensRegular,
-                                fontSize: 30.sp,
+                            child: Center(
+                              child: Text(
+                                'JAVA',
+                                style: TextStyle(
+                                  color: ColorConstant.textColor,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: TextFontFamily.openSensRegular,
+                                  fontSize: 30.sp,
+                                ),
                               ),
                             ),
                           ),
@@ -595,28 +594,30 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 35.h,
                     ),
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          controller.selected = 2;
-                        },
-                        child: Container(
-                          height: 113.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(34.h),
-                            border: Border.all(
-                              color: controller.selected == 2
-                                  ? ColorConstant.borderColor
-                                  : Color(0xffDADADA),
+                      child: Obx(
+                        () => GestureDetector(
+                          onTap: () {
+                            controller.selected.value = 2;
+                          },
+                          child: Container(
+                            height: 113.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(34.h),
+                              border: Border.all(
+                                color: controller.selected.value == 2
+                                    ? ColorConstant.borderColor
+                                    : Color(0xffDADADA),
+                              ),
                             ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'UNIX',
-                              style: TextStyle(
-                                color: ColorConstant.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: TextFontFamily.openSensRegular,
-                                fontSize: 30.sp,
+                            child: Center(
+                              child: Text(
+                                "UNIX",
+                                style: TextStyle(
+                                  color: ColorConstant.textColor,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: TextFontFamily.openSensRegular,
+                                  fontSize: 30.sp,
+                                ),
                               ),
                             ),
                           ),
@@ -727,7 +728,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 7,
                             ),
                             Text(
-                              'C++',
+                              'JAVA',
                               style: TextStyle(
                                 color: ColorConstant.text1Color,
                                 fontWeight: FontWeight.w700,
@@ -790,7 +791,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 7,
                             ),
                             Text(
-                              'C++',
+                              'UNIX',
                               style: TextStyle(
                                 color: ColorConstant.text1Color,
                                 fontWeight: FontWeight.w700,

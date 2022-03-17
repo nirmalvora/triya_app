@@ -145,4 +145,15 @@ class EmployerSignInScreen extends StatelessWidget {
       ]),
     );
   }
+
+  String? validateEmail(String? value) {
+    String pattern =
+        r"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$";
+    RegExp regex = RegExp(pattern);
+    if (value == null || value.isEmpty || !regex.hasMatch(value)) {
+      return 'Please enter a valid email address';
+    } else {
+      return null;
+    }
+  }
 }
