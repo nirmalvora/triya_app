@@ -8,11 +8,13 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_new_job.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/posted_job_detail_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ViewApplieadScreen extends StatelessWidget {
   ViewApplieadScreen({Key? key}) : super(key: key);
 
   final controller = Get.put(PostedJobDetailController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,7 +185,15 @@ class ViewApplieadScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 50.h),
                         InkWell(
-                          onTap: () {},
+                          onTap: () async {
+                            if (await canLaunch(
+                                controller.postedJob.value?.upload ?? '')) {
+                              await launch(
+                                  controller.postedJob.value?.upload ?? '');
+                            } else {
+                              throw 'Could not launch "${controller.postedJob.value?.upload ?? ''}"';
+                            }
+                          },
                           child: Row(mainAxisSize: MainAxisSize.min, children: [
                             Text(
                               'Download Pdf',

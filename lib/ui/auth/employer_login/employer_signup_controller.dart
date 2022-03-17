@@ -1,15 +1,11 @@
 import 'dart:io';
-import 'dart:typed_data';
+
 import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:triya_app/constants/api_constants.dart';
-import 'package:http/http.dart' as http;
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/candidate_sign_up_response.dart';
-import 'package:triya_app/preference/preference_keys.dart';
-import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
 class EmployerSignUpController extends GetxController {

@@ -7,6 +7,7 @@ import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_job_detail_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/date_formatter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GovDescription extends StatefulWidget {
   const GovDescription({Key? key}) : super(key: key);
@@ -363,7 +364,13 @@ class _GovDescriptionState extends State<GovDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  if (await canLaunch(controller.govJob.value?.jobLink ?? "")) {
+                    await launch(controller.govJob.value?.jobLink ?? "");
+                  } else {
+                    throw 'Could not launch "${controller.govJob.value?.jobLink ?? ""}"';
+                  }
+                },
                 child: Container(
                   height: 110.h,
                   width: double.infinity,

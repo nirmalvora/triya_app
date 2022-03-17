@@ -136,7 +136,9 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                 ),
                 SizedBox(height: 50.h),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    controller.getPdf();
+                  },
                   child: Row(mainAxisSize: MainAxisSize.min, children: [
                     Text(
                       'Upload Pdf',
