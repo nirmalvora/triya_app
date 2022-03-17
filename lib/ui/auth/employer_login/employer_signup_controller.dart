@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
-
+import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,12 +13,9 @@ import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
 class EmployerSignUpController extends GetxController {
-  Rx<CandidateSignUpResponse?> candidateLogo =
-      Rx<CandidateSignUpResponse?>(null);
   String? countryValue;
   String? stateValue;
   String? cityValue;
-  File? file;
   final formKey = GlobalKey<FormState>();
   final firstName = TextEditingController();
   final lastName = TextEditingController();
@@ -36,10 +33,10 @@ class EmployerSignUpController extends GetxController {
     signup();
   }
 
-  void signup() {
+  Future<void> signup() async {
     if (formKey.currentState!.validate()) {
-      Map<String, dynamic> employerData = {
-        'company_logo': file,
+      final formData = Dio.FormData.fromMap({
+        'company_logo': await Dio.MultipartFile.fromFile(image.value!.path),
         'first_name': firstName.text,
         'last_name': lastName.text,
         'company_name': companyName.text,
@@ -47,19 +44,21 @@ class EmployerSignUpController extends GetxController {
         'mobile': mobileNo.text,
         'office_no': officeNo.text,
         'area': area.text,
-        'country': countryValue,
+        'country': "countryValue",
         'state': stateValue,
         'city': cityValue,
         'password': password.text,
         'confirm_password': confirmPassword.text,
-      };
+      });
       BaseApiService.instance
-          .post(ServiceConstant.employerCandidate, data: employerData)
+          .postForm(ServiceConstant.employerCandidate, data: formData)
           .then((value) {
+        print(value!.data);
         CandidateSignUpResponse response =
-            CandidateSignUpResponse.fromJson(value!.data);
-        candidateLogo.value = response;
-        candidateLogo.refresh();
+            CandidateSignUpResponse.fromJson(value.data);
+        if (!(response.errors ?? true)) {
+          Get.back();
+        }
       });
     }
   }
@@ -71,27 +70,8 @@ class EmployerSignUpController extends GetxController {
       source: ImageSource.gallery,
     );
     if (pickedFile != null) {
-      sendFile(pickedFile);
       image.value = File(pickedFile.path);
     }
     image.refresh();
-  }
-
-  sendFile(file) async {
-    var url = Uri.parse("${AppConfig.baseUrl}${ServiceConstant.uploadProfile}");
-    var request = http.MultipartRequest("POST", url);
-    Uint8List bytes = await file.readAsBytes();
-    var accessToken =
-        await Preferences.getString(PreferenceKeys.accessToken, "");
-
-    request.headers['Authorization'] = 'Bearer $accessToken';
-    List<int> _selectedFile = bytes;
-    request.files.add(http.MultipartFile.fromBytes('image', _selectedFile,
-        filename: "text_upload.txt"));
-    request.send().then((response) {
-      if (response.statusCode == 200) {
-        signup();
-      }
-    });
   }
 }

@@ -105,41 +105,7 @@ class EmployerSignUp extends StatelessWidget {
                                         child: ClipOval(
                                           child: Obx(
                                             () => controller.image.value == null
-                                                ? ((controller
-                                                                    .candidateLogo
-                                                                    .value
-                                                                    ?.data
-                                                                    ?.profilePicture
-                                                                    ?.length ??
-                                                                0) !=
-                                                            0) &&
-                                                        (controller
-                                                                        .candidateLogo
-                                                                        .value
-                                                                        ?.data
-                                                                        ?.profilePicture?[
-                                                                    0] ??
-                                                                "") !=
-                                                            ""
-                                                    ? CacheImageView(
-                                                        imageUrl: controller
-                                                                .candidateLogo
-                                                                .value
-                                                                ?.data
-                                                                ?.profilePicture![0] ??
-                                                            "")
-                                                    : CircleAvatar(
-                                                        backgroundColor:
-                                                            ColorConstant
-                                                                .backgroundColor
-                                                                .withOpacity(
-                                                                    0.3),
-                                                        child: Icon(
-                                                          Icons.add,
-                                                          color: ColorConstant
-                                                              .backgroundColor,
-                                                        ),
-                                                      )
+                                                ? Container()
                                                 : Image.file(
                                                     controller.image.value!,
                                                     width: double.infinity,
@@ -349,7 +315,7 @@ class EmployerSignUp extends StatelessWidget {
                             SizedBox(
                               height:
                                   30 + MediaQuery.of(context).padding.bottom,
-                            )
+                            ),
                           ],
                         ),
                       ),
