@@ -188,7 +188,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
           Expanded(
             child: Obx(
               () => ((controller.govJobResponse.value?.data
-                                      ?.where(((element) => element.title!
+                                      ?.where(((element) => element.jobTitle!
                                           .contains(
                                               controller.searchText.value)))
                                       .length ??
@@ -206,7 +206,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                       : ListView.builder(
                           physics: BouncingScrollPhysics(),
                           itemCount: controller.govJobResponse.value?.data
-                                  ?.where(((element) => element.title!
+                                  ?.where(((element) => element.jobTitle!
                                       .contains(controller.searchText.value)))
                                   .length ??
                               0,
@@ -249,7 +249,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                                           children: [
                                             Text(
                                               controller.govJobResponse.value
-                                                      ?.data?[index].title ??
+                                                      ?.data?[index].jobTitle ??
                                                   "",
                                               maxLines: 2,
                                               style: TextStyle(
@@ -262,7 +262,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                                               height: 10,
                                             ),
                                             Text(
-                                              'Post Date: ${controller.govJobResponse.value?.data?[index].postDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.data?[index].lastDate ?? ""}',
+                                              'Post Date: ${controller.govJobResponse.value?.data?[index].fromDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.data?[index].toDate ?? ""}',
                                               maxLines: 2,
                                               style: TextStyle(
                                                 color:

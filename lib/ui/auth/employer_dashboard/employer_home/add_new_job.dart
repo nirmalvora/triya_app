@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_noe_job_controller.dart';
+import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_new_job_controller.dart';
 import 'package:triya_app/utils/date_formate_utils.dart';
+import 'package:triya_app/widgets/textfield_decoration.dart';
 
 class AddNewJobScreen extends StatefulWidget {
   AddNewJobScreen({Key? key}) : super(key: key);
@@ -78,90 +79,97 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 78.h),
-              Row(
-                children: [
-                  CommanDatePicker(
+          child: Form(
+            key: controller.formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 78.h),
+                Row(
+                  children: [
+                    CommanDatePicker(
+                      onTap: () {
+                        _selectPostDate(context);
+                      },
+                      title: 'Post Date',
+                      selectDate:
+                          '${DateFormatUtils.ddMMMFromDate(controller.selectedDate)} ${controller.selectedDate.year}',
+                    ),
+                    SizedBox(width: 30.w),
+                    CommanDatePicker(
+                      onTap: () {
+                        _selectLastDate(context);
+                      },
+                      title: 'Last Date',
+                      selectDate:
+                          '${DateFormatUtils.ddMMMFromDate(controller.select)} ${controller.select.year}',
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30.h),
+                CommanTitle(title: 'Job Title'),
+                TextFormField(
+                  controller: controller.jobTitle,
+                  decoration: customInputDecoration(
+                      '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                ),
+                SizedBox(height: 30.h),
+                CommanTitle(title: 'Job Link'),
+                TextFormField(
+                  controller: controller.jobLink,
+                  decoration: customInputDecoration(
+                      '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                ),
+                SizedBox(height: 30.h),
+                CommanTitle(title: 'Qualification'),
+                TextFormField(
+                  controller: controller.qualification,
+                  decoration: customInputDecoration(
+                      '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                ),
+                SizedBox(height: 30.h),
+                CommanTitle(title: 'job Details'),
+                TextFormField(
+                  controller: controller.jobDetails,
+                  decoration: customInputDecoration(
+                      '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                ),
+                SizedBox(height: 50.h),
+                InkWell(
+                  onTap: () {},
+                  child: Row(mainAxisSize: MainAxisSize.min, children: [
+                    Text(
+                      'Upload Pdf',
+                      style: TextStyle(
+                          color: Color(0xff286FD9),
+                          fontSize: 32.sp,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: "OpenSans-Regular"),
+                    ),
+                    SizedBox(width: 4),
+                    Icon(
+                      Icons.upload_rounded,
+                      color: Color(0xff286FD9),
+                      size: 18,
+                    )
+                  ]),
+                ),
+                SizedBox(height: 180.h),
+                CommanButton(
                     onTap: () {
-                      _selectPostDate(context);
+                      print(
+                          'Post Date ${DateFormatUtils.ddMMMFromDate(controller.selectedDate)} ${controller.selectedDate.year}');
+                      print(
+                          'Last Date ${DateFormatUtils.ddMMMFromDate(controller.select)} ${controller.select.year}');
+                      print(controller.jobTitle.text);
+                      print(controller.jobLink.text);
+                      print(controller.qualification.text);
+                      print(controller.jobDetails.text);
                     },
-                    title: 'Post Date',
-                    selectDate:
-                        '${DateFormatUtils.ddMMMFromDate(controller.selectedDate)} ${controller.selectedDate.year}',
-                  ),
-                  SizedBox(width: 30.w),
-                  CommanDatePicker(
-                    onTap: () {
-                      _selectLastDate(context);
-                    },
-                    title: 'Last Date',
-                    selectDate:
-                        '${DateFormatUtils.ddMMMFromDate(controller.select)} ${controller.select.year}',
-                  ),
-                ],
-              ),
-              SizedBox(height: 30.h),
-              CommanTitle(title: 'Job Title'),
-              TextFormField(
-                controller: controller.jobTitle,
-                decoration: customInputDecoration(''),
-              ),
-              SizedBox(height: 30.h),
-              CommanTitle(title: 'Job Link'),
-              TextFormField(
-                controller: controller.jobLink,
-                decoration: customInputDecoration(''),
-              ),
-              SizedBox(height: 30.h),
-              CommanTitle(title: 'Qualification'),
-              TextFormField(
-                controller: controller.qualification,
-                decoration: customInputDecoration(''),
-              ),
-              SizedBox(height: 30.h),
-              CommanTitle(title: 'job Details'),
-              TextFormField(
-                controller: controller.jobDetails,
-                decoration: customInputDecoration(''),
-              ),
-              SizedBox(height: 50.h),
-              InkWell(
-                onTap: () {},
-                child: Row(mainAxisSize: MainAxisSize.min, children: [
-                  Text(
-                    'Upload Pdf',
-                    style: TextStyle(
-                        color: Color(0xff286FD9),
-                        fontSize: 32.sp,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "OpenSans-Regular"),
-                  ),
-                  SizedBox(width: 4),
-                  Icon(
-                    Icons.upload_rounded,
-                    color: Color(0xff286FD9),
-                    size: 18,
-                  )
-                ]),
-              ),
-              SizedBox(height: 180.h),
-              CommanButton(
-                  onTap: () {
-                    print(
-                        'Post Date ${DateFormatUtils.ddMMMFromDate(controller.selectedDate)} ${controller.selectedDate.year}');
-                    print(
-                        'Last Date ${DateFormatUtils.ddMMMFromDate(controller.select)} ${controller.select.year}');
-                    print(controller.jobTitle.text);
-                    print(controller.jobLink.text);
-                    print(controller.qualification.text);
-                    print(controller.jobDetails.text);
-                  },
-                  text: 'Create Job'),
-              SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
-            ],
+                    text: 'Create Job'),
+                SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
+              ],
+            ),
           ),
         ),
       ),
@@ -310,44 +318,3 @@ class CommanTitle extends StatelessWidget {
     );
   }
 }
-
-customInputDecoration(hintText, {Widget? suffixIcon, String? icon}) =>
-    InputDecoration(
-      hintText: hintText,
-      fillColor: Color(0xffF6F6F6),
-      filled: true,
-      suffixIcon: suffixIcon,
-      prefixIcon: icon != null
-          ? IntrinsicHeight(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    width: 40,
-                    child: Center(
-                      child: Image.asset(
-                        "assets/images/$icon.png",
-                        color: Colors.grey,
-                        height: 22,
-                        width: 22,
-                      ),
-                    ),
-                  ),
-                  VerticalDivider(
-                    width: 4,
-                    indent: 12,
-                    endIndent: 12,
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
-            )
-          : null,
-      isDense: true,
-      enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(19.r),
-          borderSide: BorderSide(color: Color(0xffF6F6F6))),
-      focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(19.r),
-          borderSide: BorderSide(color: Color(0xffF6F6F6))),
-    );

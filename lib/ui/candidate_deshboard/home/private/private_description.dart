@@ -107,7 +107,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Text(
-                controller.govJob.value?.title ?? "",
+                controller.govJob.value?.jobTitle ?? "",
                 style: TextStyle(
                   color: ColorConstant.textColor,
                   fontWeight: FontWeight.w600,
@@ -144,7 +144,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                           ),
                           Spacer(),
                           Text(
-                            '24th Dec, 2020',
+                            controller.govJob.value?.fromDate ?? "",
                             style: TextStyle(
                               color: ColorConstant.textColor,
                               fontWeight: FontWeight.w400,
@@ -183,7 +183,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                           ),
                           Spacer(),
                           Text(
-                            '01st Jan, 2021',
+                            controller.govJob.value?.toDate ?? "",
                             style: TextStyle(
                               color: ColorConstant.textColor,
                               fontWeight: FontWeight.w400,
@@ -263,7 +263,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                       ),
                       Spacer(),
                       Text(
-                        controller.govJob.value?.board ?? "",
+                        controller.govJob.value?.qualification ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -303,6 +303,8 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                       Spacer(),
                       Text(
                         controller.govJob.value?.jobLink ?? "",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -342,7 +344,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                         height: 7,
                       ),
                       Text(
-                        controller.govJob.value?.jobDescription ?? "",
+                        controller.govJob.value?.jobDetail ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,

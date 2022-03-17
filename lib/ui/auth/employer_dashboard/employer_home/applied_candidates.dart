@@ -1,13 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employer_home_screen.dart';
+import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/textfield_decoration.dart';
 
 class AppliedCandidateScreen extends StatelessWidget {
-  const AppliedCandidateScreen({Key? key}) : super(key: key);
+  AppliedCandidateScreen({Key? key}) : super(key: key);
+
+  final controller = Get.put(EmployerHomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +76,25 @@ class AppliedCandidateScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          CommanTopBarField(),
+          CommanTopBarField(
+              widget: TextFormField(
+            decoration: customInputDecoration(
+              'Search for jobs here...',
+              Color(0xff397ADB),
+              Color(0xffF6F6F6),
+              prefixIcon: Container(
+                height: 40.h,
+                width: 40.w,
+                child: Center(
+                  child: SvgPicture.asset(
+                    AppUtils.getSVGAsset(ImageConstant.search_icon),
+                    height: 40.h,
+                    width: 40.w,
+                  ),
+                ),
+              ),
+            ),
+          )),
           SizedBox(height: 60.h),
           Expanded(
             child: Padding(
