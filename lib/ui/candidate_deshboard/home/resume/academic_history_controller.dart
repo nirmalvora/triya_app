@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/academic%20_history_response.dart';
 import 'package:triya_app/services/api_service_methods.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/private/professional_resume_controller.dart';
 
 class ProfessionalExperienceController extends GetxController {
   final schoolName = TextEditingController();
@@ -22,6 +23,59 @@ class ProfessionalExperienceController extends GetxController {
   final clgName = TextEditingController();
   final specialization = TextEditingController();
   final yearOfCompleted = TextEditingController();
+  @override
+  void onReady() {
+    super.onReady();
+    final resumeViewController = Get.put(ProfileResumeController());
+    schoolName.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeAcademicHistories?.schoolName ??
+        "";
+    yearOfPassing.text = resumeViewController.resumeResponse.value
+            ?.resumeData?[0].resumeAcademicHistories?.yearOfPassing ??
+        "";
+    sslScore.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeAcademicHistories?.sslSocre ??
+        "";
+    secondaryDiploma.text = resumeViewController.resumeResponse.value
+            ?.resumeData?[0].resumeAcademicHistories?.secondaryDiploma ??
+        "";
+    yearOfPassingDiploma.text = resumeViewController.resumeResponse.value
+            ?.resumeData?[0].resumeAcademicHistories?.yearOfPassing ??
+        "";
+    score.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeAcademicHistories?.score ??
+        "";
+    instituteName.text = resumeViewController.resumeResponse.value
+            ?.resumeData?[0].resumeAcademicHistories?.instituteName ??
+        "";
+    fromDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeAcademicHistories?.fromDate ??
+        "";
+    toDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeAcademicHistories?.toDate ??
+        "";
+    backing.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeAcademicHistories?.backlog ??
+        "";
+    agregatedScore.text = resumeViewController.resumeResponse.value
+            ?.resumeData?[0].resumeAcademicHistories?.agregatedScore ??
+        "";
+    gapEducation.text = resumeViewController.resumeResponse.value
+            ?.resumeData?[0].resumeAcademicHistories?.gapBetweenEducation ??
+        "";
+    reasonGap.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeAcademicHistories?.reasonGapBetweenEducation ??
+        "";
+    clgName.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeAcademicHistories?.masterInsituteName ??
+        "";
+    specialization.text = resumeViewController.resumeResponse.value
+            ?.resumeData?[0].resumeAcademicHistories?.sepcialization ??
+        "";
+    yearOfCompleted.text = resumeViewController.resumeResponse.value
+            ?.resumeData?[0].resumeAcademicHistories?.yearsOfCompletion ??
+        "";
+  }
 
   void academicHistory() {
     Map<String, dynamic> history = {

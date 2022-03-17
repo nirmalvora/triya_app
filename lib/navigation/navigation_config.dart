@@ -66,7 +66,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.dashboard,
-      page: () => Dashboard(),
+      page: () => HomeScreen(),
     ),
     GetPage(
       name: NavigationName.homePage,
@@ -110,7 +110,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.privateResumeApplyPage,
-      page: () => const PrivateResumeApply(),
+      page: () => PrivateResumeApply(),
     ),
     GetPage(
       name: NavigationName.scholarshipJobPage,
@@ -134,7 +134,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.professionalResumePage,
-      page: () => const ProfessionalResumeScreen(),
+      page: () => ProfessionalResumeScreen(),
     ),
     GetPage(
       name: NavigationName.personalPage,
