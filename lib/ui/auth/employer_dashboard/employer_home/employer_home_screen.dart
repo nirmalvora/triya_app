@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/model/posted_job_res_model.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
@@ -250,8 +251,10 @@ class EmployerHomeScreen extends StatelessWidget {
               child: Obx(
                 () => ((controller.postedJobResponse.value?.data
                                         ?.where(((element) => element.jobTitle!
-                                            .contains(
-                                                controller.searchText.value)))
+                                            .toLowerCase()
+                                            .contains(controller
+                                                .searchText.value
+                                                .toLowerCase())))
                                         .length ??
                                     0) ==
                                 0) ==
@@ -270,22 +273,26 @@ class EmployerHomeScreen extends StatelessWidget {
                             physics: BouncingScrollPhysics(),
                             itemCount: controller.postedJobResponse.value?.data
                                     ?.where(((element) => element.jobTitle!
-                                        .contains(controller.searchText.value)))
+                                        .toLowerCase()
+                                        .contains(controller.searchText.value
+                                            .toLowerCase())))
                                     .length ??
                                 0,
                             padding: EdgeInsets.zero,
                             itemBuilder: (context, index) {
+                              PostedJob data = (controller
+                                  .postedJobResponse.value?.data
+                                  ?.where(((element) => element.jobTitle!
+                                      .toLowerCase()
+                                      .contains(controller.searchText.value
+                                          .toLowerCase())))
+                                  .toList())![index];
                               return Padding(
                                 padding: EdgeInsets.only(bottom: 30.h),
                                 child: InkWell(
                                   onTap: () {
                                     Get.toNamed(NavigationName.viewAppliead,
-                                        arguments: {
-                                          "get-job-post": controller
-                                              .postedJobResponse
-                                              .value
-                                              ?.data?[index]
-                                        });
+                                        arguments: {"get-job-post": data});
                                   },
                                   child: Container(
                                     height: 140.h,
@@ -304,12 +311,7 @@ class EmployerHomeScreen extends StatelessWidget {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                controller
-                                                        .postedJobResponse
-                                                        .value
-                                                        ?.data?[index]
-                                                        .jobTitle ??
-                                                    '',
+                                                data.jobTitle ?? '',
                                                 // 'Staff Car Driver(Ordinary Grade de) - 24 post',
                                                 maxLines: 2,
                                                 style: TextStyle(
