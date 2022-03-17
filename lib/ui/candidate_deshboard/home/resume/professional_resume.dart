@@ -78,6 +78,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
                     left: 0,
                     right: 0,
                     bottom: -55,
+<<<<<<< Updated upstream
                     child: CircleAvatar(
                       backgroundColor: ColorConstant.backgroundColor,
                       radius: 55,
@@ -85,6 +86,54 @@ class ProfessionalResumeScreen extends StatelessWidget {
                         AppUtils.getPNGAsset(ImageConstant.resumeProfileImage),
                         height: 134.h,
                         width: 143.h,
+=======
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.getImage();
+                        },
+                        child: CircleAvatar(
+                          backgroundColor: ColorConstant.backgroundColor,
+                          radius: 55,
+                          child: ClipOval(
+                            child: Obx(
+                              () => controller.image.value == null
+                                  ? (controller.resumeResponse.value?.resumeData
+                                                      ?.length ??
+                                                  0) !=
+                                              0 &&
+                                          (controller
+                                                      .resumeResponse
+                                                      .value
+                                                      ?.resumeData?[0]
+                                                      .resume
+                                                      ?.url ??
+                                                  "") !=
+                                              ""
+                                      ? CacheImageView(
+                                          imageUrl: controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resume
+                                                  ?.url ??
+                                              "")
+                                      : Image.network(
+                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCubUN2VDqYNO0nfbwpiJmiHwmkXyux32Izw&usqp=CAU",
+                                          fit: BoxFit.cover,
+                                          height: double.infinity,
+                                          width: double.infinity,
+                                        )
+                                  : Image.file(
+                                      controller.image.value!,
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                            ),
+                          ),
+                        ),
+>>>>>>> Stashed changes
                       ),
                     ),
                   ),
