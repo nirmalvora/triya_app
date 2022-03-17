@@ -25,7 +25,7 @@ class ProfessiocalAffiliationScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                /* Row(
                   children: [
                     Text(
                       'Affiliation 1',
@@ -45,7 +45,7 @@ class ProfessiocalAffiliationScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 45.h),
+                SizedBox(height: 45.h),*/
                 Text(
                   'Affiliation Title'.toUpperCase(),
                   style: TextStyle(
@@ -74,7 +74,7 @@ class ProfessiocalAffiliationScreen extends StatelessWidget {
                   controller: controller.description,
                 ),
                 SizedBox(height: 42.h),
-                CommanAddButton(onTap: () {}, title: 'Add Affiliation')
+                // CommanAddButton(onTap: () {}, title: 'Add Affiliation')
               ],
             ),
           ),

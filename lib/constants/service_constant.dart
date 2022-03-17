@@ -26,4 +26,7 @@ class ServiceConstant {
 
   static String getGovJob = "api/get-gov";
   static String getPrivateJob = "api/get-job-post";
+
+  static String getResume = "api/get-resume";
+  static String uploadProfile = "api/upload";
 }

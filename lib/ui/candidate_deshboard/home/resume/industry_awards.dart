@@ -26,7 +26,7 @@ class IndustryAwardScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                /*   Row(
                   children: [
                     Text(
                       'Award 1',
@@ -46,7 +46,7 @@ class IndustryAwardScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 45.h),
+                SizedBox(height: 45.h),*/
                 Text(
                   'Award & Description'.toUpperCase(),
                   style: TextStyle(
@@ -61,7 +61,7 @@ class IndustryAwardScreen extends StatelessWidget {
                   controller: controller.industry,
                 ),
                 SizedBox(height: 42.h),
-                CommanAddButton(onTap: () {}, title: 'Add Award')
+                // CommanAddButton(onTap: () {}, title: 'Add Award')
               ],
             ),
           ),
