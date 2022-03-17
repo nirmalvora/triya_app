@@ -14,10 +14,10 @@ class PublicationController extends GetxController {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
     titles.text = resumeViewController
-            .resumeResponse.value?.resumeData?[0].resumePublications?.title ??
+        .resumeResponse.value?.resumeData?[0].resumePublications?.title ??
         "";
     description.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumePublications?.description ??
+        .resumePublications?.description ??
         "";
   }
 
