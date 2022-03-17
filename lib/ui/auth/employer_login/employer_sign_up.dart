@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/ui/auth/employer_login/employer_signup_controller.dart';
-import 'package:triya_app/widgets/cache_imageview.dart';
 
 import '../../../utils/app_utils.dart';
 import '../../../utils/common_text_field.dart';

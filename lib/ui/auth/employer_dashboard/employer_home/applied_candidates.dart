@@ -6,9 +6,9 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
-import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employer_home_screen.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/textfield_decoration.dart';
+import 'package:triya_app/widgets/widget.dart';
 
 class AppliedCandidateScreen extends StatelessWidget {
   AppliedCandidateScreen({Key? key}) : super(key: key);
@@ -82,7 +82,7 @@ class AppliedCandidateScreen extends StatelessWidget {
               'Search for jobs here...',
               Color(0xff397ADB),
               Color(0xffF6F6F6),
-              prefixIcon: Container(
+              prefixIcon: SizedBox(
                 height: 40.h,
                 width: 40.w,
                 child: Center(

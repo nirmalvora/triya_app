@@ -10,6 +10,7 @@ import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/textfield_decoration.dart';
+import 'package:triya_app/widgets/widget.dart';
 
 class EmployerHomeScreen extends StatelessWidget {
   EmployerHomeScreen({Key? key}) : super(key: key);
@@ -19,15 +20,102 @@ class EmployerHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: controller.key,
       backgroundColor: ColorConstant.white,
+      drawer: Drawer(
+        backgroundColor: ColorConstant.backgroundColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(46.h),
+            topRight: Radius.circular(46.h),
+          ),
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 390.h,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(46.h),
+                ),
+                image: DecorationImage(
+                  image: AssetImage(
+                    AppUtils.getPNGAsset(ImageConstant.drawerImage),
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 35, right: 15, left: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Stack(
+                          overflow: Overflow.visible,
+                          alignment: Alignment.center,
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: ColorConstant.backgroundColor
+                                  .withOpacity(0.1),
+                              radius: 24,
+                            ),
+                            CircleAvatar(
+                              backgroundColor: ColorConstant.backgroundColor
+                                  .withOpacity(0.1),
+                              radius: 18,
+                              child: Icon(Icons.arrow_back,
+                                  color: ColorConstant.backgroundColor),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 60.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: InkWell(
+                onTap: () {
+                  Get.offAllNamed(NavigationName.loginTypePage);
+                  Preferences.clear();
+                },
+                child: Row(
+                  children: [
+                    Icon(Icons.logout, size: 62.w),
+                    SizedBox(width: 25.w),
+                    Text(
+                      'Logout',
+                      style: TextStyle(
+                          color: ColorConstant.textColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 45.sp),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: ColorConstant.splashColor,
         leading: GestureDetector(
-          onTap: () {
-            Get.offAllNamed(NavigationName.loginTypePage);
+          onTap: () => controller.key.currentState!.openDrawer(),
+          /*onTap: () {
+            // Get.offAllNamed(NavigationName.loginTypePage);
             Preferences.clear();
-          },
+          },*/
           child: Center(
               child: Padding(
             padding: EdgeInsets.only(left: 30.w),
@@ -272,25 +360,6 @@ class EmployerHomeScreen extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class CommanTopBarField extends StatelessWidget {
-  Widget widget;
-  CommanTopBarField({Key? key, required this.widget}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: ColorConstant.splashColor,
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(34.r),
-              bottomRight: Radius.circular(34.r))),
-      child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
-          child: widget),
     );
   }
 }
