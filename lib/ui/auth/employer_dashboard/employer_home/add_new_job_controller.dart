@@ -5,6 +5,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/posted_job_res_model.dart';
 import 'package:triya_app/services/api_service_methods.dart';
+import 'package:triya_app/utils/date_formate_utils.dart';
 
 class AddNewJobController extends GetxController {
   DateTime selectedDate = DateTime.now();
@@ -18,7 +19,13 @@ class AddNewJobController extends GetxController {
 
   void addNewJob() {
     if (formKey.currentState!.validate()) {
+      /*    print(jobTitle.text);
+      print(jobLink.text);
+      print(qualification.text);
+      print(jobDetails.text);*/
       Map<String, dynamic> data = {
+        'from_date': DateFormatUtils.ddMMyyyyFromDate(selectedDate),
+        'to_date': DateFormatUtils.ddMMyyyyFromDate(select),
         'job_title': jobTitle.text,
         'job_link': jobLink.text,
         'qualification': qualification.text,

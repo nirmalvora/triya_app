@@ -37,6 +37,11 @@ class DateFormatUtils {
     return formatter.format(date);
   }
 
+  static String ddMMyyyyFromDate(DateTime date) {
+    final DateFormat formatter = DateFormat('dd-MM-yyyy');
+    return formatter.format(date);
+  }
+
   static String time24To12(String date) {
     DateTime dateTime = DateFormat("HH:mm").parse(date);
     final DateFormat formatter = DateFormat(hhmma);

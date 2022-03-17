@@ -92,8 +92,8 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                         _selectPostDate(context);
                       },
                       title: 'Post Date',
-                      selectDate:
-                          '${DateFormatUtils.ddMMMFromDate(controller.selectedDate)} ${controller.selectedDate.year}',
+                      selectDate: DateFormatUtils.ddMMyyyyFromDate(
+                          controller.selectedDate),
                     ),
                     SizedBox(width: 30.w),
                     CommanDatePicker(
@@ -102,7 +102,7 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                       },
                       title: 'Last Date',
                       selectDate:
-                          '${DateFormatUtils.ddMMMFromDate(controller.select)} ${controller.select.year}',
+                          DateFormatUtils.ddMMyyyyFromDate(controller.select),
                     ),
                   ],
                 ),
@@ -157,14 +157,7 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                 SizedBox(height: 180.h),
                 CommanButton(
                     onTap: () {
-                      print(
-                          'Post Date ${DateFormatUtils.ddMMMFromDate(controller.selectedDate)} ${controller.selectedDate.year}');
-                      print(
-                          'Last Date ${DateFormatUtils.ddMMMFromDate(controller.select)} ${controller.select.year}');
-                      print(controller.jobTitle.text);
-                      print(controller.jobLink.text);
-                      print(controller.qualification.text);
-                      print(controller.jobDetails.text);
+                      controller.addNewJob();
                     },
                     text: 'Create Job'),
                 SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
