@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/private/professional_resume_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/cache_imageview.dart';
 import 'package:triya_app/widgets/common_container.dart';
 
 class ProfessionalResumeScreen extends StatelessWidget {
-  const ProfessionalResumeScreen({Key? key}) : super(key: key);
-
+  ProfessionalResumeScreen({Key? key}) : super(key: key);
+  final controller = Get.put(ProfileResumeController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,15 +81,6 @@ class ProfessionalResumeScreen extends StatelessWidget {
                     left: 0,
                     right: 0,
                     bottom: -55,
-<<<<<<< Updated upstream
-                    child: CircleAvatar(
-                      backgroundColor: ColorConstant.backgroundColor,
-                      radius: 55,
-                      child: Image.asset(
-                        AppUtils.getPNGAsset(ImageConstant.resumeProfileImage),
-                        height: 134.h,
-                        width: 143.h,
-=======
                     child: Center(
                       child: GestureDetector(
                         onTap: () {
@@ -97,55 +91,43 @@ class ProfessionalResumeScreen extends StatelessWidget {
                           radius: 55,
                           child: ClipOval(
                             child: Obx(
-                              () => controller.image.value == null
-                                  ? (controller.resumeResponse.value?.resumeData
-                                                      ?.length ??
-                                                  0) !=
-                                              0 &&
-                                          (controller
-                                                      .resumeResponse
-                                                      .value
-                                                      ?.resumeData?[0]
-                                                      .resume
-                                                      ?.url ??
-                                                  "") !=
-                                              ""
-                                      ? CacheImageView(
-                                          imageUrl: controller
-                                                  .resumeResponse
-                                                  .value
-                                                  ?.resumeData?[0]
-                                                  .resume
-                                                  ?.url ??
-                                              "")
-                                      : Image.network(
-                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCubUN2VDqYNO0nfbwpiJmiHwmkXyux32Izw&usqp=CAU",
-                                          fit: BoxFit.cover,
-                                          height: double.infinity,
-                                          width: double.infinity,
-                                        )
+                                  () => controller.image.value == null
+                                  ? ((controller.resumeResponse.value
+                                  ?.resumeData?.length ??
+                                  0) !=
+                                  0) &&
+                                  (controller
+                                      .resumeResponse
+                                      .value
+                                      ?.resumeData?[0]
+                                      .resume
+                                      ?.url ??
+                                      "") !=
+                                      ""
+                                  ? CacheImageView(
+                                  imageUrl: controller
+                                      .resumeResponse
+                                      .value
+                                      ?.resumeData![0]
+                                      .resume
+                                      ?.url ??
+                                      "")
+                                  : Image.network(
+                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCubUN2VDqYNO0nfbwpiJmiHwmkXyux32Izw&usqp=CAU",
+                                fit: BoxFit.cover,
+                                height: double.infinity,
+                                width: double.infinity,
+                              )
                                   : Image.file(
-                                      controller.image.value!,
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      fit: BoxFit.cover,
-                                    ),
+                                controller.image.value!,
+                                width: double.infinity,
+                                height: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
->>>>>>> Stashed changes
                       ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 0,
-                    right: -75,
-                    bottom: 25,
-                    child: CircleAvatar(
-                      backgroundColor: ColorConstant.splashColor,
-                      radius: 14,
-                      child: Icon(Icons.close,
-                          color: ColorConstant.backgroundColor, size: 16),
                     ),
                   ),
                 ],
@@ -244,7 +226,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Padding(
+              /*   Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Container(
                   height: 120.h,
@@ -278,40 +260,89 @@ class ProfessionalResumeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
+              ),*/
               Padding(
-                padding: const EdgeInsets.only(
-                    right: 15, left: 15, bottom: 30, top: 10),
-                child: Container(
-                  height: 120.h,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: ColorConstant.buttonColor,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Center(
-                          child: Text(
-                            'PREVIEW',
-                            style: TextStyle(
-                              color: ColorConstant.splashColor,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: TextFontFamily.openSansBold,
-                              fontSize: 40.sp,
-                              letterSpacing: 2,
-                            ),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.toNamed(NavigationName.privateResumeApplyPage,
+                        arguments: {AppConstants.isPreview: true});
+                  },
+                  child: Container(
+                    height: 120.h,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: ColorConstant.splashColor,
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: LinearGradient(
+                          colors: const [Color(0xff3782F3), Color(0xff276ED8)],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "PREVIEW",
+                          style: TextStyle(
+                            color: ColorConstant.backgroundColor,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: TextFontFamily.openSansBold,
+                            fontSize: 35.sp,
+                            letterSpacing: 2,
                           ),
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
+              SizedBox(
+                height: 40.h,
+              )
+              /*    Padding(
+                padding: const EdgeInsets.only(
+                    right: 15, left: 15, bottom: 30, top: 10),
+                child: GestureDetector(
+                  onTap: () {
+
+                  },
+                  child: Container(
+                    height: 120.h,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: ColorConstant.buttonColor,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Center(
+                            child: Text(
+                              'PREVIEW',
+                              style: TextStyle(
+                                color: ColorConstant.splashColor,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: TextFontFamily.openSansBold,
+                                fontSize: 40.sp,
+                                letterSpacing: 2,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),*/
             ],
           ),
         ),
