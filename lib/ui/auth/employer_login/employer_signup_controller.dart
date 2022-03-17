@@ -5,6 +5,9 @@ import 'package:triya_app/model/sign_up_response.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
 class EmployerSignUpController extends GetxController {
+  String? countryValue;
+  String? stateValue;
+  String? cityValue;
   final formKey = GlobalKey<FormState>();
   final firstName = TextEditingController();
   final lastName = TextEditingController();
