@@ -92,14 +92,18 @@ class ProfessionalResumeScreen extends StatelessWidget {
                           child: ClipOval(
                             child: Obx(
                               () => controller.image.value == null
-                                  ? (controller
-                                                  .resumeResponse
-                                                  .value
-                                                  ?.resumeData![0]
-                                                  .resume
-                                                  ?.url ??
-                                              "") !=
-                                          ""
+                                  ? ((controller.resumeResponse.value
+                                                      ?.resumeData?.length ??
+                                                  0) !=
+                                              0) &&
+                                          (controller
+                                                      .resumeResponse
+                                                      .value
+                                                      ?.resumeData?[0]
+                                                      .resume
+                                                      ?.url ??
+                                                  "") !=
+                                              ""
                                       ? CacheImageView(
                                           imageUrl: controller
                                                   .resumeResponse

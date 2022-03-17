@@ -27,54 +27,58 @@ class ProfessionalExperienceController extends GetxController {
   void onReady() {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
-    schoolName.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeAcademicHistories?.schoolName ??
-        "";
-    yearOfPassing.text = resumeViewController.resumeResponse.value
-            ?.resumeData?[0].resumeAcademicHistories?.yearOfPassing ??
-        "";
-    sslScore.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeAcademicHistories?.sslSocre ??
-        "";
-    secondaryDiploma.text = resumeViewController.resumeResponse.value
-            ?.resumeData?[0].resumeAcademicHistories?.secondaryDiploma ??
-        "";
-    yearOfPassingDiploma.text = resumeViewController.resumeResponse.value
-            ?.resumeData?[0].resumeAcademicHistories?.yearOfPassing ??
-        "";
-    score.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeAcademicHistories?.score ??
-        "";
-    instituteName.text = resumeViewController.resumeResponse.value
-            ?.resumeData?[0].resumeAcademicHistories?.instituteName ??
-        "";
-    fromDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeAcademicHistories?.fromDate ??
-        "";
-    toDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeAcademicHistories?.toDate ??
-        "";
-    backing.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeAcademicHistories?.backlog ??
-        "";
-    agregatedScore.text = resumeViewController.resumeResponse.value
-            ?.resumeData?[0].resumeAcademicHistories?.agregatedScore ??
-        "";
-    gapEducation.text = resumeViewController.resumeResponse.value
-            ?.resumeData?[0].resumeAcademicHistories?.gapBetweenEducation ??
-        "";
-    reasonGap.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeAcademicHistories?.reasonGapBetweenEducation ??
-        "";
-    clgName.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeAcademicHistories?.masterInsituteName ??
-        "";
-    specialization.text = resumeViewController.resumeResponse.value
-            ?.resumeData?[0].resumeAcademicHistories?.sepcialization ??
-        "";
-    yearOfCompleted.text = resumeViewController.resumeResponse.value
-            ?.resumeData?[0].resumeAcademicHistories?.yearsOfCompletion ??
-        "";
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+        0) {
+      schoolName.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAcademicHistories?.schoolName ??
+          "";
+
+      yearOfPassing.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAcademicHistories?.yearOfPassing ??
+          "";
+      sslScore.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeAcademicHistories?.sslSocre ??
+          "";
+      secondaryDiploma.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAcademicHistories?.secondaryDiploma ??
+          "";
+      yearOfPassingDiploma.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAcademicHistories?.yearOfPassing ??
+          "";
+      score.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeAcademicHistories?.score ??
+          "";
+      instituteName.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAcademicHistories?.instituteName ??
+          "";
+      fromDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeAcademicHistories?.fromDate ??
+          "";
+      toDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeAcademicHistories?.toDate ??
+          "";
+      backing.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeAcademicHistories?.backlog ??
+          "";
+      agregatedScore.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAcademicHistories?.agregatedScore ??
+          "";
+      gapEducation.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAcademicHistories?.gapBetweenEducation ??
+          "";
+      reasonGap.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeAcademicHistories?.reasonGapBetweenEducation ??
+          "";
+      clgName.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeAcademicHistories?.masterInsituteName ??
+          "";
+      specialization.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAcademicHistories?.sepcialization ??
+          "";
+      yearOfCompleted.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAcademicHistories?.yearsOfCompletion ??
+          "";
+    }
   }
 
   void academicHistory() {
