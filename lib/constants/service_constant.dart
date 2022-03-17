@@ -26,6 +26,7 @@ class ServiceConstant {
   static const String conferenceAttended = "api/create-conference-attendeds";
   static String additionalTraining = "api/create-additional-trains";
   static String employerCandidate = "api/employer-registration";
+  static String quiz = "api/get-quiz";
 
   static String getGovJob = "api/get-gov";
   static String getPrivateJob = "api/get-job-post";
@@ -34,4 +35,6 @@ class ServiceConstant {
   static String uploadProfile = "api/upload";
   static String AddNewJob = "api/create-emp-job-post";
   static String PostedJob = "api/get-job-post";
+
+  static String addPoll = "api/poll";
 }

@@ -512,12 +512,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 122.h,
                 ),
-                Text(
-                  'Which Is Your Best Skill?',
-                  style: TextStyle(
-                    color: ColorConstant.textColor,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 45.sp,
+                Obx(
+                  () => Text(
+                    "${controller.quizResponse.value?.data![0].question}",
+                    style: TextStyle(
+                      color: ColorConstant.textColor,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 45.sp,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -525,295 +527,171 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      child: Obx(
-                        () => GestureDetector(
-                          onTap: () {
-                            controller.selected.value = 0;
-                          },
-                          child: Container(
-                            height: 113.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(34.h),
-                              border: Border.all(
-                                color: controller.selected.value == 0
-                                    ? ColorConstant.borderColor
-                                    : Color(0xffDADADA),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'C++',
-                                style: TextStyle(
-                                  color: ColorConstant.textColor,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: TextFontFamily.openSensRegular,
-                                  fontSize: 30.sp,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                    Obx(
+                      () => controller.quizResponse.value?.data![0].option1 !=
+                              null
+                          ? Expanded(
+                              child: _buildPollOption(
+                                  controller.quizResponse.value?.data![0]
+                                          .option1 ??
+                                      "",
+                                  1),
+                            )
+                          : SizedBox.shrink(),
                     ),
-                    SizedBox(
-                      width: 35.h,
+                    Obx(
+                      () => controller.quizResponse.value?.data![0].option2 !=
+                              null
+                          ? SizedBox(
+                              width: 35.h,
+                            )
+                          : SizedBox.shrink(),
                     ),
-                    Expanded(
-                      child: Obx(
-                        () => GestureDetector(
-                          onTap: () {
-                            controller.selected.value = 1;
-                          },
-                          child: Container(
-                            height: 113.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(34.h),
-                              border: Border.all(
-                                color: controller.selected.value == 1
-                                    ? ColorConstant.borderColor
-                                    : Color(0xffDADADA),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'JAVA',
-                                style: TextStyle(
-                                  color: ColorConstant.textColor,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: TextFontFamily.openSensRegular,
-                                  fontSize: 30.sp,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                    Obx(
+                      () => controller.quizResponse.value?.data![0].option2 !=
+                              null
+                          ? Expanded(
+                              child: _buildPollOption(
+                                  controller.quizResponse.value?.data![0]
+                                          .option2 ??
+                                      "",
+                                  2),
+                            )
+                          : SizedBox.shrink(),
                     ),
-                    SizedBox(
-                      width: 35.h,
+                    Obx(
+                      () => controller.quizResponse.value?.data![0].option3 !=
+                              null
+                          ? SizedBox(
+                              width: 35.h,
+                            )
+                          : SizedBox.shrink(),
                     ),
-                    Expanded(
-                      child: Obx(
-                        () => GestureDetector(
-                          onTap: () {
-                            controller.selected.value = 2;
-                          },
-                          child: Container(
-                            height: 113.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(34.h),
-                              border: Border.all(
-                                color: controller.selected.value == 2
-                                    ? ColorConstant.borderColor
-                                    : Color(0xffDADADA),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "UNIX",
-                                style: TextStyle(
-                                  color: ColorConstant.textColor,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: TextFontFamily.openSensRegular,
-                                  fontSize: 30.sp,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                    Obx(
+                      () => controller.quizResponse.value?.data![0].option3 !=
+                              null
+                          ? Expanded(
+                              child: _buildPollOption(
+                                  controller.quizResponse.value?.data![0]
+                                          .option3 ??
+                                      "",
+                                  3),
+                            )
+                          : SizedBox.shrink(),
+                    ),
+                    Obx(
+                      () => controller.quizResponse.value?.data![0].option4 !=
+                              null
+                          ? SizedBox(
+                              width: 35.h,
+                            )
+                          : SizedBox.shrink(),
+                    ),
+                    Obx(
+                      () => controller.quizResponse.value?.data![0].option4 !=
+                              null
+                          ? Expanded(
+                              child: _buildPollOption(
+                                  controller.quizResponse.value?.data![0]
+                                          .option4 ??
+                                      "",
+                                  4),
+                            )
+                          : SizedBox.shrink(),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 31.h,
+                Obx(
+                  () => Column(
+                    children: [
+                      if (controller.quizResponse.value?.data![0].option1 !=
+                          null)
+                        SizedBox(
+                          height: 31.h,
+                        ),
+                      if (controller.quizResponse.value?.data![0].option1 !=
+                          null)
+                        _buildQuiz(
+                            "${controller.quizResponse.value?.data![0].option1}",
+                            (((controller.quizResponse.value?.data![0]
+                                            .pollOption1?.length ??
+                                        0) *
+                                    100) /
+                                (controller.quizResponse.value?.data![0].poll
+                                        ?.length ??
+                                    0)),
+                            1),
+                    ],
+                  ),
                 ),
-                Stack(
-                  children: [
-                    Container(
-                      height: 113.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(34.h),
-                        color: Color(0xffF8F8F8),
-                      ),
-                    ),
-                    Container(
-                      height: 113.h,
-                      width: 290,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(34.h),
-                          bottomLeft: Radius.circular(34.h),
+                Obx(
+                  () => Column(
+                    children: [
+                      if (controller.quizResponse.value?.data![0].option2 !=
+                          null)
+                        SizedBox(
+                          height: 9.h,
                         ),
-                        gradient: LinearGradient(
-                          colors: [Color(0xffE2E2E2), Color(0xfff1f1f1)],
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              AppUtils.getSVGAsset(ImageConstant.selectedIcon),
-                              height: 25,
-                            ),
-                            SizedBox(
-                              width: 7,
-                            ),
-                            Text(
-                              'C++',
-                              style: TextStyle(
-                                color: ColorConstant.text1Color,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: TextFontFamily.openSansBold,
-                                fontSize: 30.sp,
-                              ),
-                            ),
-                            Spacer(),
-                            Text(
-                              '85%',
-                              style: TextStyle(
-                                color: ColorConstant.text1Color,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: TextFontFamily.openSansBold,
-                                fontSize: 30.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+                      if (controller.quizResponse.value?.data![0].option2 !=
+                          null)
+                        _buildQuiz(
+                            "${controller.quizResponse.value?.data![0].option2}",
+                            (((controller.quizResponse.value?.data![0]
+                                            .pollOption2?.length ??
+                                        0) *
+                                    100) /
+                                (controller.quizResponse.value?.data![0].poll
+                                        ?.length ??
+                                    0)),
+                            2),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                  height: 9.h,
+                Obx(
+                  () => Column(
+                    children: [
+                      if (controller.quizResponse.value?.data![0].option3 !=
+                          null)
+                        SizedBox(
+                          height: 9.h,
+                        ),
+                      if (controller.quizResponse.value?.data![0].option3 !=
+                          null)
+                        _buildQuiz(
+                            "${controller.quizResponse.value?.data![0].option3}",
+                            (((controller.quizResponse.value?.data![0]
+                                            .pollOption3?.length ??
+                                        0) *
+                                    100) /
+                                (controller.quizResponse.value?.data![0].poll
+                                        ?.length ??
+                                    0)),
+                            3),
+                    ],
+                  ),
                 ),
-                Stack(
-                  children: [
-                    Container(
-                      height: 113.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(34.h),
-                        color: Color(0xffF8F8F8),
-                      ),
-                    ),
-                    Container(
-                      height: 113.h,
-                      width: 290,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(34.h),
-                          bottomLeft: Radius.circular(34.h),
+                Obx(
+                  () => Column(
+                    children: [
+                      if (controller.quizResponse.value?.data![0].option4 !=
+                          null)
+                        SizedBox(
+                          height: 9.h,
                         ),
-                        gradient: LinearGradient(
-                          colors: [Color(0xffE2E2E2), Color(0xfff1f1f1)],
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              AppUtils.getSVGAsset(ImageConstant.selectedIcon),
-                              height: 25,
-                            ),
-                            SizedBox(
-                              width: 7,
-                            ),
-                            Text(
-                              'JAVA',
-                              style: TextStyle(
-                                color: ColorConstant.text1Color,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: TextFontFamily.openSansBold,
-                                fontSize: 30.sp,
-                              ),
-                            ),
-                            Spacer(),
-                            Text(
-                              '85%',
-                              style: TextStyle(
-                                color: ColorConstant.text1Color,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: TextFontFamily.openSansBold,
-                                fontSize: 30.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 9.h,
-                ),
-                Stack(
-                  children: [
-                    Container(
-                      height: 113.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(34.h),
-                        color: Color(0xffF8F8F8),
-                      ),
-                    ),
-                    Container(
-                      height: 113.h,
-                      width: 290,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(34.h),
-                          bottomLeft: Radius.circular(34.h),
-                        ),
-                        gradient: LinearGradient(
-                          colors: [Color(0xffE2E2E2), Color(0xfff1f1f1)],
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              AppUtils.getSVGAsset(ImageConstant.selectedIcon),
-                              height: 25,
-                            ),
-                            SizedBox(
-                              width: 7,
-                            ),
-                            Text(
-                              'UNIX',
-                              style: TextStyle(
-                                color: ColorConstant.text1Color,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: TextFontFamily.openSansBold,
-                                fontSize: 30.sp,
-                              ),
-                            ),
-                            Spacer(),
-                            Text(
-                              '85%',
-                              style: TextStyle(
-                                color: ColorConstant.text1Color,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: TextFontFamily.openSansBold,
-                                fontSize: 30.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+                      if (controller.quizResponse.value?.data![0].option4 !=
+                          null)
+                        _buildQuiz(
+                            "${controller.quizResponse.value?.data![0].option4}",
+                            (((controller.quizResponse.value?.data![0]
+                                            .pollOption4?.length ??
+                                        0) *
+                                    100) /
+                                (controller.quizResponse.value?.data![0].poll
+                                        ?.length ??
+                                    0)),
+                            4),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 122.h,
@@ -1143,6 +1021,114 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  _buildQuiz(String name, double pr, int optionId) {
+    return Stack(
+      children: [
+        Container(
+          height: 113.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(34.h),
+            color: (optionId != controller.yourAnsId.value)
+                ? ColorConstant.skillContainerColor
+                : Color(0xffDAFFE4),
+          ),
+        ),
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(left: 5),
+              height: 113.h,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(34.h),
+                    bottomLeft: Radius.circular(34.h),
+                  ),
+                  color: pr != 0
+                      ? (optionId != controller.yourAnsId.value)
+                          ? Color(0xffE2E2E2)
+                          : Color(0xff59D77C)
+                      : ColorConstant.skillContainerColor),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    AppUtils.getSVGAsset(ImageConstant.selectedIcon),
+                    height: 25,
+                    color: (optionId != controller.yourAnsId.value)
+                        ? ColorConstant.text1Color
+                        : Colors.black,
+                  ),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  Text(
+                    name,
+                    style: TextStyle(
+                      color: (optionId != controller.yourAnsId.value)
+                          ? ColorConstant.text1Color
+                          : Colors.black,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: TextFontFamily.openSansBold,
+                      fontSize: 30.sp,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return Row(
+                    children: [
+                      Container(
+                        height: 113.h,
+                        width: (constraints.maxWidth * pr) / 100,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              (optionId != controller.yourAnsId.value)
+                                  ? Color(0xffE2E2E2)
+                                  : Color(0xff59D77C),
+                              (optionId != controller.yourAnsId.value)
+                                  ? Color(0xfff1f1f1)
+                                  : Color(0xffA4FDBD)
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                            children: [
+                              Spacer(),
+                              Text(
+                                pr.toStringAsFixed(2),
+                                style: TextStyle(
+                                  color:
+                                      (optionId != controller.yourAnsId.value)
+                                          ? ColorConstant.text1Color
+                                          : Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: TextFontFamily.openSansBold,
+                                  fontSize: 30.sp,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
   _buildOption(
       String text, String image, mainGradient, insideGradient, shadow, onTap) {
     return Expanded(
@@ -1204,6 +1190,39 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildPollOption(String title, id) {
+    return GestureDetector(
+      onTap: () {
+        if (controller.yourAnsId.value == 0) {
+          controller.yourAnsId.value = id;
+          controller.addPoll(id);
+        }
+      },
+      child: Container(
+        height: 113.h,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(34.h),
+          border: Border.all(
+            color: controller.yourAnsId.value == id
+                ? ColorConstant.borderColor
+                : Color(0xffDADADA),
+          ),
+        ),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(
+              color: ColorConstant.textColor,
+              fontWeight: FontWeight.w700,
+              fontFamily: TextFontFamily.openSensRegular,
+              fontSize: 30.sp,
             ),
           ),
         ),
