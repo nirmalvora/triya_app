@@ -94,7 +94,11 @@ class CommanTopBar extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.only(right: 10, left: 10, top: 35, bottom: 35.h),
+        padding: EdgeInsets.only(
+            right: 10,
+            left: 10,
+            top: MediaQuery.of(context).padding.top + 18.h,
+            bottom: 35.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

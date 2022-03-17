@@ -50,7 +50,7 @@ class ResumeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
+            /* Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: GestureDetector(
                 onTap: () {},
@@ -60,7 +60,7 @@ class ResumeScreen extends StatelessWidget {
             GestureDetector(
               onTap: () {},
               child: ResumeContainer(name: "STANDARD RESUME"),
-            ),
+            ),*/
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: GestureDetector(

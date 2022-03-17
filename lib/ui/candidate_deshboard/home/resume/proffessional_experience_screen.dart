@@ -33,7 +33,7 @@ class ProfessionalScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                /*  Row(
                   children: [
                     Text(
                       'Experience 1',
@@ -55,7 +55,7 @@ class ProfessionalScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 46.h,
-                ),
+                ),*/
                 Text(
                   'COMPANY NAME *',
                   style: TextStyle(
@@ -150,7 +150,7 @@ class ProfessionalScreen extends StatelessWidget {
                 SizedBox(
                   height: 40.h,
                 ),
-                CommanAddButton(title: "ADD EXPERIENCE", onTap: () {})
+                // CommanAddButton(title: "ADD EXPERIENCE", onTap: () {})
               ],
             ),
           ),

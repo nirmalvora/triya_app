@@ -25,7 +25,7 @@ class AdditionalTrainingScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                /* Row(
                   children: [
                     Text(
                       'Training 1',
@@ -45,7 +45,7 @@ class AdditionalTrainingScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 45.h),
+                SizedBox(height: 45.h),*/
                 Text(
                   'Company Name/ Training Center'.toUpperCase(),
                   style: TextStyle(
@@ -88,7 +88,7 @@ class AdditionalTrainingScreen extends StatelessWidget {
                   controller: controller.description,
                 ),
                 SizedBox(height: 42.h),
-                CommanAddButton(onTap: () {}, title: 'Add Training')
+                // CommanAddButton(onTap: () {}, title: 'Add Training')
               ],
             ),
           ),

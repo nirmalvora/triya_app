@@ -25,7 +25,7 @@ class ConferenceAttendedScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                /*   Row(
                   children: [
                     Text(
                       'Conference 1',
@@ -45,7 +45,7 @@ class ConferenceAttendedScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 45.h),
+                SizedBox(height: 45.h),*/
                 Text(
                   'Conerence Description'.toUpperCase(),
                   style: TextStyle(
@@ -60,7 +60,7 @@ class ConferenceAttendedScreen extends StatelessWidget {
                   controller: controller.description,
                 ),
                 SizedBox(height: 42.h),
-                CommanAddButton(onTap: () {}, title: 'Add Conference')
+                // CommanAddButton(onTap: () {}, title: 'Add Conference')
               ],
             ),
           ),

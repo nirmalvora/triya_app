@@ -25,7 +25,7 @@ class PublicationScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                /*  Row(
                   children: [
                     Text(
                       'Publication 1',
@@ -45,7 +45,7 @@ class PublicationScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 45.h),
+                SizedBox(height: 45.h),*/
                 Text(
                   'Certificate Title'.toUpperCase(),
                   style: TextStyle(
@@ -74,7 +74,7 @@ class PublicationScreen extends StatelessWidget {
                   controller: controller.description,
                 ),
                 SizedBox(height: 42.h),
-                CommanAddButton(onTap: () {}, title: 'Add Publication')
+                // CommanAddButton(onTap: () {}, title: 'Add Publication')
               ],
             ),
           ),

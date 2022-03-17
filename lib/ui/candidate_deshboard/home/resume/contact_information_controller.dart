@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/contact_information_response.dart';
 import 'package:triya_app/services/api_service_methods.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/private/professional_resume_controller.dart';
 
 class ContactInformationController extends GetxController {
   final mobileNumber = TextEditingController();
@@ -13,6 +14,11 @@ class ContactInformationController extends GetxController {
   final city = TextEditingController();
   final state = TextEditingController();
   final pinCode = TextEditingController();
+  @override
+  void onReady() {
+    super.onReady();
+    final resumeViewController = Get.put(ProfileResumeController());
+  }
 
   void contactInformation() {
     Map<String, dynamic> information = {

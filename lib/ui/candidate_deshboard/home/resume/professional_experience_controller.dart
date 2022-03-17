@@ -5,11 +5,30 @@ import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/professional_experience_response.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
+import '../private/professional_resume_controller.dart';
+
 class ProfessionalExperienceController extends GetxController {
   final companyName = TextEditingController();
   final role = TextEditingController();
   final formDate = TextEditingController();
   final endDate = TextEditingController();
+  @override
+  void onReady() {
+    super.onReady();
+    final resumeViewController = Get.put(ProfileResumeController());
+    companyName.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeProfessionalExperiences?.companyName ??
+        "";
+    role.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeProfessionalExperiences?.role ??
+        "";
+    formDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeProfessionalExperiences?.fromDate ??
+        "";
+    endDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+            .resumeProfessionalExperiences?.toDate ??
+        "";
+  }
 
   void professionalExperience() {
     Map<String, dynamic> experience = {

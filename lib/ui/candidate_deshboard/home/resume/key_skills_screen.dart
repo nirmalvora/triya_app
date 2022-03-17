@@ -26,7 +26,7 @@ class KeySkillsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                /* Row(
                   children: [
                     Text(
                       'Skill 1',
@@ -46,7 +46,7 @@ class KeySkillsScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 45.h),
+                SizedBox(height: 45.h),*/
                 Text(
                   'Add skill*'.toUpperCase(),
                   style: TextStyle(
@@ -61,7 +61,7 @@ class KeySkillsScreen extends StatelessWidget {
                   controller: controller.keySkills,
                 ),
                 SizedBox(height: 42.h),
-                CommanAddButton(onTap: () {}, title: 'ADD SKILL')
+                // CommanAddButton(onTap: () {}, title: 'ADD SKILL')
               ],
             ),
           ),
