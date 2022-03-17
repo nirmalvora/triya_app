@@ -12,17 +12,21 @@ class AdditionalTrainingController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+
     final resumeViewController = Get.put(ProfileResumeController());
 
-    companyName.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeAdditionalTrains?.companyName ??
-        "";
-    secialization.text = resumeViewController.resumeResponse.value
-            ?.resumeData?[0].resumeAdditionalTrains?.secialization ??
-        "";
-    description.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeAdditionalTrains?.description ??
-        "";
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+        0) {
+      companyName.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAdditionalTrains?.companyName ??
+          "";
+      secialization.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAdditionalTrains?.secialization ??
+          "";
+      description.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAdditionalTrains?.description ??
+          "";
+    }
   }
 
   void additionalTraining() {

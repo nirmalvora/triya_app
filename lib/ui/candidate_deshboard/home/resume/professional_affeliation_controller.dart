@@ -12,12 +12,15 @@ class ProfessionalAffiliationController extends GetxController {
   void onReady() {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
-    titles.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeProfessionalAffiliations?.title ??
-        "";
-    description.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeProfessionalAffiliations?.description ??
-        "";
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+        0) {
+      titles.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeProfessionalAffiliations?.title ??
+          "";
+      description.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeProfessionalAffiliations?.description ??
+          "";
+    }
   }
 
   void professionalAffiliation() {

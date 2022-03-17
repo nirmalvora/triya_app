@@ -25,6 +25,10 @@ class AppUtils {
         PreferenceKeys.userProfile, jsonEncode(response.toJson()));
     Preferences.setInt(PreferenceKeys.userRole, response.data!.user!.roleId!);
     Preferences.setString(PreferenceKeys.accessToken, response.data!.token);
-    Get.offAllNamed(NavigationName.dashboard);
+    if (response.data?.user?.roleId == 2) {
+      Get.offAllNamed(NavigationName.dashboard);
+    } else {
+      Get.offAllNamed(NavigationName.employerDashboard);
+    }
   }
 }

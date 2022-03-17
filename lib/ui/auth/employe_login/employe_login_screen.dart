@@ -208,7 +208,7 @@ class _EmployeLoginScreenState extends State<EmployeLoginScreen> {
                                 text: "Sign Up",
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Get.toNamed(NavigationName.employerSignUp);
+                                    Get.toNamed(NavigationName.signup);
                                   },
                                 style: TextStyle(
                                     color: Colors.white,

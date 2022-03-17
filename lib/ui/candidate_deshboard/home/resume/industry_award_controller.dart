@@ -12,9 +12,12 @@ class IndustryAwardController extends GetxController {
   void onReady() {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
-    industry.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeIndustryAwards?.awardDescription ??
-        "";
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+        0) {
+      industry.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeIndustryAwards?.awardDescription ??
+          "";
+    }
   }
 
   void industryAward() {

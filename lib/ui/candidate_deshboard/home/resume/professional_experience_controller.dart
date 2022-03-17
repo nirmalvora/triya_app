@@ -16,18 +16,21 @@ class ProfessionalExperienceController extends GetxController {
   void onReady() {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
-    companyName.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeProfessionalExperiences?.companyName ??
-        "";
-    role.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeProfessionalExperiences?.role ??
-        "";
-    formDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeProfessionalExperiences?.fromDate ??
-        "";
-    endDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeProfessionalExperiences?.toDate ??
-        "";
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+        0) {
+      companyName.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeProfessionalExperiences?.companyName ??
+          "";
+      role.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeProfessionalExperiences?.role ??
+          "";
+      formDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeProfessionalExperiences?.fromDate ??
+          "";
+      endDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeProfessionalExperiences?.toDate ??
+          "";
+    }
   }
 
   void professionalExperience() {

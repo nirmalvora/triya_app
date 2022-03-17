@@ -1,6 +1,8 @@
 class ServiceConstant {
   static const String signUp = "api/sign_up";
+  static const String employersignUp = "api/employer-registration";
   static const String signIn = "api/login";
+  static const String empSignIn = "api/empLogin";
   static const String getTopBanner = "api/get-banner";
   static const String getBottomBanner = "api/get-bottom-banner";
   static const String getBookCategory = "api/book-category-show";
@@ -23,10 +25,16 @@ class ServiceConstant {
       "api/create-professional-affiliations";
   static const String conferenceAttended = "api/create-conference-attendeds";
   static String additionalTraining = "api/create-additional-trains";
+  static String employerCandidate = "api/employer-registration";
+  static String quiz = "api/get-quiz";
 
   static String getGovJob = "api/get-gov";
   static String getPrivateJob = "api/get-job-post";
 
   static String getResume = "api/get-resume";
   static String uploadProfile = "api/upload";
+  static String AddNewJob = "api/create-emp-job-post";
+  static String PostedJob = "api/get-job-post";
+
+  static String addPoll = "api/poll";
 }

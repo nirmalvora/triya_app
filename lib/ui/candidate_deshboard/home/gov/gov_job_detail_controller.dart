@@ -6,7 +6,6 @@ class GovJobDetailController extends GetxController {
   @override
   void onInit() {
     govJob.value = Get.arguments['gov_job_data'];
-
     super.onInit();
   }
 }

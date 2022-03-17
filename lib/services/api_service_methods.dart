@@ -211,6 +211,64 @@ class BaseApiService {
     });
   }
 
+  Future<Response?> postForm(String endUrl,
+      {FormData? data,
+      Map<String, dynamic>? params,
+      Options? options,
+      CancelToken? cancelToken,
+      void Function(void)? onSuccess,
+      void Function(void)? onError}) async {
+    if (!await isInternet()) {
+      ToastUtils.showFailed(message: StringRes.pleaseCheckInternet);
+      return null;
+    }
+    return await (_dio
+        .post(endUrl,
+            data: data,
+            queryParameters: params,
+            cancelToken: cancelToken ?? _cancelToken,
+            options: options)
+        .then((value) {
+      if (value.statusCode == HttpStatus.ok ||
+          value.statusCode == HttpStatus.created) {
+        if (onSuccess != null) {
+          onSuccess(value.statusMessage);
+        }
+      } else {
+        if (onError != null) {
+          onError(value.data);
+        }
+      }
+      return value;
+    })).catchError((e) async {
+      sentryError(error: e);
+      await errorHandling(
+          error: e,
+          callBack: () {
+            initApiServiceDio();
+            _dio
+                .post(endUrl,
+                    data: data,
+                    queryParameters: params,
+                    cancelToken: cancelToken ?? _cancelToken,
+                    options: options)
+                .then((value) {
+              if (value.statusCode == HttpStatus.ok ||
+                  value.statusCode == HttpStatus.created) {
+                if (onSuccess != null) {
+                  onSuccess(value.data);
+                }
+              } else {
+                if (onError != null) {
+                  onError(value.data);
+                }
+              }
+            });
+          });
+      throw e;
+    });
+  }
+
   Future<Response?> patch(
     String endUrl, {
     Map<String, dynamic>? data,

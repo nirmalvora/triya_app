@@ -64,7 +64,7 @@ class EmployeOTPLoginScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       Get.toNamed(NavigationName.otpSubmit, arguments: {
-                        AppConstants.mobileNo: controller.mobileNO.text
+                        AppConstants.mobileNo: controller.mobileNO.text,
                       });
                     },
                     child: Container(

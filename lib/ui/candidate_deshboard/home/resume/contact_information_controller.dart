@@ -18,6 +18,8 @@ class ContactInformationController extends GetxController {
   void onReady() {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+        0) {}
   }
 
   void contactInformation() {

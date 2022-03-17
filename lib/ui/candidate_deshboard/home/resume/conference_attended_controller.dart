@@ -11,10 +11,12 @@ class ConferenceAttendedController extends GetxController {
   void onReady() {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
-
-    description.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeConferenceAttendeds?.description ??
-        "";
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+        0) {
+      description.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeConferenceAttendeds?.description ??
+          "";
+    }
   }
 
   void conferenceAttended() {

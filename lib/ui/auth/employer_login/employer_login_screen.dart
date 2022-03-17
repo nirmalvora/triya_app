@@ -6,7 +6,7 @@ import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class EmployerLogin extends StatelessWidget {
-  const EmployerLogin({Key? key}) : super(key: key);
+  EmployerLogin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -7,6 +7,7 @@ import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/private/private_job_detail_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PrivateDescription extends StatefulWidget {
   const PrivateDescription({Key? key}) : super(key: key);
@@ -107,7 +108,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Text(
-                controller.govJob.value?.title ?? "",
+                controller.govJob.value?.jobTitle ?? "",
                 style: TextStyle(
                   color: ColorConstant.textColor,
                   fontWeight: FontWeight.w600,
@@ -144,7 +145,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                           ),
                           Spacer(),
                           Text(
-                            '24th Dec, 2020',
+                            controller.govJob.value?.fromDate ?? "",
                             style: TextStyle(
                               color: ColorConstant.textColor,
                               fontWeight: FontWeight.w400,
@@ -183,7 +184,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                           ),
                           Spacer(),
                           Text(
-                            '01st Jan, 2021',
+                            controller.govJob.value?.toDate ?? "",
                             style: TextStyle(
                               color: ColorConstant.textColor,
                               fontWeight: FontWeight.w400,
@@ -263,7 +264,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                       ),
                       Spacer(),
                       Text(
-                        controller.govJob.value?.board ?? "",
+                        controller.govJob.value?.qualification ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -303,6 +304,8 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                       Spacer(),
                       Text(
                         controller.govJob.value?.jobLink ?? "",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -342,7 +345,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                         height: 7,
                       ),
                       Text(
-                        controller.govJob.value?.jobDescription ?? "",
+                        controller.govJob.value?.jobDetail ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -357,53 +360,62 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-              child: Container(
-                height: 110.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: ColorConstant.splashColor,
-                ),
+              child: InkWell(
+                onTap: () async {
+                  if (await canLaunch(controller.govJob.value?.jobLink ?? "")) {
+                    await launch(controller.govJob.value?.jobLink ?? "");
+                  } else {
+                    throw 'Could not launch "${controller.govJob.value?.jobLink ?? ""}"';
+                  }
+                },
                 child: Container(
+                  height: 110.h,
                   width: double.infinity,
-                  margin: EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    gradient: LinearGradient(
-                      colors: const [Color(0xff3782F3), Color(0xff276ED8)],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
+                    color: ColorConstant.splashColor,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Download Pdf',
-                              style: TextStyle(
-                                color: ColorConstant.backgroundColor,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: TextFontFamily.openSansBold,
-                                fontSize: 40.sp,
-                                letterSpacing: 2,
-                              ),
-                            ),
-                            Spacer(),
-                            Icon(
-                              Icons.file_download,
-                              color: ColorConstant.backgroundColor,
-                              size: 20,
-                            )
-                          ],
-                        ),
+                  child: Container(
+                    width: double.infinity,
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      gradient: LinearGradient(
+                        colors: const [Color(0xff3782F3), Color(0xff276ED8)],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
                       ),
-                    ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Download Pdf',
+                                style: TextStyle(
+                                  color: ColorConstant.backgroundColor,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: TextFontFamily.openSansBold,
+                                  fontSize: 40.sp,
+                                  letterSpacing: 2,
+                                ),
+                              ),
+                              Spacer(),
+                              Icon(
+                                Icons.file_download,
+                                color: ColorConstant.backgroundColor,
+                                size: 20,
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

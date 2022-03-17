@@ -12,12 +12,15 @@ class ProfessionalCertificateController extends GetxController {
   void onReady() {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
-    titles.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeProfessionalCertifications?.title ??
-        "";
-    description.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-            .resumeProfessionalCertifications?.description ??
-        "";
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+        0) {
+      titles.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeProfessionalCertifications?.title ??
+          "";
+      description.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeProfessionalCertifications?.description ??
+          "";
+    }
   }
 
   void professionalCertificates() {

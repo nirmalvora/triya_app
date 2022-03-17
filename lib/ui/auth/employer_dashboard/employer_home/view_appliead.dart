@@ -2,14 +2,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_new_job.dart';
-import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employer_home_screen.dart';
+import 'package:triya_app/ui/auth/employer_dashboard/employer_home/posted_job_detail_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ViewApplieadScreen extends StatelessWidget {
-  const ViewApplieadScreen({Key? key}) : super(key: key);
+  ViewApplieadScreen({Key? key}) : super(key: key);
+
+  final controller = Get.put(PostedJobDetailController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +51,7 @@ class ViewApplieadScreen extends StatelessWidget {
         ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 30.w),
+            padding: EdgeInsets.only(right: 30.w, bottom: 10.h),
             child: Center(
               child: Container(
                 height: 115.h,
@@ -73,8 +77,7 @@ class ViewApplieadScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CommanTopBarField(),
-          SizedBox(height: 60.h),
+          SizedBox(height: 30.h),
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
@@ -83,31 +86,14 @@ class ViewApplieadScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'UIUX Designer 2year Exp.',
+                      controller.postedJob.value?.jobTitle ?? "",
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           color: ColorConstant.black,
                           fontSize: 52.sp,
                           fontFamily: "OpenSans-Regular"),
                     ),
-                    SizedBox(height: 7.h),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xff3782F3),
-                          borderRadius: BorderRadius.circular(74.r)),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 27.h, vertical: 11.h),
-                        child: Text(
-                          '24 People Applied',
-                          style: TextStyle(
-                              color: ColorConstant.white,
-                              fontSize: 12,
-                              fontFamily: "OpenSans-Regular"),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 44.h),
+                    SizedBox(height: 30.h),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -134,7 +120,8 @@ class ViewApplieadScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 8.h),
                                       Text(
-                                        '24th Dec, 2020',
+                                        controller.postedJob.value?.fromDate ??
+                                            "",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 16,
@@ -165,7 +152,8 @@ class ViewApplieadScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 8.h),
                                       Text(
-                                        '01st Jan, 2021',
+                                        controller.postedJob.value?.toDate ??
+                                            "",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 16,
@@ -179,32 +167,33 @@ class ViewApplieadScreen extends StatelessWidget {
                         SizedBox(height: 28.h),
                         CommanViewAppliedContainer(
                           maxLine: 1,
-                          title: 'Qualification:',
-                          subtitle: 'Matriculation with valid driving liscence',
-                        ),
-                        SizedBox(height: 28.h),
-                        CommanViewAppliedContainer(
-                          maxLine: 1,
-                          title: 'Company Name:',
-                          subtitle: 'Tech Mahindra',
+                          title: 'Qualification',
+                          subtitle:
+                              controller.postedJob.value?.qualification ?? "",
                         ),
                         SizedBox(height: 28.h),
                         CommanViewAppliedContainer(
                           maxLine: 1,
                           title: 'Job Link',
-                          subtitle:
-                              'https://www.naukri.com/job-listings-graphic-designe',
+                          subtitle: controller.postedJob.value?.jobLink ?? "",
                         ),
                         SizedBox(height: 28.h),
                         CommanViewAppliedContainer(
                           maxLine: 3,
                           title: 'Job Details:',
-                          subtitle:
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet condimentum ullamcorper amet tristique et enim mauris. Laoreet curabitur maecenas elit enim sed. ',
+                          subtitle: controller.postedJob.value?.jobDetail ?? "",
                         ),
                         SizedBox(height: 50.h),
                         InkWell(
-                          onTap: () {},
+                          onTap: () async {
+                            if (await canLaunch(
+                                controller.postedJob.value?.upload ?? '')) {
+                              await launch(
+                                  controller.postedJob.value?.upload ?? '');
+                            } else {
+                              throw 'Could not launch "${controller.postedJob.value?.upload ?? ''}"';
+                            }
+                          },
                           child: Row(mainAxisSize: MainAxisSize.min, children: [
                             Text(
                               'Download Pdf',
