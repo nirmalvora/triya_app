@@ -25,6 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   final controller = Get.put(HomeController());
+  var percentValue = 0.6;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -610,7 +612,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             child: Center(
                               child: Text(
-                                'UNIX',
+                                "UNIX",
                                 style: TextStyle(
                                   color: ColorConstant.textColor,
                                   fontWeight: FontWeight.w700,
@@ -727,7 +729,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 7,
                             ),
                             Text(
-                              'C++',
+                              'JAVA',
                               style: TextStyle(
                                 color: ColorConstant.text1Color,
                                 fontWeight: FontWeight.w700,
@@ -790,7 +792,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 7,
                             ),
                             Text(
-                              'C++',
+                              'UNIX',
                               style: TextStyle(
                                 color: ColorConstant.text1Color,
                                 fontWeight: FontWeight.w700,
