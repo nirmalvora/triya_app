@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
-import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/candidate_login/candidate_login_controller.dart';
+import 'package:triya_app/ui/auth/employe_login/employe_login_screen_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/common_text_field.dart';
 
@@ -16,6 +16,7 @@ class EmployeeSignUpScreen extends StatelessWidget {
   EmployeeSignUpScreen({Key? key}) : super(key: key);
   final controller = Get.put(EmployeSignUpControllernScreen());
   final googleController = Get.put(CandidateLoginController());
+  final facebookController = Get.put(EmployeLoginScreenController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -168,7 +169,9 @@ class EmployeeSignUpScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              facebookController.loginwithFacebook();
+                            },
                             child: Container(
                               height: 164.h,
                               width: 164.w,
@@ -221,8 +224,7 @@ class EmployeeSignUpScreen extends StatelessWidget {
                                   text: "Sign In",
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      Get.toNamed(
-                                          NavigationName.employerSignUp);
+                                      Get.back();
                                     },
                                   style: TextStyle(
                                       color: Colors.white,
