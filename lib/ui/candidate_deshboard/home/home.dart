@@ -136,30 +136,35 @@ class _HomeScreenState extends State<HomeScreen> {
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            AppUtils.getSVGAsset(ImageConstant.homeIcon),
-                            height: 45.h,
-                            width: 51.w,
-                          ),
-                          SizedBox(
-                            width: 25.w,
-                          ),
-                          Text(
-                            'Home',
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 45.sp,
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              AppUtils.getSVGAsset(ImageConstant.homeIcon),
+                              height: 45.h,
+                              width: 51.w,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'Home',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 96.h,
                       ),
-                      Row(
+                      /* Row(
                         children: [
                           SvgPicture.asset(
                             AppUtils.getSVGAsset(ImageConstant.profileIcon),
@@ -273,9 +278,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(
                         height: 96.h,
-                      ),
+                      ),*/
                       InkWell(
                         onTap: () {
+                          Get.back();
                           Get.toNamed(NavigationName.resumePage);
                         },
                         child: Row(
