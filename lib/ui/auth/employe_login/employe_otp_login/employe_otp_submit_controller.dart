@@ -23,7 +23,7 @@ class OtpSubmitController extends GetxController {
 
   verifyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '+91 ${mobileNO}',
+      phoneNumber: '+91 $mobileNO',
       verificationCompleted: (PhoneAuthCredential credential) async {
         print("Data");
         await FirebaseAuth.instance
