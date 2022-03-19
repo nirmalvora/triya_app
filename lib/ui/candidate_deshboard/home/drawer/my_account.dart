@@ -61,10 +61,44 @@ class _MyAccountState extends State<MyAccount> {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Column(
             children: [
-              CircleAvatar(
-                backgroundColor: ColorConstant.splashColor,
-                radius: 50,
-              ),
+              /*   GestureDetector(
+                onTap: () {
+                  myController.getImage();
+                },
+                child: CircleAvatar(
+                  backgroundColor: ColorConstant.backgroundColor,
+                  radius: 55,
+                  child: ClipOval(
+                    child: Obx(
+                      () => myController.image.value == null
+                          ? ((myController.updateName.value?.resumeData
+                                              ?.length ??
+                                          0) !=
+                                      0) &&
+                                  (myController.resumeResponse.value
+                                              ?.resumeData?[0].resume?.url ??
+                                          "") !=
+                                      ""
+                              ? CacheImageView(
+                                  imageUrl: myController.resumeResponse.value
+                                          ?.resumeData![0].resume?.url ??
+                                      "")
+                              : Image.network(
+                                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCubUN2VDqYNO0nfbwpiJmiHwmkXyux32Izw&usqp=CAU",
+                                  fit: BoxFit.cover,
+                                  height: double.infinity,
+                                  width: double.infinity,
+                                )
+                          : Image.file(
+                              myController.image.value!,
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                    ),
+                  ),
+                ),
+              ),*/
               SizedBox(
                 height: 20.h,
               ),
@@ -180,6 +214,7 @@ class _MyAccountState extends State<MyAccount> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   TextFormField(
+                    onChanged: (value) {},
                     controller: myController.firstNameController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -195,6 +230,7 @@ class _MyAccountState extends State<MyAccount> {
                     height: 10.h,
                   ),
                   TextFormField(
+                    onChanged: (value) {},
                     controller: myController.lastNameController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -209,7 +245,8 @@ class _MyAccountState extends State<MyAccount> {
                   SizedBox(height: 8),
                   GestureDetector(
                     onTap: () {
-                      if (myController.formKey.currentState!.validate()) {}
+                      myController.updateData();
+                      Get.back();
                     },
                     child: Container(
                       height: 120.h,
