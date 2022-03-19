@@ -131,34 +131,36 @@ class FavoritesBookScreen extends StatelessWidget {
                                       ),
                                     ),
                                     IconButton(
-                                        onPressed: () {
-                                          controller.addToFavotite(
-                                              controller.bookDataResponse.value
-                                                      ?.data?[index].id ??
-                                                  0,
-                                              index,
-                                              (controller
-                                                          .bookDataResponse
-                                                          .value
-                                                          ?.data?[index]
-                                                          .favoriteBook) ==
-                                                      null
-                                                  ? -1
-                                                  : (controller
-                                                      .bookDataResponse
-                                                      .value!
-                                                      .data![index]
-                                                      .favoriteBook!
-                                                      .id!));
-                                        },
-                                        icon: Icon((controller
+                                      splashRadius: 20,
+                                      onPressed: () {
+                                        controller.addToFavotite(
+                                            controller.bookDataResponse.value
+                                                    ?.data?[index].id ??
+                                                0,
+                                            index,
+                                            (controller
+                                                        .bookDataResponse
+                                                        .value
+                                                        ?.data?[index]
+                                                        .favoriteBook) ==
+                                                    null
+                                                ? -1
+                                                : (controller
                                                     .bookDataResponse
-                                                    .value
-                                                    ?.data?[index]
-                                                    .favoriteBook) ==
-                                                null
-                                            ? Icons.favorite_border_sharp
-                                            : Icons.favorite))
+                                                    .value!
+                                                    .data![index]
+                                                    .favoriteBook!
+                                                    .id!));
+                                      },
+                                      icon: Icon((controller
+                                                  .bookDataResponse
+                                                  .value
+                                                  ?.data?[index]
+                                                  .favoriteBook) ==
+                                              null
+                                          ? Icons.favorite_border_sharp
+                                          : Icons.favorite),
+                                    ),
                                   ],
                                 ),
                               ),

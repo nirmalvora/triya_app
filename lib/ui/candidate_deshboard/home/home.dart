@@ -14,7 +14,7 @@ import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -165,121 +165,146 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 96.h,
                       ),
-                      /* Row(
-                        children: [
-                          SvgPicture.asset(
-                            AppUtils.getSVGAsset(ImageConstant.profileIcon),
-                            height: 45.h,
-                            width: 51.w,
-                          ),
-                          SizedBox(
-                            width: 25.w,
-                          ),
-                          Text(
-                            'My Account',
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 45.sp,
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(NavigationName.myAccount);
+                        },
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              AppUtils.getSVGAsset(ImageConstant.profileIcon),
+                              height: 45.h,
+                              width: 51.w,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'My Account',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 96.h,
                       ),
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            AppUtils.getSVGAsset(ImageConstant.lobsIcon),
-                            height: 45.h,
-                            width: 51.w,
-                          ),
-                          SizedBox(
-                            width: 25.w,
-                          ),
-                          Text(
-                            'Applied Lobs',
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 45.sp,
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(NavigationName.appliedJobs);
+                        },
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              AppUtils.getSVGAsset(ImageConstant.lobsIcon),
+                              height: 45.h,
+                              width: 51.w,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'Applied Lobs',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 96.h,
                       ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                            height: 62.h,
-                            width: 62.w,
-                          ),
-                          SizedBox(
-                            width: 25.w,
-                          ),
-                          Text(
-                            'My Favorites',
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 45.sp,
+                      GestureDetector(
+                        onTap: () {
+                          // Get.toNamed(NavigationName.);
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                              height: 62.h,
+                              width: 62.w,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'My Favorites',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 96.h,
                       ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                            height: 62.h,
-                            width: 62.w,
-                          ),
-                          SizedBox(
-                            width: 25.w,
-                          ),
-                          Text(
-                            'Favorites Books',
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 45.sp,
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(NavigationName.favoritesBooks);
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                              height: 62.h,
+                              width: 62.w,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'Favorites Books',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 96.h,
                       ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                            height: 62.h,
-                            width: 62.w,
-                          ),
-                          SizedBox(
-                            width: 25.w,
-                          ),
-                          Text(
-                            'Favorites Video',
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 45.sp,
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(NavigationName.favoritesVideo);
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                              height: 62.h,
+                              width: 62.w,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Text(
+                              'Favorites Video',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 45.sp,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 96.h,
-                      ),*/
+                      ),
                       InkWell(
                         onTap: () {
                           Get.back();

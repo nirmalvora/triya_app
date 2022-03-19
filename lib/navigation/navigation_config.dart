@@ -74,7 +74,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.homePage,
-      page: () => const HomeScreen(),
+      page: () => HomeScreen(),
     ),
     GetPage(
       name: NavigationName.bookPage,

@@ -21,8 +21,8 @@ class NavigationName {
   static const resumePage = '/resumePage';
   static const myAccount = '/myAccount';
   static const appliedJobs = '/appliedJobs';
-  static const favoritesBooks = '/resumePage';
-  static const favoritesVideo = '/resumePage';
+  static const favoritesBooks = '/favoritesBook';
+  static const favoritesVideo = '/favoritesVideo';
   static const loginTypePage = '/loginTypePage';
 
   static const candidateLoginType = "/candidateLoginType";

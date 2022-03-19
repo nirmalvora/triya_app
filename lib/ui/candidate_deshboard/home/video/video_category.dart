@@ -177,19 +177,21 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
                                           SizedBox(
                                             width: 20.h,
                                           ),
-                                          Text(
-                                            controller.videoDataResponse.value
-                                                    ?.data?[index].title ??
-                                                "",
-                                            maxLines: 2,
-                                            style: TextStyle(
-                                              color: ColorConstant.textColor,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 30.sp,
+                                          Expanded(
+                                            child: Text(
+                                              controller.videoDataResponse.value
+                                                      ?.data?[index].title ??
+                                                  "",
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                color: ColorConstant.textColor,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 30.sp,
+                                              ),
                                             ),
                                           ),
-                                          Spacer(),
                                           IconButton(
+                                              splashRadius: 20,
                                               onPressed: () {
                                                 controller.addToFavotite(
                                                     controller
