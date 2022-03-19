@@ -70,10 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           alignment: Alignment.center,
                           children: [
                             CircleAvatar(
-                              backgroundColor: ColorConstant.backgroundColor
-                                  .withOpacity(0.1),
-                              radius: 24,
-                            ),
+                                backgroundColor: ColorConstant.backgroundColor
+                                    .withOpacity(0.1),
+                                radius: 24),
                             CircleAvatar(
                               backgroundColor: ColorConstant.backgroundColor
                                   .withOpacity(0.1),
@@ -541,8 +540,41 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 34.h,
+                SizedBox(height: 34.h),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.quizResponse.value?.data!.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        Obx(
+                          () => Column(
+                            children: [
+                              if (controller.quizResponse.value?.data![index]
+                                      .option1 !=
+                                  null)
+                                SizedBox(
+                                  height: 31.h,
+                                ),
+                              if (controller
+                                      .quizResponse.value?.data![0].option1 !=
+                                  null)
+                                _buildQuiz(
+                                    "${controller.quizResponse.value?.data![0].option1}",
+                                    (((controller.quizResponse.value?.data![0]
+                                                    .pollOption1?.length ??
+                                                0) *
+                                            100) /
+                                        (controller.quizResponse.value?.data![0]
+                                                .poll?.length ??
+                                            0)),
+                                    1),
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 Row(
                   children: [
