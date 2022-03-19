@@ -70,10 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           alignment: Alignment.center,
                           children: [
                             CircleAvatar(
-                              backgroundColor: ColorConstant.backgroundColor
-                                  .withOpacity(0.1),
-                              radius: 24,
-                            ),
+                                backgroundColor: ColorConstant.backgroundColor
+                                    .withOpacity(0.1),
+                                radius: 24),
                             CircleAvatar(
                               backgroundColor: ColorConstant.backgroundColor
                                   .withOpacity(0.1),
@@ -160,21 +159,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 96.h),
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            AppUtils.getSVGAsset(ImageConstant.profileIcon),
-                            height: 45.h,
-                            width: 51.w,
-                          ),
-                          SizedBox(width: 25.w),
-                          Text(
-                            'My Account',
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 45.sp,
+                      SizedBox(
+                        height: 96.h,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(NavigationName.myAccount);
+                        },
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              AppUtils.getSVGAsset(ImageConstant.profileIcon),
+                              height: 45.h,
+                              width: 51.w,
                             ),
                             SizedBox(
                               width: 25.w,
@@ -297,7 +294,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 96.h,
                       ),
-                      InkWell(
+                      GestureDetector(
                         onTap: () {
                           Get.back();
                           Get.toNamed(NavigationName.resumePage);
