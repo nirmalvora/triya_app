@@ -176,19 +176,18 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
                                           SizedBox(
                                             width: 20.h,
                                           ),
-                                          Expanded(
-                                            child: Text(
-                                              controller.bookDataResponse.value
-                                                      ?.data?[index].title ??
-                                                  "",
-                                              maxLines: 2,
-                                              style: TextStyle(
-                                                color: ColorConstant.textColor,
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 30.sp,
-                                              ),
+                                          Text(
+                                            controller.bookDataResponse.value
+                                                    ?.data?[index].title ??
+                                                "",
+                                            maxLines: 2,
+                                            style: TextStyle(
+                                              color: ColorConstant.textColor,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 30.sp,
                                             ),
                                           ),
+                                          Spacer(),
                                           IconButton(
                                               onPressed: () {
                                                 controller.addToFavotite(

@@ -19,6 +19,7 @@ import 'package:triya_app/ui/candidate_deshboard/home/book/book_category.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/book/books.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/applied_job.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_books_screen.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_video_screen.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/my_account.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_description.dart';
@@ -124,20 +125,24 @@ class NavigationRoute {
       page: () => const ScholarshipDescription(),
     ),
     GetPage(
-      name: NavigationName.resumePage,
-      page: () => const ResumeScreen(),
-    ),
-    GetPage(
       name: NavigationName.myAccount,
       page: () => MyAccount(),
     ),
     GetPage(
-      name: NavigationName.appliedJob,
+      name: NavigationName.resumePage,
+      page: () => const ResumeScreen(),
+    ),
+    GetPage(
+      name: NavigationName.appliedJobs,
       page: () => AppliedJobs(),
     ),
     GetPage(
       name: NavigationName.favoritesBooks,
       page: () => FavoritesBookScreen(),
+    ),
+    GetPage(
+      name: NavigationName.favoritesVideo,
+      page: () => FavoritesVideoScreen(),
     ),
     GetPage(
       name: NavigationName.loginTypePage,

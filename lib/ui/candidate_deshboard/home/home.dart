@@ -22,7 +22,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   final controller = Get.put(HomeController());
+  var percentValue = 0.6;
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +72,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           alignment: Alignment.center,
                           children: [
                             CircleAvatar(
-                                backgroundColor: ColorConstant.backgroundColor
-                                    .withOpacity(0.1),
-                                radius: 24),
+                              backgroundColor: ColorConstant.backgroundColor
+                                  .withOpacity(0.1),
+                              radius: 24,
+                            ),
                             CircleAvatar(
                               backgroundColor: ColorConstant.backgroundColor
                                   .withOpacity(0.1),
@@ -134,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: Column(
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           Get.back();
                         },
@@ -162,143 +165,122 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 96.h,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed(NavigationName.myAccount);
-                        },
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              AppUtils.getSVGAsset(ImageConstant.profileIcon),
-                              height: 45.h,
-                              width: 51.w,
+                      /* Row(
+                        children: [
+                          SvgPicture.asset(
+                            AppUtils.getSVGAsset(ImageConstant.profileIcon),
+                            height: 45.h,
+                            width: 51.w,
+                          ),
+                          SizedBox(
+                            width: 25.w,
+                          ),
+                          Text(
+                            'My Account',
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 45.sp,
                             ),
-                            SizedBox(
-                              width: 25.w,
-                            ),
-                            Text(
-                              'My Account',
-                              style: TextStyle(
-                                color: ColorConstant.textColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 45.sp,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 96.h,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed(NavigationName.appliedJob);
-                        },
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              AppUtils.getSVGAsset(ImageConstant.lobsIcon),
-                              height: 45.h,
-                              width: 51.w,
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            AppUtils.getSVGAsset(ImageConstant.lobsIcon),
+                            height: 45.h,
+                            width: 51.w,
+                          ),
+                          SizedBox(
+                            width: 25.w,
+                          ),
+                          Text(
+                            'Applied Lobs',
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 45.sp,
                             ),
-                            SizedBox(
-                              width: 25.w,
-                            ),
-                            Text(
-                              'Applied Jobs',
-                              style: TextStyle(
-                                color: ColorConstant.textColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 45.sp,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 96.h,
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                              height: 62.h,
-                              width: 62.w,
+                      Row(
+                        children: [
+                          Image.asset(
+                            AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                            height: 62.h,
+                            width: 62.w,
+                          ),
+                          SizedBox(
+                            width: 25.w,
+                          ),
+                          Text(
+                            'My Favorites',
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 45.sp,
                             ),
-                            SizedBox(
-                              width: 25.w,
-                            ),
-                            Text(
-                              'My Favorites',
-                              style: TextStyle(
-                                color: ColorConstant.textColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 45.sp,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 96.h,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed(NavigationName.favoritesBooks);
-                        },
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                              height: 62.h,
-                              width: 62.w,
+                      Row(
+                        children: [
+                          Image.asset(
+                            AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                            height: 62.h,
+                            width: 62.w,
+                          ),
+                          SizedBox(
+                            width: 25.w,
+                          ),
+                          Text(
+                            'Favorites Books',
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 45.sp,
                             ),
-                            SizedBox(
-                              width: 25.w,
-                            ),
-                            Text(
-                              'Favorites Books',
-                              style: TextStyle(
-                                color: ColorConstant.textColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 45.sp,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 96.h,
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                              height: 62.h,
-                              width: 62.w,
+                      Row(
+                        children: [
+                          Image.asset(
+                            AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                            height: 62.h,
+                            width: 62.w,
+                          ),
+                          SizedBox(
+                            width: 25.w,
+                          ),
+                          Text(
+                            'Favorites Video',
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 45.sp,
                             ),
-                            SizedBox(
-                              width: 25.w,
-                            ),
-                            Text(
-                              'Favorites Video',
-                              style: TextStyle(
-                                color: ColorConstant.textColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 45.sp,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 96.h,
-                      ),
-                      GestureDetector(
+                      ),*/
+                      InkWell(
                         onTap: () {
                           Get.back();
                           Get.toNamed(NavigationName.resumePage);
@@ -327,7 +309,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 96.h,
                       ),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           controller.removeUser();
                         },
@@ -540,41 +522,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 34.h),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.quizResponse.value?.data!.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Obx(
-                          () => Column(
-                            children: [
-                              if (controller.quizResponse.value?.data![index]
-                                      .option1 !=
-                                  null)
-                                SizedBox(
-                                  height: 31.h,
-                                ),
-                              if (controller
-                                      .quizResponse.value?.data![0].option1 !=
-                                  null)
-                                _buildQuiz(
-                                    "${controller.quizResponse.value?.data![0].option1}",
-                                    (((controller.quizResponse.value?.data![0]
-                                                    .pollOption1?.length ??
-                                                0) *
-                                            100) /
-                                        (controller.quizResponse.value?.data![0]
-                                                .poll?.length ??
-                                            0)),
-                                    1),
-                            ],
-                          ),
-                        ),
-                      ],
-                    );
-                  },
+                SizedBox(
+                  height: 34.h,
                 ),
                 Row(
                   children: [
@@ -757,13 +706,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         Container(
                       margin: EdgeInsets.symmetric(horizontal: 8.w),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(31.r),
-                        image: DecorationImage(
-                            image: NetworkImage(controller.bottomBannerResponse
-                                    .value?.data?[itemIndex].image ??
-                                ''),
-                            fit: BoxFit.cover),
-                      ),
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: NetworkImage(controller
+                                      .bottomBannerResponse
+                                      .value
+                                      ?.data?[itemIndex]
+                                      .image ??
+                                  ''),
+                              fit: BoxFit.cover)),
                     ),
                     options: CarouselOptions(
                       height: 341.h,
