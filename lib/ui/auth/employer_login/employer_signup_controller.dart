@@ -40,7 +40,7 @@ class EmployerSignUpController extends GetxController {
         'mobile': mobileNo.text,
         'office_no': officeNo.text,
         'area': area.text,
-        'country': "countryValue",
+        'country': countryValue,
         'state': stateValue,
         'city': cityValue,
         'password': password.text,
@@ -50,8 +50,11 @@ class EmployerSignUpController extends GetxController {
           .postForm(ServiceConstant.employerCandidate, data: formData)
           .then((value) {
         print(value!.data);
+
         CandidateSignUpResponse response =
             CandidateSignUpResponse.fromJson(value.data);
+        print(formData.length);
+
         if (!(response.errors ?? true)) {
           Get.back();
         }
