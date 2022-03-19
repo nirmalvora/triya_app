@@ -17,6 +17,7 @@ import 'package:triya_app/ui/auth/splash_screen.dart';
 import 'package:triya_app/ui/candidate_deshboard/candidate_dashboard.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/book/book_category.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/book/books.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/drawer/my_account.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_description.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/home.dart';
@@ -123,6 +124,10 @@ class NavigationRoute {
     GetPage(
       name: NavigationName.resumePage,
       page: () => const ResumeScreen(),
+    ),
+    GetPage(
+      name: NavigationName.myAccount,
+      page: () => const MyAccount(),
     ),
     GetPage(
       name: NavigationName.loginTypePage,
