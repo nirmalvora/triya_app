@@ -162,19 +162,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 96.h,
-                      ),
-                      /* Row(
+                      SizedBox(height: 96.h),
+                      Row(
                         children: [
                           SvgPicture.asset(
                             AppUtils.getSVGAsset(ImageConstant.profileIcon),
                             height: 45.h,
                             width: 51.w,
                           ),
-                          SizedBox(
-                            width: 25.w,
-                          ),
+                          SizedBox(width: 25.w),
                           Text(
                             'My Account',
                             style: TextStyle(
@@ -279,7 +275,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(
                         height: 96.h,
-                      ),*/
+                      ),
                       InkWell(
                         onTap: () {
                           Get.back();
@@ -522,8 +518,41 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 34.h,
+                SizedBox(height: 34.h),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.quizResponse.value?.data!.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        Obx(
+                          () => Column(
+                            children: [
+                              if (controller.quizResponse.value?.data![index]
+                                      .option1 !=
+                                  null)
+                                SizedBox(
+                                  height: 31.h,
+                                ),
+                              if (controller
+                                      .quizResponse.value?.data![0].option1 !=
+                                  null)
+                                _buildQuiz(
+                                    "${controller.quizResponse.value?.data![0].option1}",
+                                    (((controller.quizResponse.value?.data![0]
+                                                    .pollOption1?.length ??
+                                                0) *
+                                            100) /
+                                        (controller.quizResponse.value?.data![0]
+                                                .poll?.length ??
+                                            0)),
+                                    1),
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 Row(
                   children: [
