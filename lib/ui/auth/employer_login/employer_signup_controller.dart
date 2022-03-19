@@ -32,7 +32,7 @@ class EmployerSignUpController extends GetxController {
   Future<void> signup() async {
     if (formKey.currentState!.validate()) {
       final formData = Dio.FormData.fromMap({
-        'company_logo': await Dio.MultipartFile.fromFile(image.value!.path),
+        // 'company_logo': await Dio.MultipartFile.fromFile(image.value!.path),
         'first_name': firstName.text,
         'last_name': lastName.text,
         'company_name': companyName.text,

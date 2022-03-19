@@ -21,15 +21,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
-
   final controller = Get.put(HomeController());
   var percentValue = 0.6;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _key,
+      key: controller.key,
       backgroundColor: ColorConstant.backgroundColor,
       drawerEnableOpenDragGesture: false,
       drawer: Drawer(
@@ -376,7 +374,7 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: Padding(
           padding: const EdgeInsets.only(left: 10),
           child: InkWell(
-            onTap: () => _key.currentState!.openDrawer(),
+            onTap: () => controller.key.currentState!.openDrawer(),
             child: CircleAvatar(
               backgroundColor: ColorConstant.droverButtonColor,
               radius: 18,
@@ -452,9 +450,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
                 Text(
                   'Discover Jobs',
                   style: TextStyle(
@@ -537,7 +533,228 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 122.h,
                 ),
-                Obx(
+                // ListView.builder(
+                //   itemCount: controller.quizResponse.value?.data!.length,
+                //   shrinkWrap: true,
+                //   padding: EdgeInsets.zero,
+                //   itemBuilder: (context, index) {
+                //     return Column(
+                //       children: [
+                //         Obx(
+                //           () => Text(
+                //             "${controller.quizResponse.value?.data![index].question}",
+                //             style: TextStyle(
+                //               color: ColorConstant.textColor,
+                //               fontWeight: FontWeight.w700,
+                //               fontSize: 45.sp,
+                //             ),
+                //           ),
+                //         ),
+                //         SizedBox(height: 34.h),
+                //         Row(
+                //           children: [
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option1 !=
+                //                       null
+                //                   ? Expanded(
+                //                       child: _buildPollOption(
+                //                           controller.quizResponse.value
+                //                                   ?.data![index].option1 ??
+                //                               "",
+                //                           1),
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option2 !=
+                //                       null
+                //                   ? SizedBox(
+                //                       width: 35.h,
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option2 !=
+                //                       null
+                //                   ? Expanded(
+                //                       child: _buildPollOption(
+                //                           controller.quizResponse.value
+                //                                   ?.data![index].option2 ??
+                //                               "",
+                //                           2),
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option3 !=
+                //                       null
+                //                   ? SizedBox(
+                //                       width: 35.h,
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option3 !=
+                //                       null
+                //                   ? Expanded(
+                //                       child: _buildPollOption(
+                //                           controller.quizResponse.value
+                //                                   ?.data![index].option3 ??
+                //                               "",
+                //                           3),
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option4 !=
+                //                       null
+                //                   ? SizedBox(
+                //                       width: 35.h,
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option4 !=
+                //                       null
+                //                   ? Expanded(
+                //                       child: _buildPollOption(
+                //                           controller.quizResponse.value
+                //                                   ?.data![index].option4 ??
+                //                               "",
+                //                           4),
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //           ],
+                //         ),
+                //         Obx(
+                //           () => Column(
+                //             children: [
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option1 !=
+                //                   null)
+                //                 SizedBox(
+                //                   height: 31.h,
+                //                 ),
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option1 !=
+                //                   null)
+                //                 _buildQuiz(
+                //                     "${controller.quizResponse.value?.data![index].option1}",
+                //                     (((controller
+                //                                     .quizResponse
+                //                                     .value
+                //                                     ?.data![index]
+                //                                     .pollOption1
+                //                                     ?.length ??
+                //                                 0) *
+                //                             100) /
+                //                         (controller.quizResponse.value
+                //                                 ?.data![index].poll?.length ??
+                //                             0)),
+                //                     1),
+                //             ],
+                //           ),
+                //         ),
+                //         Obx(
+                //           () => Column(
+                //             children: [
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option2 !=
+                //                   null)
+                //                 SizedBox(
+                //                   height: 9.h,
+                //                 ),
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option2 !=
+                //                   null)
+                //                 _buildQuiz(
+                //                     "${controller.quizResponse.value?.data![index].option2}",
+                //                     (((controller
+                //                                     .quizResponse
+                //                                     .value
+                //                                     ?.data![index]
+                //                                     .pollOption2
+                //                                     ?.length ??
+                //                                 0) *
+                //                             100) /
+                //                         (controller.quizResponse.value
+                //                                 ?.data![index].poll?.length ??
+                //                             0)),
+                //                     2),
+                //             ],
+                //           ),
+                //         ),
+                //         Obx(
+                //           () => Column(
+                //             children: [
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option3 !=
+                //                   null)
+                //                 SizedBox(
+                //                   height: 9.h,
+                //                 ),
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option3 !=
+                //                   null)
+                //                 _buildQuiz(
+                //                     "${controller.quizResponse.value?.data![index].option3}",
+                //                     (((controller
+                //                                     .quizResponse
+                //                                     .value
+                //                                     ?.data![index]
+                //                                     .pollOption3
+                //                                     ?.length ??
+                //                                 0) *
+                //                             100) /
+                //                         (controller.quizResponse.value
+                //                                 ?.data![index].poll?.length ??
+                //                             0)),
+                //                     3),
+                //             ],
+                //           ),
+                //         ),
+                //         Obx(
+                //           () => Column(
+                //             children: [
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option4 !=
+                //                   null)
+                //                 SizedBox(
+                //                   height: 9.h,
+                //                 ),
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option4 !=
+                //                   null)
+                //                 _buildQuiz(
+                //                     "${controller.quizResponse.value?.data![index].option4}",
+                //                     (((controller
+                //                                     .quizResponse
+                //                                     .value
+                //                                     ?.data![index]
+                //                                     .pollOption4
+                //                                     ?.length ??
+                //                                 0) *
+                //                             100) /
+                //                         (controller.quizResponse.value
+                //                                 ?.data![index].poll?.length ??
+                //                             0)),
+                //                     4),
+                //             ],
+                //           ),
+                //         ),
+                //       ],
+                //     );
+                //   },
+                // ),
+                /*     Obx(
                   () => Text(
                     "${controller.quizResponse.value?.data![0].question}",
                     style: TextStyle(
@@ -547,9 +764,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 34.h,
-                ),
+                SizedBox(height: 34.h),
                 Row(
                   children: [
                     Obx(
@@ -717,10 +932,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             4),
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: 122.h,
-                ),
+                ),*/
+                SizedBox(height: 122.h),
                 Obx(
                   () => CarouselSlider.builder(
                     itemCount:
@@ -1222,36 +1435,36 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  _buildPollOption(String title, id) {
-    return GestureDetector(
-      onTap: () {
-        if (controller.yourAnsId.value == 0) {
-          controller.yourAnsId.value = id;
-          controller.addPoll(id);
-        }
-      },
-      child: Container(
-        height: 113.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(34.h),
-          border: Border.all(
-            color: controller.yourAnsId.value == id
-                ? ColorConstant.borderColor
-                : Color(0xffDADADA),
-          ),
-        ),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-              color: ColorConstant.textColor,
-              fontWeight: FontWeight.w700,
-              fontFamily: TextFontFamily.openSensRegular,
-              fontSize: 30.sp,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  // _buildPollOption(String title, id) {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       if (controller.yourAnsId.value == 0) {
+  //         controller.yourAnsId.value = id;
+  //         controller.addPoll(id);
+  //       }
+  //     },
+  //     child: Container(
+  //       height: 113.h,
+  //       decoration: BoxDecoration(
+  //         borderRadius: BorderRadius.circular(34.h),
+  //         border: Border.all(
+  //           color: controller.yourAnsId.value == id
+  //               ? ColorConstant.borderColor
+  //               : Color(0xffDADADA),
+  //         ),
+  //       ),
+  //       child: Center(
+  //         child: Text(
+  //           title,
+  //           style: TextStyle(
+  //             color: ColorConstant.textColor,
+  //             fontWeight: FontWeight.w700,
+  //             fontFamily: TextFontFamily.openSensRegular,
+  //             fontSize: 30.sp,
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 }
