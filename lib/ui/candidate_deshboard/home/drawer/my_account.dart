@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
 class MyAccount extends StatelessWidget {
@@ -43,13 +46,30 @@ class MyAccount extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          CircleAvatar(
-            backgroundColor: ColorConstant.backgroundColor,
-            radius: 50,
-          )
-        ],
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30.h,
+            ),
+            CircleAvatar(
+              backgroundColor: ColorConstant.splashColor,
+              radius: 50,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            Text(
+              "${AppState.loginData?.user?.firstName}${AppState.loginData?.user?.lastName}",
+              style: TextStyle(
+                color: ColorConstant.backgroundColor,
+                fontWeight: FontWeight.w700,
+                fontFamily: TextFontFamily.openSansBold,
+                fontSize: 40.sp,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
