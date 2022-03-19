@@ -192,7 +192,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 96.h,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(NavigationName.appliedJob);
+                        },
                         child: Row(
                           children: [
                             SvgPicture.asset(
@@ -204,7 +206,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 25.w,
                             ),
                             Text(
-                              'Applied Lobs',
+                              'Applied Jobs',
                               style: TextStyle(
                                 color: ColorConstant.textColor,
                                 fontWeight: FontWeight.w600,
@@ -244,7 +246,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 96.h,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(NavigationName.favoritesBooks);
+                        },
                         child: Row(
                           children: [
                             Image.asset(

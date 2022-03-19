@@ -20,6 +20,8 @@ class NavigationName {
   static const scholarshipJobDescPage = '/scholarshipJobDescPage';
   static const resumePage = '/resumePage';
   static const myAccount = '/myAccount';
+  static const appliedJob = '/appliedJob';
+  static const favoritesBooks = '/favoritesBooks';
   static const loginTypePage = '/loginTypePage';
 
   static const candidateLoginType = "/candidateLoginType";
