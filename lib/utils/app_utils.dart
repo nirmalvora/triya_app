@@ -19,7 +19,7 @@ class AppUtils {
   static void LoginEmployeeSuccess(data) {
     LoginResponse response = LoginResponse.fromJson(data);
     Get.snackbar(response.message!, "");
-    AppState.loginData = response.data;
+    AppState.loginData.value = response.data;
     Preferences.setBool(PreferenceKeys.isLogin, true);
     Preferences.setString(
         PreferenceKeys.userProfile, jsonEncode(response.toJson()));

@@ -104,7 +104,11 @@ class EmployerSignUp extends StatelessWidget {
                                         child: ClipOval(
                                           child: Obx(
                                             () => controller.image.value == null
-                                                ? Container()
+                                                ? Container(
+                                                    child: Icon(Icons.add,
+                                                        color: ColorConstant
+                                                            .backgroundColor),
+                                                  )
                                                 : Image.file(
                                                     controller.image.value!,
                                                     width: double.infinity,

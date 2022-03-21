@@ -1,34 +1,27 @@
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/basemodel/book_data_response.dart';
+import 'package:triya_app/model/favorites_video_response.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
-class VideoController extends GetxController {
-  final videoDataResponse = Rx<BookDataResponse?>(null);
-  final loading = false.obs;
-  final searchText = "".obs;
+class FavoritesVideoController extends GetxController {
+  final videoDataResponse = Rx<FavoritesVideoResponse?>(null);
   @override
   void onReady() {
     super.onReady();
-    final res = Get.arguments;
-    int id = res[AppConstants.bookCategoryId];
-    getData(id);
+    getFavoritesVideoData();
   }
 
-  void getData(int id) {
-    loading.value = true;
+  void getFavoritesVideoData() {
     BaseApiService.instance
-        .get("${ServiceConstant.getVideoData}/$id")
+        .get(ServiceConstant.getFavoritesVideoData)
         .then((value) {
-      loading.value = false;
-      BookDataResponse response = BookDataResponse.fromJson(value!.data);
+      print(value);
+      FavoritesVideoResponse response =
+          FavoritesVideoResponse.fromJson(value!.data);
       print(response);
       videoDataResponse.value = response;
       videoDataResponse.refresh();
-    }).onError((error, stackTrace) {
-      loading.value = false;
     });
   }
 
@@ -42,13 +35,12 @@ class VideoController extends GetxController {
         'id': delete,
       };
     }
-    print(data);
     BaseApiService.instance
         .post(ServiceConstant.addVideoToFavorite, data: data)
         .then((value) {
       if (delete != -1) {
         videoDataResponse.value!.data![index].favoriteBook = null;
-        print(videoDataResponse.value!.data![index].favoriteBook);
+        getFavoritesVideoData();
       } else {
         videoDataResponse.value!.data![index].favoriteBook =
             FavoriteBook.fromJson(value!.data["data"]);

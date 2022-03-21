@@ -7,6 +7,7 @@ import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_job_detail_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/date_formatter.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GovDescription extends StatefulWidget {
@@ -46,12 +47,7 @@ class _GovDescriptionState extends State<GovDescription> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              radius: 22,
-              child: Image.asset(
-                AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           ),
         ],
       ),

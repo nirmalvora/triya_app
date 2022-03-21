@@ -4,6 +4,7 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:triya_app/widgets/resume_container.dart';
 
 class ResumeScreen extends StatelessWidget {
@@ -36,12 +37,7 @@ class ResumeScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              radius: 22,
-              child: Image.asset(
-                AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           )
         ],
       ),

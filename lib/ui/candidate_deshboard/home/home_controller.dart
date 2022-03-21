@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/local_data/app_state.dart';
@@ -9,13 +10,18 @@ import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
 class HomeController extends GetxController {
+  final GlobalKey<ScaffoldState> key = GlobalKey();
   final topBannerResponse = Rx<TopBannerResponse?>(null);
   final bottomBannerResponse = Rx<TopBannerResponse?>(null);
   final bookCategoryResponse = Rx<BookCategoryResponse?>(null);
   final videoCategoryResponse = Rx<BookCategoryResponse?>(null);
   final quizResponse = Rx<QuizResponse?>(null);
   final searchText = "".obs;
+
   final yourAnsId = 0.obs;
+
+  final selected = 0.obs;
+
   @override
   void onReady() {
     super.onReady();
@@ -27,7 +33,7 @@ class HomeController extends GetxController {
     getBottomBannerData();
     getBookCategoryData();
     getVideoCategoryData();
-    quizData();
+    // quizData();
   }
 
   void getTopBannerData() {
@@ -67,7 +73,7 @@ class HomeController extends GetxController {
       QuizResponse response = QuizResponse.fromJson(value!.data);
       quizResponse.value = response;
       int index = quizResponse.value!.data![0].poll!.indexWhere(
-          (element) => AppState.loginData!.user!.id == element.userId);
+          (element) => AppState.loginData.value?.user!.id == element.userId);
       if (index != -1) {
         yourAnsId.value = quizResponse.value!.data![0].poll![index].option!;
         yourAnsId.refresh();
@@ -75,17 +81,31 @@ class HomeController extends GetxController {
     });
   }
 
+  // void quizData() {
+  //   BaseApiService.instance.get(ServiceConstant.quiz).then((value) {
+  //     QuizResponse response = QuizResponse.fromJson(value!.data);
+  //     quizResponse.value = response;
+  //     int index = quizResponse.value!.data![1].poll!.indexWhere(
+  //         (element) => AppState.loginData!.user!.id == element.userId);
+  //     if (index != -1) {
+  //       yourAnsId.value = quizResponse.value!.data![index].poll![index].option!;
+  //       yourAnsId.refresh();
+  //     }
+  //     refresh();
+  //   });
+  // }
+
   void removeUser() {
     Get.offAllNamed(NavigationName.loginTypePage);
     Preferences.clear();
   }
 
-  void addPoll(id) {
-    BaseApiService.instance.post(ServiceConstant.addPoll, data: {
-      'option': id,
-      "que_id": quizResponse.value!.data![0].id!
-    }).then((value) {
-      quizData();
-    });
-  }
+  // void addPoll(id) {
+  //   BaseApiService.instance.post(ServiceConstant.addPoll, data: {
+  //     'option': id,
+  //     "que_id": quizResponse.value!.data![1].id!
+  //   }).then((value) {
+  //     quizData();
+  //   });
+  // }
 }

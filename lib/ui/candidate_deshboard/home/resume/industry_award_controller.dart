@@ -8,11 +8,12 @@ import 'package:triya_app/ui/candidate_deshboard/home/private/professional_resum
 
 class IndustryAwardController extends GetxController {
   final industry = TextEditingController();
+
   @override
   void onReady() {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
-    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) !=
         0) {
       industry.text = resumeViewController.resumeResponse.value?.resumeData?[0]
               .resumeIndustryAwards?.awardDescription ??

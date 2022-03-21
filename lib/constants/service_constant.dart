@@ -7,10 +7,12 @@ class ServiceConstant {
   static const String getBottomBanner = "api/get-bottom-banner";
   static const String getBookCategory = "api/book-category-show";
   static const String getVideoCategory = "api/video-category-show";
-  static const String getBookData = "api/get-book/";
-  static const String getVideoData = "api/get-video/";
-  static const String addBookToFavorite = "api/add-favorite-book/";
-  static const String addVideoToFavorite = "api/add-favorite-video/";
+  static const String getBookData = "api/get-book";
+  static const String getFavoritesBookData = "api/get-favorite-book";
+  static const String getFavoritesVideoData = "api/get-favorite-video";
+  static const String getVideoData = "api/get-video";
+  static const String addBookToFavorite = "api/add-favorite-book";
+  static const String addVideoToFavorite = "api/add-favorite-video";
   static const String personalStatement = "api/create-personal-statements";
   static const String contactInformation = "api/create-contact-information";
   static const String professionalExperience =
@@ -33,6 +35,9 @@ class ServiceConstant {
   static String getPrivateJob = "api/get-job-post";
 
   static String getResume = "api/get-resume";
+  static String uploadProfilePicture = "api/profile_picture";
+  static String getProfilePicture = "api/get-profile";
+  static String updateName = "api/name_update";
   static String uploadProfile = "api/upload";
   static String AddNewJob = "api/create-emp-job-post";
   static String PostedJob = "api/get-job-post";

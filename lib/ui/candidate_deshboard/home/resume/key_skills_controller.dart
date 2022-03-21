@@ -13,7 +13,7 @@ class KeySkillsController extends GetxController {
     super.onReady();
 
     final resumeViewController = Get.put(ProfileResumeController());
-    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) !=
         0) {
       keySkills.text = resumeViewController
               .resumeResponse.value?.resumeData?[0].resumeKeySkills?.skill ??

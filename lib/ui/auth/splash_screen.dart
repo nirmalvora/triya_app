@@ -34,11 +34,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void navigationMethod() {
     Future.delayed(const Duration(seconds: 3), () {
       if (Preferences.getBool(PreferenceKeys.isLogin, false)) {
-        AppState.loginData = LoginResponse.fromJson(jsonDecode(
+        AppState.loginData.value = LoginResponse.fromJson(jsonDecode(
                 Preferences.getString(PreferenceKeys.userProfile, "")))
             .data;
-        print(
-            jsonDecode(Preferences.getString(PreferenceKeys.userProfile, "")));
         if (Preferences.getInt(PreferenceKeys.userRole, -1) == 2) {
           Get.offAllNamed(NavigationName.dashboard);
         } else {

@@ -6,6 +6,7 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/video/video_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class VideoCategoryScreen extends StatefulWidget {
@@ -44,12 +45,7 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              radius: 22,
-              child: Image.asset(
-                AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           )
         ],
       ),
@@ -177,19 +173,21 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
                                           SizedBox(
                                             width: 20.h,
                                           ),
-                                          Text(
-                                            controller.videoDataResponse.value
-                                                    ?.data?[index].title ??
-                                                "",
-                                            maxLines: 2,
-                                            style: TextStyle(
-                                              color: ColorConstant.textColor,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 30.sp,
+                                          Expanded(
+                                            child: Text(
+                                              controller.videoDataResponse.value
+                                                      ?.data?[index].title ??
+                                                  "",
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                color: ColorConstant.textColor,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 30.sp,
+                                              ),
                                             ),
                                           ),
-                                          Spacer(),
                                           IconButton(
+                                              splashRadius: 20,
                                               onPressed: () {
                                                 controller.addToFavotite(
                                                     controller

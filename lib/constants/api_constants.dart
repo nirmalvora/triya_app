@@ -4,5 +4,4 @@ class AppConfig {
   static const String auth = '${version}auth/authenticate';
 
   static var baseUrl = "http://triya.npnsolutions.com/";
-  // static var baseUrl = "http://triya.npnsolutions.com/";
 }

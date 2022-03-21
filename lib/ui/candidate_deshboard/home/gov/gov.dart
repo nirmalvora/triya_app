@@ -8,6 +8,7 @@ import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_job_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
 
 class GovJobScreen extends StatefulWidget {
   const GovJobScreen({Key? key}) : super(key: key);
@@ -46,12 +47,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              radius: 22,
-              child: Image.asset(
-                AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           ),
         ],
       ),

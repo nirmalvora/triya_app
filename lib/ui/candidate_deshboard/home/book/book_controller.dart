@@ -20,10 +20,9 @@ class BookController extends GetxController {
   void getData(int id) {
     loading.value = true;
     BaseApiService.instance
-        .get("${ServiceConstant.getBookData}$id")
+        .get("${ServiceConstant.getBookData}/$id")
         .then((value) {
       loading.value = false;
-      print(value);
       BookDataResponse response = BookDataResponse.fromJson(value!.data);
       print(response);
       bookDataResponse.value = response;
@@ -33,7 +32,7 @@ class BookController extends GetxController {
     });
   }
 
-  void addToFavotite(int id, int index, int delete) {
+  void addToFavorite(int id, int index, int delete) {
     Map<String, dynamic> data = {
       'book_id': id,
     };
@@ -43,6 +42,7 @@ class BookController extends GetxController {
         'id': delete,
       };
     }
+    print(data);
     BaseApiService.instance
         .post(ServiceConstant.addBookToFavorite, data: data)
         .then((value) {

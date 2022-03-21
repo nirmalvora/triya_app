@@ -10,6 +10,7 @@ import 'package:triya_app/model/book_category_response.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
 
 class VideoScreen extends StatefulWidget {
   const VideoScreen({Key? key}) : super(key: key);
@@ -47,12 +48,7 @@ class _VideoScreenState extends State<VideoScreen> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              radius: 22,
-              child: Image.asset(
-                AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           )
         ],
       ),
@@ -150,10 +146,11 @@ class _VideoScreenState extends State<VideoScreen> {
                               Get.toNamed(NavigationName.videoCategoryPage,
                                   arguments: {
                                     AppConstants.bookCategoryId: controller
-                                        .bookCategoryResponse
-                                        .value
-                                        ?.data?[index]
-                                        .id??0
+                                            .bookCategoryResponse
+                                            .value
+                                            ?.data?[index]
+                                            .id ??
+                                        0
                                   });
                             },
                             child: Container(

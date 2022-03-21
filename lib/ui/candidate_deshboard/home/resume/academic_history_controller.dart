@@ -27,56 +27,56 @@ class ProfessionalExperienceController extends GetxController {
   void onReady() {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
-    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) !=
         0) {
       schoolName.text = resumeViewController.resumeResponse.value
-          ?.resumeData?[0].resumeAcademicHistories?.schoolName ??
+              ?.resumeData?[0].resumeAcademicHistories?.schoolName ??
           "";
 
       yearOfPassing.text = resumeViewController.resumeResponse.value
-          ?.resumeData?[0].resumeAcademicHistories?.yearOfPassing ??
+              ?.resumeData?[0].resumeAcademicHistories?.yearOfPassing ??
           "";
       sslScore.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-          .resumeAcademicHistories?.sslSocre ??
+              .resumeAcademicHistories?.sslSocre ??
           "";
       secondaryDiploma.text = resumeViewController.resumeResponse.value
-          ?.resumeData?[0].resumeAcademicHistories?.secondaryDiploma ??
+              ?.resumeData?[0].resumeAcademicHistories?.secondaryDiploma ??
           "";
       yearOfPassingDiploma.text = resumeViewController.resumeResponse.value
-          ?.resumeData?[0].resumeAcademicHistories?.yearOfPassing ??
+              ?.resumeData?[0].resumeAcademicHistories?.yearOfPassing ??
           "";
       score.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-          .resumeAcademicHistories?.score ??
+              .resumeAcademicHistories?.score ??
           "";
       instituteName.text = resumeViewController.resumeResponse.value
-          ?.resumeData?[0].resumeAcademicHistories?.instituteName ??
+              ?.resumeData?[0].resumeAcademicHistories?.instituteName ??
           "";
       fromDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-          .resumeAcademicHistories?.fromDate ??
+              .resumeAcademicHistories?.fromDate ??
           "";
       toDate.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-          .resumeAcademicHistories?.toDate ??
+              .resumeAcademicHistories?.toDate ??
           "";
       backing.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-          .resumeAcademicHistories?.backlog ??
+              .resumeAcademicHistories?.backlog ??
           "";
       agregatedScore.text = resumeViewController.resumeResponse.value
-          ?.resumeData?[0].resumeAcademicHistories?.agregatedScore ??
+              ?.resumeData?[0].resumeAcademicHistories?.agregatedScore ??
           "";
       gapEducation.text = resumeViewController.resumeResponse.value
-          ?.resumeData?[0].resumeAcademicHistories?.gapBetweenEducation ??
+              ?.resumeData?[0].resumeAcademicHistories?.gapBetweenEducation ??
           "";
       reasonGap.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-          .resumeAcademicHistories?.reasonGapBetweenEducation ??
+              .resumeAcademicHistories?.reasonGapBetweenEducation ??
           "";
       clgName.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-          .resumeAcademicHistories?.masterInsituteName ??
+              .resumeAcademicHistories?.masterInsituteName ??
           "";
       specialization.text = resumeViewController.resumeResponse.value
-          ?.resumeData?[0].resumeAcademicHistories?.sepcialization ??
+              ?.resumeData?[0].resumeAcademicHistories?.sepcialization ??
           "";
       yearOfCompleted.text = resumeViewController.resumeResponse.value
-          ?.resumeData?[0].resumeAcademicHistories?.yearsOfCompletion ??
+              ?.resumeData?[0].resumeAcademicHistories?.yearsOfCompletion ??
           "";
     }
   }
@@ -104,7 +104,7 @@ class ProfessionalExperienceController extends GetxController {
         .post(ServiceConstant.academicHistory, data: history)
         .then((value) {
       AcademicHistoryResponse response =
-      AcademicHistoryResponse.fromJson(value!.data);
+          AcademicHistoryResponse.fromJson(value!.data);
       Get.snackbar(response.message!, "");
     });
   }

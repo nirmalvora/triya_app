@@ -10,11 +10,16 @@ import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_books_controller.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_video_controller.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/drawer/my_account_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
+import 'package:triya_app/widgets/cache_imageview.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -22,12 +27,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   final controller = Get.put(HomeController());
+  final bookFavoriteController = Get.put(FavoritesBooksController());
+  final videoFavoriteController = Get.put(FavoritesVideoController());
+  final myController = Get.put(MyAccountController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _key,
+      key: controller.key,
       backgroundColor: ColorConstant.backgroundColor,
       drawerEnableOpenDragGesture: false,
       drawer: Drawer(
@@ -70,9 +79,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           alignment: Alignment.center,
                           children: [
                             CircleAvatar(
-                                backgroundColor: ColorConstant.backgroundColor
-                                    .withOpacity(0.1),
-                                radius: 24),
+                              backgroundColor: ColorConstant.backgroundColor
+                                  .withOpacity(0.1),
+                              radius: 24,
+                            ),
                             CircleAvatar(
                               backgroundColor: ColorConstant.backgroundColor
                                   .withOpacity(0.1),
@@ -90,34 +100,52 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           CircleAvatar(
                             radius: 26,
-                            backgroundImage: AssetImage(
-                              AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
+                            child: ClipOval(
+                              child: Obx(
+                                () => myController.image.value == null
+                                    ? Obx(
+                                        () => CacheImageView(
+                                            imageUrl: AppState.loginData.value
+                                                    ?.user?.profilePicture ??
+                                                ""),
+                                      )
+                                    : Image.file(
+                                        myController.image.value!,
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                              ),
                             ),
                           ),
                           SizedBox(
-                            width: 10,
+                            width: 11,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                AppState.loginData?.user?.firstName ?? "",
-                                style: TextStyle(
-                                  color: ColorConstant.backgroundColor,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: TextFontFamily.openSansBold,
-                                  fontSize: 40.sp,
+                          Obx(
+                            () => Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppState.loginData.value?.user?.firstName ??
+                                      "",
+                                  style: TextStyle(
+                                    color: ColorConstant.backgroundColor,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: TextFontFamily.openSansBold,
+                                    fontSize: 40.sp,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                AppState.loginData?.user?.lastName ?? "",
-                                style: TextStyle(
-                                  color: ColorConstant.backgroundColor,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 30.sp,
+                                Text(
+                                  AppState.loginData.value?.user?.lastName ??
+                                      "",
+                                  style: TextStyle(
+                                    color: ColorConstant.backgroundColor,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 30.sp,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -134,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: Column(
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           Get.back();
                         },
@@ -191,7 +219,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 96.h,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(NavigationName.appliedJobs);
+                        },
                         child: Row(
                           children: [
                             SvgPicture.asset(
@@ -217,7 +247,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 96.h,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          bookFavoriteController.getFavoritesBookData();
+                          Get.toNamed(NavigationName.favoritesBooks);
+                        },
                         child: Row(
                           children: [
                             Image.asset(
@@ -243,7 +276,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 96.h,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          videoFavoriteController.getFavoritesVideoData();
+                          Get.toNamed(NavigationName.favoritesVideo);
+                        },
                         child: Row(
                           children: [
                             Image.asset(
@@ -268,7 +304,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 96.h,
                       ),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           Get.back();
                           Get.toNamed(NavigationName.resumePage);
@@ -297,7 +333,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 96.h,
                       ),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           controller.removeUser();
                         },
@@ -339,7 +375,7 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: Padding(
           padding: const EdgeInsets.only(left: 10),
           child: InkWell(
-            onTap: () => _key.currentState!.openDrawer(),
+            onTap: () => controller.key.currentState!.openDrawer(),
             child: CircleAvatar(
               backgroundColor: ColorConstant.droverButtonColor,
               radius: 18,
@@ -372,12 +408,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              radius: 22,
-              child: Image.asset(
-                AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           )
         ],
         centerTitle: true,
@@ -415,9 +446,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
                 Text(
                   'Discover Jobs',
                   style: TextStyle(
@@ -500,7 +529,228 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 122.h,
                 ),
-                Obx(
+                // ListView.builder(
+                //   itemCount: controller.quizResponse.value?.data!.length,
+                //   shrinkWrap: true,
+                //   padding: EdgeInsets.zero,
+                //   itemBuilder: (context, index) {
+                //     return Column(
+                //       children: [
+                //         Obx(
+                //           () => Text(
+                //             "${controller.quizResponse.value?.data![index].question}",
+                //             style: TextStyle(
+                //               color: ColorConstant.textColor,
+                //               fontWeight: FontWeight.w700,
+                //               fontSize: 45.sp,
+                //             ),
+                //           ),
+                //         ),
+                //         SizedBox(height: 34.h),
+                //         Row(
+                //           children: [
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option1 !=
+                //                       null
+                //                   ? Expanded(
+                //                       child: _buildPollOption(
+                //                           controller.quizResponse.value
+                //                                   ?.data![index].option1 ??
+                //                               "",
+                //                           1),
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option2 !=
+                //                       null
+                //                   ? SizedBox(
+                //                       width: 35.h,
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option2 !=
+                //                       null
+                //                   ? Expanded(
+                //                       child: _buildPollOption(
+                //                           controller.quizResponse.value
+                //                                   ?.data![index].option2 ??
+                //                               "",
+                //                           2),
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option3 !=
+                //                       null
+                //                   ? SizedBox(
+                //                       width: 35.h,
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option3 !=
+                //                       null
+                //                   ? Expanded(
+                //                       child: _buildPollOption(
+                //                           controller.quizResponse.value
+                //                                   ?.data![index].option3 ??
+                //                               "",
+                //                           3),
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option4 !=
+                //                       null
+                //                   ? SizedBox(
+                //                       width: 35.h,
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //             Obx(
+                //               () => controller.quizResponse.value?.data![index]
+                //                           .option4 !=
+                //                       null
+                //                   ? Expanded(
+                //                       child: _buildPollOption(
+                //                           controller.quizResponse.value
+                //                                   ?.data![index].option4 ??
+                //                               "",
+                //                           4),
+                //                     )
+                //                   : SizedBox.shrink(),
+                //             ),
+                //           ],
+                //         ),
+                //         Obx(
+                //           () => Column(
+                //             children: [
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option1 !=
+                //                   null)
+                //                 SizedBox(
+                //                   height: 31.h,
+                //                 ),
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option1 !=
+                //                   null)
+                //                 _buildQuiz(
+                //                     "${controller.quizResponse.value?.data![index].option1}",
+                //                     (((controller
+                //                                     .quizResponse
+                //                                     .value
+                //                                     ?.data![index]
+                //                                     .pollOption1
+                //                                     ?.length ??
+                //                                 0) *
+                //                             100) /
+                //                         (controller.quizResponse.value
+                //                                 ?.data![index].poll?.length ??
+                //                             0)),
+                //                     1),
+                //             ],
+                //           ),
+                //         ),
+                //         Obx(
+                //           () => Column(
+                //             children: [
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option2 !=
+                //                   null)
+                //                 SizedBox(
+                //                   height: 9.h,
+                //                 ),
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option2 !=
+                //                   null)
+                //                 _buildQuiz(
+                //                     "${controller.quizResponse.value?.data![index].option2}",
+                //                     (((controller
+                //                                     .quizResponse
+                //                                     .value
+                //                                     ?.data![index]
+                //                                     .pollOption2
+                //                                     ?.length ??
+                //                                 0) *
+                //                             100) /
+                //                         (controller.quizResponse.value
+                //                                 ?.data![index].poll?.length ??
+                //                             0)),
+                //                     2),
+                //             ],
+                //           ),
+                //         ),
+                //         Obx(
+                //           () => Column(
+                //             children: [
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option3 !=
+                //                   null)
+                //                 SizedBox(
+                //                   height: 9.h,
+                //                 ),
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option3 !=
+                //                   null)
+                //                 _buildQuiz(
+                //                     "${controller.quizResponse.value?.data![index].option3}",
+                //                     (((controller
+                //                                     .quizResponse
+                //                                     .value
+                //                                     ?.data![index]
+                //                                     .pollOption3
+                //                                     ?.length ??
+                //                                 0) *
+                //                             100) /
+                //                         (controller.quizResponse.value
+                //                                 ?.data![index].poll?.length ??
+                //                             0)),
+                //                     3),
+                //             ],
+                //           ),
+                //         ),
+                //         Obx(
+                //           () => Column(
+                //             children: [
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option4 !=
+                //                   null)
+                //                 SizedBox(
+                //                   height: 9.h,
+                //                 ),
+                //               if (controller.quizResponse.value?.data![index]
+                //                       .option4 !=
+                //                   null)
+                //                 _buildQuiz(
+                //                     "${controller.quizResponse.value?.data![index].option4}",
+                //                     (((controller
+                //                                     .quizResponse
+                //                                     .value
+                //                                     ?.data![index]
+                //                                     .pollOption4
+                //                                     ?.length ??
+                //                                 0) *
+                //                             100) /
+                //                         (controller.quizResponse.value
+                //                                 ?.data![index].poll?.length ??
+                //                             0)),
+                //                     4),
+                //             ],
+                //           ),
+                //         ),
+                //       ],
+                //     );
+                //   },
+                // ),
+                /*     Obx(
                   () => Text(
                     "${controller.quizResponse.value?.data![0].question}",
                     style: TextStyle(
@@ -678,10 +928,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             4),
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: 122.h,
-                ),
+                ),*/
+                SizedBox(height: 122.h),
                 Obx(
                   () => CarouselSlider.builder(
                     itemCount:
@@ -692,13 +940,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         Container(
                       margin: EdgeInsets.symmetric(horizontal: 8.w),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(31.r),
-                        image: DecorationImage(
-                            image: NetworkImage(controller.bottomBannerResponse
-                                    .value?.data?[itemIndex].image ??
-                                ''),
-                            fit: BoxFit.cover),
-                      ),
+                          borderRadius: BorderRadius.circular(31.r),
+                          image: DecorationImage(
+                              image: NetworkImage(controller
+                                      .bottomBannerResponse
+                                      .value
+                                      ?.data?[itemIndex]
+                                      .image ??
+                                  ''),
+                              fit: BoxFit.cover)),
                     ),
                     options: CarouselOptions(
                       height: 341.h,
@@ -1182,36 +1432,36 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  _buildPollOption(String title, id) {
-    return GestureDetector(
-      onTap: () {
-        if (controller.yourAnsId.value == 0) {
-          controller.yourAnsId.value = id;
-          controller.addPoll(id);
-        }
-      },
-      child: Container(
-        height: 113.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(34.h),
-          border: Border.all(
-            color: controller.yourAnsId.value == id
-                ? ColorConstant.borderColor
-                : Color(0xffDADADA),
-          ),
-        ),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-              color: ColorConstant.textColor,
-              fontWeight: FontWeight.w700,
-              fontFamily: TextFontFamily.openSensRegular,
-              fontSize: 30.sp,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  // _buildPollOption(String title, id) {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       if (controller.yourAnsId.value == 0) {
+  //         controller.yourAnsId.value = id;
+  //         controller.addPoll(id);
+  //       }
+  //     },
+  //     child: Container(
+  //       height: 113.h,
+  //       decoration: BoxDecoration(
+  //         borderRadius: BorderRadius.circular(34.h),
+  //         border: Border.all(
+  //           color: controller.yourAnsId.value == id
+  //               ? ColorConstant.borderColor
+  //               : Color(0xffDADADA),
+  //         ),
+  //       ),
+  //       child: Center(
+  //         child: Text(
+  //           title,
+  //           style: TextStyle(
+  //             color: ColorConstant.textColor,
+  //             fontWeight: FontWeight.w700,
+  //             fontFamily: TextFontFamily.openSensRegular,
+  //             fontSize: 30.sp,
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 }

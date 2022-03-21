@@ -16,7 +16,7 @@ class ProfessionalExperienceController extends GetxController {
   void onReady() {
     super.onReady();
     final resumeViewController = Get.put(ProfileResumeController());
-    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) ==
+    if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) !=
         0) {
       companyName.text = resumeViewController.resumeResponse.value
               ?.resumeData?[0].resumeProfessionalExperiences?.companyName ??
