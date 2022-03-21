@@ -20,10 +20,27 @@ class ContactInformationController extends GetxController {
     final resumeViewController = Get.put(ProfileResumeController());
     if ((resumeViewController.resumeResponse.value?.resumeData?.length ?? 0) !=
         0) {
-      /* mobileNumber.text = resumeViewController.resumeResponse.value
-          ?.resumeData?[0].resumeConcactInformation?. ??
-          "";*/
-
+      mobileNumber.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeConcactInformation?.mobileNo ??
+          "";
+      emailId.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeConcactInformation?.email ??
+          "";
+      houseNo.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeConcactInformation?.houseNo ??
+          "";
+      area.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeConcactInformation?.area ??
+          "";
+      city.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeConcactInformation?.city ??
+          "";
+      state.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeConcactInformation?.state ??
+          "";
+      pinCode.text = resumeViewController.resumeResponse.value?.resumeData?[0]
+              .resumeConcactInformation?.pinCode ??
+          "";
     }
   }
 

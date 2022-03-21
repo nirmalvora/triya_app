@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_new_job.dart';
+import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/posted_job_detail_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -220,7 +222,11 @@ class ViewApplieadScreen extends StatelessWidget {
                         SizedBox(height: 180.h),
                         CommanButton(
                             onTap: () {
-                              Get.toNamed(NavigationName.appliedCandidates);
+                              Get.toNamed(NavigationName.appliedCandidates,
+                                  arguments: {
+                                    AppConstants.jobID:
+                                        controller.postedJob.value!.id!
+                                  });
                             },
                             text: 'View Appliead Candidates'),
                         SizedBox(

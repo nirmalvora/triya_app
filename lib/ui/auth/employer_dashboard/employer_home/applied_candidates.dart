@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/ui/auth/employer_dashboard/employer_home/applied_candidate_controller.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/textfield_decoration.dart';
@@ -13,7 +14,7 @@ import 'package:triya_app/widgets/widget.dart';
 class AppliedCandidateScreen extends StatelessWidget {
   AppliedCandidateScreen({Key? key}) : super(key: key);
 
-  final controller = Get.put(EmployerHomeController());
+  final controller = Get.put(AppliedCandidateController());
 
   @override
   Widget build(BuildContext context) {
@@ -96,78 +97,100 @@ class AppliedCandidateScreen extends StatelessWidget {
             ),
           )),
           SizedBox(height: 60.h),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.w),
-              child: ListView.builder(
-                  itemCount: 8,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(bottom: 24.h),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            color: Color(0xffEEF5FF),
-                            borderRadius: BorderRadius.circular(88.r)),
+          Obx(
+            () => ((controller.applyJob.value?.data?.privateJobs?.length ??
+                            0) ==
+                        null &&
+                    controller.loading.value
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : ((controller.applyJob.value?.data?.privateJobs?.length ??
+                            0) ==
+                        0)
+                    ? Center(
+                        child: Text("No Data Found"),
+                      )
+                    : Expanded(
                         child: Padding(
-                          padding: EdgeInsets.all(22.r),
-                          child: Row(children: [
-                            Container(
-                              height: 91.h,
-                              width: 91.w,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29uJTIwd2l0aCUyMGdsYXNzZXN8ZW58MHx8MHx8&w=1000&q=80'),
-                                      fit: BoxFit.cover)),
-                            ),
-                            SizedBox(width: 32.w),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  'Mr. Somnath Paul',
-                                  style: TextStyle(
-                                      fontFamily: "OpenSans-Regular",
-                                      color: ColorConstant.black,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                Text(
-                                  '3 Years Exp.',
-                                  style: TextStyle(
-                                      fontFamily: "OpenSans-Regular",
-                                      fontSize: 12,
-                                      color: Color(0xff3782F3),
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                            Spacer(),
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                height: 91.h,
-                                width: 91.w,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Color(0xff3782F3)),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Icon(
-                                  Icons.download_rounded,
-                                  size: 18,
-                                  color: Color(0xff3782F3),
-                                ),
-                              ),
-                            ),
-                          ]),
+                          padding: EdgeInsets.symmetric(horizontal: 30.w),
+                          child: ListView.builder(
+                              itemCount:
+                                  controller.applyJob.value?.data?.id ?? 0,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.only(bottom: 24.h),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xffEEF5FF),
+                                        borderRadius:
+                                            BorderRadius.circular(88.r)),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(22.r),
+                                      child: Row(children: [
+                                        Container(
+                                          height: 91.h,
+                                          width: 91.w,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                                image: NetworkImage(
+                                                    'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29uJTIwd2l0aCUyMGdsYXNzZXN8ZW58MHx8MHx8&w=1000&q=80'),
+                                                fit: BoxFit.cover),
+                                          ),
+                                        ),
+                                        SizedBox(width: 32.w),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "${controller.applyJob.value?.data?.privateJobs![index].firstName} ${controller.applyJob.value?.data?.privateJobs![index].lastName}",
+                                              style: TextStyle(
+                                                  fontFamily:
+                                                      "OpenSans-Regular",
+                                                  color: ColorConstant.black,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            Text(
+                                              "",
+                                              style: TextStyle(
+                                                  fontFamily:
+                                                      "OpenSans-Regular",
+                                                  fontSize: 12,
+                                                  color: Color(0xff3782F3),
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        InkWell(
+                                          onTap: () {},
+                                          child: Container(
+                                            height: 91.h,
+                                            width: 91.w,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Color(0xff3782F3)),
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Icon(
+                                              Icons.download_rounded,
+                                              size: 18,
+                                              color: Color(0xff3782F3),
+                                            ),
+                                          ),
+                                        ),
+                                      ]),
+                                    ),
+                                  ),
+                                );
+                              }),
                         ),
-                      ),
-                    );
-                  }),
-            ),
-          )
+                      )),
+          ),
         ],
       ),
     );

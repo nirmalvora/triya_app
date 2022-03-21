@@ -293,8 +293,6 @@ class EmployerSignUp extends StatelessWidget {
                                 if (controller.formKey.currentState!
                                     .validate()) {
                                   controller.signup();
-                                } else {
-                                  Get.back();
                                 }
                               },
                               child: Container(
