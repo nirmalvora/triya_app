@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/service_constant.dart';
+import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/model/book_category_response.dart';
 import 'package:triya_app/model/quiz_response.dart';
 import 'package:triya_app/model/top_banner_response_model.dart';
@@ -16,7 +17,11 @@ class HomeController extends GetxController {
   final videoCategoryResponse = Rx<BookCategoryResponse?>(null);
   final quizResponse = Rx<QuizResponse?>(null);
   final searchText = "".obs;
+
   final yourAnsId = 0.obs;
+
+  final selected = 0.obs;
+
   @override
   void onReady() {
     super.onReady();
@@ -63,7 +68,6 @@ class HomeController extends GetxController {
     });
   }
 
-
   void quizData() {
     BaseApiService.instance.get(ServiceConstant.quiz).then((value) {
       QuizResponse response = QuizResponse.fromJson(value!.data);
@@ -92,7 +96,6 @@ class HomeController extends GetxController {
   //     refresh();
   //   });
   // }
-
 
   void removeUser() {
     Get.offAllNamed(NavigationName.loginTypePage);

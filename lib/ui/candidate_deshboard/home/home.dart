@@ -21,8 +21,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   final controller = Get.put(HomeController());
-  var percentValue = 0.6;
 
   @override
   Widget build(BuildContext context) {
