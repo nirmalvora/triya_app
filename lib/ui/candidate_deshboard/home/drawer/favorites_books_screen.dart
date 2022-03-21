@@ -49,27 +49,19 @@ class FavoritesBookScreen extends StatelessWidget {
         ],
       ),
       body: Obx(
-        () => ((controller.bookDataResponse.value?.data
-                                ?.where(((element) => element.title!
-                                    .contains(controller.searchText.value)))
-                                .length ??
-                            0) ==
-                        0) ==
-                    null &&
-                controller.loading.value
+        () => ((controller.bookFavoritesResponse.value?.data?.length ?? 0) ==
+                null
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : ((controller.bookDataResponse.value?.data?.length ?? 0) == 0)
+            : ((controller.bookFavoritesResponse.value?.data?.length ?? 0) == 0)
                 ? Center(
                     child: Text("No Data Found"),
                   )
                 : ListView.builder(
-                    itemCount: controller.bookDataResponse.value?.data
-                            ?.where(((element) => element.title!
-                                .contains(controller.searchText.value)))
-                            .length ??
-                        0,
+                    itemCount:
+                        controller.bookFavoritesResponse.value?.data?.length ??
+                            0,
                     padding: EdgeInsets.zero,
                     physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
@@ -79,8 +71,8 @@ class FavoritesBookScreen extends StatelessWidget {
                             vertical: 8, horizontal: 10),
                         child: GestureDetector(
                           onTap: () async {
-                            var _url = controller
-                                    .bookDataResponse.value?.data?[index].url ??
+                            var _url = controller.bookFavoritesResponse.value
+                                    ?.data?[index].url ??
                                 "www.google.com";
                             if (!await launch(_url)) {
                               throw 'Could not launch $_url';
@@ -119,7 +111,7 @@ class FavoritesBookScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      controller.bookDataResponse.value
+                                      controller.bookFavoritesResponse.value
                                               ?.data?[index].title ??
                                           "",
                                       maxLines: 2,
@@ -134,26 +126,26 @@ class FavoritesBookScreen extends StatelessWidget {
                                       splashRadius: 20,
                                       onPressed: () {
                                         controller.addToFavorite(
-                                            controller.bookDataResponse.value
-                                                    ?.data?[index].id ??
+                                            controller.bookFavoritesResponse
+                                                    .value?.data?[index].id ??
                                                 0,
                                             index,
                                             (controller
-                                                        .bookDataResponse
+                                                        .bookFavoritesResponse
                                                         .value
                                                         ?.data?[index]
                                                         .favoriteBook) ==
                                                     null
                                                 ? -1
                                                 : (controller
-                                                    .bookDataResponse
+                                                    .bookFavoritesResponse
                                                     .value!
                                                     .data![index]
                                                     .favoriteBook!
                                                     .id!));
                                       },
                                       icon: Icon((controller
-                                                  .bookDataResponse
+                                                  .bookFavoritesResponse
                                                   .value
                                                   ?.data?[index]
                                                   .favoriteBook) ==
@@ -167,7 +159,7 @@ class FavoritesBookScreen extends StatelessWidget {
                         ),
                       );
                     },
-                  ),
+                  )),
       ),
     );
   }

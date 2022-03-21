@@ -48,14 +48,7 @@ class FavoritesVideoScreen extends StatelessWidget {
         ],
       ),
       body: Obx(
-        () => ((controller.videoDataResponse.value?.data
-                                ?.where(((element) => element.title!
-                                    .contains(controller.searchText.value)))
-                                .length ??
-                            0) ==
-                        0) ==
-                    null &&
-                controller.loading.value
+        () => ((controller.videoDataResponse.value?.data?.length ?? 0) == null
             ? Center(
                 child: CircularProgressIndicator(),
               )
@@ -64,11 +57,8 @@ class FavoritesVideoScreen extends StatelessWidget {
                     child: Text("No Data Found"),
                   )
                 : ListView.builder(
-                    itemCount: controller.videoDataResponse.value?.data
-                            ?.where(((element) => element.title!
-                                .contains(controller.searchText.value)))
-                            .length ??
-                        0,
+                    itemCount:
+                        controller.videoDataResponse.value?.data?.length ?? 0,
                     padding: EdgeInsets.zero,
                     physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
@@ -165,7 +155,7 @@ class FavoritesVideoScreen extends StatelessWidget {
                         ),
                       );
                     },
-                  ),
+                  )),
       ),
     );
   }

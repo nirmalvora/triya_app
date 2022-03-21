@@ -2,33 +2,27 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/basemodel/book_data_response.dart';
+import 'package:triya_app/model/favorites_book_response.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
 class FavoritesBooksController extends GetxController {
-  final bookDataResponse = Rx<BookDataResponse?>(null);
-  final loading = false.obs;
-  final searchText = "".obs;
+  final bookFavoritesResponse = Rx<FavoritesBookUpdateResponse?>(null);
   @override
   void onReady() {
     super.onReady();
-    final res = Get.arguments;
-    int id = res[AppConstants.bookCategoryId];
-    getData(id);
+    getFavoritesBookData();
   }
 
-  void getData(int id) {
-    loading.value = true;
+  void getFavoritesBookData() {
     BaseApiService.instance
-        .get("${ServiceConstant.getBookData}$id")
+        .get(ServiceConstant.getFavoritesBookData)
         .then((value) {
-      loading.value = false;
       print(value);
-      BookDataResponse response = BookDataResponse.fromJson(value!.data);
+      FavoritesBookUpdateResponse response =
+          FavoritesBookUpdateResponse.fromJson(value!.data);
       print(response);
-      bookDataResponse.value = response;
-      bookDataResponse.refresh();
-    }).onError((error, stackTrace) {
-      loading.value = false;
+      bookFavoritesResponse.value = response;
+      bookFavoritesResponse.refresh();
     });
   }
 
@@ -46,13 +40,13 @@ class FavoritesBooksController extends GetxController {
         .post(ServiceConstant.addBookToFavorite, data: data)
         .then((value) {
       if (delete != -1) {
-        bookDataResponse.value!.data![index].favoriteBook = null;
-        print(bookDataResponse.value!.data![index].favoriteBook);
+        bookFavoritesResponse.value!.data![index].favoriteBook = null;
+        getFavoritesBookData();
       } else {
-        bookDataResponse.value!.data![index].favoriteBook =
+        bookFavoritesResponse.value!.data![index].favoriteBook =
             FavoriteBook.fromJson(value!.data["data"]);
       }
-      bookDataResponse.refresh();
+      bookFavoritesResponse.refresh();
     }).onError((error, stackTrace) {});
   }
 }

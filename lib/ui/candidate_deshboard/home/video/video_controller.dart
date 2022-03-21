@@ -20,10 +20,9 @@ class VideoController extends GetxController {
   void getData(int id) {
     loading.value = true;
     BaseApiService.instance
-        .get("${ServiceConstant.getVideoData}$id")
+        .get("${ServiceConstant.getVideoData}/$id")
         .then((value) {
       loading.value = false;
-      print(value);
       BookDataResponse response = BookDataResponse.fromJson(value!.data);
       print(response);
       videoDataResponse.value = response;
@@ -43,6 +42,7 @@ class VideoController extends GetxController {
         'id': delete,
       };
     }
+    print(data);
     BaseApiService.instance
         .post(ServiceConstant.addVideoToFavorite, data: data)
         .then((value) {

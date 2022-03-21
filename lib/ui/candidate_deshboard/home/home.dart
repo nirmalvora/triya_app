@@ -10,6 +10,8 @@ import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_books_controller.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_video_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
@@ -24,6 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   final controller = Get.put(HomeController());
+  final bookFavoriteController = Get.put(FavoritesBooksController());
+  final videoFavoriteController = Get.put(FavoritesVideoController());
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 25.w,
                             ),
                             Text(
-                              'Applied Lobs',
+                              'Applied Jobs',
                               style: TextStyle(
                                 color: ColorConstant.textColor,
                                 fontWeight: FontWeight.w600,
@@ -226,34 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // Get.toNamed(NavigationName.);
-                        },
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                              height: 62.h,
-                              width: 62.w,
-                            ),
-                            SizedBox(
-                              width: 25.w,
-                            ),
-                            Text(
-                              'My Favorites',
-                              style: TextStyle(
-                                color: ColorConstant.textColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 45.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 96.h,
-                      ),
-                      GestureDetector(
-                        onTap: () {
+                          bookFavoriteController.getFavoritesBookData();
                           Get.toNamed(NavigationName.favoritesBooks);
                         },
                         child: Row(
@@ -282,6 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
+                          videoFavoriteController.getFavoritesVideoData();
                           Get.toNamed(NavigationName.favoritesVideo);
                         },
                         child: Row(

@@ -8,6 +8,7 @@ import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/my_account_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/cache_imageview.dart';
 
 class MyAccount extends StatefulWidget {
   MyAccount({Key? key}) : super(key: key);
@@ -61,34 +62,22 @@ class _MyAccountState extends State<MyAccount> {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Column(
             children: [
-              /*  GestureDetector(
+              GestureDetector(
                 onTap: () {
                   myController.getImage();
                 },
                 child: CircleAvatar(
                   backgroundColor: ColorConstant.backgroundColor,
-                  radius: 55,
+                  radius: 45,
                   child: ClipOval(
                     child: Obx(
                       () => myController.image.value == null
-                          ? ((myController.updateName.value?.resumeData
-                                              ?.length ??
-                                          0) !=
-                                      0) &&
-                                  (myController.resumeResponse.value
-                                              ?.resumeData?[0].resume?.url ??
-                                          "") !=
-                                      ""
-                              ? CacheImageView(
-                                  imageUrl: myController.resumeResponse.value
-                                          ?.resumeData![0].resume?.url ??
-                                      "")
-                              : Image.network(
-                                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCubUN2VDqYNO0nfbwpiJmiHwmkXyux32Izw&usqp=CAU",
-                                  fit: BoxFit.cover,
-                                  height: double.infinity,
-                                  width: double.infinity,
-                                )
+                          ? Image.network(
+                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCubUN2VDqYNO0nfbwpiJmiHwmkXyux32Izw&usqp=CAU",
+                              fit: BoxFit.cover,
+                              height: double.infinity,
+                              width: double.infinity,
+                            )
                           : Image.file(
                               myController.image.value!,
                               width: double.infinity,
@@ -98,7 +87,7 @@ class _MyAccountState extends State<MyAccount> {
                     ),
                   ),
                 ),
-              ),*/
+              ),
               SizedBox(
                 height: 20.h,
               ),

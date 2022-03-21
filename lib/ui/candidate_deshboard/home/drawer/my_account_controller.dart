@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/local_data/app_state.dart';
@@ -11,9 +13,9 @@ import 'package:triya_app/preference/preference_keys.dart';
 import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
-
 class MyAccountController extends GetxController {
   final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   final updatesData = Rx<NameUpdateResponse?>(null);
@@ -38,11 +40,20 @@ class MyAccountController extends GetxController {
       AppState.loginData.value?.user!.lastName = response.data!.lastName;
       Preferences.setString(PreferenceKeys.userProfile,
           jsonEncode(LoginResponse(data: AppState.loginData.value).toJson()));
-      ;
       AppState.loginData.refresh();
       Get.snackbar(response.message!, "");
     });
   }
 
-  final lastNameController = TextEditingController();
+  final picker = ImagePicker();
+  Rx<File?> image = Rx<File?>(null);
+  Future getImage() async {
+    final pickedFile = await picker.getImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile != null) {
+      image.value = File(pickedFile.path);
+    }
+    image.refresh();
+  }
 }

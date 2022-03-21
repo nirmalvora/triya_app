@@ -20,7 +20,7 @@ class BookController extends GetxController {
   void getData(int id) {
     loading.value = true;
     BaseApiService.instance
-        .get("${ServiceConstant.getBookData}$id")
+        .get("${ServiceConstant.getBookData}/$id")
         .then((value) {
       loading.value = false;
       BookDataResponse response = BookDataResponse.fromJson(value!.data);

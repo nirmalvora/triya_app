@@ -7,8 +7,10 @@ class ServiceConstant {
   static const String getBottomBanner = "api/get-bottom-banner";
   static const String getBookCategory = "api/book-category-show";
   static const String getVideoCategory = "api/video-category-show";
-  static const String getBookData = "api/get-book/";
-  static const String getVideoData = "api/get-video/";
+  static const String getBookData = "api/get-book";
+  static const String getFavoritesBookData = "api/get-favorite-book";
+  static const String getFavoritesVideoData = "api/get-favorite-video";
+  static const String getVideoData = "api/get-video";
   static const String addBookToFavorite = "api/add-favorite-book";
   static const String addVideoToFavorite = "api/add-favorite-video";
   static const String personalStatement = "api/create-personal-statements";
