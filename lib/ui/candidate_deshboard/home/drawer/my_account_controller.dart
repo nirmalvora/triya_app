@@ -11,10 +11,11 @@ import 'package:triya_app/preference/preference_keys.dart';
 import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
+
 class MyAccountController extends GetxController {
   final firstNameController = TextEditingController();
-  final lastNameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
   final updatesData = Rx<NameUpdateResponse?>(null);
 
   @override
@@ -42,4 +43,6 @@ class MyAccountController extends GetxController {
       Get.snackbar(response.message!, "");
     });
   }
+
+  final lastNameController = TextEditingController();
 }
