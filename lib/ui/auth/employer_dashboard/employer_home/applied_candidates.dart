@@ -42,7 +42,7 @@ class AppliedCandidateScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          'My Jobs',
+          'Applied Candidates',
           style: TextStyle(
               fontFamily: "OpenSans-Regular",
               color: ColorConstant.white,
@@ -81,7 +81,7 @@ class AppliedCandidateScreen extends StatelessWidget {
             decoration: customInputDecoration(
               'Search for jobs here...',
               Color(0xff397ADB),
-              Color(0xffF6F6F6),
+              Color(0xff397ADB),
               prefixIcon: SizedBox(
                 height: 40.h,
                 width: 40.w,
