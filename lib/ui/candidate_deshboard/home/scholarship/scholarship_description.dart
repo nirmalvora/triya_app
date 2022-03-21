@@ -3,9 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
-import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/scholarship/scholarship_job_deatil_controller.dart';
-import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/date_formatter.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -43,7 +41,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
           "Scolarship Job",
           style: TextStyle(color: ColorConstant.splashColor),
         ),
-        actions: [
+        actions: const [
           Padding(
             padding: EdgeInsets.only(right: 15),
             child: AppBarCircleAvtar(),
@@ -55,52 +53,6 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /* Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-              decoration: BoxDecoration(
-                color: ColorConstant.backgroundColor,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                ),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        fillColor: Color(0xffF5F5F5),
-                        filled: true,
-                        hintText: "Search for book category here",
-                        hintStyle: TextStyle(
-                          fontSize: 26.h,
-                        ),
-                        prefixIcon: Icon(Icons.search),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    height: 48,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.h),
-                      color: ColorConstant.droverButtonColor,
-                    ),
-                    child: Center(
-                      child: SvgPicture.asset(
-                        AppUtils.getSVGAsset(ImageConstant.filterIcon),
-                        width: 52.h,
-                        height: 47.h,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),*/
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Text(

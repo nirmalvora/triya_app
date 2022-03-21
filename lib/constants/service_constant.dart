@@ -42,6 +42,8 @@ class ServiceConstant {
   static String AddNewJob = "api/create-emp-job-post";
   static String PostedJob = "api/get-job-post";
   static String applyJob = "api/create-private-job-post";
+  static String viewAppliedCandidate = "api/get-job-post-one";
+  static String categoryList = "api/get-employee-cat";
 
   static String addPoll = "api/poll";
 }

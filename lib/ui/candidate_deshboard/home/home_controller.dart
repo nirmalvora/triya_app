@@ -33,7 +33,7 @@ class HomeController extends GetxController {
     getBottomBannerData();
     getBookCategoryData();
     getVideoCategoryData();
-    // quizData();
+    quizData();
   }
 
   void getTopBannerData() {
@@ -81,31 +81,17 @@ class HomeController extends GetxController {
     });
   }
 
-  // void quizData() {
-  //   BaseApiService.instance.get(ServiceConstant.quiz).then((value) {
-  //     QuizResponse response = QuizResponse.fromJson(value!.data);
-  //     quizResponse.value = response;
-  //     int index = quizResponse.value!.data![1].poll!.indexWhere(
-  //         (element) => AppState.loginData!.user!.id == element.userId);
-  //     if (index != -1) {
-  //       yourAnsId.value = quizResponse.value!.data![index].poll![index].option!;
-  //       yourAnsId.refresh();
-  //     }
-  //     refresh();
-  //   });
-  // }
-
   void removeUser() {
     Get.offAllNamed(NavigationName.loginTypePage);
     Preferences.clear();
   }
 
-  // void addPoll(id) {
-  //   BaseApiService.instance.post(ServiceConstant.addPoll, data: {
-  //     'option': id,
-  //     "que_id": quizResponse.value!.data![1].id!
-  //   }).then((value) {
-  //     quizData();
-  //   });
-  // }
+  void addPoll(id) {
+    BaseApiService.instance.post(ServiceConstant.addPoll, data: {
+      'option': id,
+      "que_id": quizResponse.value!.data![1].id!
+    }).then((value) {
+      quizData();
+    });
+  }
 }

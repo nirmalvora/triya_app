@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/model/add_new_job_category_res_model.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_new_job_controller.dart';
 import 'package:triya_app/utils/date_formate_utils.dart';
 import 'package:triya_app/widgets/textfield_decoration.dart';
@@ -15,8 +16,6 @@ class AddNewJobScreen extends StatefulWidget {
 }
 
 class _AddNewJobScreenState extends State<AddNewJobScreen> {
-  String dropdownValue = 'One';
-
   final controller = Get.put(AddNewJobController());
 
   @override
@@ -150,32 +149,31 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
-                          child: DropdownButton(
-                            iconSize: 0,
-                            underline:
-                                Container(height: 0, color: Colors.transparent),
-                            elevation: 0,
-                            value: dropdownValue,
-                            items: <String>[
-                              'One',
-                              'Two',
-                              'Three',
-                              'Four',
-                              'Five',
-                              'Six',
-                              'Seven'
-                            ].map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue = newValue!;
-                              });
-                            },
+                        Obx(
+                          () => Expanded(
+                            child: DropdownButton(
+                              iconSize: 0,
+                              hint: Text('Select Category'),
+                              underline: Container(
+                                  height: 0, color: Colors.transparent),
+                              elevation: 0,
+                              value: controller.dropdownValue,
+                              items: (controller
+                                          .categoryListResponse.value?.data ??
+                                      [])
+                                  .map<DropdownMenuItem<String>>(
+                                      (CategoryListData value) {
+                                return DropdownMenuItem<String>(
+                                  value: value.id.toString(),
+                                  child: Text('${value.name}'),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  controller.dropdownValue = newValue!;
+                                });
+                              },
+                            ),
                           ),
                         ),
                         Icon(Icons.keyboard_arrow_down)
