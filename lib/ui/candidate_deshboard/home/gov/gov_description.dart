@@ -299,6 +299,8 @@ class _GovDescriptionState extends State<GovDescription> {
                     children: [
                       Text(
                         'Job Link:',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: ColorConstant.hintTextColor,
                           fontWeight: FontWeight.w400,
@@ -309,6 +311,8 @@ class _GovDescriptionState extends State<GovDescription> {
                       Spacer(),
                       Text(
                         controller.govJob.value?.jobLink ?? "",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,

@@ -203,33 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 25.w,
                             ),
                             Text(
-                              'Applied Lobs',
-                              style: TextStyle(
-                                color: ColorConstant.textColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 45.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 96.h,
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
-                              height: 62.h,
-                              width: 62.w,
-                            ),
-                            SizedBox(
-                              width: 25.w,
-                            ),
-                            Text(
-                              'My Favorites',
+                              'Applied Jobs',
                               style: TextStyle(
                                 color: ColorConstant.textColor,
                                 fontWeight: FontWeight.w600,
@@ -537,41 +511,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(height: 34.h),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.quizResponse.value?.data!.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Obx(
-                          () => Column(
-                            children: [
-                              if (controller.quizResponse.value?.data![index]
-                                      .option1 !=
-                                  null)
-                                SizedBox(
-                                  height: 31.h,
-                                ),
-                              if (controller
-                                      .quizResponse.value?.data![0].option1 !=
-                                  null)
-                                _buildQuiz(
-                                    "${controller.quizResponse.value?.data![0].option1}",
-                                    (((controller.quizResponse.value?.data![0]
-                                                    .pollOption1?.length ??
-                                                0) *
-                                            100) /
-                                        (controller.quizResponse.value?.data![0]
-                                                .poll?.length ??
-                                            0)),
-                                    1),
-                            ],
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
                 Row(
                   children: [
                     Obx(
@@ -770,9 +709,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
                 Row(
                   children: [
                     Text(
@@ -1147,16 +1084,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             children: [
                               Spacer(),
-                              Text(
-                                pr.toStringAsFixed(2),
-                                style: TextStyle(
-                                  color:
-                                      (optionId != controller.yourAnsId.value)
-                                          ? ColorConstant.text1Color
-                                          : Colors.black,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: TextFontFamily.openSansBold,
-                                  fontSize: 30.sp,
+                              Flexible(
+                                child: Text(
+                                  pr.toStringAsFixed(2),
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color:
+                                        (optionId != controller.yourAnsId.value)
+                                            ? ColorConstant.text1Color
+                                            : Colors.black,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: TextFontFamily.openSansBold,
+                                    fontSize: 30.sp,
+                                  ),
                                 ),
                               ),
                             ],

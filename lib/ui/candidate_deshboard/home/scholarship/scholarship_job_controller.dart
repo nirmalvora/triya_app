@@ -15,7 +15,7 @@ class ScholarshipJobController extends GetxController {
 
   void getJobList() {
     loading.value = true;
-    BaseApiService.instance.get(ServiceConstant.getGovJob).then((value) {
+    BaseApiService.instance.get(ServiceConstant.getScholarJob).then((value) {
       GovJobResponse response = GovJobResponse.fromJson(value!.data);
       loading.value = false;
       govJobResponse.value = response;

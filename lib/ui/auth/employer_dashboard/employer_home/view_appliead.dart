@@ -183,6 +183,12 @@ class ViewApplieadScreen extends StatelessWidget {
                           title: 'Job Details:',
                           subtitle: controller.postedJob.value?.jobDetail ?? "",
                         ),
+                        SizedBox(height: 28.h),
+                        CommanViewAppliedContainer(
+                          maxLine: 3,
+                          title: 'Job Category:',
+                          subtitle: 'Selected',
+                        ),
                         SizedBox(height: 50.h),
                         InkWell(
                           onTap: () async {

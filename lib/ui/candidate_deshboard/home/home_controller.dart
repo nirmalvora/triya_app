@@ -72,8 +72,6 @@ class HomeController extends GetxController {
         yourAnsId.value = quizResponse.value!.data![0].poll![index].option!;
         yourAnsId.refresh();
       }
-
-      refresh();
     });
   }
 

@@ -91,39 +91,39 @@ class ProfessionalResumeScreen extends StatelessWidget {
                           radius: 55,
                           child: ClipOval(
                             child: Obx(
-                                  () => controller.image.value == null
+                              () => controller.image.value == null
                                   ? ((controller.resumeResponse.value
-                                  ?.resumeData?.length ??
-                                  0) !=
-                                  0) &&
-                                  (controller
-                                      .resumeResponse
-                                      .value
-                                      ?.resumeData?[0]
-                                      .resume
-                                      ?.url ??
-                                      "") !=
-                                      ""
-                                  ? CacheImageView(
-                                  imageUrl: controller
-                                      .resumeResponse
-                                      .value
-                                      ?.resumeData![0]
-                                      .resume
-                                      ?.url ??
-                                      "")
-                                  : Image.network(
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCubUN2VDqYNO0nfbwpiJmiHwmkXyux32Izw&usqp=CAU",
-                                fit: BoxFit.cover,
-                                height: double.infinity,
-                                width: double.infinity,
-                              )
+                                                      ?.resumeData?.length ??
+                                                  0) !=
+                                              0) &&
+                                          (controller
+                                                      .resumeResponse
+                                                      .value
+                                                      ?.resumeData?[0]
+                                                      .resume
+                                                      ?.url ??
+                                                  "") !=
+                                              ""
+                                      ? CacheImageView(
+                                          imageUrl: controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData![0]
+                                                  .resume
+                                                  ?.url ??
+                                              "")
+                                      : Image.network(
+                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCubUN2VDqYNO0nfbwpiJmiHwmkXyux32Izw&usqp=CAU",
+                                          fit: BoxFit.cover,
+                                          height: double.infinity,
+                                          width: double.infinity,
+                                        )
                                   : Image.file(
-                                controller.image.value!,
-                                width: double.infinity,
-                                height: double.infinity,
-                                fit: BoxFit.cover,
-                              ),
+                                      controller.image.value!,
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
                             ),
                           ),
                         ),
@@ -223,9 +223,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
                   name: "ADDITIONAL TRAINS",
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               /*   Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Container(
@@ -265,8 +263,14 @@ class ProfessionalResumeScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: GestureDetector(
                   onTap: () {
-                    Get.toNamed(NavigationName.privateResumeApplyPage,
-                        arguments: {AppConstants.isPreview: true});
+                    if ((controller.resumeResponse.value?.resumeData?.length ??
+                            0) !=
+                        0) {
+                      Get.toNamed(NavigationName.privateResumeApplyPage,
+                          arguments: {AppConstants.isPreview: true});
+                    } else {
+                      Get.snackbar('Please fillup resume data', '');
+                    }
                   },
                   child: Container(
                     height: 120.h,
@@ -304,45 +308,57 @@ class ProfessionalResumeScreen extends StatelessWidget {
               ),
               SizedBox(
                 height: 40.h,
-              )
-              /*    Padding(
-                padding: const EdgeInsets.only(
-                    right: 15, left: 15, bottom: 30, top: 10),
-                child: GestureDetector(
-                  onTap: () {
-
-                  },
-                  child: Container(
-                    height: 120.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: ColorConstant.buttonColor,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: Center(
-                            child: Text(
-                              'PREVIEW',
-                              style: TextStyle(
-                                color: ColorConstant.splashColor,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: TextFontFamily.openSansBold,
-                                fontSize: 40.sp,
-                                letterSpacing: 2,
-                              ),
+              ),
+              Obx(
+                () => controller.showApplyButton.value
+                    ? Padding(
+                        padding: const EdgeInsets.only(
+                            right: 15, left: 15, bottom: 30, top: 10),
+                        child: GestureDetector(
+                          onTap: () {
+                            if ((controller.resumeResponse.value?.resumeData
+                                        ?.length ??
+                                    0) !=
+                                0) {
+                              controller.applyJob();
+                            } else {
+                              Get.snackbar('Please fillup resume data', '');
+                            }
+                          },
+                          child: Container(
+                            height: 120.h,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: ColorConstant.buttonColor,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12),
+                                  child: Center(
+                                    child: Text(
+                                      'Apply job',
+                                      style: TextStyle(
+                                        color: ColorConstant.splashColor,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: TextFontFamily.openSansBold,
+                                        fontSize: 40.sp,
+                                        letterSpacing: 2,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),*/
+                      )
+                    : SizedBox.shrink(),
+              )
             ],
           ),
         ),

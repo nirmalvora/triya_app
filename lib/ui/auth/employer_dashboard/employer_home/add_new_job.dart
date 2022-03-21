@@ -15,6 +15,8 @@ class AddNewJobScreen extends StatefulWidget {
 }
 
 class _AddNewJobScreenState extends State<AddNewJobScreen> {
+  String dropdownValue = 'One';
+
   final controller = Get.put(AddNewJobController());
 
   @override
@@ -77,6 +79,7 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
         ],
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.w),
           child: Form(
@@ -133,6 +136,52 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                   controller: controller.jobDetails,
                   decoration: customInputDecoration(
                       '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                ),
+                SizedBox(height: 30.h),
+                CommanTitle(title: 'Job category'),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Color(0xffF6F6F6),
+                      borderRadius: BorderRadius.circular(19.r)),
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: DropdownButton(
+                            iconSize: 0,
+                            underline:
+                                Container(height: 0, color: Colors.transparent),
+                            elevation: 0,
+                            value: dropdownValue,
+                            items: <String>[
+                              'One',
+                              'Two',
+                              'Three',
+                              'Four',
+                              'Five',
+                              'Six',
+                              'Seven'
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownValue = newValue!;
+                              });
+                            },
+                          ),
+                        ),
+                        Icon(Icons.keyboard_arrow_down)
+                      ],
+                    ),
+                  ),
                 ),
                 SizedBox(height: 50.h),
                 InkWell(

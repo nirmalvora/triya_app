@@ -29,12 +29,14 @@ class ServiceConstant {
   static String quiz = "api/get-quiz";
 
   static String getGovJob = "api/get-gov";
+  static String getScholarJob = "api/get-scholar";
   static String getPrivateJob = "api/get-job-post";
 
   static String getResume = "api/get-resume";
   static String uploadProfile = "api/upload";
   static String AddNewJob = "api/create-emp-job-post";
   static String PostedJob = "api/get-job-post";
+  static String applyJob = "api/create-private-job-post";
 
   static String addPoll = "api/poll";
 }

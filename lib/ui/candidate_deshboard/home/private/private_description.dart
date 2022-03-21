@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
@@ -424,7 +425,14 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(NavigationName.privateJobResumePage);
+                  // Get.toNamed(NavigationName.privateJobResumePage);
+                  // controller.getData();
+                  Get.toNamed(NavigationName.professionalResumePage,
+                      arguments: {
+                        AppConstants.showApplyButton: true,
+                        AppConstants.jobID: controller.govJob.value!.id!,
+                      });
+                  // controller.applyJob();
                 },
                 child: Container(
                   height: 110.h,

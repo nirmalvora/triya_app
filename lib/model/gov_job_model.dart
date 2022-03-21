@@ -34,6 +34,7 @@ class GovJobData {
   String? qualification;
   String? board;
   String? jobLink;
+  String? scholarLink;
   String? jobDescription;
   String? upload;
   String? createdAt;
@@ -47,6 +48,7 @@ class GovJobData {
       this.qualification,
       this.board,
       this.jobLink,
+      this.scholarLink,
       this.jobDescription,
       this.upload,
       this.createdAt,
@@ -60,6 +62,7 @@ class GovJobData {
     qualification = json['qualification'];
     board = json['board'];
     jobLink = json['job_link'];
+    scholarLink = json['link'];
     jobDescription = json['job_description'];
     upload = json['upload'];
     createdAt = json['created_at'];
@@ -75,6 +78,7 @@ class GovJobData {
     data['qualification'] = this.qualification;
     data['board'] = this.board;
     data['job_link'] = this.jobLink;
+    data['link'] = this.scholarLink;
     data['job_description'] = this.jobDescription;
     data['upload'] = this.upload;
     data['created_at'] = this.createdAt;

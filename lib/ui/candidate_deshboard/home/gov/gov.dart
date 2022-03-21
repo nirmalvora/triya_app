@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_job_controller.dart';
@@ -113,7 +114,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
           SizedBox(
             height: 15,
           ),
-          /*   SizedBox(
+          SizedBox(
             height: 100.h,
             child: ListView.builder(
               shrinkWrap: true,
@@ -156,9 +157,9 @@ class _GovJobScreenState extends State<GovJobScreen> {
             ),
           ),
           SizedBox(
-            height: 100.h,
-          ),*/
-          /* Padding(
+            height: 50.h,
+          ),
+          /*  Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Text(
               'Category A Jobs',
@@ -169,8 +170,8 @@ class _GovJobScreenState extends State<GovJobScreen> {
                 fontSize: 52.sp,
               ),
             ),
-          ),*/
-          /* Padding(
+          ),
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Text(
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vitae pulvinar sagittis.',
@@ -181,8 +182,8 @@ class _GovJobScreenState extends State<GovJobScreen> {
                 fontSize: 22.sp,
               ),
             ),
-          ),*/
-          /*  SizedBox(
+          ),
+          SizedBox(
             height: 20,
           ),*/
           Expanded(

@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:http/http.dart' as http;
+
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/service_constant.dart';
+import 'package:triya_app/model/apply_job_res_model.dart';
 import 'package:triya_app/model/resume_response_model.dart';
 import 'package:triya_app/preference/preference_keys.dart';
 import 'package:triya_app/preference/prerences.dart';
@@ -13,9 +16,16 @@ import '../../../../constants/api_constants.dart';
 
 class ProfileResumeController extends GetxController {
   Rx<ResumeResponseModel?> resumeResponse = Rx<ResumeResponseModel?>(null);
+  final showApplyButton = false.obs;
+  final jobId = 0.obs;
   @override
   void onReady() {
     super.onReady();
+    final res = Get.arguments;
+    if (res != null) {
+      showApplyButton.value = res[AppConstants.showApplyButton] ?? false;
+      jobId.value = res[AppConstants.jobID] ?? -1;
+    }
     getData();
   }
 
@@ -56,6 +66,17 @@ class ProfileResumeController extends GetxController {
       if (response.statusCode == 200) {
         getData();
       }
+    });
+  }
+
+  void applyJob() {
+    Map<String, dynamic> data = {'emp_id': jobId.value};
+    BaseApiService.instance
+        .post(ServiceConstant.applyJob, data: data)
+        .then((value) {
+      // print(value);
+      ApplyJobResModel response = ApplyJobResModel.fromJson(value!.data);
+      Get.snackbar(response.message!, "");
     });
   }
 }

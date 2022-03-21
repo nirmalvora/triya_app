@@ -307,7 +307,9 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                       ),
                       Spacer(),
                       Text(
-                        controller.govJob.value?.jobLink ?? "",
+                        controller.govJob.value?.scholarLink ?? "",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,
@@ -364,10 +366,11 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               child: InkWell(
                 onTap: () async {
-                  if (await canLaunch(controller.govJob.value?.jobLink ?? "")) {
-                    await launch(controller.govJob.value?.jobLink ?? "");
+                  if (await canLaunch(
+                      controller.govJob.value?.scholarLink ?? "")) {
+                    await launch(controller.govJob.value?.scholarLink ?? "");
                   } else {
-                    throw 'Could not launch "${controller.govJob.value?.jobLink ?? ""}"';
+                    throw 'Could not launch "${controller.govJob.value?.scholarLink ?? ""}"';
                   }
                 },
                 child: Container(
@@ -417,32 +420,6 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Container(
-                height: 110.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(19.r),
-                  border: Border.all(
-                    color: ColorConstant.splashColor,
-                    width: 2,
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    'Apply Job',
-                    style: TextStyle(
-                      color: ColorConstant.splashColor,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: TextFontFamily.openSansBold,
-                      fontSize: 32.sp,
-                      letterSpacing: 2,
                     ),
                   ),
                 ),

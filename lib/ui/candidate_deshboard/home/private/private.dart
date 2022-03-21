@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/private/private_job_controller.dart';
@@ -113,7 +114,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
           SizedBox(
             height: 15,
           ),
-          /* SizedBox(
+          SizedBox(
             height: 100.h,
             child: ListView.builder(
               shrinkWrap: true,
@@ -156,7 +157,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
             ),
           ),
           SizedBox(
-            height: 100.h,
+            height: 50.h,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -184,7 +185,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
           ),
           SizedBox(
             height: 20,
-          ),*/
+          ),
           Expanded(
             child: Obx(
               () => ((controller.govJobResponse.value?.data
