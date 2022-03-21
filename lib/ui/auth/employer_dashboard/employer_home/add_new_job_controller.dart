@@ -71,8 +71,6 @@ class AddNewJobController extends GetxController {
     BaseApiService.instance.get(ServiceConstant.categoryList).then((value) {
       CategoryListResponse response =
           CategoryListResponse.fromJson(value!.data);
-      print(value.data);
-      print(response.data);
       categoryListResponse.value = response;
       // print(response.data!.length);
     });
