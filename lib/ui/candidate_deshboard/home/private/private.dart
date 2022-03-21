@@ -7,6 +7,7 @@ import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/private/private_job_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
 
 class PrivateJobScreen extends StatefulWidget {
   const PrivateJobScreen({Key? key}) : super(key: key);
@@ -45,12 +46,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              radius: 22,
-              child: Image.asset(
-                AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           ),
         ],
       ),

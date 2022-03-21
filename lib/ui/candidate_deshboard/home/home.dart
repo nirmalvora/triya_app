@@ -12,8 +12,11 @@ import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_books_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_video_controller.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/drawer/my_account_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
+import 'package:triya_app/widgets/cache_imageview.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -28,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final controller = Get.put(HomeController());
   final bookFavoriteController = Get.put(FavoritesBooksController());
   final videoFavoriteController = Get.put(FavoritesVideoController());
+  final myController = Get.put(MyAccountController());
 
   @override
   Widget build(BuildContext context) {
@@ -96,8 +100,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           CircleAvatar(
                             radius: 26,
-                            backgroundImage: AssetImage(
-                              AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
+                            child: ClipOval(
+                              child: Obx(
+                                () => myController.image.value == null
+                                    ? Obx(
+                                        () => CacheImageView(
+                                            imageUrl: AppState.loginData.value
+                                                    ?.user?.profilePicture ??
+                                                ""),
+                                      )
+                                    : Image.file(
+                                        myController.image.value!,
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -390,12 +408,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              radius: 22,
-              child: Image.asset(
-                AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           )
         ],
         centerTitle: true,

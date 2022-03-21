@@ -6,6 +6,7 @@ import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_books_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_video_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FavoritesVideoScreen extends StatelessWidget {
@@ -38,12 +39,7 @@ class FavoritesVideoScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              radius: 22,
-              child: Image.asset(
-                AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           ),
         ],
       ),

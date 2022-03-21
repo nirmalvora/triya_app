@@ -1,13 +1,13 @@
 import 'package:triya_app/model/basemodel/book_data_response.dart';
 
-class FavoritesBookUpdateResponse {
+class FavoritesBookResponse {
   bool? errors;
   List<updateData>? data;
   String? message;
 
-  FavoritesBookUpdateResponse({this.errors, this.data, this.message});
+  FavoritesBookResponse({this.errors, this.data, this.message});
 
-  FavoritesBookUpdateResponse.fromJson(Map<String, dynamic> json) {
+  FavoritesBookResponse.fromJson(Map<String, dynamic> json) {
     errors = json['errors'];
     if (json['data'] != null) {
       data = <updateData>[];

@@ -34,6 +34,8 @@ class ServiceConstant {
   static String getPrivateJob = "api/get-job-post";
 
   static String getResume = "api/get-resume";
+  static String uploadProfilePicture = "api/profile_picture";
+  static String getProfilePicture = "api/get-profile";
   static String updateName = "api/name_update";
   static String uploadProfile = "api/upload";
   static String AddNewJob = "api/create-emp-job-post";

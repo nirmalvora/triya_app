@@ -8,6 +8,7 @@ import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/my_account_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:triya_app/widgets/cache_imageview.dart';
 
 class MyAccount extends StatefulWidget {
@@ -48,12 +49,7 @@ class _MyAccountState extends State<MyAccount> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              radius: 22,
-              child: Image.asset(
-                AppUtils.getPNGAsset(ImageConstant.myProfileIcon),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           )
         ],
       ),
@@ -72,11 +68,11 @@ class _MyAccountState extends State<MyAccount> {
                   child: ClipOval(
                     child: Obx(
                       () => myController.image.value == null
-                          ? Image.network(
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCubUN2VDqYNO0nfbwpiJmiHwmkXyux32Izw&usqp=CAU",
-                              fit: BoxFit.cover,
-                              height: double.infinity,
-                              width: double.infinity,
+                          ? Obx(
+                              () => CacheImageView(
+                                  imageUrl: AppState.loginData.value?.user
+                                          ?.profilePicture ??
+                                      ""),
                             )
                           : Image.file(
                               myController.image.value!,

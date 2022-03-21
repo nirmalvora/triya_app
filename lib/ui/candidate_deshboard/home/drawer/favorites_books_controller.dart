@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
-import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/basemodel/book_data_response.dart';
 import 'package:triya_app/model/favorites_book_response.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
 class FavoritesBooksController extends GetxController {
-  final bookFavoritesResponse = Rx<FavoritesBookUpdateResponse?>(null);
+  final bookFavoritesResponse = Rx<FavoritesBookResponse?>(null);
   @override
   void onReady() {
     super.onReady();
@@ -18,8 +17,8 @@ class FavoritesBooksController extends GetxController {
         .get(ServiceConstant.getFavoritesBookData)
         .then((value) {
       print(value);
-      FavoritesBookUpdateResponse response =
-          FavoritesBookUpdateResponse.fromJson(value!.data);
+      FavoritesBookResponse response =
+          FavoritesBookResponse.fromJson(value!.data);
       print(response);
       bookFavoritesResponse.value = response;
       bookFavoritesResponse.refresh();
