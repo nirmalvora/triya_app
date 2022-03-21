@@ -61,7 +61,7 @@ class _MyAccountState extends State<MyAccount> {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Column(
             children: [
-              /*   GestureDetector(
+              /*  GestureDetector(
                 onTap: () {
                   myController.getImage();
                 },
@@ -105,31 +105,36 @@ class _MyAccountState extends State<MyAccount> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        AppState.loginData?.user?.firstName!.toUpperCase() ??
-                            "",
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w700,
-                          fontFamily: TextFontFamily.openSansBold,
-                          fontSize: 40.sp,
+                  Obx(
+                    () => Row(
+                      children: [
+                        Text(
+                          AppState.loginData.value?.user?.firstName!
+                                  .toUpperCase() ??
+                              "",
+                          style: TextStyle(
+                            color: ColorConstant.textColor,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: TextFontFamily.openSansBold,
+                            fontSize: 40.sp,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Text(
-                        AppState.loginData?.user?.lastName!.toUpperCase() ?? "",
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w700,
-                          fontFamily: TextFontFamily.openSansBold,
-                          fontSize: 40.sp,
+                        SizedBox(
+                          width: 10.w,
                         ),
-                      ),
-                    ],
+                        Text(
+                          AppState.loginData.value?.user?.lastName!
+                                  .toUpperCase() ??
+                              "",
+                          style: TextStyle(
+                            color: ColorConstant.textColor,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: TextFontFamily.openSansBold,
+                            fontSize: 40.sp,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     width: 10.w,
@@ -147,7 +152,7 @@ class _MyAccountState extends State<MyAccount> {
                 ],
               ),
               Text(
-                "${AppState.loginData?.user?.email}",
+                "${AppState.loginData.value?.user?.email}",
                 style: TextStyle(
                   color: ColorConstant.textColor,
                   fontWeight: FontWeight.w700,

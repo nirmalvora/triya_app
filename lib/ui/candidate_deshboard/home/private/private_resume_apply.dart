@@ -480,7 +480,7 @@ class PrivateResumeApply extends StatelessWidget {
                           ),
                           Center(
                             child: Text(
-                              "${(AppState.loginData?.user?.firstName ?? "").capitalize} ${(AppState.loginData?.user?.lastName ?? "").capitalize!}",
+                              "${(AppState.loginData.value?.user?.firstName ?? "").capitalize} ${(AppState.loginData.value?.user?.lastName ?? "").capitalize!}",
                               style: TextStyle(
                                 color: ColorConstant.textColor,
                                 fontWeight: FontWeight.w700,

@@ -42,6 +42,7 @@ class BookController extends GetxController {
         'id': delete,
       };
     }
+    print(data);
     BaseApiService.instance
         .post(ServiceConstant.addBookToFavorite, data: data)
         .then((value) {

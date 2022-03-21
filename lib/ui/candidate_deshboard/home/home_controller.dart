@@ -67,7 +67,7 @@ class HomeController extends GetxController {
       QuizResponse response = QuizResponse.fromJson(value!.data);
       quizResponse.value = response;
       int index = quizResponse.value!.data![0].poll!.indexWhere(
-          (element) => AppState.loginData!.user!.id == element.userId);
+          (element) => AppState.loginData.value?.user!.id == element.userId);
       if (index != -1) {
         yourAnsId.value = quizResponse.value!.data![0].poll![index].option!;
         yourAnsId.refresh();

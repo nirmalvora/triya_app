@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import 'package:triya_app/constants/service_constant.dart';
+import 'package:triya_app/local_data/app_state.dart';
+import 'package:triya_app/model/login_response.dart';
 import 'package:triya_app/model/name_update_response.dart';
-
+import 'package:triya_app/preference/preference_keys.dart';
+import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
 class MyAccountController extends GetxController {
@@ -15,7 +20,6 @@ class MyAccountController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    updateData();
   }
 
   void updateData() {
@@ -26,18 +30,16 @@ class MyAccountController extends GetxController {
     BaseApiService.instance
         .post(ServiceConstant.updateName, data: update)
         .then((value) {
-      NameUpdateResponse response = NameUpdateResponse.fromJson(value!.data);
-      print(value.data);
-      Get.snackbar(response.message!, "");
-    });
-  }
+      print(value!.data);
 
-  void getUpdate() {
-    BaseApiService.instance.get(ServiceConstant.updateName).then((value) {
-      NameUpdateResponse response = NameUpdateResponse.fromJson(value!.data);
-      updatesData.value = response;
-      updateData();
-      updatesData.refresh();
+      NameUpdateResponse response = NameUpdateResponse.fromJson(value.data);
+      AppState.loginData.value?.user!.firstName = response.data!.firstName;
+      AppState.loginData.value?.user!.lastName = response.data!.lastName;
+      Preferences.setString(PreferenceKeys.userProfile,
+          jsonEncode(LoginResponse(data: AppState.loginData.value).toJson()));
+      ;
+      AppState.loginData.refresh();
+      Get.snackbar(response.message!, "");
     });
   }
 }

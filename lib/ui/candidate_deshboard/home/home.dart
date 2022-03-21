@@ -100,27 +100,31 @@ class _HomeScreenState extends State<HomeScreen> {
                           SizedBox(
                             width: 11,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                AppState.loginData?.user?.firstName ?? "",
-                                style: TextStyle(
-                                  color: ColorConstant.backgroundColor,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: TextFontFamily.openSansBold,
-                                  fontSize: 40.sp,
+                          Obx(
+                            () => Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppState.loginData.value?.user?.firstName ??
+                                      "",
+                                  style: TextStyle(
+                                    color: ColorConstant.backgroundColor,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: TextFontFamily.openSansBold,
+                                    fontSize: 40.sp,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                AppState.loginData?.user?.lastName ?? "",
-                                style: TextStyle(
-                                  color: ColorConstant.backgroundColor,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 30.sp,
+                                Text(
+                                  AppState.loginData.value?.user?.lastName ??
+                                      "",
+                                  style: TextStyle(
+                                    color: ColorConstant.backgroundColor,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 30.sp,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),

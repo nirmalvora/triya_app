@@ -9,8 +9,8 @@ class ServiceConstant {
   static const String getVideoCategory = "api/video-category-show";
   static const String getBookData = "api/get-book/";
   static const String getVideoData = "api/get-video/";
-  static const String addBookToFavorite = "api/add-favorite-book/";
-  static const String addVideoToFavorite = "api/add-favorite-video/";
+  static const String addBookToFavorite = "api/add-favorite-book";
+  static const String addVideoToFavorite = "api/add-favorite-video";
   static const String personalStatement = "api/create-personal-statements";
   static const String contactInformation = "api/create-contact-information";
   static const String professionalExperience =

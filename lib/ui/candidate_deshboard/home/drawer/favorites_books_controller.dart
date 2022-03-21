@@ -32,7 +32,7 @@ class FavoritesBooksController extends GetxController {
     });
   }
 
-  void addToFavotite(int id, int index, int delete) {
+  void addToFavorite(int id, int index, int delete) {
     Map<String, dynamic> data = {
       'book_id': id,
     };
