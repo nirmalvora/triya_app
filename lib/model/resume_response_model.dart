@@ -34,9 +34,8 @@ class ResumeData {
   String? createdAt;
   String? updatedAt;
   ResumeAcademicHistories? resumeAcademicHistories;
-
-  ResumeAdditionalTrains? resumeAdditionalTrains;
   ResumeConcactInformation? resumeConcactInformation;
+  ResumeAdditionalTrains? resumeAdditionalTrains;
   ResumeConferenceAttendeds? resumeConferenceAttendeds;
   ResumeIndustryAwards? resumeIndustryAwards;
   ResumeKeySkills? resumeKeySkills;
@@ -163,66 +162,39 @@ class ResumeData {
 class ResumeConcactInformation {
   int? id;
   int? userId;
-  String? schoolName;
-  String? yeasOfPassing;
-  String? sslSocre;
-  String? secondaryDiploma;
-  String? yearOfPassing;
-  String? score;
-  String? instituteName;
-  String? fromDate;
-  String? toDate;
-  String? backlog;
-  String? agregatedScore;
-  String? gapBetweenEducation;
-  String? reasonGapBetweenEducation;
-  String? masterInsituteName;
-  String? sepcialization;
-  String? yearsOfCompletion;
+  String? mobileNo;
+  String? email;
+  String? houseNo;
+  String? area;
+  String? city;
+  String? state;
+  String? pinCode;
   String? createdAt;
   String? updatedAt;
 
   ResumeConcactInformation(
       {this.id,
       this.userId,
-      this.schoolName,
-      this.yeasOfPassing,
-      this.sslSocre,
-      this.secondaryDiploma,
-      this.yearOfPassing,
-      this.score,
-      this.instituteName,
-      this.fromDate,
-      this.toDate,
-      this.backlog,
-      this.agregatedScore,
-      this.gapBetweenEducation,
-      this.reasonGapBetweenEducation,
-      this.masterInsituteName,
-      this.sepcialization,
-      this.yearsOfCompletion,
+      this.mobileNo,
+      this.email,
+      this.houseNo,
+      this.area,
+      this.city,
+      this.state,
+      this.pinCode,
       this.createdAt,
       this.updatedAt});
 
   ResumeConcactInformation.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userId = json['user_id'];
-    schoolName = json['school_name'];
-    yeasOfPassing = json['yeas_of_passing'];
-    sslSocre = json['ssl_socre'];
-    secondaryDiploma = json['secondary_diploma'];
-    yearOfPassing = json['year_of_passing'];
-    score = json['score'];
-    instituteName = json['institute_name'];
-    fromDate = json['from_date'];
-    toDate = json['to_date'];
-    backlog = json['backlog'];
-    agregatedScore = json['agregated_score'];
-    gapBetweenEducation = json['gap_between_education'];
-    reasonGapBetweenEducation = json['reason_gap_between_education'];
-    masterInsituteName = json['master_insitute_name'];
-    sepcialization = json['sepcialization'];
-    yearsOfCompletion = json['years_of_completion'];
+    mobileNo = json['mobile_no'];
+    email = json['email'];
+    houseNo = json['house_no'];
+    area = json['area'];
+    city = json['city'];
+    state = json['state'];
+    pinCode = json['pin_code'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -231,22 +203,13 @@ class ResumeConcactInformation {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['user_id'] = this.userId;
-    data['school_name'] = this.schoolName;
-    data['yeas_of_passing'] = this.yeasOfPassing;
-    data['ssl_socre'] = this.sslSocre;
-    data['secondary_diploma'] = this.secondaryDiploma;
-    data['year_of_passing'] = this.yearOfPassing;
-    data['score'] = this.score;
-    data['institute_name'] = this.instituteName;
-    data['from_date'] = this.fromDate;
-    data['to_date'] = this.toDate;
-    data['backlog'] = this.backlog;
-    data['agregated_score'] = this.agregatedScore;
-    data['gap_between_education'] = this.gapBetweenEducation;
-    data['reason_gap_between_education'] = this.reasonGapBetweenEducation;
-    data['master_insitute_name'] = this.masterInsituteName;
-    data['sepcialization'] = this.sepcialization;
-    data['years_of_completion'] = this.yearsOfCompletion;
+    data['mobile_no'] = this.mobileNo;
+    data['email'] = this.email;
+    data['house_no'] = this.houseNo;
+    data['area'] = this.area;
+    data['city'] = this.city;
+    data['state'] = this.state;
+    data['pin_code'] = this.pinCode;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     return data;

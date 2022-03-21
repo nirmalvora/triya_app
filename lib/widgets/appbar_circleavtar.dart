@@ -12,12 +12,13 @@ class AppBarCircleAvtar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: CircleAvatar(
-        radius: 22,
+        radius: 20,
         child: ClipOval(
           child: Obx(
             () => CacheImageView(
-                imageUrl: AppState.loginData.value?.user?.profilePicture ?? "",
-                fit: BoxFit.cover),
+              imageUrl: AppState.loginData.value?.user?.profilePicture ?? "",
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ),
