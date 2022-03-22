@@ -28,6 +28,8 @@ class ConferenceAttendedController extends GetxController {
         .then((value) {
       ConferenceAttendedResponse response =
           ConferenceAttendedResponse.fromJson(value!.data);
+      final resumeViewController = Get.put(ProfileResumeController());
+      resumeViewController.getData();
       Get.snackbar(response.message!, "");
     });
   }

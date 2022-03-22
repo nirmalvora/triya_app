@@ -29,6 +29,8 @@ class KeySkillsController extends GetxController {
         .post(ServiceConstant.keySkills, data: history)
         .then((value) {
       KeySkillsResponse response = KeySkillsResponse.fromJson(value!.data);
+      final resumeViewController = Get.put(ProfileResumeController());
+      resumeViewController.getData();
       Get.snackbar(response.message!, "");
     });
   }

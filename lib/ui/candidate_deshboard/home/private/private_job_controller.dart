@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
 import 'package:triya_app/constants/service_constant.dart';
+import 'package:triya_app/model/private_job_response_model.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
-import '../../../../model/private_job_response_model.dart';
-
 class PrivateJobController extends GetxController {
-  final govJobResponse = Rx<PostedJobResModel?>(null);
+  final privateJobResponse = Rx<PostedJobResModel?>(null);
   final loading = false.obs;
   final searchText = "".obs;
   @override
@@ -20,8 +19,8 @@ class PrivateJobController extends GetxController {
       print(value);
       PostedJobResModel response = PostedJobResModel.fromJson(value!.data);
       loading.value = false;
-      govJobResponse.value = response;
-      govJobResponse.refresh();
+      privateJobResponse.value = response;
+      privateJobResponse.refresh();
     }).onError((error, stackTrace) {
       loading.value = false;
     });

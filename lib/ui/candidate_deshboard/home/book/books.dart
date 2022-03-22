@@ -115,78 +115,93 @@ class _BooksScreenState extends State<BooksScreen> {
             Expanded(
               child: Obx(
                 () => ((controller.bookCategoryResponse.value?.data
-                                ?.where(((element) => element.name!
-                                    .contains(controller.searchText.value)))
-                                .length ??
+                                    ?.where(((element) => element.name!
+                                        .toLowerCase()
+                                        .contains(controller.searchText.value
+                                            .toLowerCase())))
+                                    .length ??
+                                0) ==
                             0) ==
-                        0)
+                        null
                     ? Center(
-                        child: Text("No data available"),
+                        child: CircularProgressIndicator(),
                       )
-                    : GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10),
-                        shrinkWrap: true,
-                        physics: BouncingScrollPhysics(),
-                        padding: EdgeInsets.zero,
-                        itemCount: controller.bookCategoryResponse.value?.data
-                                ?.where(((element) => element.name!
-                                    .contains(controller.searchText.value)))
-                                .length ??
-                            0,
-                        itemBuilder: (BuildContext context, int index) {
-                          BookCategoryData data = controller
-                              .bookCategoryResponse.value!.data!
-                              .where(((element) => element.name!
-                                  .contains(controller.searchText.value)))
-                              .toList()[index];
-                          return GestureDetector(
-                            onTap: () {
-                              Get.toNamed(NavigationName.bookCategoryPage,
-                                  arguments: {
-                                    AppConstants.bookCategoryId: controller
-                                        .bookCategoryResponse
-                                        .value
-                                        ?.data![index]
-                                        .id
-                                  });
+                    : ((controller.bookCategoryResponse.value?.data?.length ??
+                                0) ==
+                            0)
+                        ? Center(
+                            child: Text("No Data Found"),
+                          )
+                        : GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 10),
+                            shrinkWrap: true,
+                            physics: BouncingScrollPhysics(),
+                            padding: EdgeInsets.zero,
+                            itemCount: controller
+                                    .bookCategoryResponse.value?.data
+                                    ?.where(((element) => element.name!
+                                        .toLowerCase()
+                                        .contains(controller.searchText.value
+                                            .toLowerCase())))
+                                    .length ??
+                                0,
+                            itemBuilder: (BuildContext context, int index) {
+                              BookCategoryData data = (controller
+                                  .bookCategoryResponse.value!.data!
+                                  .where(((element) => element.name!
+                                      .toLowerCase()
+                                      .contains(controller.searchText.value
+                                          .toLowerCase())))
+                                  .toList()[index]);
+                              return GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(NavigationName.bookCategoryPage,
+                                      arguments: {
+                                        AppConstants.bookCategoryId: controller
+                                            .bookCategoryResponse
+                                            .value
+                                            ?.data![index]
+                                            .id
+                                      });
+                                },
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(16.r)),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(16.r),
+                                        child: CachedNetworkImage(
+                                          imageUrl: controller
+                                                  .bookCategoryResponse
+                                                  .value
+                                                  ?.data![index]
+                                                  .image ??
+                                              'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
+                                          height: 230.h,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      data.name ?? '',
+                                      style: TextStyle(
+                                        color: ColorConstant.textColor,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 25.sp,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
                             },
-                            child: Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(16.r)),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(16.r),
-                                    child: CachedNetworkImage(
-                                        imageUrl: controller
-                                                .bookCategoryResponse
-                                                .value
-                                                ?.data![index]
-                                                .image ??
-                                            'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-                                        height: 230.h,
-                                        fit: BoxFit.cover),
-                                  ),
-                                ),
-                                Text(
-                                  controller.bookCategoryResponse.value
-                                          ?.data![index].name ??
-                                      '',
-                                  style: TextStyle(
-                                    color: ColorConstant.textColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 25.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
+                          ),
               ),
             )
           ],

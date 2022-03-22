@@ -33,6 +33,8 @@ class ProfessionalCertificateController extends GetxController {
         .then((value) {
       ProfessionalCertificateResponse response =
           ProfessionalCertificateResponse.fromJson(value!.data);
+      final resumeViewController = Get.put(ProfileResumeController());
+      resumeViewController.getData();
       Get.snackbar(response.message!, "");
     });
   }

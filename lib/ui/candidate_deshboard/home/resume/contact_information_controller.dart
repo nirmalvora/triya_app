@@ -59,6 +59,8 @@ class ContactInformationController extends GetxController {
         .then((value) {
       ContactInformationResponse response =
           ContactInformationResponse.fromJson(value!.data);
+      final resumeViewController = Get.put(ProfileResumeController());
+      resumeViewController.getData();
       Get.snackbar(response.message!, "");
     });
   }

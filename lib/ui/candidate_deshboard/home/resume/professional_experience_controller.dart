@@ -45,6 +45,8 @@ class ProfessionalExperienceController extends GetxController {
         .then((value) {
       ProfessionalExperienceResponse response =
           ProfessionalExperienceResponse.fromJson(value!.data);
+      final resumeViewController = Get.put(ProfileResumeController());
+      resumeViewController.getData();
       Get.snackbar(response.message!, "");
     });
   }

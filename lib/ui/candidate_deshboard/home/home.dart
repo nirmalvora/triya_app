@@ -10,8 +10,6 @@ import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
-import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_books_controller.dart';
-import 'package:triya_app/ui/candidate_deshboard/home/drawer/favorites_video_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/my_account_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
@@ -29,8 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   final controller = Get.put(HomeController());
-  final bookFavoriteController = Get.put(FavoritesBooksController());
-  final videoFavoriteController = Get.put(FavoritesVideoController());
   final myController = Get.put(MyAccountController());
 
   @override
@@ -192,6 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
+                          Get.back();
                           Get.toNamed(NavigationName.myAccount);
                         },
                         child: Row(
@@ -220,6 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
+                          Get.back();
                           Get.toNamed(NavigationName.appliedJobs);
                         },
                         child: Row(
@@ -248,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          bookFavoriteController.getFavoritesBookData();
+                          Get.back();
                           Get.toNamed(NavigationName.favoritesBooks);
                         },
                         child: Row(
@@ -277,7 +275,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          videoFavoriteController.getFavoritesVideoData();
+                          Get.back();
                           Get.toNamed(NavigationName.favoritesVideo);
                         },
                         child: Row(
@@ -312,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           children: [
                             Image.asset(
-                              AppUtils.getPNGAsset(ImageConstant.favoritesIcon),
+                              AppUtils.getPNGAsset(ImageConstant.resumeIcon),
                               height: 62.h,
                               width: 62.w,
                             ),
@@ -405,7 +403,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        actions: [
+        actions: const [
           Padding(
             padding: EdgeInsets.only(right: 15),
             child: AppBarCircleAvtar(),
@@ -860,15 +858,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(30.h),
                                       child: CachedNetworkImage(
-                                          imageUrl: controller
-                                                  .bookCategoryResponse
-                                                  .value
-                                                  ?.data![index]
-                                                  .image ??
-                                              'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-                                          height: 300.h,
-                                          width: 370.h,
-                                          fit: BoxFit.cover),
+                                        imageUrl: controller
+                                                .bookCategoryResponse
+                                                .value
+                                                ?.data![index]
+                                                .image ??
+                                            'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
+                                        height: 300.h,
+                                        width: 370.h,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   )
                                 ],

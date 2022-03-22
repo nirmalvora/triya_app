@@ -4,15 +4,13 @@ import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:triya_app/constants/api_constants.dart';
-import 'package:http/http.dart' as http;
-
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/model/login_response.dart';
 import 'package:triya_app/model/name_update_response.dart';
-import 'package:triya_app/model/upload_image_response.dart';
 import 'package:triya_app/model/user_profile_response.dart';
 import 'package:triya_app/preference/preference_keys.dart';
 import 'package:triya_app/preference/prerences.dart';

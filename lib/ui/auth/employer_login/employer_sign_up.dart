@@ -5,9 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/ui/auth/employer_login/employer_signup_controller.dart';
-
-import '../../../utils/app_utils.dart';
-import '../../../utils/common_text_field.dart';
+import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/utils/common_text_field.dart';
 
 class EmployerSignUp extends StatelessWidget {
   EmployerSignUp({Key? key}) : super(key: key);

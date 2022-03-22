@@ -58,7 +58,9 @@ class PrivateResumeApply extends StatelessWidget {
                   overflow: Overflow.visible,
                   children: [
                     Container(
-                      color: ColorConstant.privateJobBgColor,
+                      decoration: BoxDecoration(
+                        color: ColorConstant.jobBackgroundColor,
+                      ),
                       child: Obx(
                         () => Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -450,30 +452,33 @@ class PrivateResumeApply extends StatelessWidget {
                                 color: ColorConstant.circleColor,
                                 shape: BoxShape.circle,
                               ),
-                              child: ClipOval(
-                                child: Obx(
-                                  () => (controller
-                                                  .resumeResponse
-                                                  .value
-                                                  ?.resumeData?[0]
-                                                  .resume
-                                                  ?.url ??
-                                              "") !=
-                                          ""
-                                      ? CachedNetworkImage(
-                                          imageUrl: (controller
-                                                  .resumeResponse
-                                                  .value
-                                                  ?.resumeData?[0]
-                                                  .resume
-                                                  ?.url ??
-                                              ""),
-                                          fit: BoxFit.cover,
-                                        )
-                                      : Image.asset(
-                                          AppUtils.getPNGAsset(
-                                              ImageConstant.myProfileIcon),
-                                        ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: ClipOval(
+                                  child: Obx(
+                                    () => (controller
+                                                    .resumeResponse
+                                                    .value
+                                                    ?.resumeData?[0]
+                                                    .resume
+                                                    ?.url ??
+                                                "") !=
+                                            ""
+                                        ? CachedNetworkImage(
+                                            imageUrl: (controller
+                                                    .resumeResponse
+                                                    .value
+                                                    ?.resumeData?[0]
+                                                    .resume
+                                                    ?.url ??
+                                                ""),
+                                            fit: BoxFit.cover,
+                                          )
+                                        : Image.asset(
+                                            AppUtils.getPNGAsset(
+                                                ImageConstant.myProfileIcon),
+                                          ),
+                                  ),
                                 ),
                               ),
                             ),

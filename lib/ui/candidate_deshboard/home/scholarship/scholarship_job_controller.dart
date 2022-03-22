@@ -4,7 +4,7 @@ import 'package:triya_app/model/gov_job_model.dart';
 import 'package:triya_app/services/api_service_methods.dart';
 
 class ScholarshipJobController extends GetxController {
-  final govJobResponse = Rx<ScholerShipResponse?>(null);
+  final scholarshipJobResponse = Rx<ScholerShipResponse?>(null);
   final loading = false.obs;
   final searchText = "".obs;
   @override
@@ -18,8 +18,8 @@ class ScholarshipJobController extends GetxController {
     BaseApiService.instance.get(ServiceConstant.getScholarJob).then((value) {
       ScholerShipResponse response = ScholerShipResponse.fromJson(value!.data);
       loading.value = false;
-      govJobResponse.value = response;
-      govJobResponse.refresh();
+      scholarshipJobResponse.value = response;
+      scholarshipJobResponse.refresh();
     }).onError((error, stackTrace) {
       loading.value = false;
     });

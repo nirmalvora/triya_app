@@ -30,6 +30,8 @@ class IndustryAwardController extends GetxController {
         .then((value) {
       IndustryAwardsResponse response =
           IndustryAwardsResponse.fromJson(value!.data);
+      final resumeViewController = Get.put(ProfileResumeController());
+      resumeViewController.getData();
       Get.snackbar(response.message!, "");
     });
   }

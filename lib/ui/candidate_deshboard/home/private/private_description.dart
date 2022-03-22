@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
-import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/private/private_job_detail_controller.dart';
-import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -44,7 +41,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
           "Private Job",
           style: TextStyle(color: ColorConstant.splashColor),
         ),
-        actions: [
+        actions: const [
           Padding(
             padding: EdgeInsets.only(right: 15),
             child: AppBarCircleAvtar(),
@@ -407,7 +404,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                                 Icons.file_download,
                                 color: ColorConstant.backgroundColor,
                                 size: 20,
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -421,13 +418,13 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: GestureDetector(
                 onTap: () {
-                  // Get.toNamed(NavigationName.privateJobResumePage);
+                  Get.toNamed(NavigationName.privateJobResumePage);
                   // controller.getData();
-                  Get.toNamed(NavigationName.professionalResumePage,
+                  /* Get.toNamed(NavigationName.professionalResumePage,
                       arguments: {
                         AppConstants.showApplyButton: true,
                         AppConstants.jobID: controller.govJob.value!.id!,
-                      });
+                      });*/
                   // controller.applyJob();
                 },
                 child: Container(

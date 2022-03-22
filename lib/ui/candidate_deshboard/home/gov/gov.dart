@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/model/gov_job_model.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_job_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
@@ -214,22 +215,25 @@ class _GovJobScreenState extends State<GovJobScreen> {
                           itemCount: controller.govJobResponse.value
                                   ?.govData?[selected].government
                                   ?.where(((element) => element.title!
-                                      .contains(controller.searchText.value)))
+                                      .toLowerCase()
+                                      .contains(controller.searchText.value
+                                          .toLowerCase())))
                                   .length ??
                               0,
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
+                            GovJobData data = (controller.govJobResponse.value
+                                ?.govData?[selected].government
+                                ?.where(((element) => element.title!
+                                    .toLowerCase()
+                                    .contains(controller.searchText.value
+                                        .toLowerCase())))
+                                .toList()[index])!;
                             return GestureDetector(
                               onTap: () {
                                 Get.toNamed(NavigationName.govJobDescPage,
-                                    arguments: {
-                                      "gov_job_data": controller
-                                          .govJobResponse
-                                          .value
-                                          ?.govData?[selected]
-                                          .government?[index]
-                                    });
+                                    arguments: {"gov_job_data": data});
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
@@ -258,13 +262,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              controller
-                                                      .govJobResponse
-                                                      .value
-                                                      ?.govData?[selected]
-                                                      .government?[index]
-                                                      .title ??
-                                                  "",
+                                              data.title ?? "",
                                               maxLines: 2,
                                               style: TextStyle(
                                                 color: ColorConstant.textColor,
@@ -276,7 +274,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
                                               height: 10,
                                             ),
                                             Text(
-                                              'Post Date: ${controller.govJobResponse.value?.govData?[selected].government?[index].postDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.govData?[selected].government?[index].lastDate ?? ""}',
+                                              'Post Date: ${data.postDate ?? ""}     |     Last Date:  ${data.lastDate ?? ""}',
                                               maxLines: 2,
                                               style: TextStyle(
                                                 color:

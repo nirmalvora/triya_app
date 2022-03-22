@@ -47,10 +47,10 @@ class VideoController extends GetxController {
         .post(ServiceConstant.addVideoToFavorite, data: data)
         .then((value) {
       if (delete != -1) {
-        videoDataResponse.value!.data![index].favoriteBook = null;
-        print(videoDataResponse.value!.data![index].favoriteBook);
+        videoDataResponse.value!.data![index].favoriteVideo = null;
+        print(videoDataResponse.value!.data![index].favoriteVideo);
       } else {
-        videoDataResponse.value!.data![index].favoriteBook =
+        videoDataResponse.value!.data![index].favoriteVideo =
             FavoriteBook.fromJson(value!.data["data"]);
       }
       videoDataResponse.refresh();

@@ -23,6 +23,7 @@ class ServiceConstant {
   static const String professionalCertification =
       "api/create-professional-certifications";
   static const String publication = "api/create-publications";
+  static const String appliedJob = "api/get-applied-list";
   static const String professionalAffiliations =
       "api/create-professional-affiliations";
   static const String conferenceAttended = "api/create-conference-attendeds";

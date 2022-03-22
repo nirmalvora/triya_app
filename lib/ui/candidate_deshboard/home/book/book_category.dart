@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/model/basemodel/book_data_response.dart';
+import 'package:triya_app/model/book_category_response.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/book/book_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
@@ -102,8 +104,10 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
               child: Obx(
                 () => ((controller.bookDataResponse.value?.data
                                         ?.where(((element) => element.title!
-                                            .contains(
-                                                controller.searchText.value)))
+                                            .toLowerCase()
+                                            .contains(controller
+                                                .searchText.value
+                                                .toLowerCase())))
                                         .length ??
                                     0) ==
                                 0) ==
@@ -120,13 +124,22 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
                         : ListView.builder(
                             itemCount: controller.bookDataResponse.value?.data
                                     ?.where(((element) => element.title!
-                                        .contains(controller.searchText.value)))
+                                        .toLowerCase()
+                                        .contains(controller.searchText.value
+                                            .toLowerCase())))
                                     .length ??
                                 0,
                             padding: EdgeInsets.zero,
                             physics: BouncingScrollPhysics(),
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
+                              BookInData data = (controller
+                                  .bookDataResponse.value?.data
+                                  ?.where(((element) => element.title!
+                                      .toLowerCase()
+                                      .contains(controller.searchText.value
+                                          .toLowerCase())))
+                                  .toList())![index];
                               return Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 8, horizontal: 10),
@@ -174,9 +187,7 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
                                           ),
                                           Expanded(
                                             child: Text(
-                                              controller.bookDataResponse.value
-                                                      ?.data?[index].title ??
-                                                  "",
+                                              data.title ?? "",
                                               maxLines: 2,
                                               style: TextStyle(
                                                 color: ColorConstant.textColor,

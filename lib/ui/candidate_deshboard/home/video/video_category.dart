@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/model/basemodel/book_data_response.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/video/video_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
@@ -27,7 +28,7 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
         elevation: 0,
         leading: InkWell(
           onTap: () {
-            Navigator.pop(context);
+            Get.back();
           },
           child: Padding(
             padding: const EdgeInsets.only(left: 10),
@@ -101,8 +102,10 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
               child: Obx(
                 () => ((controller.videoDataResponse.value?.data
                                         ?.where(((element) => element.title!
-                                            .contains(
-                                                controller.searchText.value)))
+                                            .toLowerCase()
+                                            .contains(controller
+                                                .searchText.value
+                                                .toLowerCase())))
                                         .length ??
                                     0) ==
                                 0) ==
@@ -120,13 +123,22 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
                         : ListView.builder(
                             itemCount: controller.videoDataResponse.value?.data
                                     ?.where(((element) => element.title!
-                                        .contains(controller.searchText.value)))
+                                        .toLowerCase()
+                                        .contains(controller.searchText.value
+                                            .toLowerCase())))
                                     .length ??
                                 0,
                             padding: EdgeInsets.zero,
                             physics: BouncingScrollPhysics(),
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
+                              BookInData data = (controller
+                                  .videoDataResponse.value?.data
+                                  ?.where(((element) => element.title!
+                                      .toLowerCase()
+                                      .contains(controller.searchText.value
+                                          .toLowerCase())))
+                                  .toList())![index];
                               return Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 8, horizontal: 10),
@@ -175,9 +187,7 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
                                           ),
                                           Expanded(
                                             child: Text(
-                                              controller.videoDataResponse.value
-                                                      ?.data?[index].title ??
-                                                  "",
+                                              data.title ?? "",
                                               maxLines: 2,
                                               style: TextStyle(
                                                 color: ColorConstant.textColor,
@@ -201,21 +211,21 @@ class _VideoCategoryScreenState extends State<VideoCategoryScreen> {
                                                                 .videoDataResponse
                                                                 .value
                                                                 ?.data?[index]
-                                                                .favoriteBook) ==
+                                                                .favoriteVideo) ==
                                                             null
                                                         ? -1
                                                         : (controller
                                                             .videoDataResponse
                                                             .value!
                                                             .data![index]
-                                                            .favoriteBook!
+                                                            .favoriteVideo!
                                                             .id!));
                                               },
                                               icon: Icon((controller
                                                           .videoDataResponse
                                                           .value
                                                           ?.data?[index]
-                                                          .favoriteBook) ==
+                                                          .favoriteVideo) ==
                                                       null
                                                   ? Icons.favorite_border_sharp
                                                   : Icons.favorite))

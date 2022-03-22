@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:triya_app/constants/api_constants.dart';
 import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/apply_job_res_model.dart';
@@ -11,8 +12,6 @@ import 'package:triya_app/model/resume_response_model.dart';
 import 'package:triya_app/preference/preference_keys.dart';
 import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/services/api_service_methods.dart';
-
-import '../../../../constants/api_constants.dart';
 
 class ProfileResumeController extends GetxController {
   Rx<ResumeResponseModel?> resumeResponse = Rx<ResumeResponseModel?>(null);

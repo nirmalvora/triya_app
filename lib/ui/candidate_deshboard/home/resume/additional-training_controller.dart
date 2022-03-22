@@ -40,6 +40,8 @@ class AdditionalTrainingController extends GetxController {
         .then((value) {
       AdditionalTrainingResponse response =
           AdditionalTrainingResponse.fromJson(value!.data);
+      final resumeViewController = Get.put(ProfileResumeController());
+      resumeViewController.getData();
       Get.snackbar(response.message!, "");
     });
   }

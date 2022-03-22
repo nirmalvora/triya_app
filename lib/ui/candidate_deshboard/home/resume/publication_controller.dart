@@ -32,6 +32,8 @@ class PublicationController extends GetxController {
         .post(ServiceConstant.publication, data: publication)
         .then((value) {
       PublicationResponse response = PublicationResponse.fromJson(value!.data);
+      final resumeViewController = Get.put(ProfileResumeController());
+      resumeViewController.getData();
       Get.snackbar(response.message!, "");
     });
   }

@@ -33,6 +33,8 @@ class ProfessionalAffiliationController extends GetxController {
         .then((value) {
       ProfessionalAffiliationResponse response =
           ProfessionalAffiliationResponse.fromJson(value!.data);
+      final resumeViewController = Get.put(ProfileResumeController());
+      resumeViewController.getData();
       Get.snackbar(response.message!, "");
     });
   }

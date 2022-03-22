@@ -115,6 +115,7 @@ class FavoritesVideoScreen extends StatelessWidget {
                                     ),
                                   ),
                                   IconButton(
+                                      splashRadius: 20,
                                       onPressed: () {
                                         controller.addToFavotite(
                                             controller.videoDataResponse.value

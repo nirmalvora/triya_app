@@ -27,6 +27,7 @@ import 'package:triya_app/ui/candidate_deshboard/home/private/private.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/private/private_description.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/private/private_job_resume_screen.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/private/private_resume_apply.dart';
+import 'package:triya_app/ui/candidate_deshboard/home/private/upload_resume_screen.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/academic_history_screen.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/additional_training.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/resume/conference_Attended.dart';
@@ -103,6 +104,10 @@ class NavigationRoute {
     GetPage(
       name: NavigationName.privateJobResumePage,
       page: () => const PrivateJobResumeScreen(),
+    ),
+    GetPage(
+      name: NavigationName.uploadResumePage,
+      page: () => UploadResumeScreen(),
     ),
     GetPage(
       name: NavigationName.privateResumeApplyPage,

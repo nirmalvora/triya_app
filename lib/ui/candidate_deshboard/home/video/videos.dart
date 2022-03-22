@@ -114,97 +114,114 @@ class _VideoScreenState extends State<VideoScreen> {
             Expanded(
               child: Obx(
                 () => ((controller.videoCategoryResponse.value?.data
-                                ?.where(((element) => element.name!
-                                    .contains(controller.searchText.value)))
-                                .length ??
+                                    ?.where(((element) => element.name!
+                                        .toLowerCase()
+                                        .contains(controller.searchText.value
+                                            .toLowerCase())))
+                                    .length ??
+                                0) ==
                             0) ==
-                        0)
+                        null
                     ? Center(
-                        child: Text("No data available"),
+                        child: CircularProgressIndicator(),
                       )
-                    : GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10),
-                        shrinkWrap: true,
-                        physics: BouncingScrollPhysics(),
-                        padding: EdgeInsets.zero,
-                        itemCount: controller.videoCategoryResponse.value?.data
-                                ?.where(((element) => element.name!
-                                    .contains(controller.searchText.value)))
-                                .length ??
-                            0,
-                        itemBuilder: (BuildContext context, int index) {
-                          BookCategoryData data = controller
-                              .videoCategoryResponse.value!.data!
-                              .where(((element) => element.name!
-                                  .contains(controller.searchText.value)))
-                              .toList()[index];
-                          return GestureDetector(
-                            onTap: () {
-                              Get.toNamed(NavigationName.videoCategoryPage,
-                                  arguments: {
-                                    AppConstants.bookCategoryId: controller
-                                            .bookCategoryResponse
-                                            .value
-                                            ?.data?[index]
-                                            .id ??
-                                        0
-                                  });
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16.r)),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(16.r)),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(16.r),
-                                      child: Stack(
-                                        children: [
-                                          CachedNetworkImage(
-                                              imageUrl: data.image ??
-                                                  'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-                                              height: 220.h,
-                                              fit: BoxFit.cover),
-                                          Positioned(
-                                            top: 0,
-                                            bottom: 0,
-                                            left: 0,
-                                            right: 0,
-                                            child: Center(
-                                              child: Image.asset(
-                                                AppUtils.getPNGAsset(
-                                                    'video_play_icon'),
-                                                height: 100.h,
-                                              ),
-                                            ),
-                                          )
-                                        ],
+                    : ((controller.videoCategoryResponse.value?.data?.length ??
+                                0) ==
+                            0)
+                        ? Center(
+                            child: Text("No Data Found"),
+                          )
+                        : GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 10),
+                            shrinkWrap: true,
+                            physics: BouncingScrollPhysics(),
+                            padding: EdgeInsets.zero,
+                            itemCount: controller
+                                    .videoCategoryResponse.value?.data
+                                    ?.where(((element) => element.name!
+                                        .toLowerCase()
+                                        .contains(controller.searchText.value
+                                            .toLowerCase())))
+                                    .length ??
+                                0,
+                            itemBuilder: (BuildContext context, int index) {
+                              BookCategoryData data = (controller
+                                  .videoCategoryResponse.value?.data
+                                  ?.where(((element) => element.name!
+                                      .toLowerCase()
+                                      .contains(controller.searchText.value
+                                          .toLowerCase())))
+                                  .toList())![index];
+                              return GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(NavigationName.videoCategoryPage,
+                                      arguments: {
+                                        AppConstants.bookCategoryId: controller
+                                                .bookCategoryResponse
+                                                .value
+                                                ?.data?[index]
+                                                .id ??
+                                            0
+                                      });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.circular(16.r)),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(16.r)),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(16.r),
+                                          child: Stack(
+                                            children: [
+                                              CachedNetworkImage(
+                                                  imageUrl: data.image ??
+                                                      'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
+                                                  height: 220.h,
+                                                  fit: BoxFit.cover),
+                                              Positioned(
+                                                top: 0,
+                                                bottom: 0,
+                                                left: 0,
+                                                right: 0,
+                                                child: Center(
+                                                  child: Image.asset(
+                                                    AppUtils.getPNGAsset(
+                                                        'video_play_icon'),
+                                                    height: 100.h,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      SizedBox(
+                                        height: 10.h,
+                                      ),
+                                      Text(
+                                        data.name ?? "",
+                                        style: TextStyle(
+                                          color: ColorConstant.textColor,
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 25.sp,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(
-                                    height: 10.h,
-                                  ),
-                                  Text(
-                                    data.name ?? "",
-                                    style: TextStyle(
-                                      color: ColorConstant.textColor,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 25.sp,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
+                                ),
+                              );
+                            },
+                          ),
               ),
             )
           ],

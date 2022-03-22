@@ -4,6 +4,7 @@ class ImageConstant {
   static String profileIcon = "profile";
   static String lobsIcon = "lobs";
   static String favoritesIcon = "favorites";
+  static String resumeIcon = "resume";
   static String bannerIcon = "banner";
   static String drawerIcon = "drawer";
   static String myProfileIcon = "my_profile";

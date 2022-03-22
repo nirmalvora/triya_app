@@ -35,6 +35,7 @@ class BookInData {
   String? createdAt;
   String? updatedAt;
   FavoriteBook? favoriteBook;
+  FavoriteBook? favoriteVideo;
 
   BookInData(
       {this.id,
@@ -43,7 +44,8 @@ class BookInData {
       this.bookCategoryId,
       this.createdAt,
       this.updatedAt,
-      this.favoriteBook});
+      this.favoriteBook,
+      this.favoriteVideo});
 
   BookInData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -54,6 +56,9 @@ class BookInData {
     updatedAt = json['updated_at'];
     favoriteBook = json['favorite_book'] != null
         ? new FavoriteBook.fromJson(json['favorite_book'])
+        : null;
+    favoriteVideo = json['favorite_video'] != null
+        ? new FavoriteBook.fromJson(json['favorite_video'])
         : null;
   }
 
@@ -66,6 +71,7 @@ class BookInData {
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     data['favorite_book'] = this.favoriteBook;
+    data['favorite_video'] = this.favoriteVideo;
     return data;
   }
 }

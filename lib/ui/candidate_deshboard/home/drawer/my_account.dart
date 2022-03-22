@@ -3,11 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
-import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/my_account_controller.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
-import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:triya_app/widgets/cache_imageview.dart';
 
@@ -63,7 +61,7 @@ class _MyAccountState extends State<MyAccount> {
                   myController.getImage();
                 },
                 child: CircleAvatar(
-                  backgroundColor: ColorConstant.backgroundColor,
+                  backgroundColor: ColorConstant.blue,
                   radius: 45,
                   child: ClipOval(
                     child: Obx(

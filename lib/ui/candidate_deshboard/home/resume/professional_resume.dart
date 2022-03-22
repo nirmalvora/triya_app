@@ -89,6 +89,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
                         child: CircleAvatar(
                           backgroundColor: ColorConstant.backgroundColor,
                           radius: 55,
+                          foregroundColor: ColorConstant.red,
                           child: ClipOval(
                             child: Obx(
                               () => controller.image.value == null

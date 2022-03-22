@@ -35,7 +35,7 @@ class PrivateJobResumeScreen extends StatelessWidget {
           "Private Job",
           style: TextStyle(color: ColorConstant.splashColor),
         ),
-        actions: [
+        actions: const [
           Padding(
             padding: EdgeInsets.only(right: 15),
             child: AppBarCircleAvtar(),
@@ -46,7 +46,7 @@ class PrivateJobResumeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: Column(
           children: [
-            ResumeContainer(name: "CREATE RESUME"),
+            // ResumeContainer(name: "CREATE RESUME"),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: GestureDetector(
@@ -56,7 +56,12 @@ class PrivateJobResumeScreen extends StatelessWidget {
                 child: ResumeContainer(name: "APPLY WITH EXISTING RESUME"),
               ),
             ),
-            ResumeContainer(name: "UPLOAD RESUME"),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(NavigationName.uploadResumePage);
+              },
+              child: ResumeContainer(name: "UPLOAD RESUME"),
+            ),
           ],
         ),
       ),

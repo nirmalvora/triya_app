@@ -29,6 +29,8 @@ class PersonalStatementController extends GetxController {
         .then((value) {
       PersonalStatementResponse response =
           PersonalStatementResponse.fromJson(value!.data);
+      final resumeViewController = Get.put(ProfileResumeController());
+      resumeViewController.getData();
       Get.snackbar(response.message!, "");
     });
   }

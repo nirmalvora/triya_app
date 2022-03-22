@@ -16,6 +16,7 @@ class NavigationName {
   static const privateJobDescPage = '/privateJobDescPage';
   static const privateJobResumePage = '/privateJobResumePage';
   static const privateResumeApplyPage = '/privateResumeApplyPage';
+  static const uploadResumePage = '/uploadResumePage';
   static const scholarshipJobPage = '/scholarshipJobPage';
   static const scholarshipJobDescPage = '/scholarshipJobDescPage';
   static const resumePage = '/resumePage';
