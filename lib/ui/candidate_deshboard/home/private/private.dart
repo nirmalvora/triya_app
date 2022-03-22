@@ -18,7 +18,7 @@ class PrivateJobScreen extends StatefulWidget {
 }
 
 class _PrivateJobScreenState extends State<PrivateJobScreen> {
-  int? selected = 0;
+  int selected = 0;
   final controller = Get.put(PrivateJobController());
   @override
   Widget build(BuildContext context) {
@@ -110,46 +110,50 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
           SizedBox(
             height: 15,
           ),
-          SizedBox(
-            height: 100.h,
-            child: ListView.builder(
-              shrinkWrap: true,
-              padding: EdgeInsets.zero,
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              physics: BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selected = index;
-                      });
-                    },
-                    child: Container(
-                      width: 320.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color: selected == index
-                            ? ColorConstant.blueColor
-                            : ColorConstant.backgroundColor,
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Category A',
-                          style: TextStyle(
-                            color: ColorConstant.textColor,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: TextFontFamily.openSansBold,
-                            fontSize: 30.sp,
+          Obx(
+            () => SizedBox(
+              height: 100.h,
+              child: ListView.builder(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.horizontal,
+                itemCount: controller.govJobResponse.value?.data?.length ?? 0,
+                physics: BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selected = index;
+                        });
+                      },
+                      child: Container(
+                        width: 320.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7),
+                          color: selected == index
+                              ? ColorConstant.blueColor
+                              : ColorConstant.backgroundColor,
+                        ),
+                        child: Center(
+                          child: Text(
+                            controller
+                                    .govJobResponse.value?.data?[index].name ??
+                                "",
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: TextFontFamily.openSansBold,
+                              fontSize: 30.sp,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
           SizedBox(
@@ -184,7 +188,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
           ),
           Expanded(
             child: Obx(
-              () => ((controller.govJobResponse.value?.data
+              () => ((controller.govJobResponse.value?.data?[selected].employee
                                       ?.where(((element) => element.jobTitle!
                                           .contains(
                                               controller.searchText.value)))
@@ -202,7 +206,8 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                         )
                       : ListView.builder(
                           physics: BouncingScrollPhysics(),
-                          itemCount: controller.govJobResponse.value?.data
+                          itemCount: controller.govJobResponse.value
+                                  ?.data?[selected].employee
                                   ?.where(((element) => element.jobTitle!
                                       .contains(controller.searchText.value)))
                                   .length ??
@@ -215,7 +220,10 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                                 Get.toNamed(NavigationName.privateJobDescPage,
                                     arguments: {
                                       "private_job_data": controller
-                                          .govJobResponse.value?.data?[index]
+                                          .govJobResponse
+                                          .value
+                                          ?.data?[selected]
+                                          .employee?[index]
                                     });
                               },
                               child: Padding(
@@ -245,8 +253,12 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              controller.govJobResponse.value
-                                                      ?.data?[index].jobTitle ??
+                                              controller
+                                                      .govJobResponse
+                                                      .value
+                                                      ?.data?[selected]
+                                                      .employee?[index]
+                                                      .jobTitle ??
                                                   "",
                                               maxLines: 2,
                                               style: TextStyle(
@@ -259,7 +271,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                                               height: 10,
                                             ),
                                             Text(
-                                              'Post Date: ${controller.govJobResponse.value?.data?[index].fromDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.data?[index].toDate ?? ""}',
+                                              'Post Date: ${controller.govJobResponse.value?.data?[selected].employee?[index].fromDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.data?[selected].employee?[index].toDate ?? ""}',
                                               maxLines: 2,
                                               style: TextStyle(
                                                 color:

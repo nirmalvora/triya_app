@@ -19,7 +19,7 @@ class GovJobScreen extends StatefulWidget {
 
 class _GovJobScreenState extends State<GovJobScreen> {
   final controller = Get.put(GovJobController());
-  int? selected = 0;
+  int selected = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,46 +110,51 @@ class _GovJobScreenState extends State<GovJobScreen> {
           SizedBox(
             height: 15,
           ),
-          SizedBox(
-            height: 100.h,
-            child: ListView.builder(
-              shrinkWrap: true,
-              padding: EdgeInsets.zero,
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              physics: BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selected = index;
-                      });
-                    },
-                    child: Container(
-                      width: 320.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color: selected == index
-                            ? ColorConstant.blueColor
-                            : ColorConstant.backgroundColor,
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Category A',
-                          style: TextStyle(
-                            color: ColorConstant.textColor,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: TextFontFamily.openSansBold,
-                            fontSize: 30.sp,
+          Obx(
+            () => SizedBox(
+              height: 100.h,
+              child: ListView.builder(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.horizontal,
+                itemCount:
+                    controller.govJobResponse.value?.govData?.length ?? 0,
+                physics: BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selected = index;
+                        });
+                      },
+                      child: Container(
+                        width: 320.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7),
+                          color: selected == index
+                              ? ColorConstant.blueColor
+                              : ColorConstant.backgroundColor,
+                        ),
+                        child: Center(
+                          child: Text(
+                            controller.govJobResponse.value?.govData?[index]
+                                    .name ??
+                                "",
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: TextFontFamily.openSansBold,
+                              fontSize: 30.sp,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
           SizedBox(
@@ -184,7 +189,8 @@ class _GovJobScreenState extends State<GovJobScreen> {
           ),*/
           Expanded(
             child: Obx(
-              () => ((controller.govJobResponse.value?.data
+              () => ((controller.govJobResponse.value?.govData?[selected]
+                                      .government
                                       ?.where(((element) => element.title!
                                           .contains(
                                               controller.searchText.value)))
@@ -196,13 +202,17 @@ class _GovJobScreenState extends State<GovJobScreen> {
                   ? Center(
                       child: CircularProgressIndicator(),
                     )
-                  : ((controller.govJobResponse.value?.data?.length ?? 0) == 0)
+                  : ((controller.govJobResponse.value?.govData?[selected]
+                                  .government?.length ??
+                              0) ==
+                          0)
                       ? Center(
                           child: Text("No Data Found"),
                         )
                       : ListView.builder(
                           physics: BouncingScrollPhysics(),
-                          itemCount: controller.govJobResponse.value?.data
+                          itemCount: controller.govJobResponse.value
+                                  ?.govData?[selected].government
                                   ?.where(((element) => element.title!
                                       .contains(controller.searchText.value)))
                                   .length ??
@@ -215,7 +225,10 @@ class _GovJobScreenState extends State<GovJobScreen> {
                                 Get.toNamed(NavigationName.govJobDescPage,
                                     arguments: {
                                       "gov_job_data": controller
-                                          .govJobResponse.value?.data?[index]
+                                          .govJobResponse
+                                          .value
+                                          ?.govData?[selected]
+                                          .government?[index]
                                     });
                               },
                               child: Padding(
@@ -245,8 +258,12 @@ class _GovJobScreenState extends State<GovJobScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              controller.govJobResponse.value
-                                                      ?.data?[index].title ??
+                                              controller
+                                                      .govJobResponse
+                                                      .value
+                                                      ?.govData?[selected]
+                                                      .government?[index]
+                                                      .title ??
                                                   "",
                                               maxLines: 2,
                                               style: TextStyle(
@@ -259,7 +276,7 @@ class _GovJobScreenState extends State<GovJobScreen> {
                                               height: 10,
                                             ),
                                             Text(
-                                              'Post Date: ${controller.govJobResponse.value?.data?[index].postDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.data?[index].lastDate ?? ""}',
+                                              'Post Date: ${controller.govJobResponse.value?.govData?[selected].government?[index].postDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.govData?[selected].government?[index].lastDate ?? ""}',
                                               maxLines: 2,
                                               style: TextStyle(
                                                 color:

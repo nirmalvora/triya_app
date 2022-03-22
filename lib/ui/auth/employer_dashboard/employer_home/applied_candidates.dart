@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/applied_candidate_controller.dart';
-import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/textfield_decoration.dart';
 import 'package:triya_app/widgets/widget.dart';
@@ -115,8 +114,9 @@ class AppliedCandidateScreen extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 30.w),
                           child: ListView.builder(
-                              itemCount:
-                                  controller.applyJob.value?.data?.id ?? 0,
+                              itemCount: controller.applyJob.value?.data
+                                      ?.privateJobs?.length ??
+                                  0,
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 return Padding(

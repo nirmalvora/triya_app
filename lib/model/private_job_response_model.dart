@@ -1,6 +1,6 @@
 class PostedJobResModel {
   bool? errors;
-  List<PostedJob>? data;
+  List<PrivateJob>? data;
   String? message;
 
   PostedJobResModel({this.errors, this.data, this.message});
@@ -8,9 +8,9 @@ class PostedJobResModel {
   PostedJobResModel.fromJson(Map<String, dynamic> json) {
     errors = json['errors'];
     if (json['data'] != null) {
-      data = <PostedJob>[];
+      data = <PrivateJob>[];
       json['data'].forEach((v) {
-        data!.add(new PostedJob.fromJson(v));
+        data!.add(new PrivateJob.fromJson(v));
       });
     }
     message = json['message'];
@@ -23,6 +23,42 @@ class PostedJobResModel {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     data['message'] = this.message;
+    return data;
+  }
+}
+
+class PrivateJob {
+  int? id;
+  String? name;
+  String? createdAt;
+  String? updatedAt;
+  List<PostedJob>? employee;
+
+  PrivateJob(
+      {this.id, this.name, this.createdAt, this.updatedAt, this.employee});
+
+  PrivateJob.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    if (json['employee'] != null) {
+      employee = <PostedJob>[];
+      json['employee'].forEach((v) {
+        employee!.add(new PostedJob.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    if (this.employee != null) {
+      data['employee'] = this.employee!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }

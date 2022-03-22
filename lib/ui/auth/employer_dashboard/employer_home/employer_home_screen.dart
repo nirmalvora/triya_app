@@ -1,23 +1,29 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
-import 'package:triya_app/model/posted_job_res_model.dart';
+import 'package:triya_app/model/private_job_response_model.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:triya_app/widgets/textfield_decoration.dart';
 import 'package:triya_app/widgets/widget.dart';
 
-class EmployerHomeScreen extends StatelessWidget {
+class EmployerHomeScreen extends StatefulWidget {
   EmployerHomeScreen({Key? key}) : super(key: key);
 
-  final controller = Get.put(EmployerHomeController());
+  @override
+  State<EmployerHomeScreen> createState() => _EmployerHomeScreenState();
+}
 
+class _EmployerHomeScreenState extends State<EmployerHomeScreen> {
+  final controller = Get.put(EmployerHomeController());
+  int selected = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,28 +141,10 @@ class EmployerHomeScreen extends StatelessWidget {
               fontWeight: FontWeight.w700,
               fontSize: 52.sp),
         ),
-        actions: [
+        actions: const [
           Padding(
-            padding: EdgeInsets.only(right: 30.w),
-            child: Center(
-              child: Container(
-                height: 115.h,
-                width: 115.h,
-                decoration: BoxDecoration(
-                    color: ColorConstant.white,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Color(0xffE9E9E9), width: 3)),
-                child: ClipOval(
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        'https://s3-alpha-sig.figma.com/img/5387/ddcd/21388124e311307deee7a85f44bd1b8a?Expires=1648425600&Signature=PyYl48Eck5h8SBcMaDRIyCz-X9rzWs7zsRnfGTyb~zRq2SlR04gvUFTRLdOh48UBqO3j~gV2l55wZ-ZPjfQmLSi8eoh6Wq7D7JatJRFLeOSFfybCrZi~H8GljKEvJVeb-~oQ9FN3zOOPNzlCITqnLSyL8iRio8Ef7ULzfQUAHaDR-TqdbKhQU3HbCRVbQO1PDsvsodqF3WmQnhHGtq7oQxTFK1bgWbQX8-yJ901xP3rs2kKXbDKtL-LfBFepB~-l2zJ7W-KBmotXvAxKo5-AmrO5oNXD6PvymKsSGBcPdid9Y3FewHGVLj0z6IP5-28UBevK796~kI8EGqKNf-uZbw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
-                    height: 77.h,
-                    width: 77.w,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
+            padding: EdgeInsets.only(right: 15),
+            child: AppBarCircleAvtar(),
           )
         ],
       ),
@@ -194,7 +182,7 @@ class EmployerHomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Posted 10 Jobs',
+                  'Posted Jobs',
                   style: TextStyle(
                       fontSize: 52.sp,
                       fontWeight: FontWeight.w700,
@@ -245,11 +233,60 @@ class EmployerHomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 50.h),
+          Obx(
+            () => SizedBox(
+              height: 100.h,
+              child: ListView.builder(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.horizontal,
+                itemCount:
+                    controller.postedJobResponse.value?.data?.length ?? 0,
+                physics: BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selected = index;
+                        });
+                      },
+                      child: Container(
+                        width: 320.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7),
+                          color: selected == index
+                              ? ColorConstant.blueColor
+                              : ColorConstant.backgroundColor,
+                        ),
+                        child: Center(
+                          child: Text(
+                            controller.postedJobResponse.value?.data?[index]
+                                    .name ??
+                                "",
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: TextFontFamily.openSansBold,
+                              fontSize: 30.sp,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          SizedBox(height: 50.h),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: Obx(
-                () => ((controller.postedJobResponse.value?.data
+                () => ((controller.postedJobResponse.value?.data?[selected]
+                                        .employee
                                         ?.where(((element) => element.jobTitle!
                                             .toLowerCase()
                                             .contains(controller
@@ -271,7 +308,8 @@ class EmployerHomeScreen extends StatelessWidget {
                           )
                         : ListView.builder(
                             physics: BouncingScrollPhysics(),
-                            itemCount: controller.postedJobResponse.value?.data
+                            itemCount: controller.postedJobResponse.value
+                                    ?.data?[selected].employee
                                     ?.where(((element) => element.jobTitle!
                                         .toLowerCase()
                                         .contains(controller.searchText.value
@@ -280,8 +318,8 @@ class EmployerHomeScreen extends StatelessWidget {
                                 0,
                             padding: EdgeInsets.zero,
                             itemBuilder: (context, index) {
-                              PostedJob data = (controller
-                                  .postedJobResponse.value?.data
+                              PostedJob data = (controller.postedJobResponse
+                                  .value?.data?[selected].employee
                                   ?.where(((element) => element.jobTitle!
                                       .toLowerCase()
                                       .contains(controller.searchText.value

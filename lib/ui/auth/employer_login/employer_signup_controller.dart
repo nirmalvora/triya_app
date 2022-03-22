@@ -31,8 +31,10 @@ class EmployerSignUpController extends GetxController {
 
   Future<void> signup() async {
     if (formKey.currentState!.validate()) {
-      final formData = Dio.FormData.fromMap({
-        'company_logo': await Dio.MultipartFile.fromFile(image.value!.path),
+      Dio.MultipartFile file =
+          await Dio.MultipartFile.fromFile(image.value!.path);
+      final data = {
+        'company_logo': file,
         'first_name': firstName.text,
         'last_name': lastName.text,
         'company_name': companyName.text,
@@ -45,7 +47,9 @@ class EmployerSignUpController extends GetxController {
         'city': cityValue,
         'password': password.text,
         'confirm_password': confirmPassword.text,
-      });
+      };
+      print(data);
+      final formData = Dio.FormData.fromMap(data);
       BaseApiService.instance
           .postForm(ServiceConstant.employerCandidate, data: formData)
           .then((value) {

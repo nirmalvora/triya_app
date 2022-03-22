@@ -19,7 +19,7 @@ class ScholarshipJobScreen extends StatefulWidget {
 
 class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
   final controller = Get.put(ScholarshipJobController());
-  int? selected = 0;
+  int selected = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,46 +110,50 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
           SizedBox(
             height: 15,
           ),
-          SizedBox(
-            height: 100.h,
-            child: ListView.builder(
-              shrinkWrap: true,
-              padding: EdgeInsets.zero,
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              physics: BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selected = index;
-                      });
-                    },
-                    child: Container(
-                      width: 320.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color: selected == index
-                            ? ColorConstant.blueColor
-                            : ColorConstant.backgroundColor,
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Category A',
-                          style: TextStyle(
-                            color: ColorConstant.textColor,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: TextFontFamily.openSansBold,
-                            fontSize: 30.sp,
+          Obx(
+            () => SizedBox(
+              height: 100.h,
+              child: ListView.builder(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.horizontal,
+                itemCount: controller.govJobResponse.value?.data?.length ?? 0,
+                physics: BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selected = index;
+                        });
+                      },
+                      child: Container(
+                        width: 320.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7),
+                          color: selected == index
+                              ? ColorConstant.blueColor
+                              : ColorConstant.backgroundColor,
+                        ),
+                        child: Center(
+                          child: Text(
+                            controller
+                                    .govJobResponse.value?.data?[index].name ??
+                                '',
+                            style: TextStyle(
+                              color: ColorConstant.textColor,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: TextFontFamily.openSansBold,
+                              fontSize: 30.sp,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
           SizedBox(
@@ -184,7 +188,8 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
           ),*/
           Expanded(
             child: Obx(
-              () => ((controller.govJobResponse.value?.data
+              () => ((controller.govJobResponse.value?.data?[selected]
+                                      .scholarship
                                       ?.where(((element) => element.title!
                                           .contains(
                                               controller.searchText.value)))
@@ -196,13 +201,17 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                   ? Center(
                       child: CircularProgressIndicator(),
                     )
-                  : ((controller.govJobResponse.value?.data?.length ?? 0) == 0)
+                  : ((controller.govJobResponse.value?.data?[selected]
+                                  .scholarship?.length ??
+                              0) ==
+                          0)
                       ? Center(
                           child: Text("No Data Found"),
                         )
                       : ListView.builder(
                           physics: BouncingScrollPhysics(),
-                          itemCount: controller.govJobResponse.value?.data
+                          itemCount: controller.govJobResponse.value
+                                  ?.data?[selected].scholarship
                                   ?.where(((element) => element.title!
                                       .contains(controller.searchText.value)))
                                   .length ??
@@ -216,7 +225,10 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                                     NavigationName.scholarshipJobDescPage,
                                     arguments: {
                                       "gov_job_data": controller
-                                          .govJobResponse.value?.data?[index]
+                                          .govJobResponse
+                                          .value
+                                          ?.data?[selected]
+                                          .scholarship?[index]
                                     });
                               },
                               child: Padding(
@@ -246,8 +258,12 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              controller.govJobResponse.value
-                                                      ?.data?[index].title ??
+                                              controller
+                                                      .govJobResponse
+                                                      .value
+                                                      ?.data?[selected]
+                                                      .scholarship?[index]
+                                                      .title ??
                                                   "",
                                               maxLines: 2,
                                               style: TextStyle(
@@ -260,7 +276,7 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                                               height: 10,
                                             ),
                                             Text(
-                                              'Post Date: ${controller.govJobResponse.value?.data?[index].postDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.data?[index].lastDate ?? ""}',
+                                              'Post Date: ${controller.govJobResponse.value?.data?[selected].scholarship?[index].postDate ?? ""}     |     Last Date:  ${controller.govJobResponse.value?.data?[selected].scholarship?[index].lastDate ?? ""}',
                                               maxLines: 2,
                                               style: TextStyle(
                                                 color:
