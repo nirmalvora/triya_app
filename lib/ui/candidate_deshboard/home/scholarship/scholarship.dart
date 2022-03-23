@@ -241,7 +241,6 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 15, vertical: 7),
                                 child: Container(
-                                  height: 140.h,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
                                     gradient: LinearGradient(
@@ -257,40 +256,49 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                                     padding: const EdgeInsets.only(left: 10),
                                     child: Row(
                                       children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              data.title ?? "",
-                                              maxLines: 2,
-                                              style: TextStyle(
-                                                color: ColorConstant.textColor,
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 30.sp,
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Expanded(
+                                                    child: Text(
+                                                      data.title ?? "",
+                                                      maxLines: 2,
+                                                      style: TextStyle(
+                                                        color: ColorConstant
+                                                            .textColor,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        fontSize: 30.sp,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: 10,
-                                            ),
-                                            Text(
-                                              'Post Date: ${data.postDate ?? ""}     |     Last Date:  ${data.lastDate ?? ""}',
-                                              maxLines: 2,
-                                              style: TextStyle(
-                                                color:
-                                                    ColorConstant.hintTextColor,
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 25.sp,
+                                              SizedBox(
+                                                height: 7,
                                               ),
-                                            ),
-                                          ],
+                                              Text(
+                                                'Post Date: ${data.postDate ?? ""}     |     Last Date:  ${data.lastDate ?? ""}',
+                                                maxLines: 2,
+                                                style: TextStyle(
+                                                  color: ColorConstant
+                                                      .hintTextColor,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 25.sp,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        Spacer(),
                                         Container(
                                           margin: EdgeInsets.symmetric(
-                                              horizontal: 5),
+                                              horizontal: 5, vertical: 5),
                                           height: 100.h,
                                           width: 100.h,
                                           decoration: BoxDecoration(

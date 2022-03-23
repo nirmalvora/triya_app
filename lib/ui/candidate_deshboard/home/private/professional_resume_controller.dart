@@ -73,7 +73,6 @@ class ProfileResumeController extends GetxController {
     BaseApiService.instance
         .post(ServiceConstant.applyJob, data: data)
         .then((value) {
-      // print(value);
       ApplyJobResModel response = ApplyJobResModel.fromJson(value!.data);
       Get.snackbar(response.message!, "");
     });

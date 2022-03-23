@@ -5,6 +5,7 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/private/upload_resume_controller.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
+import 'package:path/path.dart';
 
 class UploadResumeScreen extends StatelessWidget {
   UploadResumeScreen({Key? key}) : super(key: key);
@@ -52,31 +53,38 @@ class UploadResumeScreen extends StatelessWidget {
                   onTap: () {
                     controller.getPdf();
                   },
-                  child: Text(
-                    'Upload Resume',
-                    style: TextStyle(
-                      color: Color(0xff286FD9),
-                      fontSize: 32.sp,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: "OpenSans-Regular",
-                    ),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Upload Resume',
+                        style: TextStyle(
+                          color: Color(0xff286FD9),
+                          fontSize: 32.sp,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: "OpenSans-Regular",
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: Icon(
+                          Icons.upload_rounded,
+                          color: Color(0xff286FD9),
+                          size: 18,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(width: 4),
-                Icon(
-                  Icons.upload_rounded,
-                  color: Color(0xff286FD9),
-                  size: 18,
-                ),
-                SizedBox(width: 4),
                 Expanded(
-                  child: Text(
-                    controller.files.value?.path ?? "",
-                    style: TextStyle(
-                      color: ColorConstant.black,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: TextFontFamily.openSansBold,
-                      fontSize: 32.sp,
+                  child: Obx(
+                    () => Text(
+                      basename(controller.files.value?.path ?? ""),
+                      style: TextStyle(
+                        color: ColorConstant.black,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: TextFontFamily.openSansBold,
+                        fontSize: 32.sp,
+                      ),
                     ),
                   ),
                 ),
@@ -87,7 +95,12 @@ class UploadResumeScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                // Get.toNamed(NavigationName.privateJobResumePage);
+                if (controller.files.value?.path != null) {
+                  controller.applyJob();
+                  Get.back();
+                } else {
+                  Get.snackbar("FIle not selected", "Please select the file");
+                }
               },
               child: Container(
                 height: 110.h,

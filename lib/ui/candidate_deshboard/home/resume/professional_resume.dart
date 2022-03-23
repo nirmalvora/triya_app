@@ -323,7 +323,7 @@ class ProfessionalResumeScreen extends StatelessWidget {
                                 0) {
                               controller.applyJob();
                             } else {
-                              Get.snackbar('Please fillup resume data', '');
+                              Get.snackbar('Please fillUp resume data', '');
                             }
                           },
                           child: Container(

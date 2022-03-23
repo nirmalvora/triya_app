@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/applied_candidate_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/textfield_decoration.dart';
@@ -167,7 +168,14 @@ class AppliedCandidateScreen extends StatelessWidget {
                                         ),
                                         Spacer(),
                                         InkWell(
-                                          onTap: () {},
+                                          onTap: () {
+                                            AppState.downloadFile(controller
+                                                    .applyJob
+                                                    .value
+                                                    ?.data
+                                                    ?.upload ??
+                                                "");
+                                          },
                                           child: Container(
                                             height: 91.h,
                                             width: 91.w,

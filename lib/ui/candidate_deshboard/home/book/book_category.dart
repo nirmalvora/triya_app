@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/model/basemodel/book_data_response.dart';
-import 'package:triya_app/model/book_category_response.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/book/book_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';

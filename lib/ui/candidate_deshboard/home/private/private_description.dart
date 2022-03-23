@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
+import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/private/private_job_detail_controller.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PrivateDescription extends StatefulWidget {
-  const PrivateDescription({Key? key}) : super(key: key);
-
-  @override
-  _PrivateDescriptionState createState() => _PrivateDescriptionState();
-}
-
-class _PrivateDescriptionState extends State<PrivateDescription> {
+class PrivateDescription extends StatelessWidget {
+  PrivateDescription({Key? key}) : super(key: key);
   final controller = Get.put(PrivateJobDetailController());
   @override
   Widget build(BuildContext context) {
@@ -116,7 +112,6 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
               child: Row(
                 children: [
                   Container(
-                    height: 125.h,
                     width: 350.h,
                     decoration: BoxDecoration(
                       color: ColorConstant.backgroundColor,
@@ -137,7 +132,9 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                               fontSize: 25.sp,
                             ),
                           ),
-                          Spacer(),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
                             controller.govJob.value?.fromDate ?? "",
                             style: TextStyle(
@@ -155,7 +152,6 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                     width: 15,
                   ),
                   Container(
-                    height: 125.h,
                     width: 350.h,
                     decoration: BoxDecoration(
                       color: ColorConstant.backgroundColor,
@@ -176,7 +172,9 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                               fontSize: 25.sp,
                             ),
                           ),
-                          Spacer(),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
                             controller.govJob.value?.toDate ?? "",
                             style: TextStyle(
@@ -196,7 +194,6 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Container(
-                height: 135.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: ColorConstant.backgroundColor,
@@ -217,7 +214,9 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                           fontSize: 25.sp,
                         ),
                       ),
-                      Spacer(),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Text(
                         controller.govJob.value?.qualification ?? "",
                         style: TextStyle(
@@ -235,7 +234,6 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                height: 135.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: ColorConstant.backgroundColor,
@@ -256,7 +254,9 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                           fontSize: 25.sp,
                         ),
                       ),
-                      Spacer(),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Text(
                         controller.govJob.value?.qualification ?? "",
                         style: TextStyle(
@@ -274,7 +274,6 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Container(
-                height: 135.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: ColorConstant.backgroundColor,
@@ -295,7 +294,9 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                           fontSize: 25.sp,
                         ),
                       ),
-                      Spacer(),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Text(
                         controller.govJob.value?.jobLink ?? "",
                         maxLines: 1,
@@ -336,7 +337,7 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                         ),
                       ),
                       SizedBox(
-                        height: 7,
+                        height: 5,
                       ),
                       Text(
                         controller.govJob.value?.jobDetail ?? "",
@@ -356,14 +357,14 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               child: InkWell(
                 onTap: () async {
-                  if (await canLaunch(controller.govJob.value?.jobLink ?? "")) {
-                    await launch(controller.govJob.value?.jobLink ?? "");
+                  AppState.downloadFile(controller.govJob.value?.upload ?? "");
+                  /* if (await canLaunch(controller.govJob.value?.upload ?? '')) {
+                    await launch(controller.govJob.value?.upload ?? '');
                   } else {
-                    throw 'Could not launch "${controller.govJob.value?.jobLink ?? ""}"';
-                  }
+                    throw 'Could not launch "${controller.govJob.value?.upload ?? ''}"';
+                  }*/
                 },
                 child: Container(
-                  height: 110.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -385,7 +386,8 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 12),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -418,13 +420,11 @@ class _PrivateDescriptionState extends State<PrivateDescription> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(NavigationName.privateJobResumePage);
+                  Get.toNamed(NavigationName.privateJobResumePage, arguments: {
+                    AppConstants.showApplyButton: true,
+                    AppConstants.jobID: controller.govJob.value!.id!,
+                  });
                   // controller.getData();
-                  /* Get.toNamed(NavigationName.professionalResumePage,
-                      arguments: {
-                        AppConstants.showApplyButton: true,
-                        AppConstants.jobID: controller.govJob.value!.id!,
-                      });*/
                   // controller.applyJob();
                 },
                 child: Container(

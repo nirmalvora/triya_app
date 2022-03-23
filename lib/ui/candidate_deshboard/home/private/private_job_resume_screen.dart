@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
 
 import 'package:triya_app/constants/image_constant.dart';
@@ -8,9 +9,11 @@ import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:triya_app/widgets/resume_container.dart';
 
-class PrivateJobResumeScreen extends StatelessWidget {
-  const PrivateJobResumeScreen({Key? key}) : super(key: key);
+import 'private_job_resume_selection_controller.dart';
 
+class PrivateJobResumeScreen extends StatelessWidget {
+  PrivateJobResumeScreen({Key? key}) : super(key: key);
+  final controller = Get.put(PrivateJobResumeSelectionController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,14 +54,21 @@ class PrivateJobResumeScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(NavigationName.privateResumeApplyPage);
+                  Get.toNamed(NavigationName.professionalResumePage,
+                      arguments: {
+                        AppConstants.showApplyButton: true,
+                        AppConstants.jobID: controller.jobId.value,
+                      });
                 },
                 child: ResumeContainer(name: "APPLY WITH EXISTING RESUME"),
               ),
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(NavigationName.uploadResumePage);
+                Get.toNamed(NavigationName.uploadResumePage, arguments: {
+                  AppConstants.showApplyButton: true,
+                  AppConstants.jobID: controller.jobId.value,
+                });
               },
               child: ResumeContainer(name: "UPLOAD RESUME"),
             ),

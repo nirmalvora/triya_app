@@ -99,11 +99,11 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.privateJobDescPage,
-      page: () => const PrivateDescription(),
+      page: () => PrivateDescription(),
     ),
     GetPage(
       name: NavigationName.privateJobResumePage,
-      page: () => const PrivateJobResumeScreen(),
+      page: () => PrivateJobResumeScreen(),
     ),
     GetPage(
       name: NavigationName.uploadResumePage,

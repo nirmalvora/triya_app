@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
+import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/scholarship/scholarship_job_deatil_controller.dart';
 import 'package:triya_app/utils/date_formatter.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
@@ -70,7 +71,6 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
               child: Row(
                 children: [
                   Container(
-                    height: 125.h,
                     width: 350.h,
                     decoration: BoxDecoration(
                       color: ColorConstant.backgroundColor,
@@ -91,7 +91,9 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                               fontSize: 25.sp,
                             ),
                           ),
-                          Spacer(),
+                          SizedBox(
+                            height: 7,
+                          ),
                           Text(
                             DateFormatter.convertDateFromString(
                                 controller.govJob.value?.postDate ?? "",
@@ -111,7 +113,6 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                     width: 15,
                   ),
                   Container(
-                    height: 125.h,
                     width: 350.h,
                     decoration: BoxDecoration(
                       color: ColorConstant.backgroundColor,
@@ -132,7 +133,9 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                               fontSize: 25.sp,
                             ),
                           ),
-                          Spacer(),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
                             DateFormatter.convertDateFromString(
                                 controller.govJob.value?.lastDate ?? "",
@@ -154,7 +157,6 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Container(
-                height: 135.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: ColorConstant.backgroundColor,
@@ -175,7 +177,9 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                           fontSize: 25.sp,
                         ),
                       ),
-                      Spacer(),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Text(
                         controller.govJob.value?.qualification ?? "",
                         style: TextStyle(
@@ -193,7 +197,6 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                height: 135.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: ColorConstant.backgroundColor,
@@ -214,7 +217,9 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                           fontSize: 25.sp,
                         ),
                       ),
-                      Spacer(),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Text(
                         controller.govJob.value?.board ?? "",
                         style: TextStyle(
@@ -232,7 +237,6 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Container(
-                height: 135.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: ColorConstant.backgroundColor,
@@ -253,7 +257,9 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                           fontSize: 25.sp,
                         ),
                       ),
-                      Spacer(),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Text(
                         controller.govJob.value?.scholarLink ?? "",
                         maxLines: 1,
@@ -294,7 +300,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                         ),
                       ),
                       SizedBox(
-                        height: 7,
+                        height: 5,
                       ),
                       Text(
                         controller.govJob.value?.jobDescription ?? "",
@@ -314,15 +320,14 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               child: InkWell(
                 onTap: () async {
-                  if (await canLaunch(
-                      controller.govJob.value?.scholarLink ?? "")) {
-                    await launch(controller.govJob.value?.scholarLink ?? "");
+                  AppState.downloadFile(controller.govJob.value?.upload ?? "");
+                  /* if (await canLaunch(controller.govJob.value?.upload ?? '')) {
+                    await launch(controller.govJob.value?.upload ?? '');
                   } else {
-                    throw 'Could not launch "${controller.govJob.value?.scholarLink ?? ""}"';
-                  }
+                    throw 'Could not launch "${controller.govJob.value?.upload ?? ''}"';
+                  }*/
                 },
                 child: Container(
-                  height: 110.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -344,7 +349,8 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 12),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

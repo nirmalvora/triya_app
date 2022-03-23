@@ -103,7 +103,7 @@ class PrivateJobs {
   int? id;
   int? userId;
   int? empId;
-  Null? upload;
+  String? upload;
   String? createdAt;
   String? updatedAt;
   String? email;

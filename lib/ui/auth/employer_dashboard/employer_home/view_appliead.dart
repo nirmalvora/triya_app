@@ -6,6 +6,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
+import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_new_job.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
@@ -194,13 +195,15 @@ class ViewApplieadScreen extends StatelessWidget {
                         SizedBox(height: 50.h),
                         InkWell(
                           onTap: () async {
-                            if (await canLaunch(
+                            AppState.downloadFile(
+                                controller.postedJob.value?.upload ?? "");
+                            /* if (await canLaunch(
                                 controller.postedJob.value?.upload ?? '')) {
                               await launch(
                                   controller.postedJob.value?.upload ?? '');
                             } else {
                               throw 'Could not launch "${controller.postedJob.value?.upload ?? ''}"';
-                            }
+                            }*/
                           },
                           child: Row(mainAxisSize: MainAxisSize.min, children: [
                             Text(

@@ -91,6 +91,24 @@ class BaseApiService {
     });
   }
 
+  Future<Response?> getNormal(
+    String endUrl, {
+    Map<String, dynamic>? params,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    if (!await isInternet()) {
+      ToastUtils.showFailed(message: StringRes.pleaseCheckInternet);
+      return null;
+    }
+    return await (_dio.get(
+      endUrl,
+      queryParameters: params,
+      cancelToken: cancelToken ?? _cancelToken,
+      options: options,
+    )).catchError((e) async {});
+  }
+
   Future<Response?> put(String endUrl,
       {Map<String, dynamic>? data,
       Map<String, dynamic>? params,

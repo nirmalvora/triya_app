@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
+import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_job_detail_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/date_formatter.dart';
@@ -242,7 +243,6 @@ class _GovDescriptionState extends State<GovDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                height: 135.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: ColorConstant.backgroundColor,
@@ -263,7 +263,9 @@ class _GovDescriptionState extends State<GovDescription> {
                           fontSize: 25.sp,
                         ),
                       ),
-                      Spacer(),
+                      SizedBox(
+                        height: 7,
+                      ),
                       Text(
                         controller.govJob.value?.board ?? "",
                         style: TextStyle(
@@ -281,7 +283,6 @@ class _GovDescriptionState extends State<GovDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Container(
-                height: 135.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: ColorConstant.backgroundColor,
@@ -304,7 +305,9 @@ class _GovDescriptionState extends State<GovDescription> {
                           fontSize: 25.sp,
                         ),
                       ),
-                      Spacer(),
+                      SizedBox(
+                        height: 7,
+                      ),
                       Text(
                         controller.govJob.value?.jobLink ?? "",
                         overflow: TextOverflow.ellipsis,
@@ -365,11 +368,12 @@ class _GovDescriptionState extends State<GovDescription> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               child: GestureDetector(
                 onTap: () async {
-                  if (await canLaunch(controller.govJob.value?.jobLink ?? "")) {
-                    await launch(controller.govJob.value?.jobLink ?? "");
+                  AppState.downloadFile(controller.govJob.value?.upload ?? "");
+                  /*   if (await canLaunch(controller.govJob.value?.upload ?? '')) {
+                    await launch(controller.govJob.value?.upload ?? '');
                   } else {
-                    throw 'Could not launch "${controller.govJob.value?.jobLink ?? ""}"';
-                  }
+                    throw 'Could not launch "${controller.govJob.value?.upload ?? ''}"';
+                  }*/
                 },
                 child: Container(
                   height: 110.h,

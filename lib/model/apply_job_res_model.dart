@@ -23,7 +23,7 @@ class ApplyJobResModel {
 }
 
 class ApplyJobData {
-  int? empId;
+  dynamic? empId;
   int? userId;
   String? updatedAt;
   String? createdAt;
