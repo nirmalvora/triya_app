@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,19 +5,18 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:triya_app/constants/color_constant.dart';
-import 'package:triya_app/navigation/navigation_constant.dart';
-import 'package:triya_app/ui/auth/employe_login/employe_otp_login/employe_otp_login_controller.dart';
 import 'package:triya_app/ui/auth/employe_login/employe_otp_login/employe_otp_submit_controller.dart';
 import 'package:triya_app/utils/app_utils.dart';
 
-class EmployeOTPSubmitScreen extends StatefulWidget {
-  EmployeOTPSubmitScreen({Key? key}) : super(key: key);
+class EmployeeOTPSubmitScreen extends StatefulWidget {
+  const EmployeeOTPSubmitScreen({Key? key}) : super(key: key);
 
   @override
-  State<EmployeOTPSubmitScreen> createState() => _EmployeOTPSubmitScreenState();
+  State<EmployeeOTPSubmitScreen> createState() =>
+      _EmployeeOTPSubmitScreenState();
 }
 
-class _EmployeOTPSubmitScreenState extends State<EmployeOTPSubmitScreen> {
+class _EmployeeOTPSubmitScreenState extends State<EmployeeOTPSubmitScreen> {
   final controller = Get.put(OtpSubmitController());
 
   @override

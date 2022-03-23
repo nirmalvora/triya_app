@@ -9,7 +9,7 @@ class EmployerSignInController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
 
-  void employersignIn() {
+  void employerSignIn() {
     if (formKey.currentState!.validate()) {
       Map<String, dynamic> data = {
         'email': email.text,

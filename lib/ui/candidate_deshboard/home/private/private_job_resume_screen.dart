@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
-
-import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
-import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:triya_app/widgets/resume_container.dart';
 

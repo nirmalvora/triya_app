@@ -10,4 +10,3 @@ class PostedJobDetailController extends GetxController {
     super.onInit();
   }
 }
-// /$id

@@ -1,7 +1,4 @@
 import 'dart:io';
-
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/service_constant.dart';
 import 'package:triya_app/model/private_job_response_model.dart';

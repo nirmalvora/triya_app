@@ -48,7 +48,10 @@ import 'package:triya_app/ui/candidate_deshboard/home/video/videos.dart';
 
 class NavigationRoute {
   static final List<GetPage> pages = [
-    GetPage(name: NavigationName.splash, page: () => const SplashScreen()),
+    GetPage(
+      name: NavigationName.splash,
+      page: () => const SplashScreen(),
+    ),
     GetPage(
       name: NavigationName.login,
       page: () => const EmployeLoginScreen(),
@@ -63,7 +66,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.otpSubmit,
-      page: () => EmployeOTPSubmitScreen(),
+      page: () => EmployeeOTPSubmitScreen(),
     ),
     GetPage(
       name: NavigationName.dashboard,

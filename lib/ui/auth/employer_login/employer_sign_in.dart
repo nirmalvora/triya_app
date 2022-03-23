@@ -92,7 +92,7 @@ class EmployerSignInScreen extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            controller.employersignIn();
+                            controller.employerSignIn();
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(

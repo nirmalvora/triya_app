@@ -47,7 +47,6 @@ class AddNewJobController extends GetxController {
           .postForm(ServiceConstant.AddNewJob, data: data)
           .then((value) {
         final controller = Get.put(EmployerHomeController());
-
         controller.getData();
         Get.back();
       });

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/constants/image_constant.dart';
-import 'package:triya_app/model/gov_job_model.dart';
 import 'package:triya_app/model/private_job_response_model.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/private/private_job_controller.dart';
@@ -104,7 +103,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                         height: 47.h,
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
