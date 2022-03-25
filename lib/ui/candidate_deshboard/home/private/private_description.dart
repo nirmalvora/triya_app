@@ -325,7 +325,7 @@ class PrivateDescription extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(

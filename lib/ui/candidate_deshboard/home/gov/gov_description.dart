@@ -118,7 +118,6 @@ class _GovDescriptionState extends State<GovDescription> {
               child: Row(
                 children: [
                   Container(
-                    height: 125.h,
                     width: 350.h,
                     decoration: BoxDecoration(
                       color: ColorConstant.backgroundColor,
@@ -139,7 +138,9 @@ class _GovDescriptionState extends State<GovDescription> {
                               fontSize: 25.sp,
                             ),
                           ),
-                          Spacer(),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
                             DateFormatter.convertDateFromString(
                                 controller.govJob.value?.postDate ?? "",
@@ -159,7 +160,6 @@ class _GovDescriptionState extends State<GovDescription> {
                     width: 15,
                   ),
                   Container(
-                    height: 125.h,
                     width: 350.h,
                     decoration: BoxDecoration(
                       color: ColorConstant.backgroundColor,
@@ -180,7 +180,9 @@ class _GovDescriptionState extends State<GovDescription> {
                               fontSize: 25.sp,
                             ),
                           ),
-                          Spacer(),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
                             DateFormatter.convertDateFromString(
                                 controller.govJob.value?.lastDate ?? "",
@@ -202,7 +204,6 @@ class _GovDescriptionState extends State<GovDescription> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Container(
-                height: 135.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: ColorConstant.backgroundColor,
@@ -223,7 +224,9 @@ class _GovDescriptionState extends State<GovDescription> {
                           fontSize: 25.sp,
                         ),
                       ),
-                      Spacer(),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Text(
                         controller.govJob.value?.qualification ?? "",
                         style: TextStyle(
@@ -262,7 +265,7 @@ class _GovDescriptionState extends State<GovDescription> {
                         ),
                       ),
                       SizedBox(
-                        height: 7,
+                        height: 5,
                       ),
                       Text(
                         controller.govJob.value?.board ?? "",
@@ -304,7 +307,7 @@ class _GovDescriptionState extends State<GovDescription> {
                         ),
                       ),
                       SizedBox(
-                        height: 7,
+                        height: 5,
                       ),
                       GestureDetector(
                         onTap: () async {
@@ -334,7 +337,7 @@ class _GovDescriptionState extends State<GovDescription> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -357,7 +360,7 @@ class _GovDescriptionState extends State<GovDescription> {
                         ),
                       ),
                       SizedBox(
-                        height: 7,
+                        height: 5,
                       ),
                       Text(
                         controller.govJob.value?.jobDescription ?? "",
@@ -385,7 +388,6 @@ class _GovDescriptionState extends State<GovDescription> {
                   }*/
                 },
                 child: Container(
-                  height: 110.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -407,7 +409,8 @@ class _GovDescriptionState extends State<GovDescription> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

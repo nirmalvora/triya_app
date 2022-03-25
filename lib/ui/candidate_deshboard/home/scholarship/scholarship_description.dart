@@ -92,7 +92,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                             ),
                           ),
                           SizedBox(
-                            height: 7,
+                            height: 5,
                           ),
                           Text(
                             DateFormatter.convertDateFromString(
@@ -288,7 +288,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
