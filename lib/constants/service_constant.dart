@@ -36,12 +36,13 @@ class ServiceConstant {
   static String getPrivateJob = "api/get-job-post";
 
   static String getResume = "api/get-resume";
+  static String getResumeOne = "api/get-resume-one";
   static String uploadProfilePicture = "api/profile_picture";
   static String getProfilePicture = "api/get-profile";
   static String updateName = "api/name_update";
   static String uploadProfile = "api/upload";
-  static String AddNewJob = "api/create-emp-job-post";
-  static String PostedJob = "api/get-job-post";
+  static String addNewJob = "api/create-emp-job-post";
+  static String postedJob = "api/get-job-post";
   static String getApplyJob = "api/get-job-post-one";
   static String applyJob = "api/create-private-job-post";
   static String viewAppliedCandidate = "api/get-job-post-one";

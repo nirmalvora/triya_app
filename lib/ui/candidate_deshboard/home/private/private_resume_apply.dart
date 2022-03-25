@@ -48,6 +48,7 @@ class PrivateResumeApply extends StatelessWidget {
         ],
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Container(
@@ -82,280 +83,1255 @@ class PrivateResumeApply extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            StackWidget(name: "PERSONAL STATEMENT"),
-                            SizedBox(
-                              height: 30.h,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Text(
-                                controller.resumeResponse.value?.resumeData?[0]
-                                        .tellSomethingAboutYou ??
-                                    "",
-                                style: TextStyle(
-                                  color: ColorConstant.textColor,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: TextFontFamily.openSensRegular,
-                                  fontSize: 30.sp,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
-                            StackWidget(name: "CONTACT INFORMATION"),
-                            SizedBox(
-                              height: 30.h,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 15),
-                              child: Column(
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .tellSomethingAboutYou !=
+                                null)
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'COMPANY NAME',
-                                    style: TextStyle(
-                                      color: ColorConstant.splashColor,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 30.sp,
-                                    ),
-                                  ),
-                                  Text(
-                                    controller
-                                            .resumeResponse
-                                            .value
-                                            ?.resumeData?[0]
-                                            .resumeProfessionalExperiences
-                                            ?.companyName ??
-                                        "",
-                                    style: TextStyle(
-                                      color: ColorConstant.textColor,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 35.sp,
-                                    ),
-                                  ),
+                                  StackWidget(name: "PERSONAL STATEMENT"),
                                   SizedBox(
-                                    height: 40.h,
+                                    height: 30.h,
                                   ),
-                                  Text(
-                                    'ROLE',
-                                    style: TextStyle(
-                                      color: ColorConstant.splashColor,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 30.sp,
-                                    ),
-                                  ),
-                                  Text(
-                                    controller
-                                            .resumeResponse
-                                            .value
-                                            ?.resumeData?[0]
-                                            .resumeProfessionalExperiences
-                                            ?.role ??
-                                        "",
-                                    style: TextStyle(
-                                      color: ColorConstant.textColor,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 35.sp,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 40.h,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'FROM DATE',
-                                            style: TextStyle(
-                                              color: ColorConstant.splashColor,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 30.sp,
-                                            ),
-                                          ),
-                                          Text(
-                                            controller
-                                                    .resumeResponse
-                                                    .value
-                                                    ?.resumeData?[0]
-                                                    .resumeProfessionalExperiences
-                                                    ?.fromDate ??
-                                                "",
-                                            style: TextStyle(
-                                              color: ColorConstant.textColor,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 35.sp,
-                                            ),
-                                          ),
-                                        ],
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    child: Text(
+                                      controller
+                                              .resumeResponse
+                                              .value
+                                              ?.resumeData?[0]
+                                              .tellSomethingAboutYou ??
+                                          "",
+                                      style: TextStyle(
+                                        color: ColorConstant.textColor,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily:
+                                            TextFontFamily.openSensRegular,
+                                        fontSize: 30.sp,
                                       ),
-                                      Spacer(),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'To DATE',
-                                            style: TextStyle(
-                                              color: ColorConstant.splashColor,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 30.sp,
-                                            ),
-                                          ),
-                                          Text(
-                                            controller
-                                                    .resumeResponse
-                                                    .value
-                                                    ?.resumeData?[0]
-                                                    .resumeProfessionalExperiences
-                                                    ?.toDate ??
-                                                "",
-                                            style: TextStyle(
-                                              color: ColorConstant.textColor,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 35.sp,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(),
-                                    ],
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
                             SizedBox(
                               height: 50.h,
                             ),
-                            StackWidget(name: "ACADEMIC HISTORY"),
-                            SizedBox(
-                              height: 30.h,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 15),
-                              child: Column(
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeConcactInformation !=
+                                null)
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'SCHOOL NAME',
-                                    style: TextStyle(
-                                      color: ColorConstant.splashColor,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 30.sp,
-                                    ),
-                                  ),
-                                  Text(
-                                    controller
-                                            .resumeResponse
-                                            .value
-                                            ?.resumeData?[0]
-                                            .resumeAcademicHistories
-                                            ?.schoolName ??
-                                        "",
-                                    style: TextStyle(
-                                      color: ColorConstant.textColor,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 35.sp,
-                                    ),
-                                  ),
+                                  StackWidget(name: "CONTACT INFORMATION"),
                                   SizedBox(
-                                    height: 40.h,
+                                    height: 30.h,
                                   ),
-                                  Text(
-                                    'YEAR OF PASSING',
-                                    style: TextStyle(
-                                      color: ColorConstant.splashColor,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 30.sp,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'MOBILE NO',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeConcactInformation
+                                                  ?.mobileNo ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          'EMAIL ID',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeConcactInformation
+                                                  ?.email ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'HOUSE NO',
+                                                  style: TextStyle(
+                                                    color: ColorConstant
+                                                        .splashColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 30.sp,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  controller
+                                                          .resumeResponse
+                                                          .value
+                                                          ?.resumeData?[0]
+                                                          .resumeConcactInformation
+                                                          ?.houseNo ??
+                                                      "",
+                                                  style: TextStyle(
+                                                    color:
+                                                        ColorConstant.textColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 35.sp,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'AREA',
+                                                  style: TextStyle(
+                                                    color: ColorConstant
+                                                        .splashColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 30.sp,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  controller
+                                                          .resumeResponse
+                                                          .value
+                                                          ?.resumeData?[0]
+                                                          .resumeConcactInformation
+                                                          ?.area ??
+                                                      "",
+                                                  style: TextStyle(
+                                                    color:
+                                                        ColorConstant.textColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 35.sp,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'CITY',
+                                                  style: TextStyle(
+                                                    color: ColorConstant
+                                                        .splashColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 30.sp,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  controller
+                                                          .resumeResponse
+                                                          .value
+                                                          ?.resumeData?[0]
+                                                          .resumeConcactInformation
+                                                          ?.city ??
+                                                      "",
+                                                  style: TextStyle(
+                                                    color:
+                                                        ColorConstant.textColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 35.sp,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'STATE',
+                                                  style: TextStyle(
+                                                    color: ColorConstant
+                                                        .splashColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 30.sp,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  controller
+                                                          .resumeResponse
+                                                          .value
+                                                          ?.resumeData?[0]
+                                                          .resumeConcactInformation
+                                                          ?.state ??
+                                                      "",
+                                                  style: TextStyle(
+                                                    color:
+                                                        ColorConstant.textColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 35.sp,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                          ],
+                                        ),
+                                        SizedBox(height: 40.h),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'PINCODE',
+                                              style: TextStyle(
+                                                color:
+                                                    ColorConstant.splashColor,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 30.sp,
+                                              ),
+                                            ),
+                                            Text(
+                                              controller
+                                                      .resumeResponse
+                                                      .value
+                                                      ?.resumeData?[0]
+                                                      .resumeConcactInformation
+                                                      ?.pinCode ??
+                                                  "",
+                                              style: TextStyle(
+                                                color: ColorConstant.textColor,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 35.sp,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                  Text(
-                                    controller
-                                            .resumeResponse
-                                            .value
-                                            ?.resumeData?[0]
-                                            .resumeAcademicHistories
-                                            ?.yearOfPassing ??
-                                        "",
-                                    style: TextStyle(
-                                      color: ColorConstant.textColor,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 35.sp,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 40.h,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'FROM DATE',
-                                            style: TextStyle(
-                                              color: ColorConstant.splashColor,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 30.sp,
-                                            ),
-                                          ),
-                                          Text(
-                                            controller
-                                                    .resumeResponse
-                                                    .value
-                                                    ?.resumeData?[0]
-                                                    .resumeAcademicHistories
-                                                    ?.fromDate ??
-                                                "",
-                                            style: TextStyle(
-                                              color: ColorConstant.textColor,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 35.sp,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'To DATE',
-                                            style: TextStyle(
-                                              color: ColorConstant.splashColor,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 30.sp,
-                                            ),
-                                          ),
-                                          Text(
-                                            controller
-                                                    .resumeResponse
-                                                    .value
-                                                    ?.resumeData?[0]
-                                                    .resumeAcademicHistories
-                                                    ?.toDate ??
-                                                "",
-                                            style: TextStyle(
-                                              color: ColorConstant.textColor,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 35.sp,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(),
-                                    ],
                                   ),
                                 ],
                               ),
+                            SizedBox(
+                              height: 50.h,
                             ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeProfessionalExperiences !=
+                                null)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StackWidget(name: "PROFESSIONAL EXPERIENCE"),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'COMPANY NAME',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeProfessionalExperiences
+                                                  ?.companyName ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          'ROLE',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeProfessionalExperiences
+                                                  ?.role ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'FROM DATE',
+                                                  style: TextStyle(
+                                                    color: ColorConstant
+                                                        .splashColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 30.sp,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  controller
+                                                          .resumeResponse
+                                                          .value
+                                                          ?.resumeData?[0]
+                                                          .resumeProfessionalExperiences
+                                                          ?.fromDate ??
+                                                      "",
+                                                  style: TextStyle(
+                                                    color:
+                                                        ColorConstant.textColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 35.sp,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'To DATE',
+                                                  style: TextStyle(
+                                                    color: ColorConstant
+                                                        .splashColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 30.sp,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  controller
+                                                          .resumeResponse
+                                                          .value
+                                                          ?.resumeData?[0]
+                                                          .resumeProfessionalExperiences
+                                                          ?.toDate ??
+                                                      "",
+                                                  style: TextStyle(
+                                                    color:
+                                                        ColorConstant.textColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 35.sp,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            SizedBox(
+                              height: 50.h,
+                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeAcademicHistories !=
+                                null)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StackWidget(name: "ACADEMIC HISTORY"),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'SCHOOL NAME',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.schoolName ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          'YEAR OF PASSING',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.yearOfPassing ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          'SSL SCORE',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.sslSocre ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          'SECONDARY DIPLOMA',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.secondaryDiploma ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          'YEAR OF PASSING',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.yearOfPassing ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          'SCORE(PERCENTAGE)',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.score ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          'DEGREE QULAFICATION',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.instituteName ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'FROM DATE',
+                                                  style: TextStyle(
+                                                    color: ColorConstant
+                                                        .splashColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 30.sp,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  controller
+                                                          .resumeResponse
+                                                          .value
+                                                          ?.resumeData?[0]
+                                                          .resumeAcademicHistories
+                                                          ?.fromDate ??
+                                                      "",
+                                                  style: TextStyle(
+                                                    color:
+                                                        ColorConstant.textColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 35.sp,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'To DATE',
+                                                  style: TextStyle(
+                                                    color: ColorConstant
+                                                        .splashColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 30.sp,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  controller
+                                                          .resumeResponse
+                                                          .value
+                                                          ?.resumeData?[0]
+                                                          .resumeAcademicHistories
+                                                          ?.toDate ??
+                                                      "",
+                                                  style: TextStyle(
+                                                    color:
+                                                        ColorConstant.textColor,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 35.sp,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.backlog ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.agregatedScore ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.gapBetweenEducation ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.reasonGapBetweenEducation ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          'MASTERS',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.instituteName ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.sepcialization ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAcademicHistories
+                                                  ?.yearsOfCompletion ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            SizedBox(
+                              height: 50.h,
+                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeAcademicHistories !=
+                                null)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StackWidget(name: "KEY SKILL"),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'ADD SKILL',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeKeySkills
+                                                  ?.skill ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            SizedBox(
+                              height: 50.h,
+                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeIndustryAwards !=
+                                null)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StackWidget(name: "INDUSTRY AWARDS"),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'AWARD',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeIndustryAwards
+                                                  ?.awardDescription ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            SizedBox(
+                              height: 50.h,
+                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeProfessionalCertifications !=
+                                null)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StackWidget(
+                                      name: "PROFESSIONAL CERTIFICATIONS"),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'CERTIFICATION TITLE',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeProfessionalCertifications
+                                                  ?.title ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(height: 40.h),
+                                        Text(
+                                          'CERTIFICATION DESCRIPTION',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeProfessionalCertifications
+                                                  ?.description ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            SizedBox(
+                              height: 50.h,
+                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumePublications !=
+                                null)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StackWidget(name: "PUBLICATION"),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'CERTIFICATION TITLE',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumePublications
+                                                  ?.title ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(height: 40.h),
+                                        Text(
+                                          'CERTIFICATION DESCRIPTION',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumePublications
+                                                  ?.description ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            SizedBox(
+                              height: 50.h,
+                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeProfessionalAffiliations !=
+                                null)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StackWidget(name: "PROFISSIOCAL AFFILIATION"),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'AFFILIATION TITLE',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeProfessionalAffiliations
+                                                  ?.title ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(height: 40.h),
+                                        Text(
+                                          'AFFILIATION DESCRIPTION',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeProfessionalAffiliations
+                                                  ?.description ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            SizedBox(
+                              height: 50.h,
+                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeConferenceAttendeds !=
+                                null)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StackWidget(name: "CONFERENCE ATTENDED"),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'CONFERENCE DESCRIPTION',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeConferenceAttendeds
+                                                  ?.description ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            SizedBox(
+                              height: 50.h,
+                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeAdditionalTrains !=
+                                null)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StackWidget(name: "ADDITIONAL TRAINING"),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'COMPANY NAME/ TRANING CENTER',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAdditionalTrains
+                                                  ?.companyName ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(height: 40.h),
+                                        Text(
+                                          'SECIALIZATION FIELD',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAdditionalTrains
+                                                  ?.secialization ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                        SizedBox(height: 40.h),
+                                        Text(
+                                          'DESCRIPTION',
+                                          style: TextStyle(
+                                            color: ColorConstant.splashColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 30.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          controller
+                                                  .resumeResponse
+                                                  .value
+                                                  ?.resumeData?[0]
+                                                  .resumeAdditionalTrains
+                                                  ?.description ??
+                                              "",
+                                          style: TextStyle(
+                                            color: ColorConstant.textColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 35.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             SizedBox(
                               height: 100.h,
                             ),
@@ -490,19 +1466,6 @@ class PrivateResumeApply extends StatelessWidget {
                                 color: ColorConstant.textColor,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 52.sp,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Center(
-                            child: Text(
-                              'UIUX Designer',
-                              style: TextStyle(
-                                color: ColorConstant.splashColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 30.sp,
                               ),
                             ),
                           ),

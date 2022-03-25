@@ -240,8 +240,10 @@ class EmployerSignUp extends StatelessWidget {
                                 children: [
                                   SelectState(
                                     style: TextStyle(
-                                        color: ColorConstant.backgroundColor),
-                                    dropdownColor: ColorConstant.splashColor,
+                                      color: ColorConstant.backgroundColor,
+                                    ),
+                                    dropdownColor: ColorConstant.splashColor
+                                        .withOpacity(0.7),
                                     onCountryChanged: (value) {
                                       controller.countryValue = value;
                                     },
@@ -292,6 +294,10 @@ class EmployerSignUp extends StatelessWidget {
                                 if (controller.formKey.currentState!
                                     .validate()) {
                                   controller.signup();
+                                  Get.back();
+                                } else {
+                                  Get.snackbar(
+                                      "Missing field", "Please fell all field");
                                 }
                               },
                               child: Container(

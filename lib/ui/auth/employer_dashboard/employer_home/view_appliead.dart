@@ -11,6 +11,7 @@ import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_new_job.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/posted_job_detail_controller.dart';
+import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ViewApplieadScreen extends StatelessWidget {
@@ -55,25 +56,7 @@ class ViewApplieadScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 30.w, bottom: 10.h),
-            child: Center(
-              child: Container(
-                height: 115.h,
-                width: 115.h,
-                decoration: BoxDecoration(
-                    color: ColorConstant.white,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Color(0xffE9E9E9), width: 3)),
-                child: ClipOval(
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        'https://s3-alpha-sig.figma.com/img/5387/ddcd/21388124e311307deee7a85f44bd1b8a?Expires=1648425600&Signature=PyYl48Eck5h8SBcMaDRIyCz-X9rzWs7zsRnfGTyb~zRq2SlR04gvUFTRLdOh48UBqO3j~gV2l55wZ-ZPjfQmLSi8eoh6Wq7D7JatJRFLeOSFfybCrZi~H8GljKEvJVeb-~oQ9FN3zOOPNzlCITqnLSyL8iRio8Ef7ULzfQUAHaDR-TqdbKhQU3HbCRVbQO1PDsvsodqF3WmQnhHGtq7oQxTFK1bgWbQX8-yJ901xP3rs2kKXbDKtL-LfBFepB~-l2zJ7W-KBmotXvAxKo5-AmrO5oNXD6PvymKsSGBcPdid9Y3FewHGVLj0z6IP5-28UBevK796~kI8EGqKNf-uZbw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
-                    height: 77.h,
-                    width: 77.w,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
+            child: AppBarCircleAvtar(),
           )
         ],
       ),
@@ -196,7 +179,7 @@ class ViewApplieadScreen extends StatelessWidget {
                         InkWell(
                           onTap: () async {
                             AppState.downloadFile(
-                                controller.postedJob.value?.upload ?? "");
+                                '${controller.postedJob.value?.upload}');
                             /* if (await canLaunch(
                                 controller.postedJob.value?.upload ?? '')) {
                               await launch(
@@ -228,10 +211,12 @@ class ViewApplieadScreen extends StatelessWidget {
                               Get.toNamed(NavigationName.appliedCandidates,
                                   arguments: {
                                     AppConstants.jobID:
-                                        controller.postedJob.value!.id!
+                                        controller.postedJob.value!.id
                                   });
+                              print(
+                                  'sagar devani ${controller.postedJob.value!.id}');
                             },
-                            text: 'View Appliead Candidates'),
+                            text: 'View Applied Candidates'),
                         SizedBox(
                             height: MediaQuery.of(context).padding.bottom + 20),
                       ],

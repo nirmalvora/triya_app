@@ -3,10 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
-import 'package:triya_app/constants/image_constant.dart';
 import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/gov/gov_job_detail_controller.dart';
-import 'package:triya_app/utils/app_utils.dart';
 import 'package:triya_app/utils/date_formatter.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -295,7 +293,7 @@ class _GovDescriptionState extends State<GovDescription> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Job Link:',
+                        'Link:',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -308,15 +306,26 @@ class _GovDescriptionState extends State<GovDescription> {
                       SizedBox(
                         height: 7,
                       ),
-                      Text(
-                        controller.govJob.value?.jobLink ?? "",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: TextFontFamily.openSansBold,
-                          fontSize: 35.sp,
+                      GestureDetector(
+                        onTap: () async {
+                          if (await canLaunch(
+                              controller.govJob.value?.jobLink ?? '')) {
+                            await launch(
+                                controller.govJob.value?.jobLink ?? '');
+                          } else {
+                            throw 'Could not launch "${controller.govJob.value?.jobLink ?? ''}"';
+                          }
+                        },
+                        child: Text(
+                          controller.govJob.value?.jobLink ?? "",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: ColorConstant.blue,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: TextFontFamily.openSansBold,
+                            fontSize: 35.sp,
+                          ),
                         ),
                       ),
                     ],

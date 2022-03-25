@@ -120,7 +120,13 @@ class EmployeeSignUpScreen extends StatelessWidget {
                       SizedBox(height: 96.h),
                       GestureDetector(
                         onTap: () {
-                          controller.signup();
+                          if (controller.formKey.currentState!.validate()) {
+                            controller.signup();
+                            Get.back();
+                          } else {
+                            Get.snackbar(
+                                "Missing field", "Please fell all field");
+                          }
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(

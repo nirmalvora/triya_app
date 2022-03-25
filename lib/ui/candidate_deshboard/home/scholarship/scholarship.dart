@@ -42,7 +42,7 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
           ),
         ),
         title: Text(
-          "Scholarship Job",
+          "Scholarship",
           style: TextStyle(color: ColorConstant.splashColor),
         ),
         actions: [

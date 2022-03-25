@@ -89,7 +89,7 @@ class HomeController extends GetxController {
   void addPoll(id) {
     BaseApiService.instance.post(ServiceConstant.addPoll, data: {
       'option': id,
-      "que_id": quizResponse.value!.data![1].id!
+      "que_id": quizResponse.value!.data![0].id!
     }).then((value) {
       quizData();
     });

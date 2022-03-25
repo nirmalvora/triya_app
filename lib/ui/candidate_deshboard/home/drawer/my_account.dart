@@ -92,9 +92,8 @@ class _MyAccountState extends State<MyAccount> {
                     () => Row(
                       children: [
                         Text(
-                          AppState.loginData.value?.user?.firstName!
-                                  .toUpperCase() ??
-                              "",
+                          (AppState.loginData.value?.user?.firstName ?? "")
+                              .toUpperCase(),
                           style: TextStyle(
                             color: ColorConstant.textColor,
                             fontWeight: FontWeight.w700,
@@ -106,9 +105,8 @@ class _MyAccountState extends State<MyAccount> {
                           width: 10.w,
                         ),
                         Text(
-                          AppState.loginData.value?.user?.lastName!
-                                  .toUpperCase() ??
-                              "",
+                          (AppState.loginData.value?.user?.lastName ?? "")
+                              .toUpperCase(),
                           style: TextStyle(
                             color: ColorConstant.textColor,
                             fontWeight: FontWeight.w700,
@@ -135,7 +133,7 @@ class _MyAccountState extends State<MyAccount> {
                 ],
               ),
               Text(
-                "${AppState.loginData.value?.user?.email}",
+                AppState.loginData.value?.user?.email ?? "",
                 style: TextStyle(
                   color: ColorConstant.textColor,
                   fontWeight: FontWeight.w700,

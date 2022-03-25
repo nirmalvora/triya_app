@@ -41,7 +41,7 @@ class AppliedJobs extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Obx(
           () => ((controller.appliedJob.value?.data?.length ?? 0) == null
               ? Center(
@@ -58,48 +58,67 @@ class AppliedJobs extends StatelessWidget {
                       padding: EdgeInsets.zero,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: EdgeInsets.only(bottom: 24.h),
+                          padding: const EdgeInsets.symmetric(vertical: 7),
                           child: Container(
-                            width: double.infinity,
                             decoration: BoxDecoration(
-                              color: Color(0xffEEF5FF),
-                              borderRadius: BorderRadius.circular(88.r),
+                              borderRadius: BorderRadius.circular(12),
+                              gradient: LinearGradient(
+                                colors: const [
+                                  Color(0xffffffff),
+                                  ColorConstant.privateJobBgColor
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(22.r),
+                              padding: const EdgeInsets.only(left: 10),
                               child: Row(
                                 children: [
                                   Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 7),
-                                      child: Text(
-                                        controller.appliedJob.value
-                                                ?.data![index].jobTitle ??
-                                            "",
-                                        style: TextStyle(
-                                            fontFamily: "OpenSans-Regular",
-                                            color: ColorConstant.black,
-                                            fontWeight: FontWeight.w600),
-                                      ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                controller
+                                                        .appliedJob
+                                                        .value
+                                                        ?.data![index]
+                                                        .jobTitle ??
+                                                    "",
+                                                maxLines: 2,
+                                                style: TextStyle(
+                                                  color:
+                                                      ColorConstant.textColor,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 30.sp,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 7,
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  /*InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 91.h,
-                                      width: 91.w,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Color(0xff3782F3)),
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Icon(
-                                        Icons.download_rounded,
-                                        size: 18,
-                                        color: Color(0xff3782F3),
-                                      ),
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 5, vertical: 5),
+                                    height: 100.h,
+                                    width: 100.h,
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                      borderRadius: BorderRadius.circular(27.h),
                                     ),
-                                  ),*/
+                                  ),
                                 ],
                               ),
                             ),

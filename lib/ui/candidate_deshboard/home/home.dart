@@ -391,14 +391,14 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Image.asset(
               AppUtils.getPNGAsset(ImageConstant.appLogoIcon),
-              height: 35,
+              height: 45,
             ),
             Text(
               'Triya',
               style: TextStyle(
                 color: ColorConstant.textColor,
                 fontWeight: FontWeight.w600,
-                fontSize: 45.sp,
+                fontSize: 60.sp,
               ),
             ),
           ],
@@ -459,7 +459,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   children: [
                     _buildOption(
-                        'Government Jobs',
+                        'Government',
                         ImageConstant.indiaEmblemIcon,
                         [Color(0xffDFECFE), Color(0xffFFFFFF)],
                         [Color(0xffDFECFE), Color(0xffFFFFFF)],
@@ -467,7 +467,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Get.toNamed(NavigationName.govJobPage);
                     }),
                     _buildOption(
-                        'Private Jobs',
+                        'Private',
                         ImageConstant.privateIcon,
                         [Color(0xffDFF8FE), Color(0xffffffff)],
                         [Color(0xffDFF8FE), Color(0xffFFFFFF)],
@@ -475,7 +475,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Get.toNamed(NavigationName.privateJobPage);
                     }),
                     _buildOption(
-                        'Scholarship Jobs',
+                        'Scholarship',
                         ImageConstant.scholarshipIcon,
                         [Color(0xffFEF2DF), Color(0xffFFFFFF)],
                         [Color(0xffFEF2DF), Color(0xffFFFFFF)],
@@ -511,7 +511,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          'Create Your Resume',
+                          'Create Your Resume'.toUpperCase(),
                           style: TextStyle(
                             color: ColorConstant.backgroundColor,
                             fontWeight: FontWeight.w600,
@@ -1054,7 +1054,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     topLeft: Radius.circular(34.h),
                     bottomLeft: Radius.circular(34.h),
                   ),
-                  color: pr != 0
+                  color: pr != 0 && controller.yourAnsId.value != 0
                       ? (optionId != controller.yourAnsId.value)
                           ? Color(0xffE2E2E2)
                           : Color(0xff59D77C)
@@ -1094,39 +1094,42 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 113.h,
                         width: (constraints.maxWidth * pr) / 100,
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              (optionId != controller.yourAnsId.value)
-                                  ? Color(0xffE2E2E2)
-                                  : Color(0xff59D77C),
-                              (optionId != controller.yourAnsId.value)
-                                  ? Color(0xfff1f1f1)
-                                  : Color(0xffA4FDBD)
-                            ],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          ),
+                          gradient: controller.yourAnsId.value != 0
+                              ? LinearGradient(
+                                  colors: [
+                                    (optionId != controller.yourAnsId.value)
+                                        ? Color(0xffE2E2E2)
+                                        : Color(0xff59D77C),
+                                    (optionId != controller.yourAnsId.value)
+                                        ? Color(0xfff1f1f1)
+                                        : Color(0xffA4FDBD)
+                                  ],
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                )
+                              : null,
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 15),
                           child: Row(
                             children: [
                               Spacer(),
-                              Flexible(
-                                child: Text(
-                                  pr.toStringAsFixed(2),
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    color:
-                                        (optionId != controller.yourAnsId.value)
-                                            ? ColorConstant.text1Color
-                                            : Colors.black,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: TextFontFamily.openSansBold,
-                                    fontSize: 30.sp,
+                              if (controller.yourAnsId.value != 0)
+                                Flexible(
+                                  child: Text(
+                                    pr.toStringAsFixed(2),
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      color: (optionId !=
+                                              controller.yourAnsId.value)
+                                          ? ColorConstant.text1Color
+                                          : Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: TextFontFamily.openSansBold,
+                                      fontSize: 30.sp,
+                                    ),
                                   ),
                                 ),
-                              ),
                             ],
                           ),
                         ),
@@ -1185,8 +1188,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Center(
                       child: Image.asset(
                         AppUtils.getPNGAsset(image),
-                        height: 74.h,
-                        width: 74.h,
+                        height: 120.h,
+                        width: 120.h,
                       ),
                     ),
                   ),
@@ -1198,7 +1201,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(
                       color: ColorConstant.textColor,
                       fontWeight: FontWeight.w700,
-                      fontSize: 25.sp,
+                      fontSize: 32.sp,
                     ),
                   ),
                 ],

@@ -8,6 +8,7 @@ import 'package:triya_app/ui/auth/employe_login/employe_signup.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_dashboard.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_new_job.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/applied_candidates.dart';
+import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employer_home_screen.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/view_appliead.dart';
 import 'package:triya_app/ui/auth/employer_login/employer_login_screen.dart';
 import 'package:triya_app/ui/auth/employer_login/employer_sign_in.dart';
@@ -190,7 +191,7 @@ class NavigationRoute {
     ),
     GetPage(
       name: NavigationName.employerDashboard,
-      page: () => EmployerDashboard(),
+      page: () => EmployerHomeScreen(),
     ),
     GetPage(
       name: NavigationName.addNewJob,

@@ -25,7 +25,7 @@ class EmployerHomeController extends GetxController {
   }
 
   void getTopBannerData() {
-    BaseApiService.instance.get(ServiceConstant.PostedJob).then((value) {
+    BaseApiService.instance.get(ServiceConstant.postedJob).then((value) {
       PostedJobResModel response = PostedJobResModel.fromJson(value!.data);
       postedJobResponse.value = response;
       postedJobResponse.refresh();

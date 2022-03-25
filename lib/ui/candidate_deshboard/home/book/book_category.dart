@@ -152,7 +152,6 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
                                     }
                                   },
                                   child: Container(
-                                    height: 163.h,
                                     decoration: BoxDecoration(
                                       color: Color(0xffF6F6F6),
                                       borderRadius: BorderRadius.circular(30.h),
@@ -163,7 +162,7 @@ class _BookCategoryScreenState extends State<BookCategoryScreen> {
                                         children: [
                                           Container(
                                             margin: EdgeInsets.symmetric(
-                                                horizontal: 10),
+                                                horizontal: 10, vertical: 10),
                                             height: 120.h,
                                             width: 130.h,
                                             decoration: BoxDecoration(

@@ -333,7 +333,6 @@ class _EmployerHomeScreenState extends State<EmployerHomeScreen> {
                                         arguments: {"get-job-post": data});
                                   },
                                   child: Container(
-                                    height: 140.h,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(12),
                                         color: Color(0xffF1F1F1)),

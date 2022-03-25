@@ -286,7 +286,7 @@ class PrivateDescription extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Job Link:',
+                        'Link:',
                         style: TextStyle(
                           color: ColorConstant.hintTextColor,
                           fontWeight: FontWeight.w400,
@@ -297,15 +297,26 @@ class PrivateDescription extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text(
-                        controller.govJob.value?.jobLink ?? "",
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: TextFontFamily.openSansBold,
-                          fontSize: 35.sp,
+                      GestureDetector(
+                        onTap: () async {
+                          if (await canLaunch(
+                              controller.govJob.value?.jobLink ?? '')) {
+                            await launch(
+                                controller.govJob.value?.jobLink ?? '');
+                          } else {
+                            throw 'Could not launch "${controller.govJob.value?.jobLink ?? ''}"';
+                          }
+                        },
+                        child: Text(
+                          controller.govJob.value?.jobLink ?? "",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: ColorConstant.blue,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: TextFontFamily.openSansBold,
+                            fontSize: 35.sp,
+                          ),
                         ),
                       ),
                     ],

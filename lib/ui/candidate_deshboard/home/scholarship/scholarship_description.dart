@@ -39,7 +39,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
           ),
         ),
         title: Text(
-          "Scolarship Job",
+          "Scolarship",
           style: TextStyle(color: ColorConstant.splashColor),
         ),
         actions: const [
@@ -249,7 +249,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Job Link:',
+                        'Link:',
                         style: TextStyle(
                           color: ColorConstant.hintTextColor,
                           fontWeight: FontWeight.w400,
@@ -260,15 +260,26 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                       SizedBox(
                         height: 5,
                       ),
-                      Text(
-                        controller.govJob.value?.scholarLink ?? "",
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: ColorConstant.textColor,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: TextFontFamily.openSansBold,
-                          fontSize: 35.sp,
+                      GestureDetector(
+                        onTap: () async {
+                          if (await canLaunch(
+                              controller.govJob.value?.scholarLink ?? '')) {
+                            await launch(
+                                controller.govJob.value?.scholarLink ?? '');
+                          } else {
+                            throw 'Could not launch "${controller.govJob.value?.scholarLink ?? ''}"';
+                          }
+                        },
+                        child: Text(
+                          controller.govJob.value?.scholarLink ?? "",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: ColorConstant.blue,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: TextFontFamily.openSansBold,
+                            fontSize: 35.sp,
+                          ),
                         ),
                       ),
                     ],

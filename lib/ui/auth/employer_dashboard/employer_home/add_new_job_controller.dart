@@ -44,7 +44,7 @@ class AddNewJobController extends GetxController {
         'category_id': dropdownValue!
       });
       BaseApiService.instance
-          .postForm(ServiceConstant.AddNewJob, data: data)
+          .postForm(ServiceConstant.addNewJob, data: data)
           .then((value) {
         final controller = Get.put(EmployerHomeController());
         controller.getData();

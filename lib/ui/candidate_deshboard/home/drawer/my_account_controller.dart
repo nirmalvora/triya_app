@@ -63,9 +63,7 @@ class MyAccountController extends GetxController {
   final picker = ImagePicker();
   Rx<File?> image = Rx<File?>(null);
   Future getImage() async {
-    final pickedFile = await picker.getImage(
-      source: ImageSource.gallery,
-    );
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       sendFile(pickedFile);
       image.value = File(pickedFile.path);

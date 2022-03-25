@@ -8,6 +8,8 @@ class AppliedCandidateController extends GetxController {
   final applyJob = Rx<ApplyJobResponse?>(null);
   final loading = false.obs;
   final jobId = 0.obs;
+  final searchText = "".obs;
+
   @override
   void onReady() {
     super.onReady();

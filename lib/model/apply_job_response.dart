@@ -68,7 +68,7 @@ class ApplyJob {
     if (json['private_jobs'] != null) {
       privateJobs = <PrivateJobs>[];
       json['private_jobs'].forEach((v) {
-        privateJobs!.add(new PrivateJobs.fromJson(v));
+        privateJobs!.add(PrivateJobs.fromJson(v));
       });
     }
   }
@@ -98,31 +98,33 @@ class PrivateJobs {
   int? id;
   int? userId;
   int? empId;
+  String? upload;
   String? createdAt;
   String? updatedAt;
   String? email;
   String? firstName;
   String? lastName;
-  Null? mobile;
+  String? mobile;
   String? socialId;
   String? profilePicture;
-  Null? companyName;
-  Null? officeNo;
-  Null? area;
-  Null? country;
-  Null? state;
-  Null? city;
-  Null? emailVerifiedAt;
+  String? companyName;
+  String? officeNo;
+  String? area;
+  String? country;
+  String? state;
+  String? city;
+  String? emailVerifiedAt;
   String? loginType;
   String? password;
   int? isApproved;
-  Null? rememberToken;
+  String? rememberToken;
   int? roleId;
 
   PrivateJobs(
       {this.id,
       this.userId,
       this.empId,
+      this.upload,
       this.createdAt,
       this.updatedAt,
       this.email,
@@ -148,6 +150,7 @@ class PrivateJobs {
     id = json['id'];
     userId = json['user_id'];
     empId = json['emp_id'];
+    upload = json['upload'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     email = json['email'];
@@ -175,6 +178,7 @@ class PrivateJobs {
     data['id'] = this.id;
     data['user_id'] = this.userId;
     data['emp_id'] = this.empId;
+    data['upload'] = this.upload;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     data['email'] = this.email;
