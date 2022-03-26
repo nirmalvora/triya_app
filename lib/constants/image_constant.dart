@@ -23,6 +23,7 @@ class ImageConstant {
   static String backgroundImage = "background_image";
   static String closeIcon = "close_icon";
   static String indiaEmblemIcon = "india_emblem";
+  static String placeholderImage = "placeholder";
 
   static String otp_login = "otp_login";
   static String google_Icon = "google_icon";

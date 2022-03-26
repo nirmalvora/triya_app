@@ -425,15 +425,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         controller.topBannerResponse.value?.data?.length ?? 0,
                     itemBuilder: (BuildContext context, int itemIndex,
                             int pageViewIndex) =>
-                        Container(
-                      margin: EdgeInsets.symmetric(horizontal: 8.w),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(31.r),
-                          image: DecorationImage(
-                              image: NetworkImage(controller.topBannerResponse
-                                      .value?.data?[itemIndex].image ??
-                                  ""),
-                              fit: BoxFit.cover)),
+                        ClipRRect(
+                      borderRadius: BorderRadius.circular(31.r),
+                      child: CachedNetworkImage(
+                        imageUrl: controller.topBannerResponse.value
+                                ?.data?[itemIndex].image ??
+                            "",
+                        fit: BoxFit.cover,
+                        errorWidget: (context, url, error) => Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
                     ),
                     options: CarouselOptions(
                       height: 341.h,
@@ -710,22 +712,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 Obx(
                   () => CarouselSlider.builder(
                     itemCount:
-                        controller.bottomBannerResponse.value?.data?.length ??
-                            0,
+                        controller.topBannerResponse.value?.data?.length ?? 0,
                     itemBuilder: (BuildContext context, int itemIndex,
                             int pageViewIndex) =>
-                        Container(
-                      margin: EdgeInsets.symmetric(horizontal: 8.w),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(31.r),
-                          image: DecorationImage(
-                              image: NetworkImage(controller
-                                      .bottomBannerResponse
-                                      .value
-                                      ?.data?[itemIndex]
-                                      .image ??
-                                  ''),
-                              fit: BoxFit.cover)),
+                        ClipRRect(
+                      borderRadius: BorderRadius.circular(31.r),
+                      child: CachedNetworkImage(
+                        imageUrl: controller.bottomBannerResponse.value
+                                ?.data?[itemIndex].image ??
+                            '',
+                        fit: BoxFit.cover,
+                        errorWidget: (context, url, error) => Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
                     ),
                     options: CarouselOptions(
                       height: 341.h,
