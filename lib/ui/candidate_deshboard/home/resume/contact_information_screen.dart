@@ -67,7 +67,7 @@ class ContactInformationScreen extends StatelessWidget {
                   height: 40.h,
                 ),
                 Text(
-                  'ADDRESS *',
+                  'ADDRESS',
                   style: TextStyle(
                     color: ColorConstant.splashColor,
                     fontWeight: FontWeight.w600,
@@ -126,7 +126,7 @@ class ContactInformationScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ResumeCommonTextField(
-                        hintText: "Pincode",
+                        hintText: "PinCode",
                         controller: controller.pinCode,
                       ),
                     ),

@@ -78,7 +78,7 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                         border: InputBorder.none,
                         fillColor: Color(0xffF5F5F5),
                         filled: true,
-                        hintText: "Search for book category here",
+                        hintText: "Search for job here..",
                         hintStyle: TextStyle(
                           fontSize: 26.h,
                         ),

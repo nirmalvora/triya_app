@@ -20,7 +20,7 @@ class ProfessionalExperienceController extends GetxController {
   final agregatedScore = TextEditingController();
   final gapEducation = TextEditingController();
   final reasonGap = TextEditingController();
-  final clgName = TextEditingController();
+  final masterClgName = TextEditingController();
   final specialization = TextEditingController();
   final yearOfCompleted = TextEditingController();
   @override
@@ -69,8 +69,8 @@ class ProfessionalExperienceController extends GetxController {
       reasonGap.text = resumeViewController.resumeResponse.value?.resumeData?[0]
               .resumeAcademicHistories?.reasonGapBetweenEducation ??
           "";
-      clgName.text = resumeViewController.resumeResponse.value?.resumeData?[0]
-              .resumeAcademicHistories?.masterInsituteName ??
+      masterClgName.text = resumeViewController.resumeResponse.value
+              ?.resumeData?[0].resumeAcademicHistories?.masterInsituteName ??
           "";
       specialization.text = resumeViewController.resumeResponse.value
               ?.resumeData?[0].resumeAcademicHistories?.sepcialization ??
@@ -96,7 +96,7 @@ class ProfessionalExperienceController extends GetxController {
       'agregated_score': agregatedScore.text,
       'gap_between_education': gapEducation.text,
       'reason_gap_between_education': reasonGap.text,
-      'master_insitute_name': clgName.text,
+      'master_insitute_name': masterClgName.text,
       'sepcialization': specialization.text,
       'years_of_completion': yearOfCompleted.text,
     };

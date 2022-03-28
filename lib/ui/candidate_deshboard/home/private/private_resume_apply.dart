@@ -189,30 +189,46 @@ class PrivateResumeApply extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  'HOUSE NO',
-                                                  style: TextStyle(
-                                                    color: ColorConstant
-                                                        .splashColor,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 30.sp,
+                                                if (controller
+                                                        .resumeResponse
+                                                        .value
+                                                        ?.resumeData?[0]
+                                                        .resumeConcactInformation
+                                                        ?.houseNo !=
+                                                    null)
+                                                  Text(
+                                                    'HOUSE NO',
+                                                    style: TextStyle(
+                                                      color: ColorConstant
+                                                          .splashColor,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 30.sp,
+                                                    ),
                                                   ),
-                                                ),
-                                                Text(
-                                                  controller
-                                                          .resumeResponse
-                                                          .value
-                                                          ?.resumeData?[0]
-                                                          .resumeConcactInformation
-                                                          ?.houseNo ??
-                                                      "",
-                                                  style: TextStyle(
-                                                    color:
-                                                        ColorConstant.textColor,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 35.sp,
+                                                if (controller
+                                                        .resumeResponse
+                                                        .value
+                                                        ?.resumeData?[0]
+                                                        .resumeConcactInformation
+                                                        ?.houseNo !=
+                                                    null)
+                                                  Text(
+                                                    controller
+                                                            .resumeResponse
+                                                            .value
+                                                            ?.resumeData?[0]
+                                                            .resumeConcactInformation
+                                                            ?.houseNo ??
+                                                        "",
+                                                    style: TextStyle(
+                                                      color: ColorConstant
+                                                          .textColor,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 35.sp,
+                                                    ),
                                                   ),
-                                                ),
                                               ],
                                             ),
                                             Spacer(),
@@ -220,38 +236,61 @@ class PrivateResumeApply extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  'AREA',
-                                                  style: TextStyle(
-                                                    color: ColorConstant
-                                                        .splashColor,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 30.sp,
+                                                if (controller
+                                                        .resumeResponse
+                                                        .value
+                                                        ?.resumeData?[0]
+                                                        .resumeConcactInformation
+                                                        ?.area !=
+                                                    null)
+                                                  Text(
+                                                    'AREA',
+                                                    style: TextStyle(
+                                                      color: ColorConstant
+                                                          .splashColor,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 30.sp,
+                                                    ),
                                                   ),
-                                                ),
-                                                Text(
-                                                  controller
-                                                          .resumeResponse
-                                                          .value
-                                                          ?.resumeData?[0]
-                                                          .resumeConcactInformation
-                                                          ?.area ??
-                                                      "",
-                                                  style: TextStyle(
-                                                    color:
-                                                        ColorConstant.textColor,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 35.sp,
+                                                if (controller
+                                                        .resumeResponse
+                                                        .value
+                                                        ?.resumeData?[0]
+                                                        .resumeConcactInformation
+                                                        ?.area !=
+                                                    null)
+                                                  Text(
+                                                    controller
+                                                            .resumeResponse
+                                                            .value
+                                                            ?.resumeData?[0]
+                                                            .resumeConcactInformation
+                                                            ?.area ??
+                                                        "",
+                                                    style: TextStyle(
+                                                      color: ColorConstant
+                                                          .textColor,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 35.sp,
+                                                    ),
                                                   ),
-                                                ),
                                               ],
                                             ),
                                             Spacer(),
                                           ],
                                         ),
-                                        SizedBox(
-                                          height: 40.h,
-                                        ),
+                                        if (controller
+                                                .resumeResponse
+                                                .value
+                                                ?.resumeData?[0]
+                                                .resumeConcactInformation
+                                                ?.area !=
+                                            null)
+                                          SizedBox(
+                                            height: 40.h,
+                                          ),
                                         Row(
                                           children: [
                                             Column(
@@ -758,23 +797,37 @@ class PrivateResumeApply extends StatelessWidget {
                                         SizedBox(
                                           height: 40.h,
                                         ),
-                                        Text(
-                                          controller
-                                                  .resumeResponse
-                                                  .value
-                                                  ?.resumeData?[0]
-                                                  .resumeAcademicHistories
-                                                  ?.backlog ??
-                                              "",
-                                          style: TextStyle(
-                                            color: ColorConstant.textColor,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 35.sp,
+                                        if (controller
+                                                .resumeResponse
+                                                .value
+                                                ?.resumeData?[0]
+                                                .resumeAcademicHistories
+                                                ?.backlog !=
+                                            null)
+                                          Text(
+                                            controller
+                                                    .resumeResponse
+                                                    .value
+                                                    ?.resumeData?[0]
+                                                    .resumeAcademicHistories
+                                                    ?.backlog ??
+                                                "",
+                                            style: TextStyle(
+                                              color: ColorConstant.textColor,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 35.sp,
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 40.h,
-                                        ),
+                                        if (controller
+                                                .resumeResponse
+                                                .value
+                                                ?.resumeData?[0]
+                                                .resumeAcademicHistories
+                                                ?.backlog !=
+                                            null)
+                                          SizedBox(
+                                            height: 40.h,
+                                          ),
                                         Text(
                                           controller
                                                   .resumeResponse
@@ -826,62 +879,104 @@ class PrivateResumeApply extends StatelessWidget {
                                         SizedBox(
                                           height: 40.h,
                                         ),
-                                        Text(
-                                          'MASTERS',
-                                          style: TextStyle(
-                                            color: ColorConstant.splashColor,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 30.sp,
+                                        if (controller
+                                                .resumeResponse
+                                                .value
+                                                ?.resumeData?[0]
+                                                .resumeAcademicHistories
+                                                ?.masterInsituteName !=
+                                            null)
+                                          Text(
+                                            'MASTERS',
+                                            style: TextStyle(
+                                              color: ColorConstant.splashColor,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 30.sp,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          controller
-                                                  .resumeResponse
-                                                  .value
-                                                  ?.resumeData?[0]
-                                                  .resumeAcademicHistories
-                                                  ?.instituteName ??
-                                              "",
-                                          style: TextStyle(
-                                            color: ColorConstant.textColor,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 35.sp,
+                                        if (controller
+                                                .resumeResponse
+                                                .value
+                                                ?.resumeData?[0]
+                                                .resumeAcademicHistories
+                                                ?.masterInsituteName !=
+                                            null)
+                                          Text(
+                                            controller
+                                                    .resumeResponse
+                                                    .value
+                                                    ?.resumeData?[0]
+                                                    .resumeAcademicHistories
+                                                    ?.masterInsituteName ??
+                                                "",
+                                            style: TextStyle(
+                                              color: ColorConstant.textColor,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 35.sp,
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 40.h,
-                                        ),
-                                        Text(
-                                          controller
-                                                  .resumeResponse
-                                                  .value
-                                                  ?.resumeData?[0]
-                                                  .resumeAcademicHistories
-                                                  ?.sepcialization ??
-                                              "",
-                                          style: TextStyle(
-                                            color: ColorConstant.textColor,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 35.sp,
+                                        if (controller
+                                                .resumeResponse
+                                                .value
+                                                ?.resumeData?[0]
+                                                .resumeAcademicHistories
+                                                ?.masterInsituteName !=
+                                            null)
+                                          SizedBox(
+                                            height: 40.h,
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 40.h,
-                                        ),
-                                        Text(
-                                          controller
-                                                  .resumeResponse
-                                                  .value
-                                                  ?.resumeData?[0]
-                                                  .resumeAcademicHistories
-                                                  ?.yearsOfCompletion ??
-                                              "",
-                                          style: TextStyle(
-                                            color: ColorConstant.textColor,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 35.sp,
+                                        if (controller
+                                                .resumeResponse
+                                                .value
+                                                ?.resumeData?[0]
+                                                .resumeAcademicHistories
+                                                ?.sepcialization !=
+                                            null)
+                                          Text(
+                                            controller
+                                                    .resumeResponse
+                                                    .value
+                                                    ?.resumeData?[0]
+                                                    .resumeAcademicHistories
+                                                    ?.sepcialization ??
+                                                "",
+                                            style: TextStyle(
+                                              color: ColorConstant.textColor,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 35.sp,
+                                            ),
                                           ),
-                                        ),
+                                        if (controller
+                                                .resumeResponse
+                                                .value
+                                                ?.resumeData?[0]
+                                                .resumeAcademicHistories
+                                                ?.sepcialization !=
+                                            null)
+                                          SizedBox(
+                                            height: 40.h,
+                                          ),
+                                        if (controller
+                                                .resumeResponse
+                                                .value
+                                                ?.resumeData?[0]
+                                                .resumeAcademicHistories
+                                                ?.yearsOfCompletion !=
+                                            null)
+                                          Text(
+                                            controller
+                                                    .resumeResponse
+                                                    .value
+                                                    ?.resumeData?[0]
+                                                    .resumeAcademicHistories
+                                                    ?.yearsOfCompletion ??
+                                                "",
+                                            style: TextStyle(
+                                              color: ColorConstant.textColor,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 35.sp,
+                                            ),
+                                          ),
                                       ],
                                     ),
                                   ),

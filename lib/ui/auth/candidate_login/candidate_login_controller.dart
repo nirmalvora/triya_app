@@ -25,6 +25,7 @@ class CandidateLoginController extends GetxController {
           "uid": value.user!.uid,
           "profile_picture": value.user!.photoURL,
           "display_name": value.user!.displayName,
+          "email": value.user!.email,
         },
       ).then((value) {
         AppUtils.LoginEmployeeSuccess(value!.data);

@@ -136,7 +136,7 @@ class AcademicScreen extends StatelessWidget {
                       height: 40.h,
                     ),
                     Text(
-                      'DEGREE QUALIFICATION *',
+                      'DEGREE QUALIFICATION',
                       style: TextStyle(
                         color: ColorConstant.splashColor,
                         fontWeight: FontWeight.w600,
@@ -148,7 +148,7 @@ class AcademicScreen extends StatelessWidget {
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "Institute Name",
+                      hintText: "Institute Name*",
                       controller: controller.instituteName,
                     ),
                     SizedBox(
@@ -199,7 +199,7 @@ class AcademicScreen extends StatelessWidget {
                       height: 40.h,
                     ),
                     Text(
-                      'MASTERS *',
+                      'MASTERS',
                       style: TextStyle(
                         color: ColorConstant.splashColor,
                         fontWeight: FontWeight.w600,
@@ -211,20 +211,20 @@ class AcademicScreen extends StatelessWidget {
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                        hintText: "Institute/Collage Name*",
-                        controller: controller.clgName),
+                        hintText: "Institute/Collage Name",
+                        controller: controller.masterClgName),
                     SizedBox(
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "Sepcialization*",
+                      hintText: "Sepcialization",
                       controller: controller.specialization,
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     ResumeCommonTextField(
-                      hintText: "Years Of completion*",
+                      hintText: "Years Of completion",
                       controller: controller.yearOfCompleted,
                     ),
                     SizedBox(

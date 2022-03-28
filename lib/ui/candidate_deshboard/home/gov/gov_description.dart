@@ -438,7 +438,7 @@ class _GovDescriptionState extends State<GovDescription> {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

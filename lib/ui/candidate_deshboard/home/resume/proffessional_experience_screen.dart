@@ -113,7 +113,7 @@ class ProfessionalScreen extends StatelessWidget {
                             height: 23.h,
                           ),
                           ResumeCommonTextField(
-                            hintText: "House No.",
+                            hintText: "From mm/yy",
                             controller: controller.formDate,
                           ),
                         ],
@@ -139,7 +139,7 @@ class ProfessionalScreen extends StatelessWidget {
                             height: 23.h,
                           ),
                           ResumeCommonTextField(
-                            hintText: "Area",
+                            hintText: "To mm/yy",
                             controller: controller.endDate,
                           ),
                         ],
@@ -150,7 +150,6 @@ class ProfessionalScreen extends StatelessWidget {
                 SizedBox(
                   height: 40.h,
                 ),
-                // CommanAddButton(title: "ADD EXPERIENCE", onTap: () {})
               ],
             ),
           ),
