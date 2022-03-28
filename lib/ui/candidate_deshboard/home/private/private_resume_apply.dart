@@ -113,9 +113,12 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .tellSomethingAboutYou !=
+                                null)
+                              SizedBox(
+                                height: 50.h,
+                              ),
                             if (controller.resumeResponse.value?.resumeData?[0]
                                     .resumeConcactInformation !=
                                 null)
@@ -392,9 +395,12 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeConcactInformation !=
+                                null)
+                              SizedBox(
+                                height: 50.h,
+                              ),
                             if (controller.resumeResponse.value?.resumeData?[0]
                                     .resumeProfessionalExperiences !=
                                 null)
@@ -533,9 +539,12 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeProfessionalExperiences !=
+                                null)
+                              SizedBox(
+                                height: 50.h,
+                              ),
                             if (controller.resumeResponse.value?.resumeData?[0]
                                     .resumeAcademicHistories !=
                                 null)
@@ -982,11 +991,14 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
                             if (controller.resumeResponse.value?.resumeData?[0]
                                     .resumeAcademicHistories !=
+                                null)
+                              SizedBox(
+                                height: 50.h,
+                              ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeKeySkills !=
                                 null)
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1029,9 +1041,12 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeKeySkills !=
+                                null)
+                              SizedBox(
+                                height: 50.h,
+                              ),
                             if (controller.resumeResponse.value?.resumeData?[0]
                                     .resumeIndustryAwards !=
                                 null)
@@ -1076,9 +1091,12 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeIndustryAwards !=
+                                null)
+                              SizedBox(
+                                height: 50.h,
+                              ),
                             if (controller.resumeResponse.value?.resumeData?[0]
                                     .resumeProfessionalCertifications !=
                                 null)
@@ -1147,9 +1165,12 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeProfessionalCertifications !=
+                                null)
+                              SizedBox(
+                                height: 50.h,
+                              ),
                             if (controller.resumeResponse.value?.resumeData?[0]
                                     .resumePublications !=
                                 null)
@@ -1217,9 +1238,12 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumePublications !=
+                                null)
+                              SizedBox(
+                                height: 50.h,
+                              ),
                             if (controller.resumeResponse.value?.resumeData?[0]
                                     .resumeProfessionalAffiliations !=
                                 null)
@@ -1287,9 +1311,12 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeProfessionalAffiliations !=
+                                null)
+                              SizedBox(
+                                height: 50.h,
+                              ),
                             if (controller.resumeResponse.value?.resumeData?[0]
                                     .resumeConferenceAttendeds !=
                                 null)
@@ -1334,9 +1361,12 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 50.h,
-                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeConferenceAttendeds !=
+                                null)
+                              SizedBox(
+                                height: 50.h,
+                              ),
                             if (controller.resumeResponse.value?.resumeData?[0]
                                     .resumeAdditionalTrains !=
                                 null)
@@ -1427,9 +1457,12 @@ class PrivateResumeApply extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            SizedBox(
-                              height: 100.h,
-                            ),
+                            if (controller.resumeResponse.value?.resumeData?[0]
+                                    .resumeAdditionalTrains !=
+                                null)
+                              SizedBox(
+                                height: 100.h,
+                              ),
                             if (!controller.isPreview.value)
                               Padding(
                                 padding:
