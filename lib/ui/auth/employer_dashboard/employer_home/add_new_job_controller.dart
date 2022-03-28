@@ -18,6 +18,7 @@ class AddNewJobController extends GetxController {
   final jobLink = TextEditingController();
   final qualification = TextEditingController();
   final jobDetails = TextEditingController();
+  final jobCity = TextEditingController();
   String? dropdownValue;
   final categoryListResponse = Rx<CategoryListResponse?>(null);
 
@@ -41,6 +42,7 @@ class AddNewJobController extends GetxController {
         'job_link': jobLink.text,
         'qualification': qualification.text,
         'job_detail': jobDetails.text,
+        'city': jobCity.text,
         'category_id': dropdownValue!
       });
       BaseApiService.instance

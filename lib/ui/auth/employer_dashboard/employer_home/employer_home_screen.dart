@@ -287,11 +287,17 @@ class _EmployerHomeScreenState extends State<EmployerHomeScreen> {
               child: Obx(
                 () => ((controller.postedJobResponse.value?.data?[selected]
                                         .employee
-                                        ?.where(((element) => element.jobTitle!
-                                            .toLowerCase()
-                                            .contains(controller
-                                                .searchText.value
-                                                .toLowerCase())))
+                                        ?.where(((element) => (element.jobTitle!
+                                                .toLowerCase()
+                                                .contains(controller
+                                                    .searchText.value
+                                                    .toLowerCase()) ||
+                                            (element.city ?? "")
+                                                .toLowerCase()
+                                                .contains(controller
+                                                    .searchText.value
+                                                    .toLowerCase()))))
+                                        .toList()
                                         .length ??
                                     0) ==
                                 0) ==
@@ -310,20 +316,31 @@ class _EmployerHomeScreenState extends State<EmployerHomeScreen> {
                             physics: BouncingScrollPhysics(),
                             itemCount: controller.postedJobResponse.value
                                     ?.data?[selected].employee
-                                    ?.where(((element) => element.jobTitle!
-                                        .toLowerCase()
-                                        .contains(controller.searchText.value
-                                            .toLowerCase())))
+                                    ?.where(((element) => (element.jobTitle!
+                                            .toLowerCase()
+                                            .contains(controller
+                                                .searchText.value
+                                                .toLowerCase()) ||
+                                        (element.city ?? "")
+                                            .toLowerCase()
+                                            .contains(controller
+                                                .searchText.value
+                                                .toLowerCase()))))
+                                    .toList()
                                     .length ??
                                 0,
                             padding: EdgeInsets.zero,
                             itemBuilder: (context, index) {
                               PostedJob data = (controller.postedJobResponse
                                   .value?.data?[selected].employee
-                                  ?.where(((element) => element.jobTitle!
-                                      .toLowerCase()
-                                      .contains(controller.searchText.value
-                                          .toLowerCase())))
+                                  ?.where(((element) => (element.jobTitle!
+                                          .toLowerCase()
+                                          .contains(controller.searchText.value
+                                              .toLowerCase()) ||
+                                      (element.city ?? "")
+                                          .toLowerCase()
+                                          .contains(controller.searchText.value
+                                              .toLowerCase()))))
                                   .toList())![index];
                               return Padding(
                                 padding: EdgeInsets.only(bottom: 30.h),
@@ -360,7 +377,7 @@ class _EmployerHomeScreenState extends State<EmployerHomeScreen> {
                                               ),
                                               SizedBox(height: 10.h),
                                               Text(
-                                                '24 People Applied',
+                                                '24 People Applied - ${data.city}',
                                                 style: TextStyle(
                                                   color: ColorConstant.black,
                                                   fontSize: 25.sp,

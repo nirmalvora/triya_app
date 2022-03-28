@@ -120,6 +120,13 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                       '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
                 ),
                 SizedBox(height: 30.h),
+                CommanTitle(title: 'Job City'),
+                TextFormField(
+                  controller: controller.jobCity,
+                  decoration: customInputDecoration(
+                      '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                ),
+                SizedBox(height: 30.h),
                 CommanTitle(title: 'Job category'),
                 Container(
                   width: double.infinity,
