@@ -68,7 +68,8 @@ class _MyAccountState extends State<MyAccount> {
                               () => CacheImageView(
                                   imageUrl: AppState.loginData.value?.user
                                           ?.profilePicture ??
-                                      ""),
+                                      "",
+                                  fit: BoxFit.cover),
                             )
                           : Image.file(
                               controller.image.value!,

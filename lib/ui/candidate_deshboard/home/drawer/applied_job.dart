@@ -72,51 +72,21 @@ class AppliedJobs extends StatelessWidget {
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 10),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 12),
                               child: Row(
                                 children: [
                                   Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: Text(
-                                                controller
-                                                        .appliedJob
-                                                        .value
-                                                        ?.data![index]
-                                                        .jobTitle ??
-                                                    "",
-                                                maxLines: 2,
-                                                style: TextStyle(
-                                                  color:
-                                                      ColorConstant.textColor,
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 30.sp,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 7,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: 5, vertical: 5),
-                                    height: 100.h,
-                                    width: 100.h,
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.circular(27.h),
+                                    child: Text(
+                                      controller.appliedJob.value?.data![index]
+                                              .jobTitle ??
+                                          "",
+                                      maxLines: 2,
+                                      style: TextStyle(
+                                        color: ColorConstant.textColor,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 35.sp,
+                                      ),
                                     ),
                                   ),
                                 ],

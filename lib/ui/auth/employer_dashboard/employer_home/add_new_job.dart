@@ -196,7 +196,9 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                 SizedBox(height: 180.h),
                 CommanButton(
                     onTap: () {
-                      controller.addNewJob();
+                      if (controller.formKey.currentState!.validate()) {
+                        controller.addNewJob();
+                      }
                     },
                     text: 'Create Job'),
                 SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
