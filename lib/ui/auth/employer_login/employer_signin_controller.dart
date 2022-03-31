@@ -23,21 +23,4 @@ class EmployerSignInController extends GetxController {
       });
     }
   }
-
-  /*void signin() {
-    if (formKey.currentState!.validate()) {
-      Map<String, dynamic> data = {
-        'email': email.text,
-        'password': password.text,
-      };
-      BaseApiService.instance
-          .post(ServiceConstant.signIn, data: data)
-          .then((value) {
-        LoginResponse response = LoginResponse.fromJson(value!.data);
-        Get.showSnackbar(GetSnackBar(
-          title: response.message,
-        ));
-      });
-    }
-  }*/
 }

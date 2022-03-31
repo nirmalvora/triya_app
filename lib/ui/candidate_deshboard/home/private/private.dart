@@ -45,7 +45,7 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
           "Private Job",
           style: TextStyle(color: ColorConstant.splashColor),
         ),
-        actions: [
+        actions: const [
           Padding(
             padding: EdgeInsets.only(right: 15),
             child: AppBarCircleAvtar(),

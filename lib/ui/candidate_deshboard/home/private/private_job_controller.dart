@@ -16,7 +16,6 @@ class PrivateJobController extends GetxController {
   void getJobList() {
     loading.value = true;
     BaseApiService.instance.get(ServiceConstant.getPrivateJob).then((value) {
-      print(value);
       PostedJobResModel response = PostedJobResModel.fromJson(value!.data);
       loading.value = false;
       privateJobResponse.value = response;
