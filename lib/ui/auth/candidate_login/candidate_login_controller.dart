@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
@@ -40,11 +39,6 @@ class CandidateLoginController extends GetxController {
       final facebookAuthCredential = FacebookAuthProvider.credential(
           facebookLoginresult.accessToken!.token);
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-      await FirebaseFirestore.instance.collection('user').add({
-        'email': userData['email'],
-        'imageurl': userData['picture']['data']['url'],
-        'name': userData['name'],
-      });
       FirebaseAuth.instance
           .signInWithCredential(facebookAuthCredential)
           .then((value) {

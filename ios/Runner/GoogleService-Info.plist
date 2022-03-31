@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>26544276884-ko99vfs4a0gleglf5mtp0k0ckjradvn8.apps.googleusercontent.com</string>
+	<string>284943499084-imihg3caofspmduoiua4lls6kmv1r5cf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.26544276884-ko99vfs4a0gleglf5mtp0k0ckjradvn8</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>26544276884-adp4mma3qohld1c1ukpha2q8quhlqku7.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.284943499084-imihg3caofspmduoiua4lls6kmv1r5cf</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCINC9OA02G_s8Dcgf5ix-sOJPehjj0ODo</string>
+	<string>AIzaSyAKEtAeHJKLt0FOh_lsfXpaqRHkMbGwnaE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>26544276884</string>
+	<string>284943499084</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.npnsolutions.triya</string>
 	<key>PROJECT_ID</key>
-	<string>triyaapp-a6e73</string>
+	<string>triya-937ac</string>
 	<key>STORAGE_BUCKET</key>
-	<string>triyaapp-a6e73.appspot.com</string>
+	<string>triya-937ac.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:26544276884:ios:02b091296980577357fb81</string>
+	<string>1:284943499084:ios:b548cbf000472a460e19e9</string>
 </dict>
 </plist>

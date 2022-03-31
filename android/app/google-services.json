@@ -1,37 +1,81 @@
 {
   "project_info": {
-    "project_number": "26544276884",
-    "project_id": "triyaapp-a6e73",
-    "storage_bucket": "triyaapp-a6e73.appspot.com"
+    "project_number": "284943499084",
+    "project_id": "triya-937ac",
+    "storage_bucket": "triya-937ac.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:26544276884:android:c305fcbea4605eb557fb81",
+        "mobilesdk_app_id": "1:284943499084:android:524c9048e05cd5c30e19e9",
         "android_client_info": {
           "package_name": "com.npnsolutions.triya"
         }
       },
       "oauth_client": [
         {
-          "client_id": "26544276884-5b0ojjf6ssc8rps45bsdctibfsfid1a7.apps.googleusercontent.com",
+          "client_id": "284943499084-q3v6gsvvu1j0fb84hcfmr3gqfn4a9vp2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDrwYC1nENCoeCrTCAvYcDt3uU282pp5u4"
+          "current_key": "AIzaSyDDwVzk0iJ5wBIv4CltbTlGGVA3QiiXywU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "26544276884-5b0ojjf6ssc8rps45bsdctibfsfid1a7.apps.googleusercontent.com",
+              "client_id": "284943499084-q3v6gsvvu1j0fb84hcfmr3gqfn4a9vp2.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "26544276884-ko99vfs4a0gleglf5mtp0k0ckjradvn8.apps.googleusercontent.com",
+              "client_id": "284943499084-imihg3caofspmduoiua4lls6kmv1r5cf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.npnsolutions.triya"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284943499084:android:9bd4d62677b402490e19e9",
+        "android_client_info": {
+          "package_name": "com.npnsolutions.triyaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "284943499084-5ami8reatq0p2pebsrf6g8je7rs3om0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.npnsolutions.triyaapp",
+            "certificate_hash": "bcfb544c01a820d29bf77fd6076f04e6a188de2a"
+          }
+        },
+        {
+          "client_id": "284943499084-q3v6gsvvu1j0fb84hcfmr3gqfn4a9vp2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDwVzk0iJ5wBIv4CltbTlGGVA3QiiXywU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "284943499084-q3v6gsvvu1j0fb84hcfmr3gqfn4a9vp2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "284943499084-imihg3caofspmduoiua4lls6kmv1r5cf.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.npnsolutions.triya"

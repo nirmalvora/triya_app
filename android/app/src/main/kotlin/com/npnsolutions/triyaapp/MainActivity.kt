@@ -1,4 +1,4 @@
-package com.npnsolutions.triya
+package com.npnsolutions.triyaapp
 
 import io.flutter.embedding.android.FlutterActivity
 
