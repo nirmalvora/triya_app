@@ -23,12 +23,6 @@ class EmployerSignUpController extends GetxController {
   final password = TextEditingController();
   final confirmPassword = TextEditingController();
 
-  @override
-  void onReady() {
-    super.onReady();
-    signup();
-  }
-
   Future<void> signup() async {
     if (formKey.currentState!.validate()) {
       Dio.MultipartFile file =

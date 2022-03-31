@@ -39,7 +39,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
           ),
         ),
         title: Text(
-          "Scolarship",
+          "Scholarship",
           style: TextStyle(color: ColorConstant.splashColor),
         ),
         actions: const [
@@ -302,7 +302,7 @@ class _ScholarshipDescriptionState extends State<ScholarshipDescription> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Job Details:',
+                        'Details:',
                         style: TextStyle(
                           color: ColorConstant.hintTextColor,
                           fontWeight: FontWeight.w400,

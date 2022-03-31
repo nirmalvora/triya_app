@@ -78,7 +78,7 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                         border: InputBorder.none,
                         fillColor: Color(0xffF5F5F5),
                         filled: true,
-                        hintText: "Search for job here..",
+                        hintText: "Search for here..",
                         hintStyle: TextStyle(
                           fontSize: 26.h,
                         ),
@@ -131,7 +131,6 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                         });
                       },
                       child: Container(
-                        width: 320.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(7),
                           color: selected == index
@@ -139,15 +138,18 @@ class _ScholarshipJobScreenState extends State<ScholarshipJobScreen> {
                               : ColorConstant.backgroundColor,
                         ),
                         child: Center(
-                          child: Text(
-                            controller.scholarshipJobResponse.value
-                                    ?.data?[index].name ??
-                                '',
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: TextFontFamily.openSansBold,
-                              fontSize: 30.sp,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(
+                              controller.scholarshipJobResponse.value
+                                      ?.data?[index].name ??
+                                  '',
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: TextFontFamily.openSansBold,
+                                fontSize: 30.sp,
+                              ),
                             ),
                           ),
                         ),

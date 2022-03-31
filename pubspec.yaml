@@ -60,6 +60,8 @@ dependencies:
   file_picker: ^4.5.1
   path_provider: ^2.0.9
   flutter_launcher_icons: ^0.9.1
+  csc_picker:
+    path: "library/csc_picker"
 
 dev_dependencies:
   flutter_test:

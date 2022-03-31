@@ -161,176 +161,165 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
           SizedBox(
             height: 50.h,
           ),
-          /*Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Text(
-              'Category A Jobs',
-              style: TextStyle(
-                color: ColorConstant.textColor,
-                fontWeight: FontWeight.w700,
-                fontFamily: TextFontFamily.openSansBold,
-                fontSize: 52.sp,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vitae pulvinar sagittis.',
-              style: TextStyle(
-                color: ColorConstant.textColor,
-                fontWeight: FontWeight.w700,
-                fontFamily: TextFontFamily.openSansBold,
-                fontSize: 22.sp,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),*/
-          if (controller.privateJobResponse.value?.data != null &&
-              controller.privateJobResponse.value!.data!.isNotEmpty)
-            Expanded(
-              child: Obx(
-                () => ((controller.privateJobResponse.value?.data?[selected]
-                                    .employee
-                                    ?.where(((element) => element.jobTitle!
-                                        .toLowerCase()
-                                        .contains(controller.searchText.value
-                                            .toLowerCase())))
-                                    .length ??
-                                0) ==
-                            0) &&
-                        controller.loading.value
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : ((controller.privateJobResponse.value?.data?.length ??
-                                0) ==
-                            0)
+          Obx(
+            () => controller.privateJobResponse.value?.data != null &&
+                    controller.privateJobResponse.value!.data!.isNotEmpty
+                ? Expanded(
+                    child: Obx(
+                    () => ((controller.privateJobResponse.value?.data?[selected]
+                                        .employee
+                                        ?.where(((element) => element.jobTitle!
+                                            .toLowerCase()
+                                            .contains(controller
+                                                .searchText.value
+                                                .toLowerCase())))
+                                        .length ??
+                                    0) ==
+                                0) &&
+                            controller.loading.value
                         ? Center(
-                            child: Text("No Data Found"),
+                            child: CircularProgressIndicator(),
                           )
-                        : ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            itemCount: controller.privateJobResponse.value
-                                    ?.data?[selected].employee
-                                    ?.where(((element) => element.jobTitle!
-                                        .toLowerCase()
-                                        .contains(controller.searchText.value
-                                            .toLowerCase())))
-                                    .length ??
-                                0,
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              PostedJob data = (controller.privateJobResponse
-                                  .value?.data?[selected].employee
-                                  ?.where(((element) => element.jobTitle!
-                                      .toLowerCase()
-                                      .contains(controller.searchText.value
-                                          .toLowerCase())))
-                                  .toList()[index])!;
+                        : ((controller.privateJobResponse.value?.data?.length ??
+                                    0) ==
+                                0)
+                            ? Center(
+                                child: Text("No Data Found"),
+                              )
+                            : ListView.builder(
+                                physics: BouncingScrollPhysics(),
+                                itemCount: controller.privateJobResponse.value
+                                        ?.data?[selected].employee
+                                        ?.where(((element) => element.jobTitle!
+                                            .toLowerCase()
+                                            .contains(controller
+                                                .searchText.value
+                                                .toLowerCase())))
+                                        .length ??
+                                    0,
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  PostedJob data = (controller
+                                      .privateJobResponse
+                                      .value
+                                      ?.data?[selected]
+                                      .employee
+                                      ?.where(((element) => element.jobTitle!
+                                          .toLowerCase()
+                                          .contains(controller.searchText.value
+                                              .toLowerCase())))
+                                      .toList()[index])!;
 
-                              return GestureDetector(
-                                onTap: () {
-                                  Get.toNamed(NavigationName.privateJobDescPage,
-                                      arguments: {"private_job_data": data});
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 15, vertical: 7),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      gradient: LinearGradient(
-                                        colors: const [
-                                          Color(0xffffffff),
-                                          ColorConstant.privateJobBgColor
-                                        ],
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                      ),
-                                    ),
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Get.toNamed(
+                                          NavigationName.privateJobDescPage,
+                                          arguments: {
+                                            "private_job_data": data
+                                          });
+                                    },
                                     child: Padding(
-                                      padding: const EdgeInsets.only(left: 10),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Row(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15, vertical: 7),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          gradient: LinearGradient(
+                                            colors: const [
+                                              Color(0xffffffff),
+                                              ColorConstant.privateJobBgColor
+                                            ],
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
                                                   children: [
-                                                    Expanded(
-                                                      child: Text(
-                                                        data.jobTitle ?? "",
-                                                        maxLines: 2,
-                                                        style: TextStyle(
-                                                          color: ColorConstant
-                                                              .textColor,
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          fontSize: 30.sp,
+                                                    Row(
+                                                      children: [
+                                                        Expanded(
+                                                          child: Text(
+                                                            data.jobTitle ?? "",
+                                                            maxLines: 2,
+                                                            style: TextStyle(
+                                                              color:
+                                                                  ColorConstant
+                                                                      .textColor,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              fontSize: 30.sp,
+                                                            ),
+                                                          ),
                                                         ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 7,
+                                                    ),
+                                                    Text(
+                                                      'Post Date: ${data.fromDate ?? ""}     |     Last Date:  ${data.toDate ?? ""}',
+                                                      maxLines: 2,
+                                                      style: TextStyle(
+                                                        color: ColorConstant
+                                                            .hintTextColor,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        fontSize: 25.sp,
                                                       ),
                                                     ),
                                                   ],
                                                 ),
-                                                SizedBox(
-                                                  height: 7,
-                                                ),
-                                                Text(
-                                                  'Post Date: ${data.fromDate ?? ""}     |     Last Date:  ${data.toDate ?? ""}',
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                    color: ColorConstant
-                                                        .hintTextColor,
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 25.sp,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.symmetric(
-                                                horizontal: 5, vertical: 5),
-                                            height: 100.h,
-                                            width: 100.h,
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                colors: const [
-                                                  Color(0xff3782F3),
-                                                  Color(0xff276ED8)
-                                                ],
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(27.h),
-                                            ),
-                                            child: Icon(
-                                              Icons
-                                                  .keyboard_arrow_right_outlined,
-                                              color:
-                                                  ColorConstant.backgroundColor,
-                                              size: 30,
-                                            ),
+                                              Container(
+                                                margin: EdgeInsets.symmetric(
+                                                    horizontal: 5, vertical: 5),
+                                                height: 100.h,
+                                                width: 100.h,
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: const [
+                                                      Color(0xff3782F3),
+                                                      Color(0xff276ED8)
+                                                    ],
+                                                    begin: Alignment.topCenter,
+                                                    end: Alignment.bottomCenter,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          27.h),
+                                                ),
+                                                child: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_right_outlined,
+                                                  color: ColorConstant
+                                                      .backgroundColor,
+                                                  size: 30,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-              ),
-            )
+                                  );
+                                },
+                              ),
+                  ))
+                : SizedBox.shrink(),
+          ),
         ],
       ),
     );

@@ -28,10 +28,11 @@ class CommonTextField extends StatelessWidget {
               validator: validation,
               textInputAction: TextInputAction.next,
               decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: hintText.toUpperCase(),
-                  contentPadding: EdgeInsets.zero,
-                  hintStyle: TextStyle(color: Colors.white, fontSize: 25.sp)),
+                border: InputBorder.none,
+                hintText: hintText.toUpperCase(),
+                contentPadding: EdgeInsets.zero,
+                hintStyle: TextStyle(color: Colors.white, fontSize: 30.sp),
+              ),
             ),
           )
         ],

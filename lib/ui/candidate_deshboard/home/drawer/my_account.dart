@@ -5,7 +5,6 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/constants/fontfamily_constant.dart';
 import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/ui/candidate_deshboard/home/drawer/my_account_controller.dart';
-import 'package:triya_app/ui/candidate_deshboard/home/home_controller.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
 import 'package:triya_app/widgets/cache_imageview.dart';
 
@@ -17,8 +16,7 @@ class MyAccount extends StatefulWidget {
 }
 
 class _MyAccountState extends State<MyAccount> {
-  final controller = Get.put(HomeController());
-  final myController = Get.put(MyAccountController());
+  final controller = Get.put(MyAccountController());
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +56,14 @@ class _MyAccountState extends State<MyAccount> {
             children: [
               GestureDetector(
                 onTap: () {
-                  myController.getImage();
+                  controller.getImage();
                 },
                 child: CircleAvatar(
                   backgroundColor: ColorConstant.blue,
                   radius: 45,
                   child: ClipOval(
                     child: Obx(
-                      () => myController.image.value == null
+                      () => controller.image.value == null
                           ? Obx(
                               () => CacheImageView(
                                   imageUrl: AppState.loginData.value?.user
@@ -73,7 +71,7 @@ class _MyAccountState extends State<MyAccount> {
                                       ""),
                             )
                           : Image.file(
-                              myController.image.value!,
+                              controller.image.value!,
                               width: double.infinity,
                               height: double.infinity,
                               fit: BoxFit.cover,
@@ -195,13 +193,13 @@ class _MyAccountState extends State<MyAccount> {
         builder: (BuildContext context) {
           return AlertDialog(
             content: Form(
-              key: myController.formKey,
+              key: controller.formKey,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   TextFormField(
                     onChanged: (value) {},
-                    controller: myController.firstNameController,
+                    controller: controller.firstNameController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter firstname';
@@ -217,7 +215,7 @@ class _MyAccountState extends State<MyAccount> {
                   ),
                   TextFormField(
                     onChanged: (value) {},
-                    controller: myController.lastNameController,
+                    controller: controller.lastNameController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter lastname';
@@ -231,7 +229,7 @@ class _MyAccountState extends State<MyAccount> {
                   SizedBox(height: 8),
                   GestureDetector(
                     onTap: () {
-                      myController.updateData();
+                      controller.updateData();
                       Get.back();
                     },
                     child: Container(

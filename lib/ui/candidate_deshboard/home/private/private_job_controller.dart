@@ -21,6 +21,7 @@ class PrivateJobController extends GetxController {
       loading.value = false;
       privateJobResponse.value = response;
       privateJobResponse.refresh();
+      refresh();
     }).onError((error, stackTrace) {
       loading.value = false;
     });

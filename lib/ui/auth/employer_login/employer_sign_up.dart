@@ -1,4 +1,7 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:country_state_city_picker/country_state_city_picker.dart';
+import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -229,33 +232,37 @@ class EmployerSignUp extends StatelessWidget {
                             SizedBox(
                               height: 30.0.h,
                             ),
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 30.w),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.white.withOpacity(0.2),
-                                      width: 3.w),
-                                  borderRadius: BorderRadius.circular(19.r)),
-                              child: Column(
-                                children: [
-                                  SelectState(
-                                    style: TextStyle(
-                                      color: ColorConstant.backgroundColor,
-                                    ),
-                                    dropdownColor: ColorConstant.splashColor
-                                        .withOpacity(0.7),
-                                    onCountryChanged: (value) {
-                                      controller.countryValue = value;
-                                    },
-                                    onStateChanged: (value) {
-                                      controller.stateValue = value;
-                                    },
-                                    onCityChanged: (value) {
-                                      controller.cityValue = value;
-                                    },
-                                  ),
-                                ],
+                            CSCPicker(
+                              showStates: true,
+                              showCities: true,
+                              layout: Layout.vertical,
+                              flagState: CountryFlag.DISABLE,
+                              dropdownDecoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(19.r)),
+                                color: Colors.white.withOpacity(0.2),
                               ),
+                              disabledDropdownDecoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(19.r)),
+                                color: Colors.white.withOpacity(0.2),
+                              ),
+                              defaultCountry: DefaultCountry.India,
+                              selectedItemStyle: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                              ),
+                              searchBarRadius: 10.0,
+                              onCountryChanged: (value) {
+                                controller.countryValue = value;
+                              },
+                              onStateChanged: (value) {
+                                controller.stateValue = value;
+                              },
+                              onCityChanged: (value) {
+                                controller.cityValue = value;
+                              },
                             ),
                             SizedBox(
                               height: 30.0.h,

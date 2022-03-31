@@ -12,6 +12,7 @@ import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/model/login_response.dart';
 import 'package:triya_app/model/name_update_response.dart';
 import 'package:triya_app/model/user_profile_response.dart';
+import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/preference/preference_keys.dart';
 import 'package:triya_app/preference/prerences.dart';
 import 'package:triya_app/services/api_service_methods.dart';
@@ -58,6 +59,11 @@ class MyAccountController extends GetxController {
       AppState.loginData.refresh();
       Get.snackbar(response.message!, "");
     });
+  }
+
+  void removeUser() {
+    Get.offAllNamed(NavigationName.loginTypePage);
+    Preferences.clear();
   }
 
   final picker = ImagePicker();

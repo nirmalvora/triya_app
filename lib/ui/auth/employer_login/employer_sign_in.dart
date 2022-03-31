@@ -79,20 +79,32 @@ class EmployerSignInScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         CommonTextField(
-                            hintText: "Email Id *",
-                            controller: controller.email),
+                            hintText: "Email Id*",
+                            controller: controller.email,
+                            validation: (value) {
+                              return validateEmail(value);
+                            }),
                         SizedBox(
                           height: 30.0.h,
                         ),
                         CommonTextField(
-                            hintText: "Password *",
-                            controller: controller.password),
+                          hintText: "Password*",
+                          controller: controller.password,
+                          validation: (value) {
+                            if (value == null || value == "") {
+                              return "Please enter password";
+                            }
+                            return null;
+                          },
+                        ),
                         SizedBox(
                           height: 115.0.h,
                         ),
                         GestureDetector(
                           onTap: () {
-                            controller.employerSignIn();
+                            if (controller.formKey.currentState!.validate()) {
+                              controller.employerSignIn();
+                            }
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(
