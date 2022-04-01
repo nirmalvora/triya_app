@@ -131,7 +131,6 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                         });
                       },
                       child: Container(
-                        width: 320.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(7),
                           color: selected == index
@@ -139,15 +138,18 @@ class _PrivateJobScreenState extends State<PrivateJobScreen> {
                               : ColorConstant.backgroundColor,
                         ),
                         child: Center(
-                          child: Text(
-                            controller.privateJobResponse.value?.data?[index]
-                                    .name ??
-                                "",
-                            style: TextStyle(
-                              color: ColorConstant.textColor,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: TextFontFamily.openSansBold,
-                              fontSize: 30.sp,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(
+                              controller.privateJobResponse.value?.data?[index]
+                                      .name ??
+                                  "",
+                              style: TextStyle(
+                                color: ColorConstant.textColor,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: TextFontFamily.openSansBold,
+                                fontSize: 30.sp,
+                              ),
                             ),
                           ),
                         ),
