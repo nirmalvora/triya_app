@@ -15,6 +15,18 @@ customInputDecoration(hintText, color, borderColor,
           color: ColorConstant.white,
           fontSize: 12,
           fontFamily: "OpenSans-Regular"),
+      border:OutlineInputBorder(
+          borderRadius: BorderRadius.circular(19.r),
+          borderSide: BorderSide(color: borderColor)),
+      focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(19.r),
+          borderSide: BorderSide(color: borderColor)),
+      disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(19.r),
+          borderSide: BorderSide(color: borderColor)),
+      errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(19.r),
+          borderSide: BorderSide(color: borderColor)),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(19.r),
           borderSide: BorderSide(color: borderColor)),

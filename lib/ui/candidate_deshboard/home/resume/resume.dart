@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:triya_app/constants/app_constants.dart';
 import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
@@ -44,22 +45,53 @@ class ResumeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /* Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: GestureDetector(
-                onTap: () {},
-                child: ResumeContainer(name: "NORMAL RESUME"),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: ResumeContainer(name: "STANDARD RESUME"),
-            ),*/
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(NavigationName.professionalResumePage);
+                  Get.toNamed(NavigationName.professionalResumePage,
+                      arguments: {
+                        "type": 0,
+                        AppConstants.showApplyButton:
+                            Get.arguments?[AppConstants.showApplyButton] ??
+                                false,
+                        AppConstants.jobID:
+                            Get.arguments?[AppConstants.jobID] ?? -1
+                      });
+                },
+                child: ResumeContainer(name: "NORMAL RESUME"),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(NavigationName.professionalResumePage,
+                      arguments: {
+                        "type": 1,
+                        AppConstants.showApplyButton:
+                            Get.arguments?[AppConstants.showApplyButton] ??
+                                false,
+                        AppConstants.jobID:
+                            Get.arguments?[AppConstants.jobID] ?? -1
+                      });
+                },
+                child: ResumeContainer(name: "STANDARD RESUME"),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(NavigationName.professionalResumePage,
+                      arguments: {
+                        "type": 2,
+                        AppConstants.showApplyButton:
+                            Get.arguments?[AppConstants.showApplyButton] ??
+                                false,
+                        AppConstants.jobID:
+                            Get.arguments?[AppConstants.jobID] ?? -1
+                      });
                 },
                 child: ResumeContainer(name: "PROFESSIONAL RESUME"),
               ),

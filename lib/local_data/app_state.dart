@@ -1,10 +1,11 @@
-import 'dart:typed_data';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:encrypted_shared_preferences/encrypted_shared_preferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:triya_app/model/login_response.dart';
 import 'package:triya_app/services/api_service_methods.dart';
@@ -36,6 +37,7 @@ class AppState {
     await Directory(firstPath).create(recursive: true);
     File file = File(filePathAndName);
     file.writeAsBytesSync(imageInUnit8List);
+    OpenFile.open(file.path);
     Get.snackbar('', '',
         titleText: Text("Download success"),
         messageText: Text("$filePathAndName"));

@@ -17,10 +17,12 @@ class ProfileResumeController extends GetxController {
   Rx<ResumeResponseModel?> resumeResponse = Rx<ResumeResponseModel?>(null);
   final showApplyButton = false.obs;
   final jobId = 0.obs;
+  final type = 0.obs;
   @override
   void onReady() {
     super.onReady();
     final res = Get.arguments;
+    type.value = Get.arguments["type"] ?? 0;
     if (res != null) {
       showApplyButton.value = res[AppConstants.showApplyButton] ?? false;
       jobId.value = res[AppConstants.jobID] ?? -1;

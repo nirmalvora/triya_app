@@ -51,11 +51,10 @@ class PrivateJobResumeScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(NavigationName.professionalResumePage,
-                      arguments: {
-                        AppConstants.showApplyButton: true,
-                        AppConstants.jobID: controller.jobId.value,
-                      });
+                  Get.toNamed(NavigationName.resumePage, arguments: {
+                    AppConstants.showApplyButton: true,
+                    AppConstants.jobID: controller.jobId.value,
+                  });
                 },
                 child: ResumeContainer(name: "APPLY WITH EXISTING RESUME"),
               ),

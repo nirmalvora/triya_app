@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -95,6 +94,12 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                 CommanTitle(title: 'Job Title'),
                 TextFormField(
                   controller: controller.jobTitle,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter job title';
+                    }
+                    return null;
+                  },
                   decoration: customInputDecoration(
                       '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
                 ),
@@ -104,6 +109,12 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                   controller: controller.jobLink,
                   decoration: customInputDecoration(
                       '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter job link';
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(height: 30.h),
                 CommanTitle(title: 'Qualification'),
@@ -111,13 +122,26 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                   controller: controller.qualification,
                   decoration: customInputDecoration(
                       '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter qualification';
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(height: 30.h),
                 CommanTitle(title: 'job Details'),
                 TextFormField(
                   controller: controller.jobDetails,
+                  maxLines: 3,
                   decoration: customInputDecoration(
                       '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter job details';
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(height: 30.h),
                 CommanTitle(title: 'Job City'),
@@ -125,6 +149,12 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                   controller: controller.jobCity,
                   decoration: customInputDecoration(
                       '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter job city';
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(height: 30.h),
                 CommanTitle(title: 'Job category'),
@@ -141,11 +171,20 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                       children: [
                         Obx(
                           () => Expanded(
-                            child: DropdownButton(
+                            child: DropdownButtonFormField(
                               iconSize: 0,
+                              decoration: InputDecoration(
+                                enabledBorder: InputBorder.none,
+                                border: InputBorder.none,
+                                disabledBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                focusedErrorBorder: InputBorder.none,
+                              ),
                               hint: Text('Select Category'),
-                              underline: Container(
-                                  height: 0, color: Colors.transparent),
+                              validator: (value) => value == null
+                                  ? 'Please select category'
+                                  : null,
                               elevation: 0,
                               value: controller.dropdownValue,
                               items: (controller

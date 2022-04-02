@@ -246,7 +246,7 @@ class PrivateDescription extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Board:',
+                        'City:',
                         style: TextStyle(
                           color: ColorConstant.hintTextColor,
                           fontWeight: FontWeight.w400,
@@ -258,7 +258,7 @@ class PrivateDescription extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        controller.govJob.value?.qualification ?? "",
+                        controller.govJob.value?.city ?? "",
                         style: TextStyle(
                           color: ColorConstant.textColor,
                           fontWeight: FontWeight.w400,

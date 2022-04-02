@@ -34,8 +34,7 @@ class AddNewJobController extends GetxController {
 
   Future<void> addNewJob() async {
     if (formKey.currentState!.validate()) {
-      final data = Dio.FormData.fromMap({
-        'upload': await Dio.MultipartFile.fromFile(files.value!.path),
+      Map<String, dynamic> dataMap = {
         'from_date': DateFormatUtils.ddMMyyyyFromDate(selectedDate),
         'to_date': DateFormatUtils.ddMMyyyyFromDate(select),
         'job_title': jobTitle.text,
@@ -44,7 +43,13 @@ class AddNewJobController extends GetxController {
         'job_detail': jobDetails.text,
         'city': jobCity.text,
         'category_id': dropdownValue!
-      });
+      };
+      if (files.value != null) {
+        Dio.MultipartFile file =
+            await Dio.MultipartFile.fromFile(files.value!.path);
+        dataMap['upload'] = file;
+      }
+      final data = Dio.FormData.fromMap(dataMap);
       BaseApiService.instance
           .postForm(ServiceConstant.addNewJob, data: data)
           .then((value) {
