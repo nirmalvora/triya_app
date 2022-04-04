@@ -14,6 +14,7 @@ class AddNewJobController extends GetxController {
   DateTime selectedDate = DateTime.now();
   DateTime select = DateTime.now();
   final formKey = GlobalKey<FormState>();
+  final companyName = TextEditingController();
   final jobTitle = TextEditingController();
   final jobLink = TextEditingController();
   final qualification = TextEditingController();
@@ -39,6 +40,7 @@ class AddNewJobController extends GetxController {
         'to_date': DateFormatUtils.ddMMyyyyFromDate(select),
         'job_title': jobTitle.text,
         'job_link': jobLink.text,
+        'company_name': companyName.text,
         'qualification': qualification.text,
         'job_detail': jobDetails.text,
         'city': jobCity.text,

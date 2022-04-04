@@ -91,6 +91,19 @@ class _AddNewJobScreenState extends State<AddNewJobScreen> {
                   ],
                 ),
                 SizedBox(height: 30.h),
+                CommanTitle(title: 'Company Name'),
+                TextFormField(
+                  controller: controller.companyName,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter job title';
+                    }
+                    return null;
+                  },
+                  decoration: customInputDecoration(
+                      '', Color(0xffF6F6F6), Color(0xffF6F6F6)),
+                ),
+                SizedBox(height: 30.h),
                 CommanTitle(title: 'Job Title'),
                 TextFormField(
                   controller: controller.jobTitle,

@@ -72,6 +72,7 @@ class PostedJob {
   String? upload;
   int? userId;
   String? city;
+  String? companyName;
   String? createdAt;
   String? updatedAt;
   String? fromDate;
@@ -86,6 +87,7 @@ class PostedJob {
       this.upload,
       this.userId,
       this.city,
+      this.companyName,
       this.createdAt,
       this.updatedAt,
       this.fromDate,
@@ -98,6 +100,7 @@ class PostedJob {
     qualification = json['qualification'];
     jobDetail = json['job_detail'];
     city = json['city'];
+    companyName = json['company_name'];
     upload = json['upload'];
     userId = json['user_id'];
     createdAt = json['created_at'];
@@ -116,6 +119,7 @@ class PostedJob {
     data['city'] = this.city;
     data['upload'] = this.upload;
     data['user_id'] = this.userId;
+    data['company_name'] = this.companyName;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     data['from_date'] = this.fromDate;
