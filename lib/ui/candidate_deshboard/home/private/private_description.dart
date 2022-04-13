@@ -366,66 +366,72 @@ class PrivateDescription extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-              child: InkWell(
-                onTap: () async {
-                  AppState.downloadFile(controller.govJob.value?.upload ?? "");
-                  /* if (await canLaunch(controller.govJob.value?.upload ?? '')) {
+              child: (controller.govJob.value?.upload ?? "").isNotEmpty
+                  ? InkWell(
+                      onTap: () async {
+                        AppState.downloadFile(
+                            controller.govJob.value?.upload ?? "");
+                        /* if (await canLaunch(controller.govJob.value?.upload ?? '')) {
                     await launch(controller.govJob.value?.upload ?? '');
                   } else {
                     throw 'Could not launch "${controller.govJob.value?.upload ?? ''}"';
                   }*/
-                },
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: ColorConstant.splashColor,
-                  ),
-                  child: Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                        colors: const [Color(0xff3782F3), Color(0xff276ED8)],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 12),
-                          child: Row(
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: ColorConstant.splashColor,
+                        ),
+                        child: Container(
+                          width: double.infinity,
+                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(
+                              colors: const [
+                                Color(0xff3782F3),
+                                Color(0xff276ED8)
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                'Download Pdf',
-                                style: TextStyle(
-                                  color: ColorConstant.backgroundColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: TextFontFamily.openSansBold,
-                                  fontSize: 40.sp,
-                                  letterSpacing: 2,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 12),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Download Pdf',
+                                      style: TextStyle(
+                                        color: ColorConstant.backgroundColor,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: TextFontFamily.openSansBold,
+                                        fontSize: 40.sp,
+                                        letterSpacing: 2,
+                                      ),
+                                    ),
+                                    Spacer(),
+                                    Icon(
+                                      Icons.file_download,
+                                      color: ColorConstant.backgroundColor,
+                                      size: 20,
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.file_download,
-                                color: ColorConstant.backgroundColor,
-                                size: 20,
                               ),
                             ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+                      ),
+                    )
+                  : SizedBox.shrink(),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),

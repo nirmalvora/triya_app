@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -9,10 +8,8 @@ import 'package:triya_app/constants/color_constant.dart';
 import 'package:triya_app/local_data/app_state.dart';
 import 'package:triya_app/navigation/navigation_constant.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/add_new_job.dart';
-import 'package:triya_app/ui/auth/employer_dashboard/employer_home/employe_home_controller.dart';
 import 'package:triya_app/ui/auth/employer_dashboard/employer_home/posted_job_detail_controller.dart';
 import 'package:triya_app/widgets/appbar_circleavtar.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ViewApplieadScreen extends StatelessWidget {
   ViewApplieadScreen({Key? key}) : super(key: key);
@@ -176,35 +173,31 @@ class ViewApplieadScreen extends StatelessWidget {
                           subtitle: 'Selected',
                         ),
                         SizedBox(height: 50.h),
-                        InkWell(
-                          onTap: () async {
-                            AppState.downloadFile(
-                                '${controller.postedJob.value?.upload}');
-                            /* if (await canLaunch(
-                                controller.postedJob.value?.upload ?? '')) {
-                              await launch(
-                                  controller.postedJob.value?.upload ?? '');
-                            } else {
-                              throw 'Could not launch "${controller.postedJob.value?.upload ?? ''}"';
-                            }*/
-                          },
-                          child: Row(mainAxisSize: MainAxisSize.min, children: [
-                            Text(
-                              'Download Pdf',
-                              style: TextStyle(
-                                  color: Color(0xff286FD9),
-                                  fontSize: 32.sp,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: "OpenSans-Regular"),
-                            ),
-                            SizedBox(width: 4),
-                            Icon(
-                              Icons.download_rounded,
-                              color: Color(0xff286FD9),
-                              size: 18,
-                            ),
-                          ]),
-                        ),
+                        if ((controller.postedJob.value?.upload ?? "")
+                            .isNotEmpty)
+                          InkWell(
+                            onTap: () async {
+                              AppState.downloadFile(
+                                  '${controller.postedJob.value?.upload}');
+                            },
+                            child:
+                                Row(mainAxisSize: MainAxisSize.min, children: [
+                              Text(
+                                'Download Pdf',
+                                style: TextStyle(
+                                    color: Color(0xff286FD9),
+                                    fontSize: 32.sp,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: "OpenSans-Regular"),
+                              ),
+                              SizedBox(width: 4),
+                              Icon(
+                                Icons.download_rounded,
+                                color: Color(0xff286FD9),
+                                size: 18,
+                              ),
+                            ]),
+                          ),
                         SizedBox(height: 180.h),
                         CommanButton(
                             onTap: () {

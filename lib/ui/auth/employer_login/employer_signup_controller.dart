@@ -50,8 +50,9 @@ class EmployerSignUpController extends GetxController {
         print(value!.data);
         CandidateSignUpResponse response =
             CandidateSignUpResponse.fromJson(value.data);
-        print(formData.length);
         if (!(response.errors ?? true)) {
+          Get.snackbar(
+              "Your profile has been sent for approval to the admin.", "");
           Get.back();
         }
       });
